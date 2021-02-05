@@ -11,6 +11,6 @@
     <title>Home Page</title>
 </head>
 <body>
-    <h1>Welcome! </h1>
+  <h1>Welcome ${firstName} ${lastName}!</h1>
 </body>
 </html>
