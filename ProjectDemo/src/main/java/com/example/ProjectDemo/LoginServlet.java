@@ -25,9 +25,11 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         UserDAO userDao = new UserDAO();
+        InstructorDAO instructorDao = new InstructorDAO();
 
         try {
             Users user = userDao.checkLogin(email, password);
+            Instructors instructor = instructorDao.checkLoginInstructor(email, password);
             request.setAttribute("loginResult", "true");
             String destPage = "index.jsp";
 
@@ -35,7 +37,14 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
                 destPage = "home.jsp";
-            } else {
+            } 
+            else if (instructor != null) {
+                HttpSession session = request.getSession();
+                session.setAttribute("firstName", instructor.getFirstname());
+                session.setAttribute("lastName", instructor.getLastname());
+                destPage = "home.jsp";
+            }
+            else {
                 String message = "Invalid email/password";
                 request.setAttribute("message", message);
             }
