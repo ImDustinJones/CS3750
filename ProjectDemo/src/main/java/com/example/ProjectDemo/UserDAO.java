@@ -69,14 +69,20 @@ public class UserDAO {
 
     public static String encrypt(String encryptMe) {
         try {
-            MessageDigest messageDigest;
-            messageDigest = MessageDigest.getInstance("MD5");
-            messageDigest.update(encryptMe.getBytes());
-            return new String(messageDigest.digest());
-            //Returns null if it is unable to encrypt
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return null;
+
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(encryptMe.getBytes());
+
+            BigInteger no = new BigInteger(1, messageDigest);
+
+            String hashtext = no.toString(16);
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        }
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
         }
     }
 
