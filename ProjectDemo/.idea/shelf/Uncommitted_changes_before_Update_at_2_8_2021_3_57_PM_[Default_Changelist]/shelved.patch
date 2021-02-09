@@ -1,0 +1,168 @@
+Index: src/main/java/com/example/ProjectDemo/UserDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.ProjectDemo;\r\nimport java.sql.*;\r\nimport java.security.MessageDigest;\r\nimport java.security.NoSuchAlgorithmException;\r\nimport java.text.DateFormat;\r\nimport java.text.ParseException;\r\nimport java.text.SimpleDateFormat;\r\nimport java.time.LocalDate;\r\nimport java.time.Period;\r\nimport java.time.ZoneId;\r\nimport java.util.Date;\r\nimport java.util.regex.Pattern;\r\n\r\npublic class UserDAO {\r\n    public Users checkLogin(String email, String password) throws SQLException, ClassNotFoundException {\r\n        Connection connection = connectDatabase();\r\n\r\n        String sql = \"SELECT * FROM users WHERE email = ? and password = ?\";\r\n        PreparedStatement statement = connection.prepareStatement(sql);\r\n        statement.setString(1, email);\r\n\r\n        String encryptedPassword = encrypt(password);\r\n        statement.setString(2, encryptedPassword);\r\n\r\n        ResultSet result = statement.executeQuery();\r\n\r\n        Users user = null;\r\n\r\n        if (result.next()) {\r\n            user = new Users();\r\n            user.setFirstname(result.getString(\"firstName\"));\r\n            user.setEmail(email);\r\n        }\r\n\r\n        connection.close();\r\n\r\n        return user;\r\n    }\r\n\r\n    public Users addUserDB(String email, String firstname, String lastname, String password, String birthdate) throws SQLException, ClassNotFoundException, ParseException {\r\n        //DateFormat dateFormat = new SimpleDateFormat(\"yyyy-MM-dd\");\r\n        String encryptedPassword = encrypt(password);\r\n//        Date birthDate = null;\r\n//        try {\r\n//            birthDate = dateFormat.parse(birthdate);\r\n//        } catch (ParseException e) {\r\n//            e.printStackTrace();\r\n//        }\r\n        Connection connection = connectDatabase();\r\n\r\n        String sqlInsert = \"INSERT INTO users(email, password, firstName, lastName, birthDate) VALUES('\"+email+\"','\"+encryptedPassword+\"','\"+firstname+\"','\"+lastname+\"', '\"+birthdate+\"');\";\r\n        PreparedStatement statement = connection.prepareStatement(sqlInsert);\r\n        int result = statement.executeUpdate();\r\n\r\n        Users user = null;\r\n\r\n        if(result > 0){\r\n            user = new Users();\r\n            user.setFirstname(firstname);\r\n            user.setLastname(lastname);\r\n            user.setEmail(email);\r\n            user.setBirthdate(birthdate);\r\n        }\r\n\r\n        connection.close();\r\n\r\n        return user;\r\n    }\r\n\r\n    public static String encrypt(String encryptMe) {\r\n        try {\r\n            MessageDigest messageDigest;\r\n            messageDigest = MessageDigest.getInstance(\"MD5\");\r\n            messageDigest.update(encryptMe.getBytes());\r\n            return new String(messageDigest.digest());\r\n            //Returns null if it is unable to encrypt\r\n        } catch (NoSuchAlgorithmException e) {\r\n            e.printStackTrace();\r\n            return null;\r\n        }\r\n    }\r\n\r\n    public Connection connectDatabase() throws SQLException, ClassNotFoundException {\r\n        String jdbcURL = \"jdbc:mysql://localhost:3306/project\";\r\n        String dbUser = \"root\";\r\n        String dbPassword = \"z41ub8143\";\r\n\r\n        Class.forName(\"com.mysql.jdbc.Driver\");\r\n\r\n        return DriverManager.getConnection(jdbcURL, dbUser, dbPassword);\r\n    }\r\n\r\n    public boolean checkAge(String birthDate) {//check if user is 18+ years old\r\n\r\n        DateFormat dateFormat = new SimpleDateFormat(\"yyyy-MM-dd\");//format for input\r\n        Date dateCheck = null;//get date using above format\r\n        try {\r\n            dateCheck = dateFormat.parse(birthDate);//store string as a date\r\n        } catch (ParseException e) {\r\n            e.printStackTrace();\r\n        }\r\n        if (dateCheck != null) {//if the above was successful\r\n            LocalDate birth = dateCheck.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();//convert to LocalDate\r\n            LocalDate today = LocalDate.now();//get current date\r\n            Period difference = Period.between(birth, today);//get difference between dates\r\n            int years = difference.getYears();//get years between dates\r\n            return years >= 18;//return true if user is older than 18\r\n        }\r\n\r\n        return false;//return false if age couldn't be verified\r\n\r\n    }\r\n\r\n    public boolean checkEmail(String email) {\r\n        String emailRegex = \"^[a-zA-Z0-9_+&*-]+(?:\\\\.\" + \"[a-zA-Z0-9_+&*-]+)*@\" + \"(?:[a-zA-Z0-9-]+\\\\.)+[a-z\" + \"A-Z]{2,7}$\";\r\n\r\n        Pattern pattern = Pattern.compile(emailRegex);\r\n\r\n        if(email == null){\r\n            return false;\r\n        }\r\n\r\n        return pattern.matcher(email).matches();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/ProjectDemo/UserDAO.java b/src/main/java/com/example/ProjectDemo/UserDAO.java
+--- a/src/main/java/com/example/ProjectDemo/UserDAO.java	(revision 0d0b761f25fcb41a10ed24dfd805e3d043ab7c81)
++++ b/src/main/java/com/example/ProjectDemo/UserDAO.java	(date 1612570504194)
+@@ -15,7 +15,7 @@
+     public Users checkLogin(String email, String password) throws SQLException, ClassNotFoundException {
+         Connection connection = connectDatabase();
+ 
+-        String sql = "SELECT * FROM users WHERE email = ? and password = ?";
++        String sql = "SELECT * FROM students WHERE email = ? and password = ?";
+         PreparedStatement statement = connection.prepareStatement(sql);
+         statement.setString(1, email);
+ 
+@@ -48,7 +48,7 @@
+ //        }
+         Connection connection = connectDatabase();
+ 
+-        String sqlInsert = "INSERT INTO users(email, password, firstName, lastName, birthDate) VALUES('"+email+"','"+encryptedPassword+"','"+firstname+"','"+lastname+"', '"+birthdate+"');";
++        String sqlInsert = "INSERT INTO students(email, password, firstName, lastName, birthDate) VALUES('"+email+"','"+encryptedPassword+"','"+firstname+"','"+lastname+"', '"+birthdate+"');";
+         PreparedStatement statement = connection.prepareStatement(sqlInsert);
+         int result = statement.executeUpdate();
+ 
+@@ -81,9 +81,9 @@
+     }
+ 
+     public Connection connectDatabase() throws SQLException, ClassNotFoundException {
+-        String jdbcURL = "jdbc:mysql://localhost:3306/project";
++        String jdbcURL = "jdbc:mysql://localhost:3306/lmsdb";
+         String dbUser = "root";
+-        String dbPassword = "z41ub8143";
++        String dbPassword = "Dj5367158";
+ 
+         Class.forName("com.mysql.jdbc.Driver");
+ 
+Index: src/main/java/com/example/ProjectDemo/InstructorDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.ProjectDemo;\r\n\r\nimport java.security.MessageDigest;\r\nimport java.security.NoSuchAlgorithmException;\r\nimport java.sql.*;\r\nimport java.text.DateFormat;\r\nimport java.text.ParseException;\r\nimport java.text.SimpleDateFormat;\r\nimport java.time.LocalDate;\r\nimport java.time.Period;\r\nimport java.time.ZoneId;\r\nimport java.util.Date;\r\nimport java.util.regex.Pattern;\r\n\r\npublic class InstructorDAO {\r\n    public Instructors checkLoginInstructor(String email, String password) throws SQLException, ClassNotFoundException {\r\n        Connection connection = connectDatabase();\r\n\r\n        String sql = \"SELECT * FROM instructors WHERE email = ? and password = ?\";\r\n        PreparedStatement statement = connection.prepareStatement(sql);\r\n        statement.setString(1, email);\r\n\r\n        String encryptedPassword = encrypt(password);\r\n        statement.setString(2, encryptedPassword);\r\n\r\n        ResultSet result = statement.executeQuery();\r\n\r\n        Instructors instructor = null;\r\n\r\n        if (result.next()) {\r\n            instructor = new Instructors();\r\n            instructor.setFirstname(result.getString(\"firstName\"));\r\n            instructor.setEmail(email);\r\n        }\r\n\r\n        connection.close();\r\n\r\n        return instructor;\r\n    }\r\n\r\n    public Instructors addInstructorDB(String email, String firstname, String lastname, String password, String birthdate) throws SQLException, ClassNotFoundException, ParseException {\r\n  //      SimpleDateFormat dateFormat = new SimpleDateFormat(\"yyyy-MM-dd\");\r\n        String encryptedPassword = encrypt(password);\r\n//        Date birthDate = null;\r\n//        try {\r\n//            birthDate = dateFormat.parse(birthdate);\r\n//        } catch (ParseException e) {\r\n//            e.printStackTrace();\r\n//        }\r\n        Connection connection = connectDatabase();\r\n\r\n        String sqlInsert = \"INSERT INTO instructors(email, password, firstName, lastName, birthDate) VALUES('\"+email+\"','\"+encryptedPassword+\"','\"+firstname+\"','\"+lastname+\"', '\"+birthdate+\"');\";\r\n        PreparedStatement statement = connection.prepareStatement(sqlInsert);\r\n        int result = statement.executeUpdate();\r\n\r\n        Instructors instructor = null;\r\n\r\n        if(result > 0){\r\n            instructor = new Instructors();\r\n            instructor.setFirstname(firstname);\r\n            instructor.setLastname(lastname);\r\n            instructor.setEmail(email);\r\n            instructor.setBirthdate(birthdate);\r\n        }\r\n\r\n        connection.close();\r\n\r\n        return instructor;\r\n    }\r\n\r\n    public static String encrypt(String encryptMe) {\r\n        try {\r\n            MessageDigest messageDigest;\r\n            messageDigest = MessageDigest.getInstance(\"MD5\");\r\n            messageDigest.update(encryptMe.getBytes());\r\n            return new String(messageDigest.digest());\r\n            //Returns null if it is unable to encrypt\r\n        } catch (NoSuchAlgorithmException e) {\r\n            e.printStackTrace();\r\n            return null;\r\n        }\r\n    }\r\n\r\n    public Connection connectDatabase() throws SQLException, ClassNotFoundException {\r\n        String jdbcURL = \"jdbc:mysql://localhost:3306/project\";\r\n        String dbUser = \"root\";\r\n        String dbPassword = \"z41ub8143\";\r\n\r\n        Class.forName(\"com.mysql.jdbc.Driver\");\r\n\r\n        return DriverManager.getConnection(jdbcURL, dbUser, dbPassword);\r\n    }\r\n\r\n    public boolean checkAge(String birthDate) {//check if user is 18+ years old\r\n\r\n        DateFormat dateFormat = new SimpleDateFormat(\"yyyy-MM-dd\");//format for input\r\n        Date dateCheck = null;//get date using above format\r\n        try {\r\n            dateCheck = dateFormat.parse(birthDate);//store string as a date\r\n        } catch (ParseException e) {\r\n            e.printStackTrace();\r\n        }\r\n        if (dateCheck != null) {//if the above was successful\r\n            LocalDate birth = dateCheck.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();//convert to LocalDate\r\n            LocalDate today = LocalDate.now();//get current date\r\n            Period difference = Period.between(birth, today);//get difference between dates\r\n            int years = difference.getYears();//get years between dates\r\n            return years >= 18;//return true if user is older than 18\r\n        }\r\n\r\n        return false;//return false if age couldn't be verified\r\n\r\n    }\r\n\r\n    public boolean checkEmail(String email) {\r\n        String emailRegex = \"^[a-zA-Z0-9_+&*-]+(?:\\\\.\" + \"[a-zA-Z0-9_+&*-]+)*@\" + \"(?:[a-zA-Z0-9-]+\\\\.)+[a-z\" + \"A-Z]{2,7}$\";\r\n\r\n        Pattern pattern = Pattern.compile(emailRegex);\r\n\r\n        if(email == null){\r\n            return false;\r\n        }\r\n\r\n        return pattern.matcher(email).matches();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/ProjectDemo/InstructorDAO.java b/src/main/java/com/example/ProjectDemo/InstructorDAO.java
+--- a/src/main/java/com/example/ProjectDemo/InstructorDAO.java	(revision 0d0b761f25fcb41a10ed24dfd805e3d043ab7c81)
++++ b/src/main/java/com/example/ProjectDemo/InstructorDAO.java	(date 1612568278362)
+@@ -82,9 +82,9 @@
+     }
+ 
+     public Connection connectDatabase() throws SQLException, ClassNotFoundException {
+-        String jdbcURL = "jdbc:mysql://localhost:3306/project";
++        String jdbcURL = "jdbc:mysql://localhost:3306/lmsdb";
+         String dbUser = "root";
+-        String dbPassword = "z41ub8143";
++        String dbPassword = "Dj5367158";
+ 
+         Class.forName("com.mysql.jdbc.Driver");
+ 
+Index: target/ProjectDemo-1.0-SNAPSHOT/home.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page import=\"com.example.ProjectDemo.Users\" %><%--\r\n  Created by IntelliJ IDEA.\r\n  User: johnn\r\n  Date: 2/3/2021\r\n  Time: 12:10 PM\r\n  To change this template use File | Settings | File Templates.\r\n--%>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<html>\r\n<head>\r\n    <title>Home Page</title>\r\n</head>\r\n<body>\r\n    <h1>Welcome! </h1>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/ProjectDemo-1.0-SNAPSHOT/home.jsp b/target/ProjectDemo-1.0-SNAPSHOT/home.jsp
+--- a/target/ProjectDemo-1.0-SNAPSHOT/home.jsp	(revision 0d0b761f25fcb41a10ed24dfd805e3d043ab7c81)
++++ b/target/ProjectDemo-1.0-SNAPSHOT/home.jsp	(date 1612563899996)
+@@ -11,6 +11,6 @@
+     <title>Home Page</title>
+ </head>
+ <body>
+-    <h1>Welcome! </h1>
++  <h1>Welcome ${firstName} ${lastName}!</h1>
+ </body>
+ </html>
+Index: target/ProjectDemo-1.0-SNAPSHOT/META-INF/MANIFEST.MF
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>Manifest-Version: 1.0\r\nCreated-By: IntelliJ IDEA\r\nBuilt-By: johnn\r\nBuild-Jdk: version 11.0.9\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/ProjectDemo-1.0-SNAPSHOT/META-INF/MANIFEST.MF b/target/ProjectDemo-1.0-SNAPSHOT/META-INF/MANIFEST.MF
+--- a/target/ProjectDemo-1.0-SNAPSHOT/META-INF/MANIFEST.MF	(revision 0d0b761f25fcb41a10ed24dfd805e3d043ab7c81)
++++ b/target/ProjectDemo-1.0-SNAPSHOT/META-INF/MANIFEST.MF	(date 1612570998512)
+@@ -1,5 +1,5 @@
+ Manifest-Version: 1.0
+ Created-By: IntelliJ IDEA
+-Built-By: johnn
+-Build-Jdk: version 11.0.9
++Built-By: Dustin
++Build-Jdk: version 11.0.10
+ 
+Index: .idea/dataSources.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/dataSources.xml b/.idea/dataSources.xml
+new file mode 100644
+--- /dev/null	(date 1612566044406)
++++ b/.idea/dataSources.xml	(date 1612566044406)
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
++    <data-source source="LOCAL" name="@localhost" uuid="09bf5579-2242-4dd7-87da-411a7207cc2e">
++      <driver-ref>mysql.8</driver-ref>
++      <synchronize>true</synchronize>
++      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
++      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
++      <working-dir>$ProjectFileDir$</working-dir>
++    </data-source>
++  </component>
++</project>
+\ No newline at end of file
+Index: ProjectDemo.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule=\"true\" type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"FacetManager\">\r\n    <facet type=\"web\" name=\"Web\">\r\n      <configuration>\r\n        <descriptors>\r\n          <deploymentDescriptor name=\"web.xml\" url=\"file://$MODULE_DIR$/src/main/webapp/WEB-INF/web.xml\" />\r\n        </descriptors>\r\n        <webroots>\r\n          <root url=\"file://$MODULE_DIR$/src/main/webapp\" relative=\"/\" />\r\n        </webroots>\r\n        <sourceRoots>\r\n          <root url=\"file://$MODULE_DIR$/src/main/java\" />\r\n          <root url=\"file://$MODULE_DIR$/src/main/resources\" />\r\n        </sourceRoots>\r\n      </configuration>\r\n    </facet>\r\n  </component>\r\n  <component name=\"NewModuleRootManager\" LANGUAGE_LEVEL=\"JDK_1_8\">\r\n    <output url=\"file://$MODULE_DIR$/target/classes\" />\r\n    <output-test url=\"file://$MODULE_DIR$/target/test-classes\" />\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/main/java\" isTestSource=\"false\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/main/resources\" type=\"java-resource\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/test/java\" isTestSource=\"true\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/test/resources\" type=\"java-test-resource\" />\r\n      <excludeFolder url=\"file://$MODULE_DIR$/target\" />\r\n    </content>\r\n    <orderEntry type=\"jdk\" jdkName=\"11\" jdkType=\"JavaSDK\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n    <orderEntry type=\"library\" name=\"jquery-3.4.1\" level=\"application\" />\r\n    <orderEntry type=\"library\" name=\"jquery-validation\" level=\"application\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"mysql:mysql-connector-java:8.0.23\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"PROVIDED\" name=\"Maven: javax.ws.rs:javax.ws.rs-api:2.1.1\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"PROVIDED\" name=\"Maven: javax.servlet:javax.servlet-api:4.0.1\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.jupiter:junit-jupiter-api:5.7.0\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.apiguardian:apiguardian-api:1.1.0\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.opentest4j:opentest4j:1.2.0\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.platform:junit-platform-commons:1.7.0\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.jupiter:junit-jupiter-engine:5.7.0\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.junit.platform:junit-platform-engine:1.7.0\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: mysql:mysql-connector-java:8.0.23\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: com.google.protobuf:protobuf-java:3.11.4\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"jstl:jstl:1.2\" level=\"project\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProjectDemo.iml b/ProjectDemo.iml
+--- a/ProjectDemo.iml	(revision 0d0b761f25fcb41a10ed24dfd805e3d043ab7c81)
++++ b/ProjectDemo.iml	(date 1612564046238)
+@@ -9,10 +9,6 @@
+         <webroots>
+           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
+         </webroots>
+-        <sourceRoots>
+-          <root url="file://$MODULE_DIR$/src/main/java" />
+-          <root url="file://$MODULE_DIR$/src/main/resources" />
+-        </sourceRoots>
+       </configuration>
+     </facet>
+   </component>
+@@ -21,16 +17,10 @@
+     <output-test url="file://$MODULE_DIR$/target/test-classes" />
+     <content url="file://$MODULE_DIR$">
+       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+       <excludeFolder url="file://$MODULE_DIR$/target" />
+     </content>
+-    <orderEntry type="jdk" jdkName="11" jdkType="JavaSDK" />
++    <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
+-    <orderEntry type="library" name="jquery-3.4.1" level="application" />
+-    <orderEntry type="library" name="jquery-validation" level="application" />
+-    <orderEntry type="library" scope="TEST" name="mysql:mysql-connector-java:8.0.23" level="project" />
+     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.ws.rs:javax.ws.rs-api:2.1.1" level="project" />
+     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:4.0.1" level="project" />
+     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.7.0" level="project" />
+@@ -41,6 +31,5 @@
+     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.7.0" level="project" />
+     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.23" level="project" />
+     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.11.4" level="project" />
+-    <orderEntry type="library" name="jstl:jstl:1.2" level="project" />
+   </component>
+ </module>
+\ No newline at end of file
