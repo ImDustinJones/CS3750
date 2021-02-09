@@ -1,4 +1,5 @@
 package com.example.ProjectDemo;
+import java.math.BigInteger;
 import java.sql.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -15,7 +16,7 @@ public class UserDAO {
     public Users checkLogin(String email, String password) throws SQLException, ClassNotFoundException {
         Connection connection = connectDatabase();
 
-        String sql = "SELECT * FROM users WHERE email = ? and password = ?";
+        String sql = "SELECT * FROM students WHERE email = ? and password = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, email);
 
@@ -48,7 +49,7 @@ public class UserDAO {
 //        }
         Connection connection = connectDatabase();
 
-        String sqlInsert = "INSERT INTO users(email, password, firstName, lastName, birthDate) VALUES('"+email+"','"+encryptedPassword+"','"+firstname+"','"+lastname+"', '"+birthdate+"');";
+        String sqlInsert = "INSERT INTO students(email, password, firstName, lastName, birthDate) VALUES('"+email+"','"+encryptedPassword+"','"+firstname+"','"+lastname+"', '"+birthdate+"');";
         PreparedStatement statement = connection.prepareStatement(sqlInsert);
         int result = statement.executeUpdate();
 
@@ -87,9 +88,9 @@ public class UserDAO {
     }
 
     public Connection connectDatabase() throws SQLException, ClassNotFoundException {
-        String jdbcURL = "jdbc:mysql://localhost:3306/project";
+        String jdbcURL = "jdbc:mysql://localhost:3306/lmsdb";
         String dbUser = "root";
-        String dbPassword = "z41ub8143";
+        String dbPassword = "Dj5367158";
 
         Class.forName("com.mysql.jdbc.Driver");
 

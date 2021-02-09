@@ -1,5 +1,6 @@
 package com.example.ProjectDemo;
 
+import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
@@ -88,9 +89,9 @@ public class InstructorDAO {
     }
 
     public Connection connectDatabase() throws SQLException, ClassNotFoundException {
-        String jdbcURL = "jdbc:mysql://localhost:3306/project";
+        String jdbcURL = "jdbc:mysql://localhost:3306/lmsdb";
         String dbUser = "root";
-        String dbPassword = "z41ub8143";
+        String dbPassword = "Dj5367158";
 
         Class.forName("com.mysql.jdbc.Driver");
 
