@@ -52,6 +52,36 @@
 </head>
 <body>
   <h1>Welcome ${firstName} ${lastName}!</h1>
+
+  <h2>Your Courses</h2>
+  <div class="card">
+      <div class="container">
+          <h4><b>CS1234 Dummy Computer Science</b></h4>
+          <p>Instructor 1</p>
+          <p>Mon/Wed 1:00PM - 2:00PM</p>
+      </div>
+  </div>
+  <div class="card">
+      <div class="container">
+          <h4><b>CS1234 Dummy Computer Science</b></h4>
+          <p>Instructor 1</p>
+          <p>Mon/Wed 1:00PM - 2:00PM</p>
+      </div>
+  </div>
+  <div class="card">
+      <div class="container">
+          <h4><b>CS1234 Dummy Computer Science</b></h4>
+          <p>Instructor 1</p>
+          <p>Mon/Wed 1:00PM - 2:00PM</p>
+      </div>
+  </div>
+  <div class="card">
+      <div class="container">
+          <h4><b>CS1234 Dummy Computer Science</b></h4>
+          <p>Instructor 1</p>
+          <p>Mon/Wed 1:00PM - 2:00PM</p>
+      </div>
+  </div>
   <div id='calendar' style="width: 40%;"></div> <%--Comment this out to hide the calendar for testing if it's annoying--%>
 
 
