@@ -89,11 +89,11 @@ public class InstructorDAO {
     }
 
     public Connection connectDatabase() throws SQLException, ClassNotFoundException {
-        String jdbcURL = "jdbc:mysql://localhost:3306/lmsdb";
-        String dbUser = "root";
-        String dbPassword = "Dj5367158";
+        String jdbcURL = "jdbc:sqlserver://desktop-837pgn9\\\\sqlexpress;databaseName=lmsdb;portNumber=1433";
+        String dbUser = "sa";
+        String dbPassword = "ryder13";
 
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
         return DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
     }

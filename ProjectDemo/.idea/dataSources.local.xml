@@ -15,5 +15,21 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="Microsoft SQL Server - lmsdb@DESKTOP-837PGN9" uuid="ebb89497-612e-459e-8f7d-3f85347f6696">
+      <database-info product="Microsoft SQL Server" version="14.00.2037" jdbc-version="4.2" driver-name="Microsoft JDBC Driver 9.2 for SQL Server" driver-version="9.2.0.0" dbms="MSSQL" exact-version="14.0.2037" exact-driver-version="9.2">
+        <extra-name-characters>$#@</extra-name-characters>
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>sa</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database" qname="@">
+            <node kind="schema" qname="@" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
   </component>
 </project>
