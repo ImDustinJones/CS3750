@@ -82,6 +82,7 @@
           <p>Mon/Wed 1:00PM - 2:00PM</p>
       </div>
   </div>
+  <h2>Learning Calendar</h2>
   <div id='calendar' style="width: 40%;"></div> <%--Comment this out to hide the calendar for testing if it's annoying--%>
 
 
