@@ -1,0 +1,19 @@
+body{
+    background-color: powderblue;
+}
+#calendar{
+    background-color: white;
+    margin-left: 20%;
+}
+#logoText{
+    position: fixed;
+    bottom: 0;
+    right: 0%;
+    z-index: 100;
+    font-size: 115%;
+    font-family: "Arial Black";
+}
+h1{
+    font-size: 250%;
+    font-family: "Arial Black";
+}

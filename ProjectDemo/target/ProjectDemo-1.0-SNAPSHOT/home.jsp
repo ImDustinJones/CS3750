@@ -53,5 +53,12 @@
 <body>
   <h1>Welcome ${firstName} ${lastName}!</h1>
   <div id='calendar' style="width: 40%;"></div> <%--Comment this out to hide the calendar for testing if it's annoying--%>
+
+
+
+
+  <div id='logoText'>
+      <p>RunTime Error's LMS</p>
+  </div>
 </body>
 </html>
