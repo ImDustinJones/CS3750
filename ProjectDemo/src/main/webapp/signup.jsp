@@ -16,12 +16,13 @@
 
 <html>
 <head>
+    <link rel='stylesheet' href='signinout.css' type="text/css"/>
     <title>Sign Up</title>
 </head>
 <body>
-
-<h1>Please Register an Account</h1>
-
+<h1>Sign Up</h1>
+<div class="Wrapper">
+<div class="Inputs">
 <form action="${pageContext.request.contextPath}/addUser" method="post" >
     <label for="firstName">First Name: </label>
     <input type="text" name="firstName" id="firstName"> <br>
@@ -47,6 +48,8 @@
         }
     %>
     <p style ="color:#ff0000"><%= errorMessage%> </p>
+</div>
+</div>
 </form>
 </body>
 </html>
