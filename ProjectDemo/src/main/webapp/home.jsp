@@ -3,8 +3,9 @@
 <html lang='en'>
 <head>
     <meta charset='utf-8' />
-    <link href='fullcalendar/main.css' rel='stylesheet' />
-    <link href='home.css' rel='stylesheet' />
+    <link href='navigationbar.css' rel='stylesheet'/>
+    <link href='fullcalendar/main.css' rel='stylesheet'/>
+    <link href='home.css' rel='stylesheet'/>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -51,40 +52,55 @@
     <title>Home Page</title>
 </head>
 <body>
-  <h1>Welcome ${firstName} ${lastName}!</h1>
+<ul>
+    <li><a class="active" href="#profile">Profile</a></li>
+    <li><a href="#Dummy">Dummy</a></li>
+    <li><a href="#Dummy">Dummy</a></li>
+    <li><a href="#Dummy">Dummy</a></li>
+</ul>
 
-  <h2>Courses List</h2>
-  <div class="card">
-      <div class="container">
-          <h4><b>CS1234 Dummy Computer Science</b></h4>
-          <p>Instructor 1</p>
-          <p>Mon/Wed 1:00PM - 2:00PM</p>
-      </div>
-  </div>
-  <div class="card">
-      <div class="container">
-          <h4><b>CS1234 Dummy Computer Science</b></h4>
-          <p>Instructor 1</p>
-          <p>Mon/Wed 1:00PM - 2:00PM</p>
-      </div>
-  </div>
-  <div class="card">
-      <div class="container">
-          <h4><b>CS1234 Dummy Computer Science</b></h4>
-          <p>Instructor 1</p>
-          <p>Mon/Wed 1:00PM - 2:00PM</p>
-      </div>
-  </div>
-  <div class="card">
-      <div class="container">
-          <h4><b>CS1234 Dummy Computer Science</b></h4>
-          <p>Instructor 1</p>
-          <p>Mon/Wed 1:00PM - 2:00PM</p>
-      </div>
-  </div>
-  <h2>Learning Calendar</h2>
-  <div id='calendar' style="width: 40%;"></div> <%--Comment this out to hide the calendar for testing if it's annoying--%>
+<div class="mainContainer">
+      <h1>Welcome ${firstName} ${lastName}!</h1>
 
+    <div class="courseContainer">
+          <h2>Courses List</h2>
+
+        <div class="cardContainer">
+            <div class="card">
+                  <div class="container">
+                      <h4><b>CS1234 Dummy Computer Science</b></h4>
+                      <p>Instructor 1</p>
+                      <p>Mon/Wed 1:00PM - 2:00PM</p>
+                  </div>
+              </div>
+              <div class="card">
+                  <div class="container">
+                      <h4><b>CS1234 Dummy Computer Science</b></h4>
+                      <p>Instructor 1</p>
+                      <p>Mon/Wed 1:00PM - 2:00PM</p>
+                  </div>
+              </div>
+              <div class="card">
+                  <div class="container">
+                      <h4><b>CS1234 Dummy Computer Science</b></h4>
+                      <p>Instructor 1</p>
+                      <p>Mon/Wed 1:00PM - 2:00PM</p>
+                  </div>
+              </div>
+              <div class="card">
+                  <div class="container">
+                      <h4><b>CS1234 Dummy Computer Science</b></h4>
+                      <p>Instructor 1</p>
+                      <p>Mon/Wed 1:00PM - 2:00PM</p>
+                  </div>
+              </div>
+        </div>
+    </div>
+      <h2>Learning Calendar</h2>
+    <div class="calanderContainer">
+      <div id='calendar' ></div> <%--Comment this out to hide the calendar for testing if it's annoying--%>
+    </div>
+</div>
 
 
 

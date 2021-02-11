@@ -1,16 +1,23 @@
 body{
     background-color: #001011;
     font-family: "Verdana";
+    margin: 0;
+}
+
+.calanderContainer{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
 }
 
 #calendar{
     background-color: #F6AE2D;
-    margin-left: 8px;
-    margin-top: 20px;
     color: black;
     border-style: solid;
     border-width: 3px;
     border-color: #757780;
+    padding: 10px;
 }
 .fc-toolbar h2{
     color: black;
@@ -36,8 +43,27 @@ h1{
 }
 h2{
     margin-left: 5%;
-    margin-top: 2%;
+    margin-top: 8%;
     color: white;
+}
+
+.mainContainer{
+    margin: auto;
+    width: 60%;
+    box-sizing: border-box;
+}
+
+.courseContainer{
+}
+
+.cardContainer{
+    text-align: center;
+}
+
+.container{
+    padding-left: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 .card {
@@ -48,14 +74,9 @@ h2{
     border-width: 3px;
     border-color: #757780;
     background: #F6AE2D;
-    width: 12%;
+    width: 34%;
     margin: 8px;
     display: inline-block;
-}
-.container{
-    padding-left: 5px;
-    padding-top: 2px;
-    padding-bottom: 2px;
 }
 
 /* Add rounded corners to the top left and the top right corner of the image */
