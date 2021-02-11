@@ -1,35 +1,53 @@
 body{
-    background-color: powderblue;
+    background-color: #001011;
+    font-family: "Verdana";
 }
+
 #calendar{
-    background-color: white;
+    background-color: #F6AE2D;
     margin-left: 8px;
     margin-top: 20px;
+    color: black;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #757780;
+}
+.fc-toolbar h2{
+    color: black;
 }
 #logoText{
     position: fixed;
     bottom: 0;
     right: 1%;
     z-index: 100;
-    font-size: 115%;
-    font-family: "Arial Black";
+    font-size: 100%;
+    color: black;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #757780;
+    margin: auto;
+    background-color: #F6AE2D;
 }
 h1{
     font-size: 250%;
-    font-family: "Arial Black";
+    text-decoration: underline;
+    color: white;
     text-align: center;
 }
 h2{
-    font-family: "Arial Black";
     margin-left: 5%;
     margin-top: 2%;
+    color: white;
 }
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 5px; /* 5px rounded corners */
-    background: white;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #757780;
+    background: #F6AE2D;
     width: 12%;
     margin: 8px;
     display: inline-block;

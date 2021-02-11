@@ -33,13 +33,13 @@
                         title : 'Place Holder Assignment 4',
                         start : '2021-02-27',
                         end : '2021-02-27',
-                        color : 'yellow'
+                        color : 'purple'
                     },
                     {
                         title : 'Place Holder Assignment 5',
                         start : '2021-02-04',
                         end : '2021-02-04',
-                        color : 'yellow'
+                        color : 'purple'
                     }
                 ],
                 initialView: 'dayGridMonth',
@@ -53,7 +53,7 @@
 <body>
   <h1>Welcome ${firstName} ${lastName}!</h1>
 
-  <h2>Your Courses</h2>
+  <h2>Courses List</h2>
   <div class="card">
       <div class="container">
           <h4><b>CS1234 Dummy Computer Science</b></h4>
@@ -89,7 +89,7 @@
 
 
   <div id='logoText'>
-      <p>RunTime Error's LMS</p>
+      <p>RunTime Terror's LMS</p>
   </div>
 </body>
 </html>
