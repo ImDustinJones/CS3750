@@ -83,3 +83,40 @@ h2{
 img {
     border-radius: 5px 5px 0 0;
 }
+
+.notificationBell{
+    position:absolute;
+    top:0%;
+    right:65px;
+    cursor: pointer;
+}
+
+.notificationBox{
+    position: absolute;
+    top:90px;
+    right:10px;
+    width: 200px;
+    height: 0px;
+    opacity: 0%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #757780;
+    background: #F6AE2D;
+}
+
+.notificationItem{
+    width: 190px;
+    padding: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #757780;
+    cursor: pointer;
+
+}
+
+.itemX{
+    color: red !important;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #757780;
+}

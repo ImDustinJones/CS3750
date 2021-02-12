@@ -52,6 +52,30 @@
     <title>Home Page</title>
 </head>
 <body>
+
+<div class="notificationBell" onclick="toggleBox();">
+    <img src="img/Bell.png" alt="notification bell" width="80" height="80"/>
+</div>
+<div class="notificationBox" id="box">
+
+    <div class="notificationItem">
+        Dummy Text 1 <span class="itemX" onclick="deleteItem(this)"> X </span>
+    </div>
+    <div class="notificationItem">
+        Dummy Text 2 <span class="itemX" onclick="deleteItem(this)"> X </span>
+    </div>
+    <div class="notificationItem">
+        Dummy Text 3 <span class="itemX" onclick="deleteItem(this)"> X </span>
+    </div>
+    <div class="notificationItem">
+        Dummy Text 4 <span class="itemX" onclick="deleteItem(this)"> X </span>
+    </div>
+    <div class="notificationItem">
+        Dummy Text 5 <span class="itemX" onclick="deleteItem(this)"> X </span>
+    </div>
+</div>
+
+
 <ul>
     <li><a class="active" href="#profile">Profile</a></li>
     <li><a href="#Dummy">Dummy</a></li>
@@ -107,5 +131,8 @@
   <div id='logoText'>
       <p>RunTime Terror's LMS</p>
   </div>
+
+<script src="notifications.js"></script>
+
 </body>
 </html>
