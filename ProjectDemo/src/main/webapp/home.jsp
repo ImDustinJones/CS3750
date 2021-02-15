@@ -76,11 +76,20 @@
 </div>
 
 
-<ul>
-    <li><a class="active" href="#profile">Profile</a></li>
-    <li><a href="#Dummy">Dummy</a></li>
-    <li><a href="#Dummy">Dummy</a></li>
-    <li><a href="#Dummy">Dummy</a></li>
+<ul class="navUl">
+    <li class="navLi"><a class="active" href="#profile">Profile</a></li>
+    <li class="navLi"><a href="#DummyN1">Dummy</a></li>
+    <li class="navLi"><a href="#DummyN2">Dummy</a></li>
+    <li class="navLi"><a href="#DummyN3">Dummy</a></li>
+</ul>
+
+<ul class="todoUL">
+    <h2>My To Do List</h2>
+    <li><a href="#DummyT1">CS1234 Dummy<br>Dummy Assignment1<br> 2/10/21 11:59PM</a><span class="itemX" onclick="deleteItem(this)"> X </span></li>
+    <li><a href="#DummyT2">CS1234 Dummy<br>Dummy Assignment2<br> 2/15/21 11:59PM</a><span class="itemX" onclick="deleteItem(this)"> X </span></li>
+    <li><a href="#DummyT3">CS1234 Dummy<br>Dummy Assignment3<br> 2/17/21 11:59PM</a><span class="itemX" onclick="deleteItem(this)"> X </span></li>
+    <li><a href="#DummyT4">CS1234 Dummy<br>Dummy Assignment4<br> 2/21/21 11:59PM</a><span class="itemX" onclick="deleteItem(this)"> X </span></li>
+    <li><a href="#DummyT5">CS1234 Dummy<br>Dummy Assignment5<br> 3/1/21 11:59PM</a><span class="itemX" onclick="deleteItem(this)"> X </span></li>
 </ul>
 
 <div class="mainContainer">
@@ -125,8 +134,6 @@
       <div id='calendar' ></div> <%--Comment this out to hide the calendar for testing if it's annoying--%>
     </div>
 </div>
-
-
 
   <div id='logoText'>
       <p>RunTime Terror's LMS</p>
