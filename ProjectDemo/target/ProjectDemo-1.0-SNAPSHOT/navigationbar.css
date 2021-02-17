@@ -2,7 +2,7 @@ body{
     margin: 0;
 }
 
-ul {
+.navUl {
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -13,19 +13,19 @@ ul {
     overflow: auto;
 }
 
-li a {
+.navUL li a {
     display: block;
     color: black;
     padding: 8px 16px;
     text-decoration: none;
 }
 
-li a.active {
+.navUL a.active {
     color: white;
     background-color: #2C3E50;
 }
 
-li a:hover:not(.active) {
+.navUL a:hover:not(.active) {
     color: white;
     background-color: #2C3E50;
 }
