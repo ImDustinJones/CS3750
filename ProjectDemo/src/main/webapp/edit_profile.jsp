@@ -44,15 +44,20 @@
                 <div class="popup__container">
                     <button type="button" class="close-button"></button>
                     <h2 class="popup__title">Edit Profile</h2>
-                    <form>
+                    <%--Had to Add second form for my servlet because only 1 servlet can be connected to a single form. Sorry it doesn't look good. I will try to fix after I get my cod working--%>
+                    <form method="post" action="imageUploadServlet" enctype="multipart/form-data">
                         <label for ="profilePic">Profile Picture: </label>
                         <input type = "file" name = "profilePic" id = "profilePic"><br>
+                        <input type="submit" value="Submit Image"> <br>
+                        <%--Currently until the email information is pulled from the database you will need to enter the email address the image needs to be added too--%>
+                        <label for="email">Email: </label>
+                        <input type="text" name="email" id="email">
+                    </form>
+                    <form>
                         <label for="firstName">First Name: </label>
                         <input type="text" name="firstName" id="firstName"> <br>
                         <label for="lastName">Last Name: </label>
                         <input type="text" name="lastName" id="lastName"> <br>
-                        <label for="email">Email: </label>
-                        <input type="text" name="email" id="email"> <br>
                         <label for="phoneNum">Phone: </label>
                         <input type="number" name="phoneNum" id="phoneNum"><br>
                         <label for ="bioBox">Bio: </label>
