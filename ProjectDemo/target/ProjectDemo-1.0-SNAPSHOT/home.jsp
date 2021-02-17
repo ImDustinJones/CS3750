@@ -77,7 +77,7 @@
 
 
 <ul class="navUl">
-    <li class="navLi"><a class="active" href="#profile">Profile</a></li>
+    <li class="navLi"><a class="active" href="edit_profile.jsp">Profile</a></li>
     <li class="navLi"><a href="#DummyN1">Dummy</a></li>
     <li class="navLi"><a href="#DummyN2">Dummy</a></li>
     <li class="navLi"><a href="#DummyN3">Dummy</a></li>
@@ -99,34 +99,34 @@
           <h2>Courses List</h2>
 
         <div class="cardContainer">
-            <div class="card">
+            <a href="#DummyA"><div class="card">
                   <div class="container">
                       <h4><b>CS1234 Dummy Computer Science</b></h4>
                       <p>Instructor 1</p>
                       <p>Mon/Wed 1:00PM - 2:00PM</p>
                   </div>
-              </div>
-              <div class="card">
+            </div></a>
+            <a href="#DummyB"> <div class="card">
                   <div class="container">
                       <h4><b>CS1234 Dummy Computer Science</b></h4>
                       <p>Instructor 1</p>
                       <p>Mon/Wed 1:00PM - 2:00PM</p>
                   </div>
-              </div>
-              <div class="card">
+            </div></a>
+            <a href="#DummyC"><div class="card">
                   <div class="container">
                       <h4><b>CS1234 Dummy Computer Science</b></h4>
                       <p>Instructor 1</p>
                       <p>Mon/Wed 1:00PM - 2:00PM</p>
                   </div>
-              </div>
-              <div class="card">
+            </div></a>
+            <a href="#DummyD"><div class="card">
                   <div class="container">
                       <h4><b>CS1234 Dummy Computer Science</b></h4>
                       <p>Instructor 1</p>
                       <p>Mon/Wed 1:00PM - 2:00PM</p>
                   </div>
-              </div>
+            </div></a>
         </div>
     </div>
       <h2>Learning Calendar</h2>

@@ -25,7 +25,6 @@
     %>
     <p style ="color:#ff0000"><%= errorMessage%> </p>
     <a href="signup.jsp">Sign Up</a>
-    <a href="home.jsp">home</a>
 </div>
 </div>
 </body>

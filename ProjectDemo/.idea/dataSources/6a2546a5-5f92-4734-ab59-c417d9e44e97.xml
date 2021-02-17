@@ -855,6 +855,7 @@
     </database>
     <database id="210" parent="1" name="WCS">
       <ObjectId>6</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
     <database id="211" parent="1" name="WHOligansTeam1">
       <ObjectId>24</ObjectId>
@@ -999,7 +1000,7 @@
     </schema>
     <schema id="246" parent="98" name="dbo">
       <ObjectId>1</ObjectId>
-      <IntrospectionTimestamp>2021-02-16.10:11:28.907</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2021-02-17.04:35:36.827</IntrospectionTimestamp>
       <Current>1</Current>
     </schema>
     <schema id="247" parent="98" name="guest">
@@ -1094,12 +1095,12 @@
     <table id="264" parent="246" name="instructors">
       <ObjectId>949578421</ObjectId>
       <CreatedTimestamp>2021-02-16.10:07:33.120</CreatedTimestamp>
-      <ModifiedTimestamp>2021-02-16.10:08:50.573</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-02-16.10:22:21.557</ModifiedTimestamp>
     </table>
     <table id="265" parent="246" name="students">
       <ObjectId>917578307</ObjectId>
       <CreatedTimestamp>2021-02-16.10:01:43.117</CreatedTimestamp>
-      <ModifiedTimestamp>2021-02-16.10:06:16</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-02-16.10:22:34.480</ModifiedTimestamp>
     </table>
     <column id="266" parent="264" name="firstName">
       <Position>1</Position>
@@ -1132,13 +1133,17 @@
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="272" parent="264" name="PK_instructors">
+    <column id="272" parent="264" name="image">
+      <Position>7</Position>
+      <DataType>image|0s</DataType>
+    </column>
+    <index id="273" parent="264" name="PK_instructors">
       <Position>1</Position>
       <ColNames>instructorID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="273" parent="264" name="PK_instructors">
+    <key id="274" parent="264" name="PK_instructors">
       <ObjectId>965578478</ObjectId>
       <CreatedTimestamp>2021-02-16.10:08:50.560</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-16.10:08:50.560</ModifiedTimestamp>
@@ -1146,44 +1151,48 @@
       <UnderlyingIndexName>PK_instructors</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="274" parent="265" name="firstName">
+    <column id="275" parent="265" name="firstName">
       <Position>1</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="275" parent="265" name="lastName">
+    <column id="276" parent="265" name="lastName">
       <Position>2</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="276" parent="265" name="email">
+    <column id="277" parent="265" name="email">
       <Position>3</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="277" parent="265" name="password">
+    <column id="278" parent="265" name="password">
       <Position>4</Position>
       <DataType>nvarchar(100 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="278" parent="265" name="birthDate">
+    <column id="279" parent="265" name="birthDate">
       <Position>5</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="279" parent="265" name="studentID">
+    <column id="280" parent="265" name="studentID">
       <Position>6</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="280" parent="265" name="PK_students">
+    <column id="281" parent="265" name="image">
+      <Position>7</Position>
+      <DataType>image|0s</DataType>
+    </column>
+    <index id="282" parent="265" name="PK_students">
       <Position>1</Position>
       <ColNames>studentID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="281" parent="265" name="PK_students">
+    <key id="283" parent="265" name="PK_students">
       <ObjectId>933578364</ObjectId>
       <CreatedTimestamp>2021-02-16.10:06:15.950</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-16.10:06:15.950</ModifiedTimestamp>
