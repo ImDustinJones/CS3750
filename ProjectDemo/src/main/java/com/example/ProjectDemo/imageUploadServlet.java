@@ -2,10 +2,7 @@ package com.example.ProjectDemo;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -41,7 +38,7 @@ public class imageUploadServlet {
             InputStream inputStream = null; // input stream of the upload file
 
             // obtains the upload file part in this multipart request
-            Part filePart = request.getPart("photo");
+            Part filePart = request.getPart("image");
             if (filePart != null) {
                 // prints out some information for debugging
                 System.out.println(filePart.getName());
@@ -58,15 +55,27 @@ public class imageUploadServlet {
             try {
                 // connects to the database
                 Connection connection = connectDatabase();
-
-                // constructs SQL statement
-                String sql = "INSERT INTO contacts (email, photo) values (?, ?)";
-                PreparedStatement statement = conn.prepareStatement(sql);
+                String sql = "SELECT * FROM students WHERE email = ?";
+                PreparedStatement statement = connection.prepareStatement(sql);
                 statement.setString(1, email);
+                ResultSet result = statement.executeQuery();
+
+                //Student
+                if (result.next()) {
+                    String sqlInsert = "UPDATE  students SET image = ? WHERE email = ?";
+                    PreparedStatement statementInsert = conn.prepareStatement(sqlInsert);
+                    statementInsert.setString(2, email);
+                }
+                //Instructors
+                else{
+                    String sqlInsert = "UPDATE  instructors SET image = ? WHERE email = ?";
+                    PreparedStatement statementInsert = conn.prepareStatement(sqlInsert);
+                    statementInsert.setString(2, email);
+                }
 
                 if (inputStream != null) {
                     // fetches input stream of the upload file for the blob column
-                    statement.setBlob(2, inputStream);
+                    statement.setBlob(1, inputStream);
                 }
 
                 // sends the statement to the database server
