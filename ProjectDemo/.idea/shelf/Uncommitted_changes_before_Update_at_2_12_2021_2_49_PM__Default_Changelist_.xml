@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Update_at_2_12_2021_2_49_PM_[Default_Changelist]" date="1613166554985" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_2_49_PM_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2/12/2021 2:49 PM [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/ProjectDemo/LoginServlet.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/ProjectDemo/LoginServlet.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_2_49_PM_[Default_Changelist]/LoginServlet.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/LoginServlet.class" />
+    <option name="AFTER_PATH" value="target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/LoginServlet.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_2_49_PM_[Default_Changelist]/LoginServlet1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/ProjectDemo-1.0-SNAPSHOT.war" />
+    <option name="AFTER_PATH" value="target/ProjectDemo-1.0-SNAPSHOT.war" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_2_49_PM_[Default_Changelist]/ProjectDemo-1.0-SNAPSHOT.war" />
+  </binary>
+</changelist>

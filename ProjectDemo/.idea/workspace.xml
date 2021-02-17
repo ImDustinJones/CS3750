@@ -10,13 +10,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07f3fd19-a74c-4317-b095-3ddf5c20a21e" name="Default Changelist" comment="Updated Home CSS">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_10_2021_3_13_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_10_2021_3_13_PM__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_10_2021_9_10_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_10_2021_9_10_PM__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_2_49_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_2_49_PM__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_8_2021_3_57_PM_[Default_Changelist]/InstructorDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_8_2021_3_57_PM_[Default_Changelist]/InstructorDAO1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_8_2021_3_57_PM_[Default_Changelist]/UserDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_8_2021_3_57_PM_[Default_Changelist]/UserDAO1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_8_2021_3_57_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_8_2021_3_57_PM__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_8_2021_5_10_PM_[Default_Changelist]/InstructorDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_8_2021_5_10_PM_[Default_Changelist]/InstructorDAO1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_8_2021_5_10_PM_[Default_Changelist]/UserDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_8_2021_5_10_PM_[Default_Changelist]/UserDAO1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_8_2021_5_10_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_8_2021_5_10_PM__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/InstructorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/InstructorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/UserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/navigationbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/navigationbar.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,6 +178,9 @@
       <workItem from="1612900181892" duration="7316000" />
       <workItem from="1612981173410" duration="1469000" />
       <workItem from="1612993287296" duration="305000" />
+      <workItem from="1613169294799" duration="698000" />
+      <workItem from="1613369286224" duration="176000" />
+      <workItem from="1613503462115" duration="4264000" />
     </task>
     <task id="LOCAL-00001" summary="Added Calendar still need to test and modify though">
       <created>1612832173384</created>
@@ -191,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612997150122</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Updated Home CSS">
+      <created>1613167376842</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1613167376842</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
