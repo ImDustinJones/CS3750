@@ -166,3 +166,106 @@ img {
     top: 1%;
     right: 1%;
 }
+/* for edit profile page */
+.column {
+    float: left;
+    width: 30%;
+    padding: 10px;
+}
+/* for edit profile page */
+
+.profileContainer{
+    background-color: #F6AE2D;
+    color: black;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #757780;
+    padding: 10px;
+}
+
+/* for edit profile page */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.button {
+    background-color: #2C3E50;
+    border: none;
+    color: white;
+    padding: 50px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+
+}
+
+.button1 {
+    background-color: #2C3E50;
+    color: white;
+    border: 2px solid #2C3E50;
+}
+
+.button1:hover {
+    background-color: #ce8709;
+    color: white;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    background-color: rgba(0, 0, 0, .5);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 300ms, opacity 300ms;
+}
+
+.popup_opened {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup__title {
+    color: #001011;
+    font-size: 36px;
+    margin: 0 0 18px;
+}
+
+.popup__container {
+    background-color: #fff;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    padding: 15px;
+}
+
+.close-button {
+    border: 0;
+    background: url('./button-close.svg') center center / 100% 100% no-repeat;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    fill: #000;
+    padding: 0;
+    cursor: pointer;
+    display: block;
+}
+
+.popup-button {
+    margin: 30px;
+    padding: 10px;
+    font-family: inherit;
+}
