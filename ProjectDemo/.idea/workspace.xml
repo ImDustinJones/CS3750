@@ -10,30 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07f3fd19-a74c-4317-b095-3ddf5c20a21e" name="Default Changelist" comment="Updated Credintials">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/edit_profile.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/editprofile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/09bf5579-2242-4dd7-87da-411a7207cc2e.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97/storage_v2/_src_/database/LMS_RunTime.i5dXDA/schema/INFORMATION_SCHEMA.NBgcMw.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97/storage_v2/_src_/database/LMS_RunTime.i5dXDA/schema/INFORMATION_SCHEMA.NBgcMw.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97/storage_v2/_src_/database/LMS_RunTime.i5dXDA/schema/dbo.sYMBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97/storage_v2/_src_/database/LMS_RunTime.i5dXDA/schema/dbo.sYMBAA.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97/storage_v2/_src_/database/LMS_RunTime.i5dXDA/schema/sys.zb4BAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97/storage_v2/_src_/database/LMS_RunTime.i5dXDA/schema/sys.zb4BAA.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ebb89497-612e-459e-8f7d-3f85347f6696.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ebb89497-612e-459e-8f7d-3f85347f6696/storage_v2/_src_/database/lmsdb.EDMlBg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ebb89497-612e-459e-8f7d-3f85347f6696/storage_v2/_src_/database/lmsdb.EDMlBg/schema/INFORMATION_SCHEMA.NBgcMw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ebb89497-612e-459e-8f7d-3f85347f6696/storage_v2/_src_/database/lmsdb.EDMlBg/schema/dbo.sYMBAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ebb89497-612e-459e-8f7d-3f85347f6696/storage_v2/_src_/database/lmsdb.EDMlBg/schema/sys.zb4BAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_23.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_23.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/Transparent_X.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/LoginServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/LoginServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/edit_profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/edit_profile.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,9 +39,6 @@
     <option name="FILTER_INFO" value="true" />
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1o56HL3Dl5M3italq93cv2XHddQ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -212,7 +190,7 @@
       <workItem from="1613369286224" duration="176000" />
       <workItem from="1613503462115" duration="5794000" />
       <workItem from="1613523898029" duration="1044000" />
-      <workItem from="1613585705985" duration="7212000" />
+      <workItem from="1613585705985" duration="8070000" />
     </task>
     <task id="LOCAL-00001" summary="Added Calendar still need to test and modify though">
       <created>1612832173384</created>

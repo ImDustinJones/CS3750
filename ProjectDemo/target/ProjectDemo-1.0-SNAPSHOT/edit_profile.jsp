@@ -46,7 +46,7 @@
                     <h2 class="popup__title">Edit Profile</h2>
                     <form>
                         <label for ="profilePic">Profile Picture: </label>
-                        <input type = "file" name = "profilePic" id = "profilePic"></form><br>
+                        <input type = "file" name = "profilePic" id = "profilePic"><br>
                         <label for="firstName">First Name: </label>
                         <input type="text" name="firstName" id="firstName"> <br>
                         <label for="lastName">Last Name: </label>
