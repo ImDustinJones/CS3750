@@ -10,14 +10,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07f3fd19-a74c-4317-b095-3ddf5c20a21e" name="Default Changelist" comment="Updated Credintials">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_10_2021_3_13_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_10_2021_3_13_PM__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_10_2021_9_10_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_10_2021_9_10_PM__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_2_49_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_2_49_PM__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_14_2021_11_08_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_14_2021_11_08_PM__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/edit_profile.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/editprofile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/09bf5579-2242-4dd7-87da-411a7207cc2e.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97/storage_v2/_src_/database/LMS_RunTime.i5dXDA/schema/INFORMATION_SCHEMA.NBgcMw.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97/storage_v2/_src_/database/LMS_RunTime.i5dXDA/schema/INFORMATION_SCHEMA.NBgcMw.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97/storage_v2/_src_/database/LMS_RunTime.i5dXDA/schema/dbo.sYMBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97/storage_v2/_src_/database/LMS_RunTime.i5dXDA/schema/dbo.sYMBAA.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97/storage_v2/_src_/database/LMS_RunTime.i5dXDA/schema/sys.zb4BAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97/storage_v2/_src_/database/LMS_RunTime.i5dXDA/schema/sys.zb4BAA.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ebb89497-612e-459e-8f7d-3f85347f6696.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ebb89497-612e-459e-8f7d-3f85347f6696/storage_v2/_src_/database/lmsdb.EDMlBg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ebb89497-612e-459e-8f7d-3f85347f6696/storage_v2/_src_/database/lmsdb.EDMlBg/schema/INFORMATION_SCHEMA.NBgcMw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ebb89497-612e-459e-8f7d-3f85347f6696/storage_v2/_src_/database/lmsdb.EDMlBg/schema/dbo.sYMBAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ebb89497-612e-459e-8f7d-3f85347f6696/storage_v2/_src_/database/lmsdb.EDMlBg/schema/sys.zb4BAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_23.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_23.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/LoginServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/LoginServlet.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +44,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Jsp File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -41,6 +59,9 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectId" id="1o56HL3Dl5M3italq93cv2XHddQ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="false" id="Update" />
@@ -52,11 +73,16 @@
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql&#10;sqlserver" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="true" />
+    <property name="Repository.Attach.Sources" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../mssql-jdbc-8.2.2.jre11.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -66,8 +92,20 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2678161" />
+    <property name="settings.editor.selected.configurable" value="SQL Dialects" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tomcat 9.0.41" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.41" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/ProjectDemo_war/" />
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -173,7 +211,8 @@
       <workItem from="1613169294799" duration="698000" />
       <workItem from="1613369286224" duration="176000" />
       <workItem from="1613503462115" duration="5794000" />
-      <workItem from="1613523898029" duration="305000" />
+      <workItem from="1613523898029" duration="1044000" />
+      <workItem from="1613585705985" duration="7212000" />
     </task>
     <task id="LOCAL-00001" summary="Added Calendar still need to test and modify though">
       <created>1612832173384</created>
@@ -224,7 +263,28 @@
       <option name="project" value="LOCAL" />
       <updated>1613520956619</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Updated Credintials">
+      <created>1613524211033</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1613524211033</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Updated Credintials">
+      <created>1613524220219</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1613524220219</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Updated Credintials">
+      <created>1613524276877</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1613524276877</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,5 +310,9 @@
     <MESSAGE value="Connected to shared database" />
     <MESSAGE value="Updated Credintials" />
     <option name="LAST_COMMIT_MESSAGE" value="Updated Credintials" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
