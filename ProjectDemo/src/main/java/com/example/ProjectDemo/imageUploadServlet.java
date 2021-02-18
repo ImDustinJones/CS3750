@@ -43,7 +43,6 @@ public class imageUploadServlet extends HttpServlet{
 
         Connection conn = null; // connection to the database
         String message = null;  // message will be sent back to client
-
         try {
             // connects to the database
             Connection connection = connectDatabase();
@@ -55,9 +54,8 @@ public class imageUploadServlet extends HttpServlet{
             //Student
             if (result.next()) {
                 String sqlInsert = "UPDATE  students SET image = ? WHERE email = ?";
-                PreparedStatement statementInsert = conn.prepareStatement(sqlInsert);
+                PreparedStatement statementInsert = connection.prepareStatement(sqlInsert);
                 statementInsert.setString(2, email);
-                JOptionPane.showMessageDialog(null, "File attempted to be added to Student Table");
                 if (inputStream != null) {
                     // fetches input stream of the upload file for the blob column
                     statementInsert.setBlob(1, inputStream);
@@ -66,13 +64,13 @@ public class imageUploadServlet extends HttpServlet{
                 if (row > 0) {
                     JOptionPane.showMessageDialog(null, "File uploaded and saved into database");
                 }
+                connection.close();
             }
             //Instructors
             else{
                 String sqlInsert = "UPDATE  instructors SET image = ? WHERE email = ?";
-                PreparedStatement statementInsert = conn.prepareStatement(sqlInsert);
+                PreparedStatement statementInsert = connection.prepareStatement(sqlInsert);
                 statementInsert.setString(2, email);
-                JOptionPane.showMessageDialog(null, "File attempted to be added to Instructor Table");
                 if (inputStream != null) {
                     // fetches input stream of the upload file for the blob column
                     statementInsert.setBlob(1, inputStream);
@@ -81,20 +79,13 @@ public class imageUploadServlet extends HttpServlet{
                 if (row > 0) {
                     JOptionPane.showMessageDialog(null, "File uploaded and saved into database");
                 }
+                connection.close();
             }
 
         } catch (SQLException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "The error was: "+ex);
             ex.printStackTrace();
         } finally {
-            if (conn != null) {
-                // closes the database connection
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
             // forwards to the profile page may need to update it to the correct jsp file
             getServletContext().getRequestDispatcher("/edit_profile.jsp").forward(request, response);
         }
