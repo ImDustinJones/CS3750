@@ -13,6 +13,7 @@
     <title>Edit Profile</title>
 </head>
 <body>
+<jsp:include page="/RetrieveImageServlet" />
     <ul class="navUl">
         <li class="navLi"><a class="active" href="edit_profile.jsp">Profile</a></li>
         <li class="navLi"><a href="#DummyN1">Dummy</a></li>
@@ -25,7 +26,8 @@
         <div class = "profileContainer">
             <div class = "row">
                 <div class = "column">
-                    <img src="img/Bell.png" alt="notification bell" width="170" height="170"/>
+                    <!--<img src="img/DefaultPFP.png" alt="default profile picture" width="170" height="170"/>-->
+                    <img src="data:image/jpg;base64,${PFP}" width="170" height="170"/>
                 </div>
                 <div class = "column">
                     <p>Your First Name</p>
@@ -49,9 +51,6 @@
                         <label for ="profilePic">Profile Picture: </label>
                         <input type = "file" name = "profilePic" id = "profilePic"><br>
                         <input type="submit" value="Submit Image"> <br>
-                        <%--Currently until the email information is pulled from the database you will need to enter the email address the image needs to be added too--%>
-                        <label for="email">Email: </label>
-                        <input type="text" name="email" id="email">
                     </form>
                     <form>
                         <label for="firstName">First Name: </label>

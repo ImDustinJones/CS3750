@@ -39,6 +39,7 @@ public class SignUpServlet extends HttpServlet {
                     Users user = userDao.addUserDB(email, firstName, lastName, password, birthDate);
                     HttpSession session = request.getSession();
                     session.setAttribute("user", user);
+                    session.setAttribute("email", email);
                     destPage = "home.jsp";
                 }
             }
@@ -51,6 +52,7 @@ public class SignUpServlet extends HttpServlet {
                     Instructors instructor = instructorDao.addInstructorDB(email, firstName, lastName, password, birthDate);
                     HttpSession session = request.getSession();
                     session.setAttribute("instructor", instructor);
+                    session.setAttribute("email", email);
                     destPage = "home.jsp";
                 }
             }

@@ -4,13 +4,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.*;
 import javax.swing.*;
 
 @WebServlet(value = "/imageUploadServlet", name = "imageUploadServlet")
@@ -26,7 +24,8 @@ public class imageUploadServlet extends HttpServlet{
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
         // gets values of text fields
-        String email = request.getParameter("email");
+        HttpSession session = request.getSession();
+        String email = (String) session.getAttribute("email");
         InputStream inputStream = null; // input stream of the upload file
 
         // obtains the upload file part in this multipart request
@@ -62,7 +61,7 @@ public class imageUploadServlet extends HttpServlet{
                 }
                 int row = statementInsert.executeUpdate();
                 if (row > 0) {
-                    JOptionPane.showMessageDialog(null, "File uploaded and saved into database");
+                    //JOptionPane.showMessageDialog(null, "File uploaded and saved into database");
                 }
                 connection.close();
             }
@@ -77,17 +76,18 @@ public class imageUploadServlet extends HttpServlet{
                 }
                 int row = statementInsert.executeUpdate();
                 if (row > 0) {
-                    JOptionPane.showMessageDialog(null, "File uploaded and saved into database");
+                    //JOptionPane.showMessageDialog(null, "File uploaded and saved into database");
                 }
                 connection.close();
             }
 
         } catch (SQLException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "The error was: "+ex);
+            //JOptionPane.showMessageDialog(null, "The error was: "+ex);
             ex.printStackTrace();
         } finally {
             // forwards to the profile page may need to update it to the correct jsp file
-            getServletContext().getRequestDispatcher("/edit_profile.jsp").forward(request, response);
+            //getServletContext().getRequestDispatcher("/edit_profile.jsp").forward(request, response);
+            response.sendRedirect("edit_profile.jsp");
         }
     }
 
