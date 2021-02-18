@@ -252,7 +252,7 @@ img {
 
 .close-button {
     border: 0;
-    background: url('./button-close.svg') center center / 100% 100% no-repeat;
+    background: url('./img/Transparent_X.png') center center / 100% 100% no-repeat;
     width: 40px;
     height: 40px;
     position: absolute;
