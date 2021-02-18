@@ -101,5 +101,5 @@ public class imageUploadServlet extends HttpServlet{
             return DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
         }
 
-//Working Now
+//Working Now.
     }
