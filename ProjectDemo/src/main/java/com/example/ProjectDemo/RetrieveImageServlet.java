@@ -32,36 +32,7 @@ public class RetrieveImageServlet extends HttpServlet {
             ResultSet result = statement.executeQuery();
 
             if (result.next()) {//student
-                Blob blob = result.getBlob("image");
-
-                if(blob == null || blob.equals("0x")){//set default
-                    sql = "SELECT * FROM students WHERE email = ?";
-                    statement = connection.prepareStatement(sql);
-                    statement.setString(1, "default@default.com");
-                    result = statement.executeQuery();
-                    result.next();
-                    blob = result.getBlob("image");
-                }
-
-                InputStream inputStream = blob.getBinaryStream();
-                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                byte[] buffer = new byte[4096];
-                int bytesRead = -1;
-
-                while ((bytesRead = inputStream.read(buffer)) != -1) {
-                    outputStream.write(buffer, 0, bytesRead);
-                }
-
-                byte[] imageBytes = outputStream.toByteArray();
-                String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-
-
-                inputStream.close();
-                outputStream.close();
-
-                request.setAttribute("PFP", base64Image);
-
-                connection.close();
+                getBlob(request, connection, result);
             }
             else{//instructor
                 sql = "SELECT * FROM instructors WHERE email = ?";
@@ -69,36 +40,7 @@ public class RetrieveImageServlet extends HttpServlet {
                 statement.setString(1, email);
                 result = statement.executeQuery();
 
-                Blob blob = result.getBlob("image");
-
-                if(blob == null || blob.equals("0x")){//set default
-                    sql = "SELECT * FROM students WHERE email = ?";
-                    statement = connection.prepareStatement(sql);
-                    statement.setString(1, "default@default.com");
-                    result = statement.executeQuery();
-                    result.next();
-                    blob = result.getBlob("image");
-                }
-
-                InputStream inputStream = blob.getBinaryStream();
-                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                byte[] buffer = new byte[4096];
-                int bytesRead = -1;
-
-                while ((bytesRead = inputStream.read(buffer)) != -1) {
-                    outputStream.write(buffer, 0, bytesRead);
-                }
-
-                byte[] imageBytes = outputStream.toByteArray();
-                String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-
-
-                inputStream.close();
-                outputStream.close();
-
-                request.setAttribute("PFP", base64Image);
-
-                connection.close();
+                getBlob(request, connection, result);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -106,6 +48,41 @@ public class RetrieveImageServlet extends HttpServlet {
             e.printStackTrace();
         }
 
+    }
+
+    private void getBlob(HttpServletRequest request, Connection connection, ResultSet result) throws SQLException, IOException {
+        String sql;
+        PreparedStatement statement;
+        Blob blob = result.getBlob("image");
+
+        if(blob == null || blob.equals("0x")){//set default
+            sql = "SELECT * FROM students WHERE email = ?";
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, "default@default.com");
+            result = statement.executeQuery();
+            result.next();
+            blob = result.getBlob("image");
+        }
+
+        InputStream inputStream = blob.getBinaryStream();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        byte[] buffer = new byte[4096];
+        int bytesRead = -1;
+
+        while ((bytesRead = inputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, bytesRead);
+        }
+
+        byte[] imageBytes = outputStream.toByteArray();
+        String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+
+
+        inputStream.close();
+        outputStream.close();
+
+        request.setAttribute("PFP", base64Image);
+
+        connection.close();
     }
 
     public Connection connectDatabase() throws SQLException, ClassNotFoundException {
