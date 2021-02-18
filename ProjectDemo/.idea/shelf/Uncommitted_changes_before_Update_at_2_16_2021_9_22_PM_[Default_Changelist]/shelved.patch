@@ -1,0 +1,138 @@
+Index: src/main/java/com/example/ProjectDemo/imageUploadServlet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.ProjectDemo;\r\n\r\nimport java.io.IOException;\r\nimport java.io.InputStream;\r\nimport java.sql.Connection;\r\nimport java.sql.DriverManager;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.SQLException;\r\n\r\nimport javax.servlet.ServletException;\r\nimport javax.servlet.annotation.MultipartConfig;\r\nimport javax.servlet.annotation.WebServlet;\r\nimport javax.servlet.http.HttpServlet;\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\nimport javax.servlet.http.Part;\r\nimport javax.swing.*;\r\n\r\npublic class imageUploadServlet {\r\n    @WebServlet(\"/imageUploadServlet\")\r\n    @MultipartConfig(maxFileSize = 16177215)    // upload file's size up to 16MB\r\n    public class FileUploadDBServlet extends HttpServlet {\r\n\r\n\r\n        public Connection connectDatabase() throws SQLException, ClassNotFoundException {\r\n            String jdbcURL = \"jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime\";\r\n            String dbUser = \"LMS_RunTime\";\r\n            String dbPassword = \"password1!\";\r\n\r\n            Class.forName(\"com.microsoft.sqlserver.jdbc.SQLServerDriver\");\r\n\r\n            return DriverManager.getConnection(jdbcURL, dbUser, dbPassword);\r\n        }\r\n\r\n        protected void doPost(HttpServletRequest request,\r\n                              HttpServletResponse response) throws ServletException, IOException {\r\n            // gets values of text fields\r\n            String email = request.getParameter(\"email\");\r\n            String lastName = request.getParameter(\"lastName\");\r\n\r\n            InputStream inputStream = null; // input stream of the upload file\r\n\r\n            // obtains the upload file part in this multipart request\r\n            Part filePart = request.getPart(\"photo\");\r\n            if (filePart != null) {\r\n                // prints out some information for debugging\r\n                System.out.println(filePart.getName());\r\n                System.out.println(filePart.getSize());\r\n                System.out.println(filePart.getContentType());\r\n\r\n                // obtains input stream of the upload file\r\n                inputStream = filePart.getInputStream();\r\n            }\r\n\r\n            Connection conn = null; // connection to the database\r\n            String message = null;  // message will be sent back to client\r\n\r\n            try {\r\n                // connects to the database\r\n                Connection connection = connectDatabase();\r\n\r\n                // constructs SQL statement\r\n                String sql = \"INSERT INTO contacts (email, photo) values (?, ?)\";\r\n                PreparedStatement statement = conn.prepareStatement(sql);\r\n                statement.setString(1, email);\r\n\r\n                if (inputStream != null) {\r\n                    // fetches input stream of the upload file for the blob column\r\n                    statement.setBlob(2, inputStream);\r\n                }\r\n\r\n                // sends the statement to the database server\r\n                int row = statement.executeUpdate();\r\n                if (row > 0) {\r\n                    JOptionPane.showMessageDialog(null, \"File uploaded and saved into database\");\r\n                }\r\n            } catch (SQLException | ClassNotFoundException ex) {\r\n                message = \"ERROR: \" + ex.getMessage();\r\n                ex.printStackTrace();\r\n            } finally {\r\n                if (conn != null) {\r\n                    // closes the database connection\r\n                    try {\r\n                        conn.close();\r\n                    } catch (SQLException ex) {\r\n                        ex.printStackTrace();\r\n                    }\r\n                }\r\n                // forwards to the profile page may need to update it to the correct jsp file\r\n                getServletContext().getRequestDispatcher(\"/Profile.jsp\").forward(request, response);\r\n            }\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/ProjectDemo/imageUploadServlet.java b/src/main/java/com/example/ProjectDemo/imageUploadServlet.java
+--- a/src/main/java/com/example/ProjectDemo/imageUploadServlet.java	(revision 4b8f9f28be2e71901a83c9b8b12d8629f7bf378a)
++++ b/src/main/java/com/example/ProjectDemo/imageUploadServlet.java	(date 1613527833512)
+@@ -2,10 +2,7 @@
+ 
+ import java.io.IOException;
+ import java.io.InputStream;
+-import java.sql.Connection;
+-import java.sql.DriverManager;
+-import java.sql.PreparedStatement;
+-import java.sql.SQLException;
++import java.sql.*;
+ 
+ import javax.servlet.ServletException;
+ import javax.servlet.annotation.MultipartConfig;
+@@ -41,7 +38,7 @@
+             InputStream inputStream = null; // input stream of the upload file
+ 
+             // obtains the upload file part in this multipart request
+-            Part filePart = request.getPart("photo");
++            Part filePart = request.getPart("image");
+             if (filePart != null) {
+                 // prints out some information for debugging
+                 System.out.println(filePart.getName());
+@@ -58,15 +55,27 @@
+             try {
+                 // connects to the database
+                 Connection connection = connectDatabase();
+-
+-                // constructs SQL statement
+-                String sql = "INSERT INTO contacts (email, photo) values (?, ?)";
+-                PreparedStatement statement = conn.prepareStatement(sql);
++                String sql = "SELECT * FROM students WHERE email = ?";
++                PreparedStatement statement = connection.prepareStatement(sql);
+                 statement.setString(1, email);
++                ResultSet result = statement.executeQuery();
++
++                //Student
++                if (result.next()) {
++                    String sqlInsert = "UPDATE  students SET image = ? WHERE email = ?";
++                    PreparedStatement statementInsert = conn.prepareStatement(sqlInsert);
++                    statementInsert.setString(2, email);
++                }
++                //Instructors
++                else{
++                    String sqlInsert = "UPDATE  instructors SET image = ? WHERE email = ?";
++                    PreparedStatement statementInsert = conn.prepareStatement(sqlInsert);
++                    statementInsert.setString(2, email);
++                }
+ 
+                 if (inputStream != null) {
+                     // fetches input stream of the upload file for the blob column
+-                    statement.setBlob(2, inputStream);
++                    statement.setBlob(1, inputStream);
+                 }
+ 
+                 // sends the statement to the database server
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ArtifactsWorkspaceSettings\">\r\n    <artifacts-to-build>\r\n      <artifact name=\"ProjectDemo:war\" />\r\n    </artifacts-to-build>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"07f3fd19-a74c-4317-b095-3ddf5c20a21e\" name=\"Default Changelist\" comment=\"Updated Credintials\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"LogFilters\">\r\n    <option name=\"FILTER_ERRORS\" value=\"false\" />\r\n    <option name=\"FILTER_WARNINGS\" value=\"false\" />\r\n    <option name=\"FILTER_INFO\" value=\"true\" />\r\n    <option name=\"FILTER_DEBUG\" value=\"true\" />\r\n    <option name=\"CUSTOM_FILTER\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1o56HL3Dl5M3italq93cv2XHddQ\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <OptionsSetting value=\"false\" id=\"Update\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"DatabaseDriversLRU\" value=\"mysql&#10;sqlserver\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/../../mssql-jdbc-8.2.2.jre11.jar\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Libraries\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2678161\" />\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration default=\"true\" type=\"ArquillianJUnit\" factoryName=\"\" nameIsGenerated=\"true\">\r\n      <option name=\"arquillianRunConfiguration\">\r\n        <value>\r\n          <option name=\"containerStateName\" value=\"\" />\r\n        </value>\r\n      </option>\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Tomcat 9.0.41\" type=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\" factoryName=\"Local\" APPLICATION_SERVER_NAME=\"Tomcat 9.0.41\" ALTERNATIVE_JRE_ENABLED=\"false\" nameIsGenerated=\"true\">\r\n      <option name=\"OPEN_IN_BROWSER_URL\" value=\"http://localhost:8080/ProjectDemo_war/\" />\r\n      <option name=\"UPDATING_POLICY\" value=\"restart-server\" />\r\n      <deployment>\r\n        <artifact name=\"ProjectDemo:war\">\r\n          <settings>\r\n            <option name=\"CONTEXT_PATH\" value=\"/ProjectDemo_war\" />\r\n          </settings>\r\n        </artifact>\r\n      </deployment>\r\n      <server-settings>\r\n        <option name=\"BASE_DIRECTORY_NAME\" value=\"c216b011-b4d2-4bff-bfcd-8bc405262795\" />\r\n      </server-settings>\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat Catalina\" />\r\n      <predefined_log_file id=\"Tomcat Manager\" />\r\n      <predefined_log_file id=\"Tomcat Host Manager\" />\r\n      <predefined_log_file id=\"Tomcat Localhost Access\" />\r\n      <RunnerSettings RunnerId=\"Debug\">\r\n        <option name=\"DEBUG_PORT\" value=\"65049\" />\r\n      </RunnerSettings>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Cover\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Debug\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Profile\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Run\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n        <option name=\"BuildArtifacts\" enabled=\"true\">\r\n          <artifact name=\"ProjectDemo:war\" />\r\n        </option>\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"07f3fd19-a74c-4317-b095-3ddf5c20a21e\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1612564016781</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1612564016781</updated>\r\n      <workItem from=\"1612564017946\" duration=\"6287000\" />\r\n      <workItem from=\"1612825011814\" duration=\"12493000\" />\r\n      <workItem from=\"1612900181892\" duration=\"7316000\" />\r\n      <workItem from=\"1612981173410\" duration=\"1469000\" />\r\n      <workItem from=\"1612993287296\" duration=\"305000\" />\r\n      <workItem from=\"1613169294799\" duration=\"698000\" />\r\n      <workItem from=\"1613369286224\" duration=\"176000\" />\r\n      <workItem from=\"1613503462115\" duration=\"5794000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Added Calendar still need to test and modify though\">\r\n      <created>1612832173384</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1612832173384</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Fixed Calendar Size\">\r\n      <created>1612833002613</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1612833002613</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Calendar is fully done and connected via Microsoft SQL Server. A little bit of CSS.\">\r\n      <created>1612915603983</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1612915603984</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Updated Home CSS\">\r\n      <created>1612997150122</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1612997150122</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Updated Home CSS\">\r\n      <created>1613167376842</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1613167376842</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Connected to shared database\">\r\n      <created>1613520925859</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1613520925859</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Updated Credintials\">\r\n      <created>1613520956619</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1613520956619</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"8\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Added Calendar still need to test and modify though\" />\r\n    <MESSAGE value=\"Fixed Calendar Size\" />\r\n    <MESSAGE value=\"Calendar is fully done and connected via Microsoft SQL Server. A little bit of CSS.\" />\r\n    <MESSAGE value=\"Updated Home CSS\" />\r\n    <MESSAGE value=\"Connected to shared database\" />\r\n    <MESSAGE value=\"Updated Credintials\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Updated Credintials\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 4b8f9f28be2e71901a83c9b8b12d8629f7bf378a)
++++ b/.idea/workspace.xml	(date 1613535742440)
+@@ -9,8 +9,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="07f3fd19-a74c-4317-b095-3ddf5c20a21e" name="Default Changelist" comment="Updated Credintials">
++    <list default="true" id="07f3fd19-a74c-4317-b095-3ddf5c20a21e" name="Default Changelist" comment="Uploaded my uploadFileServet">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/imageUploadServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/imageUploadServlet.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -61,17 +62,6 @@
+     <property name="project.structure.side.proportion" value="0.2678161" />
+   </component>
+   <component name="RunManager">
+-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+-      <option name="arquillianRunConfiguration">
+-        <value>
+-          <option name="containerStateName" value="" />
+-        </value>
+-      </option>
+-      <option name="TEST_OBJECT" value="class" />
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+     <configuration name="Tomcat 9.0.41" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.41" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/ProjectDemo_war/" />
+       <option name="UPDATING_POLICY" value="restart-server" />
+@@ -176,7 +166,7 @@
+       <workItem from="1612993287296" duration="305000" />
+       <workItem from="1613169294799" duration="698000" />
+       <workItem from="1613369286224" duration="176000" />
+-      <workItem from="1613503462115" duration="5794000" />
++      <workItem from="1613503462115" duration="10006000" />
+     </task>
+     <task id="LOCAL-00001" summary="Added Calendar still need to test and modify though">
+       <created>1612832173384</created>
+@@ -227,7 +217,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1613520956619</updated>
+     </task>
+-    <option name="localTasksCounter" value="8" />
++    <task id="LOCAL-00008" summary="Uploaded my uploadFileServet">
++      <created>1613522356237</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1613522356237</updated>
++    </task>
++    <option name="localTasksCounter" value="9" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -252,6 +249,7 @@
+     <MESSAGE value="Updated Home CSS" />
+     <MESSAGE value="Connected to shared database" />
+     <MESSAGE value="Updated Credintials" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Updated Credintials" />
++    <MESSAGE value="Uploaded my uploadFileServet" />
++    <option name="LAST_COMMIT_MESSAGE" value="Uploaded my uploadFileServet" />
+   </component>
+ </project>
+\ No newline at end of file
