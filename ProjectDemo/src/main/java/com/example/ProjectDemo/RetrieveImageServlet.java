@@ -39,7 +39,7 @@ public class RetrieveImageServlet extends HttpServlet {
                 statement = connection.prepareStatement(sql);
                 statement.setString(1, email);
                 result = statement.executeQuery();
-
+                result.next();
                 getBlob(request, connection, result);
             }
         } catch (SQLException throwables) {
