@@ -30,16 +30,20 @@
                     <img src="data:image/jpg;base64,${PFP}" width="170" height="170"/>
                 </div>
                 <div class = "column">
-                    <p>Your First Name</p>
-                    <p>Your Last Name</p>
-                    <p>This is your bio</p>
+                    <p>Your First Name: ${firstName}</p>
+                    <p>Your Last Name: ${lastName}</p>
+                    <p>Your Address: ${address}</p>
+                    <p>Your zip: ${zip}</p>
+                    <p>Bio: ${bio}</p>
                 </div>
                 <div class = "column">
-                    <p>Your Email</p>
-                    <p>Your Phone Number</p>
-                    <a>LinkedIn</a>
-                    <a>Facebook</a>
-                    <a>Twitter</a>
+                    <p>Your Email: ${email}</p>
+                    <p>Your Phone Number: ${phoneNumber}</p>
+                    <p>Your State: ${state}</p>
+                    <p>Your City: ${city}</p>
+                    <a href="https://www.linkedin.com/">LinkedIn</a>
+                    <a href="https://www.facebook.com/">Facebook</a>
+                    <a href="https://twitter.com/">Twitter</a>
                 </div>
             </div>
             <div class="popup">
@@ -52,15 +56,26 @@
                         <input type = "file" name = "profilePic" id = "profilePic"><br>
                         <input type="submit" value="Submit Image"> <br>
                     </form>
-                    <form>
+                    <form form method="post" action="EditProfileDAO">
+                        <label for = "email" style="text-align: center;">Email: ${email}</label>
+                        <input type="hidden" name="email" id="email" value="${email}"><br>
                         <label for="firstName">First Name: </label>
-                        <input type="text" name="firstName" id="firstName"> <br>
+                        <input type="text" name="firstName" id="firstName" placeholder="${firstName}"> <br>
                         <label for="lastName">Last Name: </label>
-                        <input type="text" name="lastName" id="lastName"> <br>
-                        <label for="phoneNum">Phone: </label>
-                        <input type="number" name="phoneNum" id="phoneNum"><br>
+                        <input type="text" name="lastName" id="lastName" placeholder="${lastName}"> <br>
+                        <label for="phoneNumber">Phone: </label>
+                        <input type="number" name="phoneNumber" id="phoneNumber" placeholder="${phoneNumber}"><br>
+
+                        <label for="address">Address: </label>
+                        <input type="text" name="address" id="address" placeholder="${address}"><br>
+                        <label for="city">City: </label>
+                        <input type="text" name="city" id="city" placeholder="${city}"><br>
+                        <label for="state">State: </label>
+                        <input type="text" name="state" id="state" placeholder="${state}"><br>
+                        <label for="zip">Zip: </label>
+                        <input type="text" name="zip" id="zip" placeholder="${zip}"><br>
                         <label for ="bioBox">Bio: </label>
-                        <textarea id = "bioBox" name = "bioBox" rows = "5" cols="50">Put your Bio Here</textarea><br>
+                        <textarea id = "bioBox" name = "bioBox" rows = "5" cols="50"></textarea><br>
 
                         <input type="submit" value="Apply">
                     </form>

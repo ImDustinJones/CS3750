@@ -33,18 +33,36 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("loginResult", "true");
             String destPage = "index.jsp";
 
-            if (user != null) {
+            if (user != null) { // here it will set the attributes for profile and home page
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
                 session.setAttribute("email", email);
-                session.setAttribute("firstName", user.getFirstname() );
+                session.setAttribute("firstName", user.getFirstname());
                 session.setAttribute("lastName", user.getLastname());
+                session.setAttribute("bio", user.getBio());
+
+                session.setAttribute("address", user.getAddress());
+                session.setAttribute("city", user.getCity());
+                session.setAttribute("state", user.getState());
+                session.setAttribute("zip", user.getZip());
+                session.setAttribute("phoneNumber", user.getPhonenumber());
+
                 destPage = "home.jsp";
             } 
             else if (instructor != null) {
                 HttpSession session = request.getSession();
+                session.setAttribute("user", user);
+                session.setAttribute("email", email);
                 session.setAttribute("firstName", instructor.getFirstname());
                 session.setAttribute("lastName", instructor.getLastname());
+                session.setAttribute("bio", instructor.getBio());
+
+                session.setAttribute("address", instructor.getAddress());
+                session.setAttribute("city", instructor.getCity());
+                session.setAttribute("state", instructor.getState());
+                session.setAttribute("zip", instructor.getZip());
+                session.setAttribute("phoneNumber", instructor.getPhonenumber());
+
                 destPage = "home.jsp";
             }
             else {

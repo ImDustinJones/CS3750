@@ -31,6 +31,15 @@ public class InstructorDAO {
         if (result.next()) {
             instructor = new Instructors();
             instructor.setFirstname(result.getString("firstName"));
+            instructor.setLastname(result.getString("lastName"));
+
+            instructor.setBio(result.getString("bio"));
+            instructor.setAddress(result.getString("address"));
+            instructor.setCity(result.getString("city"));
+            instructor.setState(result.getString("state"));
+            instructor.setZip(result.getString("zip"));
+            instructor.setPhonenumber(result.getString("phoneNumber"));
+
             instructor.setEmail(email);
         }
 
@@ -50,7 +59,7 @@ public class InstructorDAO {
 //        }
         Connection connection = connectDatabase();
 
-        String sqlInsert = "INSERT INTO instructors(email, password, firstName, lastName, birthDate) VALUES('"+email+"','"+encryptedPassword+"','"+firstname+"','"+lastname+"', '"+birthdate+"');";
+        String sqlInsert = "INSERT INTO instructors(email, password, firstName, lastName, birthDate) VALUES('"+email+"','"+encryptedPassword+"','"+firstname+"','"+lastname+"','"+birthdate+"');";
         PreparedStatement statement = connection.prepareStatement(sqlInsert);
         int result = statement.executeUpdate();
 
@@ -129,5 +138,36 @@ public class InstructorDAO {
         }
 
         return pattern.matcher(email).matches();
+    }
+
+
+    public Instructors updateUser(String em, String fn, String ln, String bio,
+                            String ad, String city, String state, String zip,
+                            String phonenumber) throws SQLException, ClassNotFoundException, ParseException {
+        Connection connection = connectDatabase();
+
+        String sqlInsert;
+        sqlInsert = "UPDATE instructors SET firstName = '" + fn + "', lastName = '" + ln + "', bio = '" + bio + "', address = '" + ad + "', city = '" + city + "', [state] = '" + state + "', zip = '" + zip + "', phoneNumber = '" + phonenumber + "' WHERE email = '" + em + "';";
+        PreparedStatement statement = connection.prepareStatement(sqlInsert);
+        int result = statement.executeUpdate();
+
+        Instructors instructor = null;
+
+        if (result > 0) {
+            instructor = new Instructors();
+            instructor.setFirstname(fn);
+            instructor.setLastname(ln);
+            instructor.setBio(bio);
+
+            instructor.setAddress(ad);
+            instructor.setCity(city);
+            instructor.setState(state);
+            instructor.setZip(zip);
+            instructor.setPhonenumber(phonenumber);
+        }
+
+        connection.close();
+
+        return instructor;
     }
 }

@@ -269,3 +269,8 @@ img {
     padding: 10px;
     font-family: inherit;
 }
+
+a {
+    color: black;
+    text-decoration: none;
+}

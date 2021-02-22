@@ -27,9 +27,19 @@ public class UserDAO {
 
         Users user = null;
 
-        if (result.next()) {
+        if (result.next()) { // sets the ${} variables and can set them before we go to profile
             user = new Users();
             user.setFirstname(result.getString("firstName"));
+            user.setLastname(result.getString("lastName"));
+
+            user.setBio(result.getString("bio"));
+            user.setAddress(result.getString("address"));
+            user.setCity(result.getString("city"));
+            user.setState(result.getString("state"));
+            user.setZip(result.getString("zip"));
+            user.setPhonenumber(result.getString("phoneNumber"));
+
+
             user.setEmail(email);
         }
 
@@ -49,7 +59,7 @@ public class UserDAO {
 //        }
         Connection connection = connectDatabase();
 
-        String sqlInsert = "INSERT INTO students(email, password, firstName, lastName, birthDate) VALUES('"+email+"','"+encryptedPassword+"','"+firstname+"','"+lastname+"', '"+birthdate+"');";
+        String sqlInsert = "INSERT INTO students(email, password, firstName, lastName, birthDate) VALUES('"+email+"','"+encryptedPassword+"','"+firstname+"','"+lastname+"','"+birthdate+"');";
         PreparedStatement statement = connection.prepareStatement(sqlInsert);
         int result = statement.executeUpdate();
 
@@ -128,5 +138,35 @@ public class UserDAO {
         }
 
         return pattern.matcher(email).matches();
+    }
+
+    public Users updateUser(String em, String fn, String ln, String bio,
+                            String ad, String city, String state, String zip,
+                            String phonenumber) throws SQLException, ClassNotFoundException, ParseException {
+        Connection connection = connectDatabase();
+
+        String sqlInsert;
+        sqlInsert = "UPDATE students SET firstName = '"+fn+"', lastName = '"+ln+"', bio = '"+bio+"', address = '"+ad+"', city = '"+city+"', [state] = '"+state+"', zip = '"+zip+"', phoneNumber = '"+phonenumber+"' WHERE email = '"+em+"';";
+        PreparedStatement statement = connection.prepareStatement(sqlInsert);
+        int result = statement.executeUpdate();
+
+        Users user = null;
+
+        if(result > 0){
+            user = new Users();
+            user.setFirstname(fn);
+            user.setLastname(ln);
+            user.setBio(bio);
+
+            user.setAddress(ad);
+            user.setCity(city);
+            user.setState(state);
+            user.setZip(zip);
+            user.setPhonenumber(phonenumber);
+        }
+
+        connection.close();
+
+        return user;
     }
 }
