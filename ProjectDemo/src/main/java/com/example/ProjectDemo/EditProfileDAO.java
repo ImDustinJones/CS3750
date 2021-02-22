@@ -78,8 +78,9 @@ public class EditProfileDAO extends HttpServlet {
                 request.setAttribute("message", message);
             }
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
-            dispatcher.forward(request, response);
+            //RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
+            //dispatcher.forward(request, response);
+            response.sendRedirect("edit_profile.jsp");
 
         } catch (SQLException | ClassNotFoundException | ParseException ex) {
             throw new ServletException(ex);
