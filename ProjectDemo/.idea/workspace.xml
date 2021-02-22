@@ -10,9 +10,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07f3fd19-a74c-4317-b095-3ddf5c20a21e" name="Default Changelist" comment="Finished imageUploadServlet">
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_10_2021_3_13_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_10_2021_3_13_PM__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_10_2021_9_10_PM_[Default_Changelist]/ProjectDemo-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_10_2021_9_10_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_10_2021_9_10_PM__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_14_2021_11_08_PM_[Default_Changelist]/ProjectDemo-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_14_2021_11_08_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_14_2021_11_08_PM__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_16_2021_9_22_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_16_2021_9_22_PM__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_17_2021_1_52_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_17_2021_1_52_PM__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/imageUploadServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/imageUploadServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/EditProfileDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/EditProfileDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/edit_profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/edit_profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/edit_profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/edit_profile.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +65,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../mssql-jdbc-8.2.2.jre11.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -168,6 +182,7 @@
       <workItem from="1613169294799" duration="698000" />
       <workItem from="1613369286224" duration="176000" />
       <workItem from="1613503462115" duration="5794000" />
+      <workItem from="1614030685542" duration="985000" />
     </task>
     <task id="LOCAL-00001" summary="Added Calendar still need to test and modify though">
       <created>1612832173384</created>

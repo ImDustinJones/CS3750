@@ -1,9 +1,0 @@
-<changelist name="Uncommitted_changes_before_Update_at_2_14_2021_11_08_PM_[Default_Changelist]" date="1613369326503" recycled="true" deleted="true">
-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_14_2021_11_08_PM_[Default_Changelist]/shelved.patch" />
-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2/14/2021 11:08 PM [Default Changelist]" />
-  <binary>
-    <option name="BEFORE_PATH" value="target/ProjectDemo-1.0-SNAPSHOT.war" />
-    <option name="AFTER_PATH" value="target/ProjectDemo-1.0-SNAPSHOT.war" />
-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_14_2021_11_08_PM_[Default_Changelist]/ProjectDemo-1.0-SNAPSHOT.war" />
-  </binary>
-</changelist>

@@ -41,9 +41,9 @@
                     <p>Your Phone Number: ${phoneNumber}</p>
                     <p>Your State: ${state}</p>
                     <p>Your City: ${city}</p>
-                    <a href="https://www.linkedin.com/">LinkedIn</a>
-                    <a href="https://www.facebook.com/">Facebook</a>
-                    <a href="https://twitter.com/">Twitter</a>
+                    <a href="${linkOne}">LinkedIn</a>
+                    <a href="${linkTwo}">Facebook</a>
+                    <a href="${linkThree}">Twitter</a>
                 </div>
             </div>
             <div class="popup">
@@ -64,7 +64,7 @@
                         <label for="lastName">Last Name: </label>
                         <input type="text" name="lastName" id="lastName" placeholder="${lastName}"> <br>
                         <label for="phoneNumber">Phone: </label>
-                        <input type="number" name="phoneNumber" id="phoneNumber" placeholder="${phoneNumber}"><br>
+                        <input type="text" name="phoneNumber" id="phoneNumber" placeholder="${phoneNumber}"><br>
 
                         <label for="address">Address: </label>
                         <input type="text" name="address" id="address" placeholder="${address}"><br>
@@ -75,7 +75,14 @@
                         <label for="zip">Zip: </label>
                         <input type="text" name="zip" id="zip" placeholder="${zip}"><br>
                         <label for ="bioBox">Bio: </label>
-                        <textarea id = "bioBox" name = "bioBox" rows = "5" cols="50"></textarea><br>
+                        <textarea id = "bioBox" name = "bioBox" rows = "10" cols="50"></textarea><br>
+
+                        <label for="linkOne">Link 1: </label>
+                        <input type="text" name="linkOne" id="linkOne" placeholder="Enter Any Social Media Link Here"> <br>
+                        <label for="linkTwo">Link 2: </label>
+                        <input type="text" name="linkTwo" id="linkTwo" placeholder="Enter Any Social Media Link Here"> <br>
+                        <label for="linkThree">Link 3: </label>
+                        <input type="text" name="linkThree" id="linkThree" placeholder="Enter Any Social Media Link Here"> <br>
 
                         <input type="submit" value="Apply">
                     </form>
