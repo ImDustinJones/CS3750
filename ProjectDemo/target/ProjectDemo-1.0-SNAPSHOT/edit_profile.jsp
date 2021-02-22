@@ -78,11 +78,11 @@
                         <textarea id = "bioBox" name = "bioBox" rows = "10" cols="50"></textarea><br>
 
                         <label for="linkOne">Link 1: </label>
-                        <input type="text" name="linkOne" id="linkOne" placeholder="Enter Any Social Media Link Here"> <br>
+                        <input type="text" name="linkOne" id="linkOne" placeholder="Enter LinkedIn Link"> <br>
                         <label for="linkTwo">Link 2: </label>
-                        <input type="text" name="linkTwo" id="linkTwo" placeholder="Enter Any Social Media Link Here"> <br>
+                        <input type="text" name="linkTwo" id="linkTwo" placeholder="Enter Facebook Link"> <br>
                         <label for="linkThree">Link 3: </label>
-                        <input type="text" name="linkThree" id="linkThree" placeholder="Enter Any Social Media Link Here"> <br>
+                        <input type="text" name="linkThree" id="linkThree" placeholder="Enter Twitter Link"> <br>
 
                         <input type="submit" value="Apply">
                     </form>
