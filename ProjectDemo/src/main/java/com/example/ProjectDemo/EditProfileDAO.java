@@ -29,6 +29,9 @@ public class EditProfileDAO extends HttpServlet {
         String state = request.getParameter("state");
         String zip = request.getParameter("zip");
         String phonenumber = request.getParameter("phoneNumber");
+        String linkOne = request.getParameter("linkOne");
+        String linkTwo = request.getParameter("linkTwo");
+        String linkThree = request.getParameter("linkThree");
 
         String bio = request.getParameter("bioBox");
 
@@ -56,6 +59,11 @@ public class EditProfileDAO extends HttpServlet {
                 session.setAttribute("state", user.getState());
                 session.setAttribute("zip", user.getZip());
                 session.setAttribute("phoneNumber", user.getPhonenumber());
+
+                session.setAttribute("linkOne", linkOne);
+                session.setAttribute("linkTwo", linkTwo);
+                session.setAttribute("linkThree", linkThree);
+
                 destPage = "edit_profile.jsp";
             }
             else if (instructor != null) {
@@ -71,6 +79,10 @@ public class EditProfileDAO extends HttpServlet {
                 session.setAttribute("state", instructor.getState());
                 session.setAttribute("zip", instructor.getZip());
                 session.setAttribute("phoneNumber", instructor.getPhonenumber());
+
+                session.setAttribute("linkOne", linkOne);
+                session.setAttribute("linkTwo", linkTwo);
+                session.setAttribute("linkThree", linkThree);
                 destPage = "edit_profile.jsp";
             }
             else {
