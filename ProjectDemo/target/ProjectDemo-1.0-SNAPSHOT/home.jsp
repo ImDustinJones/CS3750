@@ -77,10 +77,10 @@
 
 
 <ul class="navUl">
+    <li class="navLi"><a href="home.jsp">Home</a></li>
     <li class="navLi"><a class="active" href="edit_profile.jsp">Profile</a></li>
     <li class="navLi"><a href="#DummyN1">Dummy</a></li>
     <li class="navLi"><a href="#DummyN2">Dummy</a></li>
-    <li class="navLi"><a href="#DummyN3">Dummy</a></li>
 </ul>
 
 <ul class="todoUL">
