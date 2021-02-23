@@ -35,6 +35,81 @@ public class EditProfileDAO extends HttpServlet {
 
         String bio = request.getParameter("bioBox");
 
+        //if block to catch blanks
+        if(firstname.equals("")){//if the parameter was empty
+            try {
+                firstname = getValue(email, "firstName");//get the value already stored in db
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        if(lastname.equals("")){//if the parameter was empty
+            try {
+                lastname = getValue(email, "lastName");//get the value already stored in db
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        if(address.equals("")){//if the parameter was empty
+            try {
+                address = getValue(email, "address");//get the value already stored in db
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        if(city.equals("")){//if the parameter was empty
+            try {
+                city = getValue(email, "city");//get the value already stored in db
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        if(state.equals("")){//if the parameter was empty
+            try {
+                state = getValue(email, "state");//get the value already stored in db
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        if(zip.equals("")){//if the parameter was empty
+            try {
+                zip = getValue(email, "zip");//get the value already stored in db
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        if(phonenumber.equals("")){//if the parameter was empty
+            try {
+                phonenumber = getValue(email, "phoneNumber");//get the value already stored in db
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        if(bio.equals("")){//if the parameter was empty
+            try {
+                bio = getValue(email, "bio");//get the value already stored in db
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        //end block
+
         UserDAO userDao = new UserDAO();
         InstructorDAO instructorDao = new InstructorDAO();
 
@@ -44,7 +119,7 @@ public class EditProfileDAO extends HttpServlet {
 
             Instructors instructor = instructorDao.updateUser(email, firstname, lastname, bio, address, city,
                     state, zip, phonenumber);
-            String destPage = "edit_profile.jsp";
+            //String destPage = "edit_profile.jsp";
 
             if (user != null) {
                 HttpSession session = request.getSession();
@@ -64,7 +139,7 @@ public class EditProfileDAO extends HttpServlet {
                 session.setAttribute("linkTwo", linkTwo);
                 session.setAttribute("linkThree", linkThree);
 
-                destPage = "edit_profile.jsp";
+                //destPage = "edit_profile.jsp";
             }
             else if (instructor != null) {
                 HttpSession session = request.getSession();
@@ -83,7 +158,7 @@ public class EditProfileDAO extends HttpServlet {
                 session.setAttribute("linkOne", linkOne);
                 session.setAttribute("linkTwo", linkTwo);
                 session.setAttribute("linkThree", linkThree);
-                destPage = "edit_profile.jsp";
+                //destPage = "edit_profile.jsp";
             }
             else {
                 String message = "Invalid email/password";
@@ -105,5 +180,38 @@ public class EditProfileDAO extends HttpServlet {
 
 
     }
+
+    public Connection connectDatabase() throws SQLException, ClassNotFoundException {
+        String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
+        String dbUser = "LMS_RunTime";
+        String dbPassword = "password1!";
+
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+        return DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+    }
+
+    private String getValue(String email, String column) throws SQLException, ClassNotFoundException {
+        Connection connection = connectDatabase();
+        String sql = "SELECT * FROM students WHERE email = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, email);
+        ResultSet result = statement.executeQuery();
+
+        if (result.next()) {
+            return result.getString(column);
+        }
+        else{
+            sql = "SELECT * FROM instructors WHERE email = ?";
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, email);
+            result = statement.executeQuery();
+            result.next();
+            return result.getString(column);
+        }
+
+
+    }
+
 //Working Now.
 }
