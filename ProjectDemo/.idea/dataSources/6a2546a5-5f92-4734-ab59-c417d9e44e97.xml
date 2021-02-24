@@ -449,702 +449,921 @@
       <ObjectId>17</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="109" parent="1" name="MicroFund_QC">
+    <database id="109" parent="1" name="LucyInfoTechSol">
+      <ObjectId>126</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="110" parent="1" name="MicroFund_QC">
       <ObjectId>83</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="110" parent="1" name="MicroFund_QC_Demo">
+    <database id="111" parent="1" name="MicroFund_QC_Demo">
       <ObjectId>99</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="111" parent="1" name="MicroFund_QC_New">
+    <database id="112" parent="1" name="MicroFund_QC_New">
       <ObjectId>100</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="112" parent="1" name="MovieCollection_NICHOLS">
+    <database id="113" parent="1" name="MovieCollection_NICHOLS">
       <ObjectId>41</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="113" parent="1" name="Music_Perry">
+    <database id="114" parent="1" name="Music_Perry">
       <ObjectId>7</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="114" parent="1" name="MyCollection1_DWOODRUFF">
+    <database id="115" parent="1" name="MyCollection1_DWOODRUFF">
       <ObjectId>235</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="115" parent="1" name="MyCollection_Alsultani">
+    <database id="116" parent="1" name="MyCollection_Alsultani">
       <ObjectId>51</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="116" parent="1" name="MyCollection_BROOKSANDERSON">
+    <database id="117" parent="1" name="MyCollection_BROOKSANDERSON">
       <ObjectId>44</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="117" parent="1" name="MyCollection_Bourgeous">
+    <database id="118" parent="1" name="MyCollection_Bourgeous">
       <ObjectId>37</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="118" parent="1" name="MyCollection_Gonzales">
+    <database id="119" parent="1" name="MyCollection_Gonzales">
       <ObjectId>72</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="119" parent="1" name="MyCollection_HOLMES">
+    <database id="120" parent="1" name="MyCollection_HOLMES">
       <ObjectId>42</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="120" parent="1" name="MyCollection_JOHNSON">
+    <database id="121" parent="1" name="MyCollection_JOHNSON">
       <ObjectId>56</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="121" parent="1" name="MyCollection_LILLYWHITE">
+    <database id="122" parent="1" name="MyCollection_LILLYWHITE">
       <ObjectId>27</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="122" parent="1" name="MyCollection_MaJones">
+    <database id="123" parent="1" name="MyCollection_MaJones">
       <ObjectId>53</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="123" parent="1" name="MyCollection_Munk">
+    <database id="124" parent="1" name="MyCollection_Munk">
       <ObjectId>48</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="124" parent="1" name="MyCollection_PARKA">
+    <database id="125" parent="1" name="MyCollection_PARKA">
       <ObjectId>43</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="125" parent="1" name="MyCollection_REYNOLDS">
+    <database id="126" parent="1" name="MyCollection_REYNOLDS">
       <ObjectId>26</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="126" parent="1" name="MyCollection_SSPENCER">
+    <database id="127" parent="1" name="MyCollection_SSPENCER">
       <ObjectId>39</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="127" parent="1" name="MyCollection_SZYMANSKI">
+    <database id="128" parent="1" name="MyCollection_SZYMANSKI">
       <ObjectId>47</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="128" parent="1" name="MyCollection_Spencer">
+    <database id="129" parent="1" name="MyCollection_Spencer">
       <ObjectId>267</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="129" parent="1" name="MyCollection_THRONE">
+    <database id="130" parent="1" name="MyCollection_THRONE">
       <ObjectId>31</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="130" parent="1" name="MyCollection_TYNELSON">
+    <database id="131" parent="1" name="MyCollection_TYNELSON">
       <ObjectId>18</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="131" parent="1" name="MyCollection_WGARDNER">
+    <database id="132" parent="1" name="MyCollection_WGARDNER">
       <ObjectId>60</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="132" parent="1" name="MyCollection_WRIGHT">
+    <database id="133" parent="1" name="MyCollection_WRIGHT">
       <ObjectId>50</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="133" parent="1" name="MyCollection_WoodardBret">
+    <database id="134" parent="1" name="MyCollection_WoodardBret">
       <ObjectId>54</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="134" parent="1" name="MyCollections_BT">
+    <database id="135" parent="1" name="MyCollections_BT">
       <ObjectId>73</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="135" parent="1" name="MyMusic_Perry">
+    <database id="136" parent="1" name="MyMusic_Perry">
       <ObjectId>38</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="136" parent="1" name="NoPoorAfrica_Cookie_Monsters">
+    <database id="137" parent="1" name="NoPoorAfrica_Cookie_Monsters">
       <ObjectId>81</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="137" parent="1" name="NoPoor_Larsen">
+    <database id="138" parent="1" name="NoPoor_Larsen">
       <ObjectId>176</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="138" parent="1" name="NoPoor_MemoryLeaks">
+    <database id="139" parent="1" name="NoPoor_MemoryLeaks">
       <ObjectId>79</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="139" parent="1" name="NoPoor_MemoryLeaks_TEST">
+    <database id="140" parent="1" name="NoPoor_MemoryLeaks_TEST">
       <ObjectId>85</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="140" parent="1" name="NoPoor_MightyCoders">
+    <database id="141" parent="1" name="NoPoor_MightyCoders">
       <ObjectId>123</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="141" parent="1" name="Northwind">
+    <database id="142" parent="1" name="Northwind">
       <ObjectId>8</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="142" parent="1" name="PandaExpress_ROMINE">
+    <database id="143" parent="1" name="PandaExpress_ROMINE">
       <ObjectId>45</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="143" parent="1" name="PickardContoso">
+    <database id="144" parent="1" name="PickardContoso">
       <ObjectId>62</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="144" parent="1" name="PiePizza3Mortensen">
+    <database id="145" parent="1" name="PiePizza3Mortensen">
       <ObjectId>64</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="145" parent="1" name="PiePizza_Hooker">
+    <database id="146" parent="1" name="PiePizza_Hooker">
       <ObjectId>61</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="146" parent="1" name="Pie_Alves">
+    <database id="147" parent="1" name="Pie_Alves">
       <ObjectId>63</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="147" parent="1" name="ProductGrid">
+    <database id="148" parent="1" name="ProductGrid">
       <ObjectId>111</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="148" parent="1" name="ProductsTwo">
+    <database id="149" parent="1" name="ProductsTwo">
       <ObjectId>69</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="149" parent="1" name="RazorPageMovies_IanM">
+    <database id="150" parent="1" name="RazorPageMovies_IanM">
       <ObjectId>59</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="150" parent="1" name="RazorPagesMovie_Wheeler">
+    <database id="151" parent="1" name="RazorPagesMovie_Wheeler">
       <ObjectId>160</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="151" parent="1" name="RecipeCollections_Gradner">
+    <database id="152" parent="1" name="RecipeCollections_Gradner">
       <ObjectId>237</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="152" parent="1" name="Recipes_Darling">
+    <database id="153" parent="1" name="Recipes_Darling">
       <ObjectId>10</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="153" parent="1" name="SRBrandNew">
+    <database id="154" parent="1" name="SRBrandNew">
       <ObjectId>92</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="154" parent="1" name="SRHOA-Bigler">
+    <database id="155" parent="1" name="SRHOA-Bigler">
       <ObjectId>86</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="155" parent="1" name="SRHOA-Prod1">
+    <database id="156" parent="1" name="SRHOA-Prod1">
       <ObjectId>89</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="156" parent="1" name="SRHOA-ProdCS6450TEST-DB">
+    <database id="157" parent="1" name="SRHOA-ProdCS6450TEST-DB">
       <ObjectId>97</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="157" parent="1" name="SRHOA_temp">
+    <database id="158" parent="1" name="SRHOA_temp">
       <ObjectId>95</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="158" parent="1" name="SendGrid_Gradner">
+    <database id="159" parent="1" name="SendGrid_Gradner">
       <ObjectId>247</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="159" parent="1" name="ShcoolContext-Fry">
+    <database id="160" parent="1" name="ShcoolContext-Fry">
       <ObjectId>65</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="160" parent="1" name="Smart_DeltaForce_2">
+    <database id="161" parent="1" name="Smart_DeltaForce_2">
       <ObjectId>104</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="161" parent="1" name="SparkFinal_Fry">
+    <database id="162" parent="1" name="SparkFinal_Fry">
       <ObjectId>103</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="162" parent="1" name="SpicyFinal_Fry">
+    <database id="163" parent="1" name="SpicyFinal_Fry">
       <ObjectId>102</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="163" parent="1" name="SpicyThai_Tran">
+    <database id="164" parent="1" name="SpicyThai_Tran">
       <ObjectId>105</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="164" parent="1" name="SportStore_BT">
+    <database id="165" parent="1" name="SportStore_BT">
       <ObjectId>166</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="165" parent="1" name="SportsStore-Powers">
+    <database id="166" parent="1" name="SportsStore-Powers">
       <ObjectId>159</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="166" parent="1" name="SportsStore_APARK">
+    <database id="167" parent="1" name="SportsStore_APARK">
       <ObjectId>21</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="167" parent="1" name="SportsStore_Adams">
+    <database id="168" parent="1" name="SportsStore_Adams">
       <ObjectId>264</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="168" parent="1" name="SportsStore_Alsultani">
+    <database id="169" parent="1" name="SportsStore_Alsultani">
       <ObjectId>248</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="169" parent="1" name="SportsStore_Alves1">
+    <database id="170" parent="1" name="SportsStore_Alves1">
       <ObjectId>173</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="170" parent="1" name="SportsStore_BROOKSANDERSON">
+    <database id="171" parent="1" name="SportsStore_BROOKSANDERSON">
       <ObjectId>35</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="171" parent="1" name="SportsStore_BT">
+    <database id="172" parent="1" name="SportsStore_BT">
       <ObjectId>68</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="172" parent="1" name="SportsStore_Bourgeous">
+    <database id="173" parent="1" name="SportsStore_Bourgeous">
       <ObjectId>40</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="173" parent="1" name="SportsStore_DWOODRUFF">
+    <database id="174" parent="1" name="SportsStore_DWOODRUFF">
       <ObjectId>262</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="174" parent="1" name="SportsStore_Darling">
+    <database id="175" parent="1" name="SportsStore_Darling">
       <ObjectId>30</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="175" parent="1" name="SportsStore_Gradner">
+    <database id="176" parent="1" name="SportsStore_Gradner">
       <ObjectId>255</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="176" parent="1" name="SportsStore_HOLMES">
+    <database id="177" parent="1" name="SportsStore_HOLMES">
       <ObjectId>253</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="177" parent="1" name="SportsStore_Johnson">
+    <database id="178" parent="1" name="SportsStore_Johnson">
       <ObjectId>258</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="178" parent="1" name="SportsStore_LACEFIELD">
+    <database id="179" parent="1" name="SportsStore_LACEFIELD">
       <ObjectId>36</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="179" parent="1" name="SportsStore_LILLYWHITE">
+    <database id="180" parent="1" name="SportsStore_LILLYWHITE">
       <ObjectId>25</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="180" parent="1" name="SportsStore_MAEZ">
+    <database id="181" parent="1" name="SportsStore_MAEZ">
       <ObjectId>261</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="181" parent="1" name="SportsStore_MaJones">
+    <database id="182" parent="1" name="SportsStore_MaJones">
       <ObjectId>245</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="182" parent="1" name="SportsStore_Munk">
+    <database id="183" parent="1" name="SportsStore_Munk">
       <ObjectId>242</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="183" parent="1" name="SportsStore_NICHOLS">
+    <database id="184" parent="1" name="SportsStore_NICHOLS">
       <ObjectId>244</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="184" parent="1" name="SportsStore_PLATERO">
+    <database id="185" parent="1" name="SportsStore_PLATERO">
       <ObjectId>174</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="185" parent="1" name="SportsStore_Perry">
+    <database id="186" parent="1" name="SportsStore_Perry">
       <ObjectId>256</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="186" parent="1" name="SportsStore_REYNOLDS">
+    <database id="187" parent="1" name="SportsStore_REYNOLDS">
       <ObjectId>216</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="187" parent="1" name="SportsStore_ROMINE">
+    <database id="188" parent="1" name="SportsStore_ROMINE">
       <ObjectId>34</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="188" parent="1" name="SportsStore_SSPENCER">
+    <database id="189" parent="1" name="SportsStore_SSPENCER">
       <ObjectId>250</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="189" parent="1" name="SportsStore_SZYMANSKI">
+    <database id="190" parent="1" name="SportsStore_SZYMANSKI">
       <ObjectId>33</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="190" parent="1" name="SportsStore_Sparkman">
+    <database id="191" parent="1" name="SportsStore_Sparkman">
       <ObjectId>162</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="191" parent="1" name="SportsStore_Sparkman2">
+    <database id="192" parent="1" name="SportsStore_Sparkman2">
       <ObjectId>167</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="192" parent="1" name="SportsStore_Spencer">
+    <database id="193" parent="1" name="SportsStore_Spencer">
       <ObjectId>254</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="193" parent="1" name="SportsStore_THRONE">
+    <database id="194" parent="1" name="SportsStore_THRONE">
       <ObjectId>213</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="194" parent="1" name="SportsStore_TYNELSON">
+    <database id="195" parent="1" name="SportsStore_TYNELSON">
       <ObjectId>15</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="195" parent="1" name="SportsStore_WGARDNER">
+    <database id="196" parent="1" name="SportsStore_WGARDNER">
       <ObjectId>263</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="196" parent="1" name="SportsStore_WRIGHT">
+    <database id="197" parent="1" name="SportsStore_WRIGHT">
       <ObjectId>249</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="197" parent="1" name="SportsStore_WoodardBret">
+    <database id="198" parent="1" name="SportsStore_WoodardBret">
       <ObjectId>32</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="198" parent="1" name="StongCurry">
+    <database id="199" parent="1" name="StongCurry">
       <ObjectId>101</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="199" parent="1" name="SunridgeBigfoot">
+    <database id="200" parent="1" name="SunridgeBigfoot">
       <ObjectId>135</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="200" parent="1" name="SunridgeBigfootTwo">
+    <database id="201" parent="1" name="SunridgeBigfootTwo">
       <ObjectId>144</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="201" parent="1" name="SunridgeGoats">
+    <database id="202" parent="1" name="SunridgeGoats">
       <ObjectId>133</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="202" parent="1" name="Sunridge_Group1">
+    <database id="203" parent="1" name="Sunridge_Group1">
       <ObjectId>77</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="203" parent="1" name="Sunridge_Group1EthanTest">
+    <database id="204" parent="1" name="Sunridge_Group1EthanTest">
       <ObjectId>106</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="204" parent="1" name="Sunridge_Group1Test">
+    <database id="205" parent="1" name="Sunridge_Group1Test">
       <ObjectId>98</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="205" parent="1" name="Sunridge_KylerTest">
+    <database id="206" parent="1" name="Sunridge_KylerTest">
       <ObjectId>109</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="206" parent="1" name="Sunridge_temp">
+    <database id="207" parent="1" name="Sunridge_temp">
       <ObjectId>90</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="207" parent="1" name="TeamAwesomeFinal">
+    <database id="208" parent="1" name="TeamAwesomeFinal">
       <ObjectId>108</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="208" parent="1" name="TinyU-Fry">
+    <database id="209" parent="1" name="TinyU-Fry">
       <ObjectId>165</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="209" parent="1" name="TinyU_Powers">
+    <database id="210" parent="1" name="TinyU_Powers">
       <ObjectId>66</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="210" parent="1" name="WCS">
+    <database id="211" parent="1" name="WCS">
       <ObjectId>6</ObjectId>
-      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="211" parent="1" name="WHOligansTeam1">
+    <database id="212" parent="1" name="WHOligansTeam1">
       <ObjectId>24</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="212" parent="1" name="WhoLives_SoftwareBytes">
+    <database id="213" parent="1" name="WhoLives_SoftwareBytes">
       <ObjectId>139</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="213" parent="1" name="WhoLives_WhoBeDrillin">
+    <database id="214" parent="1" name="WhoLives_WhoBeDrillin">
       <ObjectId>136</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="214" parent="1" name="WildcatMicro_Group2">
+    <database id="215" parent="1" name="WildcatMicro_Group2">
       <ObjectId>78</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="215" parent="1" name="WildcatMicrofundWebsite">
+    <database id="216" parent="1" name="WildcatMicrofundWebsite">
       <ObjectId>110</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="216" parent="1" name="aaaSunridge_temp_db">
+    <database id="217" parent="1" name="WildcatMicrofundWebsiteFry">
+      <ObjectId>127</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="218" parent="1" name="aaaSunridge_temp_db">
       <ObjectId>87</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="217" parent="1" name="arpit">
+    <database id="219" parent="1" name="arpit">
       <ObjectId>5</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="218" parent="1" name="fooddeliverynichols">
+    <database id="220" parent="1" name="fooddeliverynichols">
       <ObjectId>13</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="219" parent="1" name="master">
+    <database id="221" parent="1" name="master">
       <ObjectId>1</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="220" parent="1" name="model">
+    <database id="222" parent="1" name="model">
       <ObjectId>3</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="221" parent="1" name="msdb">
+    <database id="223" parent="1" name="msdb">
       <ObjectId>4</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="222" parent="1" name="northwind_arpit">
+    <database id="224" parent="1" name="northwind_arpit">
       <ObjectId>107</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="223" parent="1" name="sample_3550">
+    <database id="225" parent="1" name="sample_3550">
       <ObjectId>57</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <database id="224" parent="1" name="tempdb">
+    <database id="226" parent="1" name="tempdb">
       <ObjectId>2</ObjectId>
       <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
     </database>
-    <login id="225" parent="1" name="sa">
+    <login id="227" parent="1" name="sa">
       <ObjectId>1</ObjectId>
       <Enabled>1</Enabled>
       <DefaultDatabase>master</DefaultDatabase>
     </login>
-    <login id="226" parent="1" name="public">
+    <login id="228" parent="1" name="public">
       <ObjectId>2</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
-    <login id="227" parent="1" name="sysadmin">
+    <login id="229" parent="1" name="sysadmin">
       <ObjectId>3</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
-    <login id="228" parent="1" name="securityadmin">
+    <login id="230" parent="1" name="securityadmin">
       <ObjectId>4</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
-    <login id="229" parent="1" name="serveradmin">
+    <login id="231" parent="1" name="serveradmin">
       <ObjectId>5</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
-    <login id="230" parent="1" name="setupadmin">
+    <login id="232" parent="1" name="setupadmin">
       <ObjectId>6</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
-    <login id="231" parent="1" name="processadmin">
+    <login id="233" parent="1" name="processadmin">
       <ObjectId>7</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
-    <login id="232" parent="1" name="diskadmin">
+    <login id="234" parent="1" name="diskadmin">
       <ObjectId>8</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
-    <login id="233" parent="1" name="dbcreator">
+    <login id="235" parent="1" name="dbcreator">
       <ObjectId>9</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
-    <login id="234" parent="1" name="bulkadmin">
+    <login id="236" parent="1" name="bulkadmin">
       <ObjectId>10</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
-    <login id="235" parent="1" name="LMS_RunTime">
+    <login id="237" parent="1" name="LMS_RunTime">
       <ObjectId>336</ObjectId>
       <Enabled>1</Enabled>
       <DefaultDatabase>master</DefaultDatabase>
     </login>
-    <schema id="236" parent="98" name="INFORMATION_SCHEMA">
+    <schema id="238" parent="98" name="INFORMATION_SCHEMA">
       <ObjectId>3</ObjectId>
     </schema>
-    <schema id="237" parent="98" name="db_accessadmin">
+    <schema id="239" parent="98" name="db_accessadmin">
       <ObjectId>16385</ObjectId>
     </schema>
-    <schema id="238" parent="98" name="db_backupoperator">
+    <schema id="240" parent="98" name="db_backupoperator">
       <ObjectId>16389</ObjectId>
     </schema>
-    <schema id="239" parent="98" name="db_datareader">
+    <schema id="241" parent="98" name="db_datareader">
       <ObjectId>16390</ObjectId>
     </schema>
-    <schema id="240" parent="98" name="db_datawriter">
+    <schema id="242" parent="98" name="db_datawriter">
       <ObjectId>16391</ObjectId>
     </schema>
-    <schema id="241" parent="98" name="db_ddladmin">
+    <schema id="243" parent="98" name="db_ddladmin">
       <ObjectId>16387</ObjectId>
     </schema>
-    <schema id="242" parent="98" name="db_denydatareader">
+    <schema id="244" parent="98" name="db_denydatareader">
       <ObjectId>16392</ObjectId>
     </schema>
-    <schema id="243" parent="98" name="db_denydatawriter">
+    <schema id="245" parent="98" name="db_denydatawriter">
       <ObjectId>16393</ObjectId>
     </schema>
-    <schema id="244" parent="98" name="db_owner">
+    <schema id="246" parent="98" name="db_owner">
       <ObjectId>16384</ObjectId>
     </schema>
-    <schema id="245" parent="98" name="db_securityadmin">
+    <schema id="247" parent="98" name="db_securityadmin">
       <ObjectId>16386</ObjectId>
     </schema>
-    <schema id="246" parent="98" name="dbo">
+    <schema id="248" parent="98" name="dbo">
       <ObjectId>1</ObjectId>
-      <IntrospectionTimestamp>2021-02-17.04:35:36.827</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2021-02-23.10:00:29.427</IntrospectionTimestamp>
       <Current>1</Current>
     </schema>
-    <schema id="247" parent="98" name="guest">
+    <schema id="249" parent="98" name="guest">
       <ObjectId>2</ObjectId>
     </schema>
-    <schema id="248" parent="98" name="sys">
+    <schema id="250" parent="98" name="sys">
       <ObjectId>4</ObjectId>
     </schema>
-    <role id="249" parent="98" name="public">
+    <role id="251" parent="98" name="public">
       <ObjectId>0</ObjectId>
       <OwnerId>1</OwnerId>
       <Type>database-role</Type>
       <AuthType>none</AuthType>
     </role>
-    <role id="250" parent="98" name="dbo">
+    <role id="252" parent="98" name="dbo">
       <ObjectId>1</ObjectId>
       <DefaultSchema>dbo</DefaultSchema>
       <AuthType>instance</AuthType>
     </role>
-    <role id="251" parent="98" name="guest">
+    <role id="253" parent="98" name="guest">
       <ObjectId>2</ObjectId>
       <DefaultSchema>guest</DefaultSchema>
       <AuthType>none</AuthType>
     </role>
-    <role id="252" parent="98" name="INFORMATION_SCHEMA">
+    <role id="254" parent="98" name="INFORMATION_SCHEMA">
       <ObjectId>3</ObjectId>
       <AuthType>none</AuthType>
     </role>
-    <role id="253" parent="98" name="sys">
+    <role id="255" parent="98" name="sys">
       <ObjectId>4</ObjectId>
       <AuthType>none</AuthType>
     </role>
-    <role id="254" parent="98" name="LMS_RunTime">
+    <role id="256" parent="98" name="LMS_RunTime">
       <ObjectId>5</ObjectId>
       <DefaultSchema>dbo</DefaultSchema>
       <AuthType>instance</AuthType>
     </role>
-    <role id="255" parent="98" name="db_owner">
+    <role id="257" parent="98" name="db_owner">
       <ObjectId>16384</ObjectId>
       <OwnerId>1</OwnerId>
       <Type>database-role</Type>
       <AuthType>none</AuthType>
     </role>
-    <role id="256" parent="98" name="db_accessadmin">
+    <role id="258" parent="98" name="db_accessadmin">
       <ObjectId>16385</ObjectId>
       <OwnerId>1</OwnerId>
       <Type>database-role</Type>
       <AuthType>none</AuthType>
     </role>
-    <role id="257" parent="98" name="db_securityadmin">
+    <role id="259" parent="98" name="db_securityadmin">
       <ObjectId>16386</ObjectId>
       <OwnerId>1</OwnerId>
       <Type>database-role</Type>
       <AuthType>none</AuthType>
     </role>
-    <role id="258" parent="98" name="db_ddladmin">
+    <role id="260" parent="98" name="db_ddladmin">
       <ObjectId>16387</ObjectId>
       <OwnerId>1</OwnerId>
       <Type>database-role</Type>
       <AuthType>none</AuthType>
     </role>
-    <role id="259" parent="98" name="db_backupoperator">
+    <role id="261" parent="98" name="db_backupoperator">
       <ObjectId>16389</ObjectId>
       <OwnerId>1</OwnerId>
       <Type>database-role</Type>
       <AuthType>none</AuthType>
     </role>
-    <role id="260" parent="98" name="db_datareader">
+    <role id="262" parent="98" name="db_datareader">
       <ObjectId>16390</ObjectId>
       <OwnerId>1</OwnerId>
       <Type>database-role</Type>
       <AuthType>none</AuthType>
     </role>
-    <role id="261" parent="98" name="db_datawriter">
+    <role id="263" parent="98" name="db_datawriter">
       <ObjectId>16391</ObjectId>
       <OwnerId>1</OwnerId>
       <Type>database-role</Type>
       <AuthType>none</AuthType>
     </role>
-    <role id="262" parent="98" name="db_denydatareader">
+    <role id="264" parent="98" name="db_denydatareader">
       <ObjectId>16392</ObjectId>
       <OwnerId>1</OwnerId>
       <Type>database-role</Type>
       <AuthType>none</AuthType>
     </role>
-    <role id="263" parent="98" name="db_denydatawriter">
+    <role id="265" parent="98" name="db_denydatawriter">
       <ObjectId>16393</ObjectId>
       <OwnerId>1</OwnerId>
       <Type>database-role</Type>
       <AuthType>none</AuthType>
     </role>
-    <table id="264" parent="246" name="instructors">
+    <table id="266" parent="248" name="courseList">
+      <ObjectId>1685581043</ObjectId>
+      <CreatedTimestamp>2021-02-23.09:38:46.473</CreatedTimestamp>
+      <ModifiedTimestamp>2021-02-23.09:38:46.473</ModifiedTimestamp>
+    </table>
+    <table id="267" parent="248" name="departments">
+      <ObjectId>1093578934</ObjectId>
+      <CreatedTimestamp>2021-02-22.13:01:19.917</CreatedTimestamp>
+      <ModifiedTimestamp>2021-02-23.09:38:46.477</ModifiedTimestamp>
+    </table>
+    <table id="268" parent="248" name="instructors">
       <ObjectId>949578421</ObjectId>
       <CreatedTimestamp>2021-02-16.10:07:33.120</CreatedTimestamp>
-      <ModifiedTimestamp>2021-02-16.10:22:21.557</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-02-22.01:59:49.570</ModifiedTimestamp>
     </table>
-    <table id="265" parent="246" name="students">
+    <table id="269" parent="248" name="registrations">
+      <ObjectId>1269579561</ObjectId>
+      <CreatedTimestamp>2021-02-23.03:55:34.713</CreatedTimestamp>
+      <ModifiedTimestamp>2021-02-23.03:55:34.713</ModifiedTimestamp>
+    </table>
+    <table id="270" parent="248" name="students">
       <ObjectId>917578307</ObjectId>
-      <Outdated>1</Outdated>
       <CreatedTimestamp>2021-02-16.10:01:43.117</CreatedTimestamp>
-      <ModifiedTimestamp>2021-02-16.10:22:34.480</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-02-22.01:00:57.050</ModifiedTimestamp>
     </table>
-    <column id="266" parent="264" name="firstName">
+    <column id="271" parent="266" name="courseID">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="272" parent="266" name="courseNumber">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="273" parent="266" name="courseName">
+      <Position>3</Position>
+      <DataType>varchar(20 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="274" parent="266" name="departmentCode">
+      <Position>4</Position>
+      <DataType>varchar(10 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="275" parent="266" name="instructorEmail">
+      <Position>5</Position>
+      <DataType>varchar(50 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="276" parent="266" name="instructorLastName">
+      <Position>6</Position>
+      <DataType>varchar(50 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="277" parent="266" name="courseDescription">
+      <Position>7</Position>
+      <DataType>varchar(512 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="278" parent="266" name="creditHours">
+      <Position>8</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="279" parent="266" name="monday">
+      <Position>9</Position>
+      <DefaultConstraintName>DF__courseLis__monda__6754599E</DefaultConstraintName>
+      <DefaultExpression>0</DefaultExpression>
+      <DataType>bit|0s</DataType>
+    </column>
+    <column id="280" parent="266" name="tuesday">
+      <Position>10</Position>
+      <DefaultConstraintName>DF__courseLis__tuesd__68487DD7</DefaultConstraintName>
+      <DefaultExpression>0</DefaultExpression>
+      <DataType>bit|0s</DataType>
+    </column>
+    <column id="281" parent="266" name="wednesday">
+      <Position>11</Position>
+      <DefaultConstraintName>DF__courseLis__wedne__693CA210</DefaultConstraintName>
+      <DefaultExpression>0</DefaultExpression>
+      <DataType>bit|0s</DataType>
+    </column>
+    <column id="282" parent="266" name="thursday">
+      <Position>12</Position>
+      <DefaultConstraintName>DF__courseLis__thurs__6A30C649</DefaultConstraintName>
+      <DefaultExpression>0</DefaultExpression>
+      <DataType>bit|0s</DataType>
+    </column>
+    <column id="283" parent="266" name="friday">
+      <Position>13</Position>
+      <DefaultConstraintName>DF__courseLis__frida__6B24EA82</DefaultConstraintName>
+      <DefaultExpression>0</DefaultExpression>
+      <DataType>bit|0s</DataType>
+    </column>
+    <column id="284" parent="266" name="startTime">
+      <Position>14</Position>
+      <DataType>time|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="285" parent="266" name="endTime">
+      <Position>15</Position>
+      <DataType>time|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="286" parent="266" name="studentCapacity">
+      <Position>16</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="287" parent="266" name="PK__courseLi__2AA84FF1D9FB6BD4">
+      <Position>1</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>courseID</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="288" parent="266" name="PK__courseLi__2AA84FF1D9FB6BD4">
+      <ObjectId>1701581100</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-02-23.09:38:46.473</CreatedTimestamp>
+      <ModifiedTimestamp>2021-02-23.09:38:46.473</ModifiedTimestamp>
+      <ColNames>courseID</ColNames>
+      <UnderlyingIndexName>PK__courseLi__2AA84FF1D9FB6BD4</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="289" parent="266" name="FK__courseLis__depar__66603565">
+      <ObjectId>1717581157</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-02-23.09:38:46.473</CreatedTimestamp>
+      <ModifiedTimestamp>2021-02-23.09:38:46.473</ModifiedTimestamp>
+      <ColNames>departmentCode</ColNames>
+      <RefTableId>1093578934</RefTableId>
+      <RefTableName>departments</RefTableName>
+      <RefKeyName>PK__departme__7BF423AC0BD92D20</RefKeyName>
+      <RefColNames>departmentCode</RefColNames>
+    </foreign-key>
+    <default id="290" parent="266" name="DF__courseLis__monda__6754599E">
+      <ObjectId>1733581214</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-02-23.09:38:46.477</ModifiedTimestamp>
+      <ColNames>monday</ColNames>
+      <DefaultExpression>0</DefaultExpression>
+    </default>
+    <default id="291" parent="266" name="DF__courseLis__tuesd__68487DD7">
+      <ObjectId>1749581271</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-02-23.09:38:46.477</ModifiedTimestamp>
+      <ColNames>tuesday</ColNames>
+      <DefaultExpression>0</DefaultExpression>
+    </default>
+    <default id="292" parent="266" name="DF__courseLis__wedne__693CA210">
+      <ObjectId>1765581328</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-02-23.09:38:46.477</ModifiedTimestamp>
+      <ColNames>wednesday</ColNames>
+      <DefaultExpression>0</DefaultExpression>
+    </default>
+    <default id="293" parent="266" name="DF__courseLis__thurs__6A30C649">
+      <ObjectId>1781581385</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-02-23.09:38:46.477</ModifiedTimestamp>
+      <ColNames>thursday</ColNames>
+      <DefaultExpression>0</DefaultExpression>
+    </default>
+    <default id="294" parent="266" name="DF__courseLis__frida__6B24EA82">
+      <ObjectId>1797581442</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2021-02-23.09:38:46.477</ModifiedTimestamp>
+      <ColNames>friday</ColNames>
+      <DefaultExpression>0</DefaultExpression>
+    </default>
+    <column id="295" parent="267" name="departmentCode">
+      <Position>1</Position>
+      <DataType>varchar(10 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="296" parent="267" name="departmentName">
+      <Position>2</Position>
+      <DataType>varchar(40 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="297" parent="267" name="PK__departme__7BF423AC0BD92D20">
+      <Position>1</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>departmentCode</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="298" parent="267" name="PK__departme__7BF423AC0BD92D20">
+      <ObjectId>1109578991</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-02-22.13:01:19.920</CreatedTimestamp>
+      <ModifiedTimestamp>2021-02-22.13:01:19.920</ModifiedTimestamp>
+      <ColNames>departmentCode</ColNames>
+      <UnderlyingIndexName>PK__departme__7BF423AC0BD92D20</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="299" parent="268" name="firstName">
       <Position>1</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="267" parent="264" name="lastName">
+    <column id="300" parent="268" name="lastName">
       <Position>2</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="268" parent="264" name="email">
+    <column id="301" parent="268" name="email">
       <Position>3</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="269" parent="264" name="password">
+    <column id="302" parent="268" name="password">
       <Position>4</Position>
       <DataType>nvarchar(100 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="270" parent="264" name="birthDate">
+    <column id="303" parent="268" name="birthDate">
       <Position>5</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="271" parent="264" name="instructorID">
+    <column id="304" parent="268" name="instructorID">
       <Position>6</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="272" parent="264" name="image">
+    <column id="305" parent="268" name="image">
       <Position>7</Position>
       <DataType>image|0s</DataType>
     </column>
-    <index id="273" parent="264" name="PK_instructors">
+    <column id="306" parent="268" name="bio">
+      <Position>8</Position>
+      <DataType>nvarchar(200 char)|0s</DataType>
+    </column>
+    <column id="307" parent="268" name="address">
+      <Position>9</Position>
+      <DataType>nvarchar(40 char)|0s</DataType>
+    </column>
+    <column id="308" parent="268" name="city">
+      <Position>10</Position>
+      <DataType>nvarchar(30 char)|0s</DataType>
+    </column>
+    <column id="309" parent="268" name="state">
+      <Position>11</Position>
+      <DataType>nvarchar(15 char)|0s</DataType>
+    </column>
+    <column id="310" parent="268" name="zip">
+      <Position>12</Position>
+      <DataType>nvarchar(15 char)|0s</DataType>
+    </column>
+    <column id="311" parent="268" name="phoneNumber">
+      <Position>13</Position>
+      <DataType>nvarchar(18 char)|0s</DataType>
+    </column>
+    <index id="312" parent="268" name="PK_instructors">
       <Position>1</Position>
       <ColNames>instructorID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="274" parent="264" name="PK_instructors">
+    <key id="313" parent="268" name="PK_instructors">
       <ObjectId>965578478</ObjectId>
       <CreatedTimestamp>2021-02-16.10:08:50.560</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-16.10:08:50.560</ModifiedTimestamp>
@@ -1152,48 +1371,100 @@
       <UnderlyingIndexName>PK_instructors</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="275" parent="265" name="firstName">
+    <column id="314" parent="269" name="studentEmail">
+      <Position>1</Position>
+      <DataType>varchar(50 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="315" parent="269" name="courseNumber">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="316" parent="269" name="PK__registra__F8B6CF5DB043DA68">
+      <Position>1</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>studentEmail
+courseNumber</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="317" parent="269" name="PK__registra__F8B6CF5DB043DA68">
+      <ObjectId>1285579618</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2021-02-23.03:55:34.717</CreatedTimestamp>
+      <ModifiedTimestamp>2021-02-23.03:55:34.717</ModifiedTimestamp>
+      <ColNames>studentEmail
+courseNumber</ColNames>
+      <UnderlyingIndexName>PK__registra__F8B6CF5DB043DA68</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="318" parent="270" name="firstName">
       <Position>1</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="276" parent="265" name="lastName">
+    <column id="319" parent="270" name="lastName">
       <Position>2</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="277" parent="265" name="email">
+    <column id="320" parent="270" name="email">
       <Position>3</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="278" parent="265" name="password">
+    <column id="321" parent="270" name="password">
       <Position>4</Position>
       <DataType>nvarchar(100 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="279" parent="265" name="birthDate">
+    <column id="322" parent="270" name="birthDate">
       <Position>5</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="280" parent="265" name="studentID">
+    <column id="323" parent="270" name="studentID">
       <Position>6</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="281" parent="265" name="image">
+    <column id="324" parent="270" name="image">
       <Position>7</Position>
       <DataType>image|0s</DataType>
     </column>
-    <index id="282" parent="265" name="PK_students">
+    <column id="325" parent="270" name="bio">
+      <Position>8</Position>
+      <DataType>nvarchar(200 char)|0s</DataType>
+    </column>
+    <column id="326" parent="270" name="address">
+      <Position>9</Position>
+      <DataType>nvarchar(40 char)|0s</DataType>
+    </column>
+    <column id="327" parent="270" name="city">
+      <Position>10</Position>
+      <DataType>nvarchar(30 char)|0s</DataType>
+    </column>
+    <column id="328" parent="270" name="state">
+      <Position>11</Position>
+      <DataType>nvarchar(15 char)|0s</DataType>
+    </column>
+    <column id="329" parent="270" name="zip">
+      <Position>12</Position>
+      <DataType>nvarchar(15 char)|0s</DataType>
+    </column>
+    <column id="330" parent="270" name="phoneNumber">
+      <Position>13</Position>
+      <DataType>nvarchar(18 char)|0s</DataType>
+    </column>
+    <index id="331" parent="270" name="PK_students">
       <Position>1</Position>
       <ColNames>studentID</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="283" parent="265" name="PK_students">
+    <key id="332" parent="270" name="PK_students">
       <ObjectId>933578364</ObjectId>
       <CreatedTimestamp>2021-02-16.10:06:15.950</CreatedTimestamp>
       <ModifiedTimestamp>2021-02-16.10:06:15.950</ModifiedTimestamp>

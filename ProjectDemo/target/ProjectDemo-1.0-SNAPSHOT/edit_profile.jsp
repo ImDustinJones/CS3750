@@ -17,7 +17,7 @@
     <ul class="navUl">
         <li class="navLi"><a href="home.jsp">Home</a></li>
         <li class="navLi"><a class="active" href="edit_profile.jsp">Profile</a></li>
-        <li class="navLi"><a href="#DummyN2">Dummy</a></li>
+        <li class="navLi"><a href="courses_register.jsp">Dummy</a></li>
         <li class="navLi"><a href="#DummyN3">Dummy</a></li>
     </ul>
     <div class="mainContainer">
@@ -56,7 +56,7 @@
                         <input type = "file" name = "profilePic" id = "profilePic"><br>
                         <input type="submit" value="Submit Image"> <br>
                     </form>
-                    <form form method="post" action="EditProfileDAO">
+                    <form method="post" action="${pageContext.request.contextPath}/edit-profile-s">
                         <label for = "email" style="text-align: center;">Email: ${email}</label>
                         <input type="hidden" name="email" id="email" value="${email}"><br>
                         <label for="firstName">First Name: </label>
