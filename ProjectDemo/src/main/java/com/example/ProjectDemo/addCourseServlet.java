@@ -39,19 +39,21 @@ public class addCourseServlet extends HttpServlet {
         int thursdayBit = 0;
         int fridayBit = 0;
 
-        if(monday.equals("1")){
+        System.out.println(startTime);
+
+        if(monday != null){
             mondayBit = Integer.parseInt(monday);
         }
-        if(tuesday.equals("1")){
+        if(tuesday != null){
             tuesdayBit = Integer.parseInt(tuesday);
         }
-        if(wednesday.equals("1")){
+        if(wednesday != null){
             wednesdayBit = Integer.parseInt(wednesday);
         }
-        if(thursday.equals("1")){
+        if(thursday != null){
             thursdayBit = Integer.parseInt(thursday);
         }
-        if(friday.equals("1")){
+        if(friday != null){
             fridayBit = Integer.parseInt(friday);
         }
 
