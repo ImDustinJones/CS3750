@@ -9,10 +9,10 @@ import java.io.InputStream;
 import java.sql.*;
 import java.text.ParseException;
 
-@WebServlet(name = "EditProfileDAO", value = "/EditProfileDAO")
-public class EditProfileDAO extends HttpServlet {
+@WebServlet(name = "EditProfileDAO", value = "/edit-profile-s")
+public class EditProfileServlet extends HttpServlet {
 
-    public EditProfileDAO(){ super();}
+    public EditProfileServlet(){ super();}
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

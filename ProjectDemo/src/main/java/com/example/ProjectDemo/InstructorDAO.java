@@ -51,12 +51,6 @@ public class InstructorDAO {
     public Instructors addInstructorDB(String email, String firstname, String lastname, String password, String birthdate) throws SQLException, ClassNotFoundException, ParseException {
   //      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String encryptedPassword = encrypt(password);
-//        Date birthDate = null;
-//        try {
-//            birthDate = dateFormat.parse(birthdate);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
         Connection connection = connectDatabase();
 
         String sqlInsert = "INSERT INTO instructors(email, password, firstName, lastName, birthDate) VALUES('"+email+"','"+encryptedPassword+"','"+firstname+"','"+lastname+"','"+birthdate+"');";
