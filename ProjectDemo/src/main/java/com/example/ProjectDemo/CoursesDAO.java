@@ -45,4 +45,38 @@ public class CoursesDAO {
 
         return DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
     }
+
+    public Courses[] getCourseList(String email) throws SQLException, ClassNotFoundException {
+        Connection connection = connectDatabase();
+        Statement stmt = connection.createStatement();
+
+        String sqlQuery = "SELECT courseNumber, courseName FROM courseList WHERE instructorEmail = "+email+";";
+        ResultSet rs = stmt.executeQuery(sqlQuery);
+
+        Courses[] courseList = null;
+        int count = 0;
+
+        while(rs.next()){
+            //Retrieve by column name
+            Courses course;
+            course = new Courses();
+            course.setCourseName(rs.getString("courseName"));
+            course.setDepartmentCode(rs.getString("departmentCode"));
+            course.setInstructorEmail(rs.getString("instructorEmail"));
+            course.setInstructorLastName(rs.getString("instructorLastName"));
+            course.setCourseDescription(rs.getString("courseDescription"));
+            course.setCreditHours(rs.getInt("creditHours"));
+            course.setStartTime(rs.getString("startTime"));
+            course.setEndTime(rs.getString("endTime"));
+            course.setStudentCapacity(rs.getInt("studentCapacity"));
+
+            assert false;
+            courseList[count] = course;
+            count++;
+
+        }
+        rs.close();
+
+        return courseList;
+    }
 }

@@ -16,21 +16,22 @@ public class addCourseServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         String courseNumber = request.getParameter("CourseNumber");
         String courseName = request.getParameter("CourseName");
         String department = request.getParameter("Department");
         String creditHours = request.getParameter("CreditHours");
         String capacity = request.getParameter("Capacity");
-        String startTime = request.getParameter("startTime");
-        String endTime = request.getParameter("endTime");
+        String startTime = request.getParameter("StartTime");
+        String endTime = request.getParameter("EndTime");
         String courseDescription = request.getParameter("CourseDescription");
         String monday = request.getParameter("Monday");
         String tuesday = request.getParameter("Tuesday");
         String wednesday = request.getParameter("Wednesday");
         String thursday = request.getParameter("Thursday");
         String friday = request.getParameter("Friday");
-        String lastName = request.getParameter("lastName");
-        String email = request.getParameter("email");
+        String lastName = (String) session.getAttribute("lastName");
+        String email = (String) session.getAttribute("email");
         int creditHoursInt = Integer.parseInt(creditHours);
         int capacityInt = Integer.parseInt(capacity);
         int mondayBit = 0;

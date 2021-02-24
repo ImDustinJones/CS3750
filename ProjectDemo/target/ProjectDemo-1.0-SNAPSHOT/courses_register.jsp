@@ -13,16 +13,25 @@
     <title>Courses</title>
 </head>
 <body>
+<jsp:include page="/display-instructors-course" />
 <ul class="navUl">
     <li class="navLi"><a href="home.jsp">Home</a></li>
     <li class="navLi"><a class="active" href="edit_profile.jsp">Profile</a></li>
-    <li class="navLi"><a href="courses_register.jsp">Dummy</a></li>
+    <li class="navLi"><a href="courses_register.jsp">Courses</a></li>
     <li class="navLi"><a href="#DummyN3">Dummy</a></li>
 </ul>
 <div class="mainContainer">
+    <div class = "profileContainer">
     <h1>Your Courses</h1>
 
     <!--This is the course list -->
+
+    <p>${courselist}</p>
+
+
+
+
+
 
     <div class="popup">
         <div class="popup__container">
@@ -45,19 +54,19 @@
             <input type="Number" name="Capacity" id="Capacity"><br>
 
             <label for="Monday">Monday</label>
-            <input type="checkbox" id="Monday" name="Monday" value="1">
+            <input type="checkbox" id="Monday" name="Monday" value="1"><br>
 
             <label for="Tuesday">Tuesday</label>
-            <input type="checkbox" id="Tuesday" name="Tuesday" value="1">
+            <input type="checkbox" id="Tuesday" name="Tuesday" value="1"><br>
 
             <label for="Wednesday">Wednesday</label>
-            <input type="checkbox" id="Wednesday" name="Wednesday" value="1">
+            <input type="checkbox" id="Wednesday" name="Wednesday" value="1"><br>
 
             <label for="Thursday">Thursday</label>
-            <input type="checkbox" id="Thursday" name="Thursday" value="1">
+            <input type="checkbox" id="Thursday" name="Thursday" value="1"><br>
 
             <label for="Friday">Friday</label>
-            <input type="checkbox" id="Friday" name="Friday" value="1">
+            <input type="checkbox" id="Friday" name="Friday" value="1"><br>
 
             <label for="StartTime">Start Time:</label>
             <input type="time" name="StartTime" id="StartTime"> <br>
@@ -75,6 +84,7 @@
     <div style = "text-align: center">
         <button class = "popup-button">Add Course</button>
     </div>
+</div>
 </div>
 <script src="editprofile.js"></script>
 </body>

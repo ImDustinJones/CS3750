@@ -10,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 @WebServlet(name = "LoginServlet", value = "/LoginServlet")
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    public Users user;
+    public Instructors instructor;
 
     public LoginServlet() {
         super();
@@ -28,15 +30,15 @@ public class LoginServlet extends HttpServlet {
         InstructorDAO instructorDao = new InstructorDAO();
 
         try {
-            Users user = userDao.checkLogin(email, password);
-            Instructors instructor = instructorDao.checkLoginInstructor(email, password);
+            user = userDao.checkLogin(email, password);
+            instructor = instructorDao.checkLoginInstructor(email, password);
             request.setAttribute("loginResult", "true");
             String destPage = "index.jsp";
 
             if (user != null) { // here it will set the attributes for profile and home page
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                session.setAttribute("email", email);
+                session.setAttribute("email", user.getEmail());
                 session.setAttribute("firstName", user.getFirstname());
                 session.setAttribute("lastName", user.getLastname());
                 session.setAttribute("bio", user.getBio());
@@ -52,7 +54,7 @@ public class LoginServlet extends HttpServlet {
             else if (instructor != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                session.setAttribute("email", email);
+                session.setAttribute("email", user.getEmail());
                 session.setAttribute("firstName", instructor.getFirstname());
                 session.setAttribute("lastName", instructor.getLastname());
                 session.setAttribute("bio", instructor.getBio());
