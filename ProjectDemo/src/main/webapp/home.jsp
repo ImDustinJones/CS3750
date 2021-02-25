@@ -149,6 +149,7 @@
                 </div>
             </div></a>
             <%}
+                <%-- Should be working --%>
             connection.close();
             }catch(Exception e){
                     e.printStackTrace();
