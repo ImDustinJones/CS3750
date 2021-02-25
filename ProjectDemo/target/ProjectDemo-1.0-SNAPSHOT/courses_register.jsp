@@ -1,6 +1,10 @@
 <%@ page import="java.awt.*" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.example.ProjectDemo.Courses" %><%--
+<%@ page import="com.example.ProjectDemo.Courses" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: johnn
   Date: 2/23/2021
@@ -27,28 +31,56 @@
     <h1>Your Courses</h1>
 
     <!--This is the course list -->
-        <div class="card">
-            <div class = "container">
-                <p>${courselist[1].departmentCode}${courselist[1].courseNumber} ${courselist[1].courseName}</p>
-                <p>${courselist[1].instructorLastName}</p>
-                <p>${courselist[1].courseDescription}</p>
-                <button>Edit</button>
+        <%
+            try{
+                String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
+                String dbUser = "LMS_RunTime";
+                String dbPassword = "password1!";
+                String email = (String) session.getAttribute("email");
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+
+                Statement statement = connection.createStatement();
+                String query = "SELECT * FROM courseList WHERE instructorEmail LIKE '"+email+"';";
+                ResultSet resultSet = statement.executeQuery(query);
+
+                while(resultSet.next()){
+                    String courseString1 = resultSet.getString("departmentCode")+" "+resultSet.getString("courseNumber")+" "+resultSet.getString("courseName");
+                    String courseString2 = resultSet.getString("instructorLastName");
+                    String days = "";
+                    if(resultSet.getString("monday").equals("1")){
+                        days = days.concat("Mon");
+                    }
+                    if(resultSet.getString("tuesday").equals("1")){
+                        days = days.concat(" Tue");
+                    }
+                    if(resultSet.getString("wednesday").equals("1")){
+                        days = days.concat(" Wed");
+                    }
+                    if(resultSet.getString("thursday").equals("1")){
+                        days = days.concat(" Thur");
+                    }
+                    if(resultSet.getString("friday").equals("1")){
+                        days = days.concat(" Fri");
+                    }
+                    String courseString3 = days+": "+resultSet.getString("startTime").substring(0,resultSet.getString("startTime").length() - 11)+ " - "+resultSet.getString("endTime").substring(0,resultSet.getString("endTime").length() - 11);
+                    session.setAttribute("courseString1", courseString1);
+                    session.setAttribute("courseString2", courseString2);
+                    session.setAttribute("courseString3", courseString3);
+                    session.setAttribute("courseNumber", resultSet.getString("courseNumber"));%>
+        <a href=${courseNumber}> <div class="card">
+            <div class="container">
+                <h4><b>${courseString1}</b></h4>
+                <p>${courseString2}</p>
+                <p>${courseString3}</p>
             </div>
-        </div>
-
-        <div class="card">
-            <div class = "container">
-                <p>${courselist[0].departmentCode}${courselist[0].courseNumber} ${courselist[0].courseName}</p>
-                <p>${courselist[0].instructorLastName}</p>
-                <p>${courselist[0].courseDescription}</p>
-                <button>Edit</button>
-            </div>
-        </div>
-
-
-
-
-
+        </div></a>
+        <%}
+            connection.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        %>
 
     <div class="popup">
         <div class="popup__container">
