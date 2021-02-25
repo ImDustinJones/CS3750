@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.awt.*" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.example.ProjectDemo.Courses" %><%--
   Created by IntelliJ IDEA.
   User: johnn
   Date: 2/23/2021
@@ -25,9 +27,16 @@
     <h1>Your Courses</h1>
 
     <!--This is the course list -->
-
-    <p>${courselist}</p>
-
+        <a href="#DummyB"> <div class="card">
+            <div class = "container">
+                <p>${courselist[1].courseNumber}</p>
+                <p>${courselist[1].courseName}</p>
+                <p>${courselist[1].instructorLastName}</p>
+                <p>${courselist[1].courseDescription}</p>
+                <button>Edit</button>
+            </div>
+        </div>
+        </a>
 
 
 
