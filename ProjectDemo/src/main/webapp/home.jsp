@@ -1,4 +1,8 @@
 <%@ page import="com.example.ProjectDemo.Users" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang='en'>
 <head>
@@ -99,34 +103,42 @@
           <h2>Courses List</h2>
 
         <div class="cardContainer">
-            <a href="#DummyA"><div class="card">
+            <%
+                try{
+                String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
+                String dbUser = "LMS_RunTime";
+                String dbPassword = "password1!";
+                String email = (String) session.getAttribute("email");
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+
+                Statement statement = connection.createStatement();
+                String query = "SELECT registrations.courseNumber, courseList.courseName, courseList.instructorLastName, courseList.startTime, courseList.endTime " +
+                        "FROM registrations INNER JOIN courseList ON registrations.courseNumber = courseList.courseNumber WHERE registrations.studentEmail = '"+email+"'";
+                ResultSet resultSet = statement.executeQuery(query);
+
+                while(resultSet.next()){%>
+         <%--   This is still WIP currently unable to pull values but my code will display the amount of registered courses the user is in
+         <a href="#DummyA"> <div class="card">
                   <div class="container">
-                      <h4><b>CS1234 Dummy Computer Science</b></h4>
-                      <p>Instructor 1</p>
-                      <p>Mon/Wed 1:00PM - 2:00PM</p>
+                      <h4><b><%=resultSet.getString("registrations.courseNumber")+" "+resultSet.getString("courseList.courseName")%></b></h4>
+                      <p><%=resultSet.getString("courseList.instructorLastName")%></p>
+                      <p><%="DAYS OF WEEK: "+resultSet.getString("courseList.startTime")+ " - "+resultSet.getString("courseList.endTime")%></p>
                   </div>
-            </div></a>
+            </div></a> --%>
             <a href="#DummyB"> <div class="card">
-                  <div class="container">
-                      <h4><b>CS1234 Dummy Computer Science</b></h4>
-                      <p>Instructor 1</p>
-                      <p>Mon/Wed 1:00PM - 2:00PM</p>
-                  </div>
+                <div class="container">
+                    <h4><b>CS1234 Dummy Computer Science</b></h4>
+                    <p>Instructor 1</p>
+                    <p>Mon/Wed 1:00PM - 2:00PM</p>
+                </div>
             </div></a>
-            <a href="#DummyC"><div class="card">
-                  <div class="container">
-                      <h4><b>CS1234 Dummy Computer Science</b></h4>
-                      <p>Instructor 1</p>
-                      <p>Mon/Wed 1:00PM - 2:00PM</p>
-                  </div>
-            </div></a>
-            <a href="#DummyD"><div class="card">
-                  <div class="container">
-                      <h4><b>CS1234 Dummy Computer Science</b></h4>
-                      <p>Instructor 1</p>
-                      <p>Mon/Wed 1:00PM - 2:00PM</p>
-                  </div>
-            </div></a>
+            <%}
+            connection.close();
+            }catch(Exception e){
+                    e.printStackTrace();
+            }
+            %>
         </div>
     </div>
       <h2>Learning Calendar</h2>
