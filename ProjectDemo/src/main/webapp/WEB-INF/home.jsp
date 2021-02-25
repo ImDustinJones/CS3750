@@ -115,15 +115,20 @@
                     String query = "SELECT registrations.courseNumber, courseList.courseName, courseList.instructorLastName, courseList.startTime, courseList.endTime " +
                             "FROM registrations INNER JOIN courseList ON registrations.courseNumber = courseList.courseNumber WHERE registrations.studentEmail = '"+email+"'";
                     ResultSet resultSet = statement.executeQuery(query);
-                    while(resultSet.next()){%>
-            <%--   This is still WIP currently unable to pull values but my code will display the amount of registered courses the user is in
+                    while(resultSet.next()){
+            String courseString1 = resultSet.getString("registrations.courseNumber")+" "+resultSet.getString("courseList.courseName");
+            String courseString2 = resultSet.getString("courseList.instructorLastName");
+            String courseString3 = "DAYS OF WEEK: "+resultSet.getString("courseList.startTime")+ " - "+resultSet.getString("courseList.endTime");
+            session.setAttribute("courseString1", courseString1);
+            session.setAttribute("courseString2", courseString2);
+            session.setAttribute("courseString3", courseString3);%>
             <a href="#DummyA"> <div class="card">
                      <div class="container">
-                         <h4><b><%=resultSet.getString("registrations.courseNumber")+" "+resultSet.getString("courseList.courseName")%></b></h4>
-                         <p><%=resultSet.getString("courseList.instructorLastName")%></p>
-                         <p><%="DAYS OF WEEK: "+resultSet.getString("courseList.startTime")+ " - "+resultSet.getString("courseList.endTime")%></p>
+                         <h4><b>${courseString1}</b></h4>
+                         <p>${courseString2}</p>
+                         <p>${courseString3}</p>
                      </div>
-               </div></a> --%>
+               </div></a>
             <a href="#DummyB"> <div class="card">
                 <div class="container">
                     <h4><b>CS1234 Dummy Computer Science</b></h4>
