@@ -1,4 +1,8 @@
 <%@ page import="com.example.ProjectDemo.Users" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang='en'>
 <head>
@@ -99,34 +103,57 @@
           <h2>Courses List</h2>
 
         <div class="cardContainer">
-            <a href="#DummyA"><div class="card">
-                  <div class="container">
-                      <h4><b>CS1234 Dummy Computer Science</b></h4>
-                      <p>Instructor 1</p>
-                      <p>Mon/Wed 1:00PM - 2:00PM</p>
-                  </div>
+            <%
+                try{
+                String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
+                String dbUser = "LMS_RunTime";
+                String dbPassword = "password1!";
+                String email = (String) session.getAttribute("email");
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+
+                Statement statement = connection.createStatement();
+                String query = "SELECT registrations.courseNumber, courseList.courseName, courseList.departmentCode, courseList.monday, courseList.tuesday, courseList.wednesday, courseList.thursday, courseList.friday, courseList.instructorLastName, courseList.startTime, courseList.endTime " +
+                        "FROM registrations INNER JOIN courseList ON registrations.courseNumber = courseList.courseNumber WHERE registrations.studentEmail = '"+email+"'";
+                ResultSet resultSet = statement.executeQuery(query);
+
+                while(resultSet.next()){
+                    String courseString1 = resultSet.getString("departmentCode")+" "+resultSet.getString("courseNumber")+" "+resultSet.getString("courseName");
+                    String courseString2 = resultSet.getString("instructorLastName");
+                    String days = "";
+                    if(resultSet.getString("monday").equals("1")){
+                        days = days.concat("Mon");
+                    }
+                    if(resultSet.getString("tuesday").equals("1")){
+                        days = days.concat(" Tue");
+                    }
+                    if(resultSet.getString("wednesday").equals("1")){
+                        days = days.concat(" Wed");
+                    }
+                    if(resultSet.getString("thursday").equals("1")){
+                        days = days.concat(" Thur");
+                    }
+                    if(resultSet.getString("friday").equals("1")){
+                        days = days.concat(" Fri");
+                    }
+                    String courseString3 = days+": "+resultSet.getString("startTime").substring(0,resultSet.getString("startTime").length() - 11)+ " - "+resultSet.getString("endTime").substring(0,resultSet.getString("endTime").length() - 11);
+                    session.setAttribute("courseString1", courseString1);
+                    session.setAttribute("courseString2", courseString2);
+                    session.setAttribute("courseString3", courseString3);
+                    session.setAttribute("courseNumber", resultSet.getString("courseNumber"));%>
+            <a href=${courseNumber}> <div class="card">
+                <div class="container">
+                    <h4><b>${courseString1}</b></h4>
+                    <p>${courseString2}</p>
+                    <p>${courseString3}</p>
+                </div>
             </div></a>
-            <a href="#DummyB"> <div class="card">
-                  <div class="container">
-                      <h4><b>CS1234 Dummy Computer Science</b></h4>
-                      <p>Instructor 1</p>
-                      <p>Mon/Wed 1:00PM - 2:00PM</p>
-                  </div>
-            </div></a>
-            <a href="#DummyC"><div class="card">
-                  <div class="container">
-                      <h4><b>CS1234 Dummy Computer Science</b></h4>
-                      <p>Instructor 1</p>
-                      <p>Mon/Wed 1:00PM - 2:00PM</p>
-                  </div>
-            </div></a>
-            <a href="#DummyD"><div class="card">
-                  <div class="container">
-                      <h4><b>CS1234 Dummy Computer Science</b></h4>
-                      <p>Instructor 1</p>
-                      <p>Mon/Wed 1:00PM - 2:00PM</p>
-                  </div>
-            </div></a>
+            <%}
+            connection.close();
+            }catch(Exception e){
+                    e.printStackTrace();
+            }
+            %>
         </div>
     </div>
       <h2>Learning Calendar</h2>

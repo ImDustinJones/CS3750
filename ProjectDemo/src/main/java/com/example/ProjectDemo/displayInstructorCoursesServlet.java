@@ -17,20 +17,22 @@ public class displayInstructorCoursesServlet extends HttpServlet {
         System.out.println("Display Instructor Courses is Running");
         CoursesDAO courseDao = new CoursesDAO();
         HttpSession session = request.getSession();
-        List<Courses> courseList;
+        List<Courses> courseList = null;
 
         String email = (String) session.getAttribute("email");
         try {
             courseList = courseDao.getCourseList(email);
-            for(Courses course : courseList){
-                System.out.println(course.toString());
-            }
+//            for(Courses course : courseList){
+//                System.out.println(course.toString());
+//            }
             session.setAttribute("courselist", courseList);
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
         
     }
 
