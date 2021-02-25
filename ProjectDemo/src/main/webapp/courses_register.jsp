@@ -29,10 +29,6 @@
     <p>${courselist}</p>
 
 
-
-
-
-
     <div class="popup">
         <div class="popup__container">
             <button type="button" class="close-button"></button>
