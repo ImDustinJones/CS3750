@@ -73,6 +73,7 @@
                 <h4><b>${courseString1}</b></h4>
                 <p>${courseString2}</p>
                 <p>${courseString3}</p>
+                <button>Edit</button>
             </div>
         </div></a>
         <%}
