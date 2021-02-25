@@ -3,7 +3,8 @@ package com.example.ProjectDemo;
 
 import java.sql.*;
 import java.text.ParseException;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class CoursesDAO {
@@ -46,20 +47,23 @@ public class CoursesDAO {
         return DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
     }
 
-    public Courses[] getCourseList(String email) throws SQLException, ClassNotFoundException {
+    public List<Courses> getCourseList(String email) throws SQLException, ClassNotFoundException {
         Connection connection = connectDatabase();
         Statement stmt = connection.createStatement();
 
-        String sqlQuery = "SELECT courseNumber, courseName FROM courseList WHERE instructorEmail = "+email+";";
+        String sqlQuery = "SELECT * FROM courseList WHERE instructorEmail LIKE '"+email+"';";
         ResultSet rs = stmt.executeQuery(sqlQuery);
 
-        Courses[] courseList = null;
-        int count = 0;
+        //Courses[] courseList = null;
+        //int count = 0;
+
+        List<Courses>courseList = new ArrayList<Courses>();
 
         while(rs.next()){
             //Retrieve by column name
             Courses course;
             course = new Courses();
+            course.setCourseNumber(rs.getInt("courseNumber"));
             course.setCourseName(rs.getString("courseName"));
             course.setDepartmentCode(rs.getString("departmentCode"));
             course.setInstructorEmail(rs.getString("instructorEmail"));
@@ -71,8 +75,9 @@ public class CoursesDAO {
             course.setStudentCapacity(rs.getInt("studentCapacity"));
 
             assert false;
-            courseList[count] = course;
-            count++;
+            courseList.add(course);
+            //courseList[count] = course;
+            //count++;
 
         }
         rs.close();

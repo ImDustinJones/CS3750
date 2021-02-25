@@ -2,7 +2,7 @@ package com.example.ProjectDemo;
 
 public class Courses {
     private int courseId;
-    private String courseNumber;
+    private int courseNumber;
     private String courseName;
     private String departmentCode;
     private String instructorEmail;
@@ -18,11 +18,11 @@ public class Courses {
     private int thursday;
     private int friday;
 
-    public String getCourseNumber() {
+    public int getCourseNumber() {
         return courseNumber;
     }
 
-    public void setCourseNumber(String courseNumber) {
+    public void setCourseNumber(int courseNumber) {
         this.courseNumber = courseNumber;
     }
 
@@ -141,7 +141,7 @@ public class Courses {
     @Override
     public String toString() {
         return "Courses{" +
-                "courseNumber=" + courseNumber +
+                "courseNumber=" + String.valueOf(courseNumber) +
                 ", courseName='" + courseName + '\'' +
                 ", departmentCode='" + departmentCode + '\'' +
                 ", instructorEmail='" + instructorEmail + '\'' +
