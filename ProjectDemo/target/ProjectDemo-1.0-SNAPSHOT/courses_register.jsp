@@ -27,14 +27,24 @@
     <h1>Your Courses</h1>
 
     <!--This is the course list -->
-        <a href="#DummyB"> <div class="card">
-            <p>${courselist[1].courseNumber}</p><br>
-            <p>${courselist[1].courseName}</p><br>
-            <p>${courselist[1].instructorLastName}</p><br>
-            <p>${courselist[1].courseDescription}</p><br>
-            <button>Edit</button>
+        <div class="card">
+            <div class = "container">
+                <p>${courselist[1].departmentCode}${courselist[1].courseNumber} ${courselist[1].courseName}</p>
+                <p>${courselist[1].instructorLastName}</p>
+                <p>${courselist[1].courseDescription}</p>
+                <button>Edit</button>
+            </div>
         </div>
-        </a>
+
+        <div class="card">
+            <div class = "container">
+                <p>${courselist[0].departmentCode}${courselist[0].courseNumber} ${courselist[0].courseName}</p>
+                <p>${courselist[0].instructorLastName}</p>
+                <p>${courselist[0].courseDescription}</p>
+                <button>Edit</button>
+            </div>
+        </div>
+
 
 
 
