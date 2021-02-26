@@ -165,7 +165,7 @@
                 String department =  resultSet.getString("departmentCode");
                 session.setAttribute("filterDept", department);
                 %>
-                <a id="myLink1" href="#" onclick="myFunction(2);">${filterDept}</a>
+                <a id="myLink1" href="#" onclick="dropDownFunction('${filterDept}')">${filterDept}</a>
                 <%}
                     connection.close();
                 }catch(Exception e){
@@ -184,6 +184,23 @@
                 tr = table.getElementsByTagName("tr");
                 for (i = 0; i < tr.length; i++) {
                     td = tr[i].getElementsByTagName("td")[int];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+            function dropDownFunction(String){
+                var filter, table, tr, td, i, txtValue;
+                filter = String;
+                table = document.getElementById("myTable");
+                tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[1];
                     if (td) {
                         txtValue = td.textContent || td.innerText;
                         if (txtValue.toUpperCase().indexOf(filter) > -1) {
