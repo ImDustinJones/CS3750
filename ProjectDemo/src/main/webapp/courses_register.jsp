@@ -17,6 +17,39 @@
     <link href='navigationbar.css' rel='stylesheet'/>
     <link href='home.css' rel='stylesheet'/>
     <title>Courses</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        #myTable {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #ddd;
+            font-size: 18px;
+            background-color: #F6AE2D;
+        }
+
+        #myTable th, #myTable td {
+            text-align: left;
+            padding: 12px;
+        }
+
+        #myTable tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+        #myTable tr.header, #myTable tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        #coursesContainer{
+            margin: auto;
+            padding-left: 5%;
+            width: 80%;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="/display-instructors-course" />
@@ -26,132 +59,111 @@
     <li class="navLi"><a href="courses_register.jsp">Courses</a></li>
     <li class="navLi"><a href="#DummyN3">Dummy</a></li>
 </ul>
-<div class="mainContainer">
-    <div class = "profileContainer">
-    <h1>Your Courses</h1>
 
-    <!--This is the course list -->
-        <%
-            try{
-                String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
-                String dbUser = "LMS_RunTime";
-                String dbPassword = "password1!";
-                String email = (String) session.getAttribute("email");
-                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+<h1>Your Courses</h1>
 
-                Statement statement = connection.createStatement();
-                String query = "SELECT * FROM courseList WHERE instructorEmail LIKE '"+email+"';";
-                ResultSet resultSet = statement.executeQuery(query);
+<div id="coursesContainer">
 
-                while(resultSet.next()){
-                    String courseString1 = resultSet.getString("departmentCode")+" "+resultSet.getString("courseNumber")+" "+resultSet.getString("courseName");
-                    String courseString2 = resultSet.getString("instructorLastName");
-                    String days = "";
-                    if(resultSet.getString("monday").equals("1")){
-                        days = days.concat("Mon");
-                    }
-                    if(resultSet.getString("tuesday").equals("1")){
-                        days = days.concat(" Tue");
-                    }
-                    if(resultSet.getString("wednesday").equals("1")){
-                        days = days.concat(" Wed");
-                    }
-                    if(resultSet.getString("thursday").equals("1")){
-                        days = days.concat(" Thur");
-                    }
-                    if(resultSet.getString("friday").equals("1")){
-                        days = days.concat(" Fri");
-                    }
-                    String courseString3 = days+": "+resultSet.getString("startTime").substring(0,resultSet.getString("startTime").length() - 11)+ " - "+resultSet.getString("endTime").substring(0,resultSet.getString("endTime").length() - 11);
-                    session.setAttribute("courseString1", courseString1);
-                    session.setAttribute("instructorLastName", courseString2);
-                    session.setAttribute("courseString3", courseString3);
-                    session.setAttribute("courseNumber", resultSet.getString("courseNumber"));
-                    session.setAttribute("courseName", resultSet.getString("courseName"));
-                    session.setAttribute("departmentCode", resultSet.getString("departmentCode"));
-                    session.setAttribute("instructorEmail", resultSet.getString("instructorEmail"));
-                    session.setAttribute("courseDescription", resultSet.getString("courseDescription"));
-                    session.setAttribute("creditHours", resultSet.getInt("creditHours"));
-                    session.setAttribute("studentCapacity", resultSet.getInt("studentCapacity"));
-                    session.setAttribute("startTime", resultSet.getString("startTime"));
-                    session.setAttribute("endTime", resultSet.getString("endTime"));
-                    session.setAttribute("courseID", resultSet.getInt("courseID"));
+        <table id="myTable">
+            <tr class="header">
+                <th style="width:20%;">Course Name</th>
+                <th style="width:10%;">Department</th>
+                <th style="width:10%;">Course Number</th>
+                <th style="width:40%;">Description</th>
+                <th style="width:10%;">Credit Hours</th>
+                <th style="width:10%;">Mon</th>
+                <th style="width:10%;">Tue</th>
+                <th style="width:10%;">Wed</th>
+                <th style="width:10%;">Thu</th>
+                <th style="width:10%;">Fri</th>
+                <th style="width:10%;">Start Time</th>
+                <th style="width:10%;">End Time</th>
+                <th style="width:10%;">Capacity</th>
+                <th></th>
 
-        %>
-       <div class="card">
-            <div class="container">
-                <h4><b>${courseString1}</b></h4>
-                <p>${instructorLastName}</p>
-                <p>${courseString3}</p>
-
-                <button onclick="myFunction()">Edit Course</button>
-                <div id="myDiv">
-                    <h2 >Edit Course</h2>
-                    <form method="post" action="${pageContext.request.contextPath}/edit-course">
-                    <label for="CourseNumber1">Course Number: </label>
-                    <input type="text" name="CourseNumber1" id="CourseNumber1" placeholder="${courseNumber}"><br>
-
-                    <label for="CourseName1">Course Name: </label>
-                    <input type="text" name="CourseName1" id="CourseName1" placeholder="${courseName}"><br>
-
-                    <label for="Department1">Department: </label>
-                    <input type="text" name="Department1" id="Department1" placeholder="${departmentCode}"><br>
-
-                    <label for="CreditHours1">Credit Hours: </label>
-                    <input type="number" name="CreditHours1" id="CreditHours1" placeholder="${creditHours}"><br>
-
-                    <label for="Capacity1">Capacity: </label>
-                    <input type="Number" name="Capacity1" id="Capacity1" placeholder="${studentCapacity}"><br>
-
-                    <label for="Monday1">Monday</label>
-                    <input type="checkbox" id="Monday1" name="Monday1" value="1"><br>
-
-                    <label for="Tuesday1">Tuesday</label>
-                    <input type="checkbox" id="Tuesday1" name="Tuesday1" value="1"><br>
-
-                    <label for="Wednesday1">Wednesday</label>
-                    <input type="checkbox" id="Wednesday1" name="Wednesday1" value="1"><br>
-
-                    <label for="Thursday1">Thursday</label>
-                    <input type="checkbox" id="Thursday1" name="Thursday1" value="1"><br>
-
-                    <label for="Friday1">Friday</label>
-                    <input type="checkbox" id="Friday1" name="Friday1" value="1"><br>
-
-                    <label for="StartTime1">Start Time:</label>
-                    <input type="time" name="StartTime1" id="StartTime1" placeholder="${startTime}"> <br>
-
-                    <label for="EndTime1">End Time:</label>
-                    <input type="time" name="EndTime1" id="EndTime1" placeholder="${endTime}"> <br>
-
-                    <label for ="CourseDescription1">Course Description: </label>
-                    <textarea id = "CourseDescription1" name = "CourseDescription1" rows = "10" cols="50" placeholder="${courseDescription}"></textarea><br>
-
-                    <input type="submit" value="Update">
-                </form>
-                </div>
-<script>
-                function myFunction(){
-                    const x = document.getElementById("myDiv");
-                    if(x.style.display==="none"){
-                        x.style.display = "block";
-                    }
-                    else{
-                        x.style.display = "none";
-                    }
-                }
-</script>
-            </div>
-       </div>
-        <%}
-            connection.close();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        %>
-
-
+            </tr>
+            <%
+                try{
+                    String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
+                    String dbUser = "LMS_RunTime";
+                    String dbPassword = "password1!";
+                    String email = (String) session.getAttribute("email");
+                    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                    Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+                    Statement statement = connection.createStatement();
+                    String query = "SELECT * FROM courseList WHERE instructorEmail LIKE '" + email + "'";
+                    ResultSet resultSet = statement.executeQuery(query);
+                    while(resultSet.next()){
+                        String courseName =  resultSet.getString("courseName");
+                        String department =  resultSet.getString("departmentCode");
+                        String courseNumber =  resultSet.getString("courseNumber");
+                        String description =  resultSet.getString("courseDescription");
+                        String credits = resultSet.getString("creditHours");
+                        String start = resultSet.getTime("startTime").toLocalTime().toString();
+                        String end = resultSet.getTime("endTime").toLocalTime().toString();
+                        String capacity = String.valueOf(resultSet.getInt("studentCapacity"));
+                        session.setAttribute("courseTable1", courseName);
+                        session.setAttribute("courseTable2", department);
+                        session.setAttribute("courseTable3", courseNumber);
+                        session.setAttribute("courseTable4", description);
+                        session.setAttribute("courseTable5", credits);
+                        if(resultSet.getBoolean("monday")){
+                            session.setAttribute("courseTable6", "X");
+                        }
+                        else{
+                            session.setAttribute("courseTable6", "");
+                        }
+                        if(resultSet.getBoolean("tuesday")){
+                            session.setAttribute("courseTable7", "X");
+                        }
+                        else{
+                            session.setAttribute("courseTable7", "");
+                        }
+                        if(resultSet.getBoolean("wednesday")){
+                            session.setAttribute("courseTable8", "X");
+                        }
+                        else{
+                            session.setAttribute("courseTable8", "");
+                        }
+                        if(resultSet.getBoolean("thursday")){
+                            session.setAttribute("courseTable9", "X");
+                        }
+                        else{
+                            session.setAttribute("courseTable9", "");
+                        }
+                        if(resultSet.getBoolean("friday")){
+                            session.setAttribute("courseTable10", "X");
+                        }
+                        else{
+                            session.setAttribute("courseTable10", "");
+                        }
+                        session.setAttribute("courseTable11", start);
+                        session.setAttribute("courseTable12", end);
+                        session.setAttribute("courseTable13", capacity);
+            %>
+            <tr>
+                <td>${courseTable1}</td>
+                <td>${courseTable2}</td>
+                <td>${courseTable3}</td>
+                <td>${courseTable4}</td>
+                <td>${courseTable5}</td>
+                <td>${courseTable6}</td>
+                <td>${courseTable7}</td>
+                <td>${courseTable8}</td>
+                <td>${courseTable9}</td>
+                <td>${courseTable10}</td>
+                <td>${courseTable11}</td>
+                <td>${courseTable12}</td>
+                <td>${courseTable13}</td>
+                <td><button>Edit Course</button></td>
+            </tr>
+            <%}
+                connection.close();
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            %>
+        </table>
 
     <div class="popup">
         <div class="popup__container">
@@ -205,7 +217,6 @@
         <button class = "popup-button">Add Course</button>
     </div>
 </div>
-</div>
-<script src="./editprofile.js"></script>
+<script src="editprofile.js"></script>
 </body>
 </html>
