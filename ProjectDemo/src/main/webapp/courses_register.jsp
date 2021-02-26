@@ -12,6 +12,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <html>
 <head>
     <link href='navigationbar.css' rel='stylesheet'/>
@@ -63,6 +66,75 @@
 <h1>Your Courses</h1>
 
 <div id="coursesContainer">
+    <div class = "profileContainer">
+        <p>${courses}</p>
+        <c:forEach items = "${courses}" var = "course" >
+            <c:out value = "${course.departmentCode}${course.courseNumber} ${course.courseName}"/><p>
+            <c:if test ="${course.monday == 1}">
+                <p>Monday</p>
+            </c:if>
+            <c:if test ="${course.tuesday == 1}">
+                <p>Tuesday</p>
+            </c:if>
+            <c:if test ="${course.wednesday == 1}">
+                <p>Wednesday</p>
+            </c:if>
+            <c:if test ="${course.thursday == 1}">
+                <p>Thursday</p>
+            </c:if>
+            <c:if test ="${course.friday == 1}">
+                <p>Friday</p>
+            </c:if>
+            <p>${courseDescription}</p>
+
+            <button>Edit Course</button><br>
+            <form method="post" action="${pageContext.request.contextPath}/edit-course">
+                <label for ="CourseID1">CourseID (unchangable)</label>
+                <input type ="number" name = "CourseID1" id = "CourseID1" value = "${course.courseID}" placeholder = "${course.courseID}" readonly><br>
+                <label for="CourseNumber1">Course Number: </label>
+                <input type="text" name="CourseNumber1" id="CourseNumber1" placeholder = "${course.courseNumber}"><br>
+
+                <label for="CourseName1">Course Name: </label>
+                <input type="text" name="CourseName1" id="CourseName1" placeholder = "${course.courseName}"><br>
+
+                <label for="Department1">Department: </label>
+                <input type="text" name="Department1" id="Department1" placeholder = "${course.departmentCode}"><br>
+
+                <label for="CreditHours1">Credit Hours: </label>
+                <input type="number" name="CreditHours1" id="CreditHours1" placeholder = "${course.creditHours}"><br>
+
+                <label for="Capacity"1>Capacity: </label>
+                <input type="Number" name="Capacity1" id="Capacity1" placeholder = "${course.studentCapacity}"><br>
+
+                <label for="Monday1">Monday</label>
+                <input type="checkbox" id="Monday1" name="Monday1" value="1"><br>
+
+                <label for="Tuesday1">Tuesday</label>
+                <input type="checkbox" id="Tuesday1" name="Tuesday1" value="1" ><br>
+
+                <label for="Wednesday1">Wednesday</label>
+                <input type="checkbox" id="Wednesday1" name="Wednesday1" value="1"><br>
+
+                <label for="Thursday1">Thursday</label>
+                <input type="checkbox" id="Thursday1" name="Thursday1" value="1"><br>
+
+                <label for="Friday1">Friday</label>
+                <input type="checkbox" id="Friday1" name="Friday1" value="1"><br>
+
+                <label for="StartTime1">Start Time:</label>
+                <input type="time" name="StartTime1" id="StartTime1" placeholder = "${course.startTime}"> <br>
+
+                <label for="EndTime1">End Time:</label>
+                <input type="time" name="EndTime1" id="EndTime1" placeholder = "${course.endTime}"> <br>
+
+                <label for ="CourseDescription1">Course Description: </label>
+                <textarea id = "CourseDescription1" name = "CourseDescription1" rows = "10" cols="50" placeholder = "${course.courseDescription}"></textarea><br>
+
+                <input type="submit" value="Add">
+            </form>
+
+        </c:forEach>
+    </div>
 
         <table id="myTable">
             <tr class="header">

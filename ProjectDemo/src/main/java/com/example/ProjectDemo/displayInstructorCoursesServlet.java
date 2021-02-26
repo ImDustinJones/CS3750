@@ -25,7 +25,7 @@ public class displayInstructorCoursesServlet extends HttpServlet {
 //            for(Courses course : courseList){
 //                System.out.println(course.toString());
 //            }
-            session.setAttribute("courselist", courseList);
+            session.setAttribute("courses", courseList);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();

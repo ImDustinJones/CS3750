@@ -34,7 +34,8 @@ public class EditCourseServlet extends HttpServlet {
         String thursday = request.getParameter("Thursday1");
         String friday = request.getParameter("Friday1");
         String email = (String) session.getAttribute("email");
-        int courseID = (int)session.getAttribute("courseID");
+        String courseID = request.getParameter("CourseID1");
+        int courseIDInt = Integer.parseInt(courseID);
         int creditHoursInt = Integer.parseInt(creditHours);
         int capacityInt = Integer.parseInt(capacity);
         int mondayBit = 0;
@@ -65,7 +66,7 @@ public class EditCourseServlet extends HttpServlet {
         CoursesDAO courseDao = new CoursesDAO();
 
         try {
-            courseDao.updateCoursesDB(courseNumber, courseName, department, email, courseDescription, creditHoursInt, startTime, endTime, capacityInt, mondayBit, tuesdayBit, wednesdayBit, thursdayBit, fridayBit, courseID);
+            courseDao.updateCoursesDB(courseNumber, courseName, department, email, courseDescription, creditHoursInt, startTime, endTime, capacityInt, mondayBit, tuesdayBit, wednesdayBit, thursdayBit, fridayBit, courseIDInt);
             String destPage = "courses_register.jsp";
 
             //RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
