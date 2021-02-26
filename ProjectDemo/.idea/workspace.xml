@@ -10,16 +10,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07f3fd19-a74c-4317-b095-3ddf5c20a21e" name="Default Changelist" comment="Added course stuff">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/courseRegisterCheckServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/courses_register_student.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/EditCourseServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/CoursesDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/CoursesDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/courses_register.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/courses_register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/courses_register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/editprofile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/editprofile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/LoginServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/CoursesDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/CoursesDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/courses_register.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/courses_register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/courses_register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/LoginServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/editprofile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/editprofile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/CoursesDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/CoursesDAO.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +38,9 @@
         <option value="Jsp File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/main" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -72,18 +79,20 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2678161" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -303,7 +312,42 @@
       <option name="project" value="LOCAL" />
       <updated>1614276293531</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added course stuff">
+      <created>1614276539800</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1614276539800</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added course stuff">
+      <created>1614282944085</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1614282944085</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Added course stuff">
+      <created>1614282966609</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1614282966609</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Added course stuff">
+      <created>1614286108943</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1614286108943</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added course stuff">
+      <created>1614286143779</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1614286143779</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -65,23 +65,93 @@
                     }
                     String courseString3 = days+": "+resultSet.getString("startTime").substring(0,resultSet.getString("startTime").length() - 11)+ " - "+resultSet.getString("endTime").substring(0,resultSet.getString("endTime").length() - 11);
                     session.setAttribute("courseString1", courseString1);
-                    session.setAttribute("courseString2", courseString2);
+                    session.setAttribute("instructorLastName", courseString2);
                     session.setAttribute("courseString3", courseString3);
-                    session.setAttribute("courseNumber", resultSet.getString("courseNumber"));%>
-        <a href=${courseNumber}> <div class="card">
+                    session.setAttribute("courseNumber", resultSet.getString("courseNumber"));
+                    session.setAttribute("courseName", resultSet.getString("courseName"));
+                    session.setAttribute("departmentCode", resultSet.getString("departmentCode"));
+                    session.setAttribute("instructorEmail", resultSet.getString("instructorEmail"));
+                    session.setAttribute("courseDescription", resultSet.getString("courseDescription"));
+                    session.setAttribute("creditHours", resultSet.getInt("creditHours"));
+                    session.setAttribute("studentCapacity", resultSet.getInt("studentCapacity"));
+                    session.setAttribute("startTime", resultSet.getString("startTime"));
+                    session.setAttribute("endTime", resultSet.getString("endTime"));
+                    session.setAttribute("courseID", resultSet.getInt("courseID"));
+
+        %>
+       <div class="card">
             <div class="container">
                 <h4><b>${courseString1}</b></h4>
-                <p>${courseString2}</p>
+                <p>${instructorLastName}</p>
                 <p>${courseString3}</p>
-                <button>Edit</button>
+
+                <button onclick="myFunction()">Edit Course</button>
+                <div id="myDiv">
+                    <h2 >Edit Course</h2>
+                    <form method="post" action="${pageContext.request.contextPath}/edit-course">
+                    <label for="CourseNumber1">Course Number: </label>
+                    <input type="text" name="CourseNumber1" id="CourseNumber1" placeholder="${courseNumber}"><br>
+
+                    <label for="CourseName1">Course Name: </label>
+                    <input type="text" name="CourseName1" id="CourseName1" placeholder="${courseName}"><br>
+
+                    <label for="Department1">Department: </label>
+                    <input type="text" name="Department1" id="Department1" placeholder="${departmentCode}"><br>
+
+                    <label for="CreditHours1">Credit Hours: </label>
+                    <input type="number" name="CreditHours1" id="CreditHours1" placeholder="${creditHours}"><br>
+
+                    <label for="Capacity1">Capacity: </label>
+                    <input type="Number" name="Capacity1" id="Capacity1" placeholder="${studentCapacity}"><br>
+
+                    <label for="Monday1">Monday</label>
+                    <input type="checkbox" id="Monday1" name="Monday1" value="1"><br>
+
+                    <label for="Tuesday1">Tuesday</label>
+                    <input type="checkbox" id="Tuesday1" name="Tuesday1" value="1"><br>
+
+                    <label for="Wednesday1">Wednesday</label>
+                    <input type="checkbox" id="Wednesday1" name="Wednesday1" value="1"><br>
+
+                    <label for="Thursday1">Thursday</label>
+                    <input type="checkbox" id="Thursday1" name="Thursday1" value="1"><br>
+
+                    <label for="Friday1">Friday</label>
+                    <input type="checkbox" id="Friday1" name="Friday1" value="1"><br>
+
+                    <label for="StartTime1">Start Time:</label>
+                    <input type="time" name="StartTime1" id="StartTime1" placeholder="${startTime}"> <br>
+
+                    <label for="EndTime1">End Time:</label>
+                    <input type="time" name="EndTime1" id="EndTime1" placeholder="${endTime}"> <br>
+
+                    <label for ="CourseDescription1">Course Description: </label>
+                    <textarea id = "CourseDescription1" name = "CourseDescription1" rows = "10" cols="50" placeholder="${courseDescription}"></textarea><br>
+
+                    <input type="submit" value="Update">
+                </form>
+                </div>
+<script>
+                function myFunction(){
+                    const x = document.getElementById("myDiv");
+                    if(x.style.display==="none"){
+                        x.style.display = "block";
+                    }
+                    else{
+                        x.style.display = "none";
+                    }
+                }
+</script>
             </div>
-        </div></a>
+       </div>
         <%}
             connection.close();
         }catch(Exception e){
             e.printStackTrace();
         }
         %>
+
+
 
     <div class="popup">
         <div class="popup__container">
@@ -136,6 +206,6 @@
     </div>
 </div>
 </div>
-<script src="editprofile.js"></script>
+<script src="./editprofile.js"></script>
 </body>
 </html>

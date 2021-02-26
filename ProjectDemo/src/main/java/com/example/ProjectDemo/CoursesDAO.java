@@ -84,4 +84,20 @@ public class CoursesDAO {
 
         return courseList;
     }
+
+    public void updateCoursesDB(String courseNumber, String courseName, String departmentCode, String instructorEmail, String courseDescription,
+                                int creditHours, String startTime, String endTime, int studentCapacity, int monday,
+                                int tuesday, int wednesday, int thursday, int friday, int courseID)
+            throws SQLException, ClassNotFoundException, ParseException {
+
+        Connection connection = connectDatabase();
+
+
+        String sqlInsert  = "UPDATE courseList SET courseNumber = '"+courseNumber+"', courseName = '"+courseName+"', departmentCode = '"+departmentCode+"', courseDescription = '"+courseDescription+"', creditHours = '"+creditHours+"', monday = '"+monday+"', tuesday = '"+tuesday+"', wednesday = '"+wednesday+"', thursday = '"+thursday+"', friday = '"+friday+"', studentCapacity = '"+studentCapacity+"' WHERE courseID = '"+courseID+"' AND instructorEmail = '"+instructorEmail+"';";
+        PreparedStatement statement = connection.prepareStatement(sqlInsert);
+        statement.executeUpdate();
+
+
+        connection.close();
+    }
 }
