@@ -161,9 +161,9 @@ public class EditProfileServlet extends HttpServlet {
                 session.setAttribute("zip", user.getZip());
                 session.setAttribute("phoneNumber", user.getPhonenumber());
 
-                session.setAttribute("link1", linkOne);
-                session.setAttribute("link2", linkTwo);
-                session.setAttribute("link3", linkThree);
+                session.setAttribute("link1", user.getLink1());
+                session.setAttribute("link2", user.getLink2());
+                session.setAttribute("link3", user.getLink3());
 
                 //destPage = "edit_profile.jsp";
             }
@@ -181,9 +181,9 @@ public class EditProfileServlet extends HttpServlet {
                 session.setAttribute("zip", instructor.getZip());
                 session.setAttribute("phoneNumber", instructor.getPhonenumber());
 
-                session.setAttribute("link1", linkOne);
-                session.setAttribute("link2", linkTwo);
-                session.setAttribute("link3", linkThree);
+                session.setAttribute("link1", instructor.getLink1());
+                session.setAttribute("link2", instructor.getLink2());
+                session.setAttribute("link3", instructor.getLink3());
                 //destPage = "edit_profile.jsp";
             }
             else {

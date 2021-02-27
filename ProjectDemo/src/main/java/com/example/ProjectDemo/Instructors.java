@@ -112,14 +112,17 @@ public class Instructors {
     }
 
     public void setLink1(String link1) {
+
         this.link1 = link1;
     }
 
     public void setLink2(String link2) {
+
         this.link2 = link2;
     }
 
     public void setLink3(String link3) {
+
         this.link3 = link3;
     }
 

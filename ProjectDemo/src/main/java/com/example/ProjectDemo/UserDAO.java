@@ -147,6 +147,16 @@ public class UserDAO {
                             String phonenumber, String link1, String link2, String link3) throws SQLException, ClassNotFoundException, ParseException {
         Connection connection = connectDatabase();
 
+        if(!link1.contains("//")){
+            link1 = "https://" + link1;
+        }
+        if(!link2.contains("//")){
+            link2 = "https://" + link2;
+        }
+        if(!link3.contains("//")){
+            link3 = "https://" + link3;
+        }
+
         String sqlInsert;
         sqlInsert = "UPDATE students SET firstName = '"+fn+"', lastName = '"+ln+"', bio = '"+bio+"', address = '"+ad+"', city = '"+city+"', [state] = '"+state+"', zip = '"+zip+"', phoneNumber = '"+phonenumber+"', link1 = '" + link1 + "', link2 = '" + link2 + "', link3 = '" + link3 + "' WHERE email = '"+em+"';";
         PreparedStatement statement = connection.prepareStatement(sqlInsert);
