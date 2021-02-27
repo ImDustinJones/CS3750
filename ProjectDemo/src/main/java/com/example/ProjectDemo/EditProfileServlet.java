@@ -29,11 +29,10 @@ public class EditProfileServlet extends HttpServlet {
         String state = request.getParameter("state");
         String zip = request.getParameter("zip");
         String phonenumber = request.getParameter("phoneNumber");
+        String bio = request.getParameter("bioBox");
         String linkOne = request.getParameter("linkOne");
         String linkTwo = request.getParameter("linkTwo");
         String linkThree = request.getParameter("linkThree");
-
-        String bio = request.getParameter("bioBox");
 
         //if block to catch blanks
         if(firstname.equals("")){//if the parameter was empty
@@ -108,6 +107,33 @@ public class EditProfileServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
+        if(linkOne.equals("")){//if the parameter was empty
+            try {
+                linkOne = getValue(email, "link1");//get the value already stored in db
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        if(linkTwo.equals("")){//if the parameter was empty
+            try {
+                linkTwo = getValue(email, "link2");//get the value already stored in db
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        if(linkThree.equals("")){//if the parameter was empty
+            try {
+                linkThree = getValue(email, "link3");//get the value already stored in db
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
         //end block
 
         UserDAO userDao = new UserDAO();
@@ -115,10 +141,10 @@ public class EditProfileServlet extends HttpServlet {
 
         try {
             Users user = userDao.updateUser(email, firstname, lastname, bio, address, city,
-                    state, zip, phonenumber);
+                    state, zip, phonenumber, linkOne, linkTwo, linkThree);
 
             Instructors instructor = instructorDao.updateUser(email, firstname, lastname, bio, address, city,
-                    state, zip, phonenumber);
+                    state, zip, phonenumber, linkOne, linkTwo, linkThree);
             //String destPage = "edit_profile.jsp";
 
             if (user != null) {
@@ -135,9 +161,9 @@ public class EditProfileServlet extends HttpServlet {
                 session.setAttribute("zip", user.getZip());
                 session.setAttribute("phoneNumber", user.getPhonenumber());
 
-                session.setAttribute("linkOne", linkOne);
-                session.setAttribute("linkTwo", linkTwo);
-                session.setAttribute("linkThree", linkThree);
+                session.setAttribute("link1", linkOne);
+                session.setAttribute("link2", linkTwo);
+                session.setAttribute("link3", linkThree);
 
                 //destPage = "edit_profile.jsp";
             }
@@ -155,9 +181,9 @@ public class EditProfileServlet extends HttpServlet {
                 session.setAttribute("zip", instructor.getZip());
                 session.setAttribute("phoneNumber", instructor.getPhonenumber());
 
-                session.setAttribute("linkOne", linkOne);
-                session.setAttribute("linkTwo", linkTwo);
-                session.setAttribute("linkThree", linkThree);
+                session.setAttribute("link1", linkOne);
+                session.setAttribute("link2", linkTwo);
+                session.setAttribute("link3", linkThree);
                 //destPage = "edit_profile.jsp";
             }
             else {

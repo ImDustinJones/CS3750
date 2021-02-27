@@ -38,7 +38,9 @@ public class UserDAO {
             user.setState(result.getString("state"));
             user.setZip(result.getString("zip"));
             user.setPhonenumber(result.getString("phoneNumber"));
-
+            user.setLink1(result.getString("link1"));
+            user.setLink2(result.getString("link2"));
+            user.setLink3(result.getString("link3"));
 
             user.setEmail(email);
         }
@@ -142,11 +144,11 @@ public class UserDAO {
 
     public Users updateUser(String em, String fn, String ln, String bio,
                             String ad, String city, String state, String zip,
-                            String phonenumber) throws SQLException, ClassNotFoundException, ParseException {
+                            String phonenumber, String link1, String link2, String link3) throws SQLException, ClassNotFoundException, ParseException {
         Connection connection = connectDatabase();
 
         String sqlInsert;
-        sqlInsert = "UPDATE students SET firstName = '"+fn+"', lastName = '"+ln+"', bio = '"+bio+"', address = '"+ad+"', city = '"+city+"', [state] = '"+state+"', zip = '"+zip+"', phoneNumber = '"+phonenumber+"' WHERE email = '"+em+"';";
+        sqlInsert = "UPDATE students SET firstName = '"+fn+"', lastName = '"+ln+"', bio = '"+bio+"', address = '"+ad+"', city = '"+city+"', [state] = '"+state+"', zip = '"+zip+"', phoneNumber = '"+phonenumber+"', link1 = '" + link1 + "', link2 = '" + link2 + "', link3 = '" + link3 + "' WHERE email = '"+em+"';";
         PreparedStatement statement = connection.prepareStatement(sqlInsert);
         int result = statement.executeUpdate();
 
@@ -163,6 +165,9 @@ public class UserDAO {
             user.setState(state);
             user.setZip(zip);
             user.setPhonenumber(phonenumber);
+            user.setLink1(link1);
+            user.setLink2(link2);
+            user.setLink3(link3);
         }
 
         connection.close();

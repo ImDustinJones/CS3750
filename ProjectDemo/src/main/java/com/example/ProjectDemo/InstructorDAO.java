@@ -39,6 +39,9 @@ public class InstructorDAO {
             instructor.setState(result.getString("state"));
             instructor.setZip(result.getString("zip"));
             instructor.setPhonenumber(result.getString("phoneNumber"));
+            instructor.setLink1(result.getString("link1"));
+            instructor.setLink2(result.getString("link2"));
+            instructor.setLink3(result.getString("link3"));
 
             instructor.setEmail(email);
         }
@@ -137,11 +140,11 @@ public class InstructorDAO {
 
     public Instructors updateUser(String em, String fn, String ln, String bio,
                             String ad, String city, String state, String zip,
-                            String phonenumber) throws SQLException, ClassNotFoundException, ParseException {
+                            String phonenumber, String link1, String link2, String link3) throws SQLException, ClassNotFoundException, ParseException {
         Connection connection = connectDatabase();
 
         String sqlInsert;
-        sqlInsert = "UPDATE instructors SET firstName = '" + fn + "', lastName = '" + ln + "', bio = '" + bio + "', address = '" + ad + "', city = '" + city + "', [state] = '" + state + "', zip = '" + zip + "', phoneNumber = '" + phonenumber + "' WHERE email = '" + em + "';";
+        sqlInsert = "UPDATE instructors SET firstName = '" + fn + "', lastName = '" + ln + "', bio = '" + bio + "', address = '" + ad + "', city = '" + city + "', [state] = '" + state + "', zip = '" + zip + "', phoneNumber = '" + phonenumber + "', link1 = '"+link1+"', link2 = '"+link2+"', link3 = '"+link3+"' WHERE email = '" + em + "';";
         PreparedStatement statement = connection.prepareStatement(sqlInsert);
         int result = statement.executeUpdate();
 
@@ -158,6 +161,9 @@ public class InstructorDAO {
             instructor.setState(state);
             instructor.setZip(zip);
             instructor.setPhonenumber(phonenumber);
+            instructor.setLink1(link1);
+            instructor.setLink2(link2);
+            instructor.setLink3(link3);
         }
 
         connection.close();
