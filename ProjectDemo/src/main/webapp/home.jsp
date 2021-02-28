@@ -81,8 +81,8 @@
 
 
 <ul class="navUl">
-    <li class="navLi"><a href="home.jsp">Home</a></li>
-    <li class="navLi"><a class="active" href="edit_profile.jsp">Profile</a></li>
+    <li class="navLi"><a a class="active" href="home.jsp">Home</a></li>
+    <li class="navLi"><a href="edit_profile.jsp">Profile</a></li>
     <li class="navLi"><a href="courseRegisterCheckServlet">Courses</a></li>
     <li class="navLi"><a href="#DummyN2">Dummy</a></li>
 </ul>
@@ -113,8 +113,8 @@
                 Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
 
                 Statement statement = connection.createStatement();
-                String query = "SELECT registrations.courseNumber, courseList.courseName, courseList.departmentCode, courseList.monday, courseList.tuesday, courseList.wednesday, courseList.thursday, courseList.friday, courseList.instructorLastName, courseList.startTime, courseList.endTime " +
-                        "FROM registrations INNER JOIN courseList ON registrations.courseNumber = courseList.courseNumber WHERE registrations.studentEmail = '"+email+"'";
+                String query = "SELECT registrations.courseID, courseList.courseNumber, courseList.courseName, courseList.departmentCode, courseList.monday, courseList.tuesday, courseList.wednesday, courseList.thursday, courseList.friday, courseList.instructorLastName, courseList.startTime, courseList.endTime " +
+                        "FROM registrations INNER JOIN courseList ON registrations.courseID = courseList.courseID WHERE registrations.studentEmail = '"+email+"'";
                 ResultSet resultSet = statement.executeQuery(query);
 
                 while(resultSet.next()){
