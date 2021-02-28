@@ -19,8 +19,8 @@
 <jsp:include page="/display-instructors-course" />
 <ul class="navUl">
     <li class="navLi"><a href="home.jsp">Home</a></li>
-    <li class="navLi"><a class="active" href="edit_profile.jsp">Profile</a></li>
-    <li class="navLi"><a href="courses_register.jsp">Courses</a></li>
+    <li class="navLi"><a href="edit_profile.jsp">Profile</a></li>
+    <li class="navLi"><a class="active" href="courses_register.jsp">Courses</a></li>
     <li class="navLi"><a href="#DummyN3">Dummy</a></li>
 </ul>
 
