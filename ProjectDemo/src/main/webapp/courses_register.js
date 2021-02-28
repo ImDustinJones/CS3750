@@ -1,15 +1,9 @@
-const callButton = document.querySelector('.popup-button');
-const popup = document.querySelector('.popup');
-const closeButton = popup.querySelector('.close-button');
 
-popupToggle = () => {
-    popup.classList.toggle('popup_opened');
+function showDiv(value) {
+    if(document.getElementById(value).style.display === "none"){
+        document.getElementById(value).style.display = "table-row";
+    }
+    else{
+        document.getElementById(value).style.display = "none";
+    }
 }
-
-closeOnBlack = (event) => {
-    if (event.target === event.currentTarget) popupToggle();
-}
-
-callButton.addEventListener('click', popupToggle);
-closeButton.addEventListener('click', popupToggle);
-popup.addEventListener('click', closeOnBlack);
