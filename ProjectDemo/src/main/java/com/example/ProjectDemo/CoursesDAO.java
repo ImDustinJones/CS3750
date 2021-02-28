@@ -63,6 +63,7 @@ public class CoursesDAO {
             //Retrieve by column name
             Courses course;
             course = new Courses();
+            course.setCourseID(rs.getInt("courseID"));
             course.setCourseNumber(rs.getInt("courseNumber"));
             course.setCourseName(rs.getString("courseName"));
             course.setDepartmentCode(rs.getString("departmentCode"));
@@ -72,6 +73,12 @@ public class CoursesDAO {
             course.setCreditHours(rs.getInt("creditHours"));
             course.setStartTime(rs.getString("startTime"));
             course.setEndTime(rs.getString("endTime"));
+            course.setMonday(rs.getInt("monday"));
+            course.setTuesday(rs.getInt("tuesday"));
+            course.setWednesday(rs.getInt("wednesday"));
+            course.setThursday(rs.getInt("thursday"));
+            course.setFriday(rs.getInt("friday"));
+
             course.setStudentCapacity(rs.getInt("studentCapacity"));
 
             assert false;
@@ -83,5 +90,21 @@ public class CoursesDAO {
         rs.close();
 
         return courseList;
+    }
+
+    public void updateCoursesDB(String courseNumber, String courseName, String departmentCode, String instructorEmail, String courseDescription,
+                                int creditHours, String startTime, String endTime, int studentCapacity, int monday,
+                                int tuesday, int wednesday, int thursday, int friday, int courseID)
+            throws SQLException, ClassNotFoundException, ParseException {
+
+        Connection connection = connectDatabase();
+
+
+        String sqlInsert  = "UPDATE courseList SET courseNumber = '"+courseNumber+"', courseName = '"+courseName+"', departmentCode = '"+departmentCode+"', courseDescription = '"+courseDescription+"', creditHours = '"+creditHours+"', startTime = '"+startTime+"', endTime = '"+endTime+"', monday = '"+monday+"', tuesday = '"+tuesday+"', wednesday = '"+wednesday+"', thursday = '"+thursday+"', friday = '"+friday+"', studentCapacity = '"+studentCapacity+"' WHERE courseID = '"+courseID+"' AND instructorEmail = '"+instructorEmail+"';";
+        PreparedStatement statement = connection.prepareStatement(sqlInsert);
+        statement.executeUpdate();
+
+
+        connection.close();
     }
 }

@@ -215,7 +215,7 @@ img {
     color: white;
 }
 
-.popup {
+.popup{
     position: fixed;
     top: 0;
     bottom: 0;
@@ -229,18 +229,53 @@ img {
     transition: visibility 300ms, opacity 300ms;
 }
 
-.popup_opened {
+.popup1{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    background-color: rgba(0, 0, 0, .5);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 300ms, opacity 300ms;
+}
+
+.popup_opened{
     visibility: visible;
     opacity: 1;
 }
 
-.popup__title {
+.popup_opened1{
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.popup__title{
     color: #001011;
     font-size: 36px;
     margin: 0 0 18px;
 }
 
-.popup__container {
+.popup__title1{
+    color: #001011;
+    font-size: 36px;
+    margin: 0 0 18px;
+}
+
+.popup__container{
+    background-color: #fff;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    padding: 15px;
+}
+.popup__container1{
     background-color: #fff;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
     border-radius: 15px;
@@ -250,7 +285,7 @@ img {
     padding: 15px;
 }
 
-.close-button {
+.close-button{
     border: 0;
     background: url('./img/Transparent_X.png') center center / 100% 100% no-repeat;
     width: 40px;
@@ -264,7 +299,26 @@ img {
     display: block;
 }
 
-.popup-button {
+.close-button1{
+    border: 0;
+    background: url('./img/Transparent_X.png') center center / 100% 100% no-repeat;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    fill: #000;
+    padding: 0;
+    cursor: pointer;
+    display: block;
+}
+
+.popup-button{
+    margin: 30px;
+    padding: 10px;
+    font-family: inherit;
+}
+.popup-button1{
     margin: 30px;
     padding: 10px;
     font-family: inherit;
@@ -273,4 +327,8 @@ img {
 a {
     color: black;
     text-decoration: none;
+}
+
+#myDiv{
+    display:none;
 }

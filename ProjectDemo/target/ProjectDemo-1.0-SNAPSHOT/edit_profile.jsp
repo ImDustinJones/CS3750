@@ -41,9 +41,9 @@
                     <p>Your Phone Number: ${phoneNumber}</p>
                     <p>Your State: ${state}</p>
                     <p>Your City: ${city}</p>
-                    <a href="${linkOne}">LinkedIn</a>
-                    <a href="${linkTwo}">Facebook</a>
-                    <a href="${linkThree}">Twitter</a>
+                    <a href="${link1}">${link1}</a>
+                    <a href="${link2}">${link2}</a>
+                    <a href="${link3}">${link3}</a>
                 </div>
             </div>
             <div class="popup">

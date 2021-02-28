@@ -48,6 +48,10 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("state", user.getState());
                 session.setAttribute("zip", user.getZip());
                 session.setAttribute("phoneNumber", user.getPhonenumber());
+                session.setAttribute("link1", user.getLink1());
+                session.setAttribute("link2", user.getLink2());
+                session.setAttribute("link3", user.getLink3());
+                session.setAttribute("userType", "student");
 
                 destPage = "home.jsp";
             } 
@@ -64,6 +68,10 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("state", instructor.getState());
                 session.setAttribute("zip", instructor.getZip());
                 session.setAttribute("phoneNumber", instructor.getPhonenumber());
+                session.setAttribute("link1", instructor.getLink1());
+                session.setAttribute("link2", instructor.getLink2());
+                session.setAttribute("link3", instructor.getLink3());
+                session.setAttribute("userType", "instructor");
 
                 destPage = "home.jsp";
             }

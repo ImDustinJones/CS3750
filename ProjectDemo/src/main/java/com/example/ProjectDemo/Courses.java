@@ -1,7 +1,9 @@
 package com.example.ProjectDemo;
 
 public class Courses {
-    private int courseId;
+
+
+    private int courseID;
     private int courseNumber;
     private String courseName;
     private String departmentCode;
@@ -17,6 +19,14 @@ public class Courses {
     private int wednesday;
     private int thursday;
     private int friday;
+
+    public int getCourseID() {
+        return courseID;
+    }
+
+    public void setCourseID(int courseID) {
+        this.courseID = courseID;
+    }
 
     public int getCourseNumber() {
         return courseNumber;
@@ -141,7 +151,8 @@ public class Courses {
     @Override
     public String toString() {
         return "Courses{" +
-                "courseNumber=" + String.valueOf(courseNumber) +
+                "courseID=" + courseID +
+                ", courseNumber=" + courseNumber +
                 ", courseName='" + courseName + '\'' +
                 ", departmentCode='" + departmentCode + '\'' +
                 ", instructorEmail='" + instructorEmail + '\'' +
