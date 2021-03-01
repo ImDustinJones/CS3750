@@ -31,8 +31,18 @@
     <ul class="navUl">
         <li class="navLi"><a href="home.jsp">Home</a></li>
         <li class="navLi"><a class="active" href="edit_profile.jsp">Profile</a></li>
-        <li class="navLi"><a href="courses_register.jsp">Courses</a></li>
-        <li class="navLi"><a href="#DummyN3">Dummy</a></li>
+        <%
+            String userTypeVar = (String) session.getAttribute("userType");
+
+            if(userTypeVar.equals("student")) {
+        %>
+        <li class="navLi"><a href="courseRegisterCheckServlet">Course Catalog</a></li>
+        <li class="navLi"><a href="courses_register.jsp">My Courses</a></li>
+        <%}
+        else { %>
+        <li class="navLi"><a href="courseRegisterCheckServlet"> My Courses</a></li>
+        <%  }
+        %>
     </ul>
     <div class="mainContainer">
     <!-- grab these from database! -->

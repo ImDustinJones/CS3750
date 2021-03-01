@@ -96,12 +96,22 @@
 <ul class="navUl">
     <li class="navLi"><a href="home.jsp">Home</a></li>
     <li class="navLi"><a href="edit_profile.jsp">Profile</a></li>
-    <li class="navLi"><a class="active" href="courses_register.jsp">Courses</a></li>
-    <li class="navLi"><a href="#DummyN3">Dummy</a></li>
+    <%
+        String userTypeVar = (String) session.getAttribute("userType");
+
+        if(userTypeVar.equals("student")) {
+    %>
+    <li class="navLi"><a class="active" href="courseRegisterCheckServlet">Course Catalog</a></li>
+    <li class="navLi"><a href="courses_register.jsp">My Courses</a></li>
+    <%}
+    else { %>
+    <li class="navLi"><a href="courseRegisterCheckServlet"> My Courses</a></li>
+    <%  }
+    %>
 </ul>
 <div class="mainContainer">
     <div class = "profileContainer">
-        <h1>Courses</h1>
+        <h1>Course Catalog</h1>
 
         <input type="text" id="myInput" onkeyup="myFunction(0)" placeholder="Search for course name.." title="Type in a course name">
 
@@ -140,21 +150,16 @@
                 session.setAttribute("cID", courseID);
                 boolean allReadyAdded = false;
 
-                //code compare test
+                // Opens a connection to see what courses a student has
                 Statement statementCompare = connection.createStatement();
                 String queryCompare = "SELECT registrations.courseID FROM registrations " +
                         "INNER JOIN courseList ON registrations.courseID = courseList.courseID " +
                         "WHERE registrations.studentEmail ='"+email+"'";
                 ResultSet resultSetCompare = statementCompare.executeQuery(queryCompare);
 
-
-
-
+                // will dynamically reflect if the student has the course or not
                 while(resultSetCompare.next()) {
                     String registrationCourseID = resultSetCompare.getString("courseID");
-                    //session.setAttribute("regCourseID", registrationCourseID);
-                    //System.out.println(registrationCourseID);
-
                     if (registrationCourseID.equals(courseID)) {
                         allReadyAdded = true;
                     }
@@ -266,25 +271,6 @@
                     }
                 }
             }
-
-            // function registerToStudent(int){
-            //     var jdbcURL, dbUser, dbPassword, email;
-            //     var cls, session;
-            //     session = session;
-            //     cls = Class;
-            //     jdbcURL, dbUser, dbPassword, email = String;
-            //     jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
-            //     dbUser = "LMS_RunTime";
-            //     dbPassword = "password1!";
-            //     email = session.getAttribute("email").toString();
-            //     cls.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            //     Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
-            //     Statement statement = connection.createStatement();
-            //     String query = "SELECT * FROM courseList";
-            //     ResultSet resultSet = statement.executeQuery(query);
-            // }
-
-
         </script>
     </div>
 </div>

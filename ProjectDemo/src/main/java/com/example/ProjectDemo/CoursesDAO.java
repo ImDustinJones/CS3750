@@ -51,6 +51,7 @@ public class CoursesDAO {
         Connection connection = connectDatabase();
         Statement stmt = connection.createStatement();
 
+
         String sqlQuery = "SELECT * FROM courseList WHERE instructorEmail LIKE '"+email+"';";
         ResultSet rs = stmt.executeQuery(sqlQuery);
 
@@ -91,6 +92,56 @@ public class CoursesDAO {
 
         return courseList;
     }
+
+
+
+
+    public List<Courses> getStudentCourseList(String email) throws SQLException, ClassNotFoundException {
+        Connection connection = connectDatabase();
+        Statement stmt = connection.createStatement();
+
+        String sqlQuery = "SELECT courseList.courseID, courseList.courseName, courseList.departmentCode, courseList.courseNumber, courseList.courseDescription, courseList.creditHours, courseList.monday, courseList.tuesday, courseList.wednesday, courseList.thursday, courseList.friday, courseList.startTime, courseList.endTime, courseList.studentCapacity FROM registrations INNER JOIN courseList ON registrations.courseID = courseList.courseID WHERE registrations.studentEmail = '"+email+"';";
+        ResultSet rs = stmt.executeQuery(sqlQuery);
+
+        List<Courses>courseList = new ArrayList<Courses>();
+
+        while(rs.next()){
+            //Retrieve by column name
+            Courses course;
+            course = new Courses();
+            course.setCourseID(rs.getInt("courseID"));
+            course.setCourseNumber(rs.getInt("courseNumber"));
+            course.setCourseName(rs.getString("courseName"));
+            course.setDepartmentCode(rs.getString("departmentCode"));
+            //course.setInstructorEmail(rs.getString("instructorEmail"));
+            //course.setInstructorLastName(rs.getString("instructorLastName"));
+            course.setCourseDescription(rs.getString("courseDescription"));
+            course.setCreditHours(rs.getInt("creditHours"));
+            course.setStartTime(rs.getString("startTime"));
+            course.setEndTime(rs.getString("endTime"));
+            course.setMonday(rs.getInt("monday"));
+            course.setTuesday(rs.getInt("tuesday"));
+            course.setWednesday(rs.getInt("wednesday"));
+            course.setThursday(rs.getInt("thursday"));
+            course.setFriday(rs.getInt("friday"));
+
+            course.setStudentCapacity(rs.getInt("studentCapacity"));
+
+            assert false;
+            courseList.add(course);
+            //courseList[count] = course;
+            //count++;
+
+        }
+
+        rs.close();
+
+        return courseList;
+    }
+
+
+
+
 
     public void updateCoursesDB(String courseNumber, String courseName, String departmentCode, String instructorEmail, String courseDescription,
                                 int creditHours, String startTime, String endTime, int studentCapacity, int monday,

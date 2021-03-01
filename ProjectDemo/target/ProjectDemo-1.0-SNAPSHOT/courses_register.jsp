@@ -20,8 +20,18 @@
 <ul class="navUl">
     <li class="navLi"><a href="home.jsp">Home</a></li>
     <li class="navLi"><a href="edit_profile.jsp">Profile</a></li>
-    <li class="navLi"><a class="active" href="courses_register.jsp">Courses</a></li>
-    <li class="navLi"><a href="#DummyN3">Dummy</a></li>
+    <%
+        String userTypeVar = (String) session.getAttribute("userType");
+
+        if(userTypeVar.equals("student")) {
+    %>
+    <li class="navLi"><a href="courseRegisterCheckServlet">Course Catalog</a></li>
+    <li class="navLi"><a class="active" href="courses_register.jsp">My Courses</a></li>
+    <%}
+    else { %>
+    <li class="navLi"><a class="active" href="courseRegisterCheckServlet"> My Courses</a></li>
+    <%  }
+    %>
 </ul>
 
 <h1>Your Courses</h1>
@@ -84,6 +94,10 @@
                 <td>${course.startTime}</td>
                 <td>${course.endTime}</td>
                 <td>${course.studentCapacity}</td>
+                <%
+                    if(userTypeVar.equals("instructor"))
+                    {%>
+
                 <td><button class = "my_button" value = "${course.courseID}" onclick= "showDiv(this.value)">Edit Course</button><br></td>
             </tr>
                 <tr id = "${course.courseID}" style="display: none">
@@ -140,70 +154,77 @@
                 </form>
                     </td>
                 </tr>
+            <%}
+                else { %>
+                </tr>
+            <% }
+            %>
             </c:forEach>
         </table
 </div>
 
+<%if(userTypeVar.equals("instructor")) { // only instructors need this button
 
-
-        <div class = "popup">
-            <div class="popup__container">
+%>
+    <div class = "popup">
+        <div class="popup__container">
             <button type="button" class="close-button"></button>
             <h2 class="popup__title">Add Course</h2>
-        <form method="post" action="${pageContext.request.contextPath}/add-course">
-            <label for="CourseNumber">Course Number: </label>
-            <input type="text" name="CourseNumber" id="CourseNumber"><br>
+            <form method="post" action="${pageContext.request.contextPath}/add-course">
+                <label for="CourseNumber">Course Number: </label>
+                <input type="text" name="CourseNumber" id="CourseNumber"><br>
 
-            <label for="CourseName">Course Name: </label>
-            <input type="text" name="CourseName" id="CourseName"><br>
+                <label for="CourseName">Course Name: </label>
+                <input type="text" name="CourseName" id="CourseName"><br>
 
-            <label for="Department">Department: </label>
-            <select name = "Department" id = "Department">
-                <option value = "CS">CS</option>
-                <option value = "ENGL">ENGL</option>
-                <option value = "MATH">MATH</option>
-                <option value = "BIO">BIO</option>
-                <option value = "HIST">HIST</option>
-            </select><br>
+                <label for="Department">Department: </label>
+                <select name = "Department" id = "Department">
+                    <option value = "CS">CS</option>
+                    <option value = "ENGL">ENGL</option>
+                    <option value = "MATH">MATH</option>
+                    <option value = "BIO">BIO</option>
+                    <option value = "HIST">HIST</option>
+                </select><br>
 
-            <label for="CreditHours">Credit Hours: </label>
-            <input type="number" name="CreditHours" id="CreditHours"><br>
+                <label for="CreditHours">Credit Hours: </label>
+                <input type="number" name="CreditHours" id="CreditHours"><br>
 
-            <label for="Capacity">Capacity: </label>
-            <input type="Number" name="Capacity" id="Capacity"><br>
+                <label for="Capacity">Capacity: </label>
+                <input type="Number" name="Capacity" id="Capacity"><br>
 
-            <label for="Monday">Monday</label>
-            <input type="checkbox" id="Monday" name="Monday" value="1"><br>
+                <label for="Monday">Monday</label>
+                <input type="checkbox" id="Monday" name="Monday" value="1"><br>
 
-            <label for="Tuesday">Tuesday</label>
-            <input type="checkbox" id="Tuesday" name="Tuesday" value="1"><br>
+                <label for="Tuesday">Tuesday</label>
+                <input type="checkbox" id="Tuesday" name="Tuesday" value="1"><br>
 
-            <label for="Wednesday">Wednesday</label>
-            <input type="checkbox" id="Wednesday" name="Wednesday" value="1"><br>
+                <label for="Wednesday">Wednesday</label>
+                <input type="checkbox" id="Wednesday" name="Wednesday" value="1"><br>
 
-            <label for="Thursday">Thursday</label>
-            <input type="checkbox" id="Thursday" name="Thursday" value="1"><br>
+                <label for="Thursday">Thursday</label>
+                <input type="checkbox" id="Thursday" name="Thursday" value="1"><br>
 
-            <label for="Friday">Friday</label>
-            <input type="checkbox" id="Friday" name="Friday" value="1"><br>
+                <label for="Friday">Friday</label>
+                <input type="checkbox" id="Friday" name="Friday" value="1"><br>
 
-            <label for="StartTime">Start Time:</label>
-            <input type="time" name="StartTime" id="StartTime"> <br>
+                <label for="StartTime">Start Time:</label>
+                <input type="time" name="StartTime" id="StartTime"> <br>
 
-            <label for="EndTime">End Time:</label>
-            <input type="time" name="EndTime" id="EndTime"> <br>
+                <label for="EndTime">End Time:</label>
+                <input type="time" name="EndTime" id="EndTime"> <br>
 
-            <label for ="CourseDescription">Course Description: </label>
-            <textarea id = "CourseDescription" name = "CourseDescription" rows = "10" cols="50"></textarea><br>
+                <label for ="CourseDescription">Course Description: </label>
+                <textarea id = "CourseDescription" name = "CourseDescription" rows = "10" cols="50"></textarea><br>
 
-            <input type="submit" value="Add">
-        </form>
-
+                <input type="submit" value="Add">
+            </form>
         </div>
-        </div>
+    </div>
     <div style = "text-align: center">
         <button class = "popup-button">Add Course</button>
     </div>
+<%}
+%>
 
 <script src="editprofile.js"></script>
 <script src="courses_register.js"></script>

@@ -14,14 +14,21 @@ import java.util.List;
 public class displayInstructorCoursesServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        System.out.println("Display Instructor Courses is Running");
+        //System.out.println("Display Instructor Courses is Running");
         CoursesDAO courseDao = new CoursesDAO();
         HttpSession session = request.getSession();
         List<Courses> courseList = null;
 
         String email = (String) session.getAttribute("email");
+        String userTypeVariable = (String) session.getAttribute("userType");
         try {
-            courseList = courseDao.getCourseList(email);
+
+            if(userTypeVariable.equals("student")){
+                courseList = courseDao.getStudentCourseList(email);
+            }
+            else {
+                courseList = courseDao.getCourseList(email);
+            }
 //            for(Courses course : courseList){
 //                System.out.println(course.toString());
 //            }
