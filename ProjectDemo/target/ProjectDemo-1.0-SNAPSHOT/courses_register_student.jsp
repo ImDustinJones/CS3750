@@ -95,8 +95,8 @@
 <body>
 <ul class="navUl">
     <li class="navLi"><a href="home.jsp">Home</a></li>
-    <li class="navLi"><a class="active" href="edit_profile.jsp">Profile</a></li>
-    <li class="navLi"><a href="courses_register.jsp">Courses</a></li>
+    <li class="navLi"><a href="edit_profile.jsp">Profile</a></li>
+    <li class="navLi"><a class="active" href="courses_register.jsp">Courses</a></li>
     <li class="navLi"><a href="#DummyN3">Dummy</a></li>
 </ul>
 <div class="mainContainer">
@@ -113,37 +113,18 @@
                 <th style="width:40%;">Instructor</th>
                 <th style="...">Add/Drop</th>
             </tr>
-<%
+    <%
         try{
             String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
             String dbUser = "LMS_RunTime";
             String dbPassword = "password1!";
             String email = (String) session.getAttribute("email");
+            String uT = (String) session.getAttribute("userType");
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
             Statement statement = connection.createStatement();
             String query = "SELECT * FROM courseList";
             ResultSet resultSet = statement.executeQuery(query);
-
-
-
-
-
-
-//            ResultSet resultSetTest = null;
-//            try{
-//                Statement statementTest = connection.createStatement();
-//                String queryTest = "SELECT * FROM registrations WHERE studentEmail = '"+email+"' AND courseNumber = '1100'";
-////                select * from LMS_RunTime.dbo.registrations where studentEmail = 'dj@test.com' AND ;
-//                resultSetTest = statementTest.executeQuery(queryTest);
-//
-//            }catch(Exception e){
-//                e.printStackTrace();
-//            }
-
-
-            String testjg = "";
-
 
             while(resultSet.next()) {
                 String courseName = resultSet.getString("courseName");
@@ -152,34 +133,67 @@
                 String instructor = resultSet.getString("instructorLastName");
                 String courseID = resultSet.getString("courseID");
 
-//                while(resultSetTest.next()) {
-//                    if(courseNumber.equals(resultSetTest.getString("courseNumber"))) {
-//                        testjg = resultSetTest.getString("courseNumber");
-//                        //testjg = "Yayyyy";
-//                    }
-//                }
-
                 session.setAttribute("courseTable1", courseName);
                 session.setAttribute("courseTable2", department);
                 session.setAttribute("courseTable3", courseNumber);
                 session.setAttribute("courseTable4", instructor);
                 session.setAttribute("cID", courseID);
-%>
-            <tr>
-                <td>${courseTable1}</td>
-                <td>${courseTable2}</td>
-                <td>${courseTable3}</td>
-                <td>${courseTable4}</td>
-                <td>${jgtest}</td>
-                <td>
-                    <form method="post" action="RegisterToStudentServlet">
-                        <input type="hidden" name="email" id="email" value="${email}">
-                        <input type="hidden" name="courseID" id="courseID" value="${cID}">
-                        <input type="submit" value = "Register">
-                    </form>
-                </td>
-            </tr>
-            <%}
+                boolean allReadyAdded = false;
+
+                //code compare test
+                Statement statementCompare = connection.createStatement();
+                String queryCompare = "SELECT registrations.courseID FROM registrations " +
+                        "INNER JOIN courseList ON registrations.courseID = courseList.courseID " +
+                        "WHERE registrations.studentEmail ='"+email+"'";
+                ResultSet resultSetCompare = statementCompare.executeQuery(queryCompare);
+
+
+
+
+                while(resultSetCompare.next()) {
+                    String registrationCourseID = resultSetCompare.getString("courseID");
+                    //session.setAttribute("regCourseID", registrationCourseID);
+                    //System.out.println(registrationCourseID);
+
+                    if (registrationCourseID.equals(courseID)) {
+                        allReadyAdded = true;
+                    }
+                }
+                if(allReadyAdded) {
+        %>
+                    <tr>
+                        <td>${courseTable1}</td>
+                        <td>${courseTable2}</td>
+                        <td>${courseTable3}</td>
+                        <td>${courseTable4}</td>
+                        <td>
+                            <form method="post" action="UnRegisterToStudentServlet">
+                                <input type="hidden" name="regEmail" id="regEmail" value="${email}">
+                                <input type="hidden" name="regCourseID" id="regCourseID" value="${cID}">
+                                <input type="submit" value = "UnRegister">
+                            </form>
+                        </td>
+                        </td>
+                    </tr>
+                <%
+                allReadyAdded = false;
+                }
+                else {%>
+                    <tr>
+                        <td>${courseTable1}</td>
+                        <td>${courseTable2}</td>
+                        <td>${courseTable3}</td>
+                        <td>${courseTable4}</td>
+                        <td>
+                            <form method="post" action="RegisterToStudentServlet">
+                                <input type="hidden" name="email" id="email" value="${email}">
+                                <input type="hidden" name="courseID" id="courseID" value="${cID}">
+                                <input type="submit" value = "Register">
+                            </form>
+                        </td>
+                    </tr>
+                <% }
+            }
                 connection.close();
             }catch(Exception e){
                 e.printStackTrace();

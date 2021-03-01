@@ -27,9 +27,6 @@ public class RegisterToStudentServlet extends HttpServlet {
             regDAO.registerStudent(email, courseID);
 
             String destPage = "courses_register_student.jsp";
-
-            //RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
-            //dispatcher.forward(request, response);
             response.sendRedirect(destPage);
 
         } catch (SQLException | ClassNotFoundException | ParseException ex) {
