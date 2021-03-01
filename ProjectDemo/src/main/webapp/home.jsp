@@ -110,7 +110,10 @@
       <h1>Welcome ${firstName} ${lastName}!</h1>
 
     <div class="courseContainer">
-          <h2>Courses List</h2>
+        <% String userType = (String) session.getAttribute("userType");
+            if(userType.equals("student")) {
+        %>
+          <h2>Courses List</h2><%}%>
 
         <div class="cardContainer">
             <%
