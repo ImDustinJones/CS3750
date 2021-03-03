@@ -12,13 +12,37 @@
     <link href='home.css' rel='stylesheet'/>
     <title>Edit Profile</title>
 </head>
+
+<style>
+
+    .bio{
+        display: inline-block;
+        width: 90%;
+        border-style: solid;
+        border-width: 3px;
+        border-color: #757780;
+        padding: 10px;
+        word-wrap: break-word;
+    }
+</style>
+
 <body>
 <jsp:include page="/RetrieveImageServlet" />
     <ul class="navUl">
         <li class="navLi"><a href="home.jsp">Home</a></li>
         <li class="navLi"><a class="active" href="edit_profile.jsp">Profile</a></li>
-        <li class="navLi"><a href="courses_register.jsp">Dummy</a></li>
-        <li class="navLi"><a href="#DummyN3">Dummy</a></li>
+        <%
+            String userTypeVar = (String) session.getAttribute("userType");
+
+            if(userTypeVar.equals("student")) {
+        %>
+        <li class="navLi"><a href="courseRegisterCheckServlet">Course Catalog</a></li>
+        <li class="navLi"><a href="courses_register.jsp">My Courses</a></li>
+        <%}
+        else { %>
+        <li class="navLi"><a href="courseRegisterCheckServlet"> My Courses</a></li>
+        <%  }
+        %>
     </ul>
     <div class="mainContainer">
     <!-- grab these from database! -->
@@ -34,17 +58,19 @@
                     <p>Your Last Name: ${lastName}</p>
                     <p>Your Address: ${address}</p>
                     <p>Your zip: ${zip}</p>
-                    <p>Bio: ${bio}</p>
+                    <a href="${link1}">${link1}</a>
                 </div>
                 <div class = "column">
                     <p>Your Email: ${email}</p>
                     <p>Your Phone Number: ${phoneNumber}</p>
                     <p>Your State: ${state}</p>
                     <p>Your City: ${city}</p>
-                    <a href="${link1}">${link1}</a>
                     <a href="${link2}">${link2}</a>
                     <a href="${link3}">${link3}</a>
                 </div>
+            </div>
+            <div class = "bio">
+                <p>Bio: ${bio}</p>
             </div>
             <div class="popup">
                 <div class="popup__container">

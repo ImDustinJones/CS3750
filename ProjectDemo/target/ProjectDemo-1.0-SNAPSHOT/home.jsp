@@ -81,10 +81,20 @@
 
 
 <ul class="navUl">
-    <li class="navLi"><a href="home.jsp">Home</a></li>
-    <li class="navLi"><a class="active" href="edit_profile.jsp">Profile</a></li>
-    <li class="navLi"><a href="courseRegisterCheckServlet">Courses</a></li>
-    <li class="navLi"><a href="#DummyN2">Dummy</a></li>
+    <li class="navLi"><a class="active" href="home.jsp">Home</a></li>
+    <li class="navLi"><a href="edit_profile.jsp">Profile</a></li>
+    <%
+        String userTypeVar = (String) session.getAttribute("userType");
+
+        if(userTypeVar.equals("student")) {
+    %>
+            <li class="navLi"><a href="courseRegisterCheckServlet">Course Catalog</a></li>
+            <li class="navLi"><a href="courses_register.jsp">My Courses</a></li>
+    <%}
+        else { %>
+            <li class="navLi"><a href="courseRegisterCheckServlet"> My Courses</a></li>
+    <%  }
+    %>
 </ul>
 
 <ul class="todoUL">
@@ -100,7 +110,10 @@
       <h1>Welcome ${firstName} ${lastName}!</h1>
 
     <div class="courseContainer">
-          <h2>Courses List</h2>
+        <% String userType = (String) session.getAttribute("userType");
+            if(userType.equals("student")) {
+        %>
+          <h2>Courses List</h2><%}%>
 
         <div class="cardContainer">
             <%
@@ -113,8 +126,8 @@
                 Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
 
                 Statement statement = connection.createStatement();
-                String query = "SELECT registrations.courseNumber, courseList.courseName, courseList.departmentCode, courseList.monday, courseList.tuesday, courseList.wednesday, courseList.thursday, courseList.friday, courseList.instructorLastName, courseList.startTime, courseList.endTime " +
-                        "FROM registrations INNER JOIN courseList ON registrations.courseNumber = courseList.courseNumber WHERE registrations.studentEmail = '"+email+"'";
+                String query = "SELECT registrations.courseID, courseList.courseNumber, courseList.courseName, courseList.departmentCode, courseList.monday, courseList.tuesday, courseList.wednesday, courseList.thursday, courseList.friday, courseList.instructorLastName, courseList.startTime, courseList.endTime " +
+                        "FROM registrations INNER JOIN courseList ON registrations.courseID = courseList.courseID WHERE registrations.studentEmail = '"+email+"'";
                 ResultSet resultSet = statement.executeQuery(query);
 
                 while(resultSet.next()){
