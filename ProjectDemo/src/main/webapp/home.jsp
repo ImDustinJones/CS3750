@@ -149,12 +149,12 @@
                     if(resultSet.getString("friday").equals("1")){
                         days = days.concat(" Fri");
                     }
-                    String courseString3 = days+": "+resultSet.getString("startTime").substring(0,resultSet.getString("startTime").length() - 11)+ " - "+resultSet.getString("endTime").substring(0,resultSet.getString("endTime").length() - 11);
+                    String courseString3 = days+": "+resultSet.getString("startTime")+ " - "+resultSet.getString("endTime");
                     session.setAttribute("courseString1", courseString1);
                     session.setAttribute("courseString2", courseString2);
                     session.setAttribute("courseString3", courseString3);
-                    session.setAttribute("courseNumber", resultSet.getString("courseNumber"));%>
-            <a href=${courseNumber}> <div class="card">
+                    session.setAttribute("courseID", resultSet.getString("courseID"));%>
+            <a href="course_main.jsp?courseID=${courseID}"> <div class="card">
                 <div class="container">
                     <h4><b>${courseString1}</b></h4>
                     <p>${courseString2}</p>

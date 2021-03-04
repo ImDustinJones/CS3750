@@ -91,8 +91,8 @@
                     <c:if test ="${course.friday == 0}">
                         <td>-</td>
                     </c:if>
-                <td>${course.startTime.substring(0,course.startTime.length() - 11)}</td>
-                <td>${course.endTime.substring(0,course.endTime.length() - 11)}</td>
+                <td>${course.startTime}</td>
+                <td>${course.endTime}</td>
                 <td>${course.studentCapacity}</td>
                 <%
                     if(userTypeVar.equals("instructor"))
