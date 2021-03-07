@@ -9,22 +9,9 @@
 <html>
 <head>
     <link href='navigationbar.css' rel='stylesheet'/>
-    <link href='home.css' rel='stylesheet'/>
+    <link href='edit_profile.css' rel='stylesheet'/>
     <title>Edit Profile</title>
 </head>
-
-<style>
-
-    .bio{
-        display: inline-block;
-        width: 90%;
-        border-style: solid;
-        border-width: 3px;
-        border-color: #757780;
-        padding: 10px;
-        word-wrap: break-word;
-    }
-</style>
 
 <body>
 <jsp:include page="/RetrieveImageServlet" />

@@ -11,7 +11,7 @@
 <html>
 <head>
     <link href='navigationbar.css' rel='stylesheet'/>
-    <link href='home.css' rel='stylesheet'/>
+    <link href='courses_register.css' rel='stylesheet'/>
     <title>Courses</title>
 
 </head>
