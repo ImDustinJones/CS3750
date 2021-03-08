@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
+import java.sql.*;
 import java.text.ParseException;
 
 @WebServlet(name = "EditCourseServlet", value = "/edit-course")
@@ -35,6 +35,73 @@ public class EditCourseServlet extends HttpServlet {
         String friday = request.getParameter("Friday1");
         String email = (String) session.getAttribute("email");
         String courseID = request.getParameter("CourseID1");
+
+        //block to check for empty strings
+        if(courseNumber.equals("")){
+            try {
+                courseNumber = getValue(courseID, "courseNumber", email);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        if(courseName.equals("")){
+            try {
+                courseName = getValue(courseID, "courseName", email);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        if(creditHours.equals("")){
+            try {
+                creditHours = getValue(courseID, "creditHours", email);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        if(capacity.equals("")){
+            try {
+                capacity = getValue(courseID, "studentCapacity", email);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        if(startTime.equals("")){
+            try {
+                startTime = getValue(courseID, "startTime", email);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        if(endTime.equals("")){
+            try {
+                endTime = getValue(courseID, "endTime", email);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        if(courseDescription.equals("")){
+            try {
+                courseDescription = getValue(courseID, "courseDescription", email);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        //block to check for empty strings
+
         int courseIDInt = Integer.parseInt(courseID);
         int creditHoursInt = Integer.parseInt(creditHours);
         int capacityInt = Integer.parseInt(capacity);
@@ -43,8 +110,6 @@ public class EditCourseServlet extends HttpServlet {
         int wednesdayBit = 0;
         int thursdayBit = 0;
         int fridayBit = 0;
-
-        System.out.println(startTime);
 
         if(monday != null){
             mondayBit = Integer.parseInt(monday);
@@ -62,7 +127,6 @@ public class EditCourseServlet extends HttpServlet {
             fridayBit = Integer.parseInt(friday);
         }
 
-
         CoursesDAO courseDao = new CoursesDAO();
 
         try {
@@ -79,4 +143,27 @@ public class EditCourseServlet extends HttpServlet {
 
 
     }
+
+    //gets value from certain course, used for empty fields on course edit
+    private String getValue(String id, String column, String email) throws SQLException, ClassNotFoundException {
+        Connection connection = connectDatabase();
+        String sql = "SELECT * FROM courseList WHERE courseID = ? AND instructorEmail = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, id);
+        statement.setString(2, email);
+        ResultSet result = statement.executeQuery();
+        result.next();
+        return result.getString(column);
+    }
+
+    public Connection connectDatabase() throws SQLException, ClassNotFoundException {
+        String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
+        String dbUser = "LMS_RunTime";
+        String dbPassword = "password1!";
+
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+        return DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+    }
+
 }
