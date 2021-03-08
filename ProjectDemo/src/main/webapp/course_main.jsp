@@ -5,6 +5,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link href='navigationbar.css' rel='stylesheet'/>
+    <link href='course_main.css' rel='stylesheet'/>
     <%String courseID = request.getParameter( "courseID" );%>
     <title>Your Course</title>
 </head>
@@ -33,9 +35,28 @@
                     }
 
                 %>
-        <h2>${courseTitleString}</h2>
 
-        <h2>Assignments</h2>
+    <ul class="navUl">
+        <li class="navLi"><a href="home.jsp">Home</a></li>
+        <li class="navLi"><a href="edit_profile.jsp">Profile</a></li>
+        <%
+            String userTypeVar = (String) session.getAttribute("userType");
+
+            if(userTypeVar.equals("student")) {
+        %>
+        <li class="navLi"><a href="courseRegisterCheckServlet">Course Catalog</a></li>
+        <li class="navLi"><a href="courses_register.jsp">My Courses</a></li>
+        <%}
+        else { %>
+        <li class="navLi"><a href="courseRegisterCheckServlet"> My Courses</a></li>
+        <%  }
+        %>
+    </ul>
+
+        <div class="mainContainer">
+            <h1>${courseTitleString}</h1>
+            <h2>Assignments</h2>
+        </div>
 <!-- Some helpful information when pulling assigments
 varible courseID = the courseID column of the assignments table in the database
 session varible email is the user's email
