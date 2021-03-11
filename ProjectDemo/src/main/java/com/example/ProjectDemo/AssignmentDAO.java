@@ -77,7 +77,7 @@ public class AssignmentDAO {
 
         return assignmentList;
     }
-
+    //This is just here if we need it
     public List<Assignments> getStudentAssignmentsList(int courseID) throws SQLException, ClassNotFoundException {
         List<Assignments> assignmentList = new ArrayList<Assignments>();
 
@@ -99,5 +99,35 @@ public class AssignmentDAO {
 
 
         connection.close();
+    }
+
+    public Assignments getAssignment(int courseID, int assignmentID) throws SQLException, ClassNotFoundException {
+        Connection connection = connectDatabase();
+        Statement stmt = connection.createStatement();
+
+
+        String sqlQuery = "SELECT * FROM assignments WHERE courseID LIKE '"+courseID+"' AND '"+assignmentID+"';";
+        ResultSet rs = stmt.executeQuery(sqlQuery);
+
+
+        Assignments assignment = new Assignments();
+
+        while(rs.next()){
+            //Retrieve by column name
+            assignment.setAssignmentID(rs.getInt("assignmentID"));
+            assignment.setAssignmentName(rs.getString("assignmentName"));
+            assignment.setCourseID(rs.getInt("courseID"));
+            assignment.setInstructorEmail(rs.getString("instructorEmail"));
+            assignment.setInstructorLastName(rs.getString("instructorLastName"));
+            assignment.setAssignmentDescription(rs.getString("assignmentDescription"));
+            assignment.setPoints(rs.getInt("points"));
+            assignment.setDueDate(rs.getString("dueDate"));
+            assignment.setSubmissionType(rs.getString("submissionType"));
+
+
+        }
+        rs.close();
+
+        return assignment;
     }
 }

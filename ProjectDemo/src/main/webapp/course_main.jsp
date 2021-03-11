@@ -9,7 +9,7 @@
     <link href='navigationbar.css' rel='stylesheet'/>
     <link href='course_main.css' rel='stylesheet'/>
     <%
-        String courseIDCourse_main = request.getParameter( "courseID" );
+        String courseID = request.getParameter( "courseID" );
     %>
     <title>Your Course</title>
 </head>
@@ -24,7 +24,7 @@
 
                     Statement statement = connection.createStatement();
                     String query = "SELECT registrations.courseID, courseList.courseNumber, courseList.courseName, courseList.departmentCode, courseList.instructorLastName "+
-                            "FROM registrations INNER JOIN courseList ON registrations.courseID = courseList.courseID WHERE registrations.studentEmail = '"+email+"' AND registrations.courseID = '" + courseIDCourse_main + "'";
+                            "FROM registrations INNER JOIN courseList ON registrations.courseID = courseList.courseID WHERE registrations.studentEmail = '"+email+"' AND registrations.courseID = '" + courseID + "'";
                     ResultSet resultSet = statement.executeQuery(query);
                     System.out.println(resultSet);
                     while(resultSet.next()){
@@ -56,14 +56,14 @@
         %>
     </ul>
 
-<jsp:include page="/display-instructors-course" />
+<jsp:include page="/display-assignments" />
         <div class="mainContainer">
             <h1>${courseTitleString}</h1>
             <h2>Assignments</h2>
 
             <table id="myTable2">
                 <tr class="header">
-                    <th style="width:20%;">Assignment Name</th>
+                    <th>Assignment Name</th>
                     <th style="width:10%;">Points</th>
                     <th style="width:10%;">Due Date</th>
                     <th style="width:10%;">Submission Type</th>
@@ -71,18 +71,20 @@
                 </tr>
 
                 <tr> <c:forEach items = "${assignmentList}" var = "assignment" >
-                    <td><a href = "/assignment_main.jsp">${assignment.assignmentName}</a></td>
+                    <td><a href = "assignment_main.jsp?assignmentID=${assignment.assignmentID}&courseID=${courseID}">${assignment.assignmentName}</a></td>
                     <td>${assignment.points}</td>
                     <td>${assignment.dueDate}</td>
                     <td>${assignment.submissionType}</td>
                     <td>${assignment.assignmentDescription}</td>
+                </tr>
                 </c:forEach>
             </table>
 
-            <p>The course ID is <%=request.getParameter( "courseID" )%></p>
+            <p>The courseID is ${courseID}</p>
+
         </div>
 <!-- Some helpful information when pulling assigments
-pull courseID using request.getParameter( "courseID" )
+varible courseID = the courseID column of the assignments table in the database
 session varible email is the user's email
 -->
 
