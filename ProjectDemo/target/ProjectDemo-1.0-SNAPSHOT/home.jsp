@@ -168,6 +168,61 @@
             }
             %>
         </div>
+        <% if(userType.equals("instructor")) {
+        %>
+        <h2>Courses List</h2><%}%>
+
+        <div class="cardContainer">
+            <%
+                try{
+                String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
+                String dbUser = "LMS_RunTime";
+                String dbPassword = "password1!";
+                String email = (String) session.getAttribute("email");
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+
+                Statement statement = connection.createStatement();
+                String query = "SELECT courseID, courseNumber, courseName, departmentCode, monday, tuesday, wednesday, thursday, friday,  startTime, endTime " +
+                "FROM courseList  WHERE instructorEmail = '"+email+"'";
+                ResultSet resultSet = statement.executeQuery(query);
+
+                while(resultSet.next()){
+                String courseString1 = resultSet.getString("departmentCode")+" "+resultSet.getString("courseNumber")+" "+resultSet.getString("courseName");
+                String days = "";
+                if(resultSet.getString("monday").equals("1")){
+                days = days.concat("Mon");
+                }
+                if(resultSet.getString("tuesday").equals("1")){
+                days = days.concat(" Tue");
+                }
+                if(resultSet.getString("wednesday").equals("1")){
+                days = days.concat(" Wed");
+                }
+                if(resultSet.getString("thursday").equals("1")){
+                days = days.concat(" Thur");
+                }
+                if(resultSet.getString("friday").equals("1")){
+                days = days.concat(" Fri");
+                }
+                String courseString3 = days+": "+resultSet.getString("startTime")+ " - "+resultSet.getString("endTime");
+                session.setAttribute("courseString1", courseString1);
+                session.setAttribute("courseString3", courseString3);
+                session.setAttribute("courseID", resultSet.getString("courseID"));%>
+            <a href="course_main.jsp?courseID=${courseID}"> <div class="card">
+                <div class="container">
+                    <h4><b>${courseString1}</b></h4>
+                    <p>${courseString2}</p>
+                    <p>${courseString3}</p>
+                </div>
+            </div></a>
+            <%}
+                connection.close();
+                }catch(Exception e){
+                e.printStackTrace();
+                }
+            %>
+        </div>
     </div>
       <h2>Learning Calendar</h2>
     <div class="calanderContainer">
