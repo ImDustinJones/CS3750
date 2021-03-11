@@ -21,15 +21,29 @@
                     String email = (String) session.getAttribute("email");
                     Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                     Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+                    String userTypeVar = (String) session.getAttribute("userType");
 
-                    Statement statement = connection.createStatement();
-                    String query = "SELECT registrations.courseID, courseList.courseNumber, courseList.courseName, courseList.departmentCode, courseList.instructorLastName "+
-                            "FROM registrations INNER JOIN courseList ON registrations.courseID = courseList.courseID WHERE registrations.studentEmail = '"+email+"' AND registrations.courseID = '" + courseIDCourse_main + "'";
-                    ResultSet resultSet = statement.executeQuery(query);
-                    System.out.println(resultSet);
-                    while(resultSet.next()){
-                        String courseTitleString = resultSet.getString("departmentCode")+" "+resultSet.getString("courseNumber")+" "+resultSet.getString("courseName")+ " Instructed By "+ resultSet.getString("instructorLastName");
-                        session.setAttribute("courseTitleString", courseTitleString);
+                    if(userTypeVar.equals("student")) {
+                        Statement statement = connection.createStatement();
+                        String query = "SELECT registrations.courseID, courseList.courseNumber, courseList.courseName, courseList.departmentCode, courseList.instructorLastName " +
+                                "FROM registrations INNER JOIN courseList ON registrations.courseID = courseList.courseID WHERE registrations.studentEmail = '" + email + "' AND registrations.courseID = '" + courseIDCourse_main + "'";
+                        ResultSet resultSet = statement.executeQuery(query);
+                        System.out.println(resultSet);
+                        while (resultSet.next()) {
+                            String courseTitleString = resultSet.getString("departmentCode") + " " + resultSet.getString("courseNumber") + " " + resultSet.getString("courseName") + " Instructed By " + resultSet.getString("instructorLastName");
+                            session.setAttribute("courseTitleString", courseTitleString);
+                        }
+                    }
+                    else {
+                        Statement statement = connection.createStatement();
+                        String query = "SELECT courseID, courseNumber, courseName, departmentCode, instructorLastName " +
+                                "FROM courseList WHERE instructorEmail = '" + email + "' AND courseID = '" + courseIDCourse_main + "'";
+                        ResultSet resultSet = statement.executeQuery(query);
+                        System.out.println(resultSet);
+                        while (resultSet.next()) {
+                            String courseTitleString = resultSet.getString("departmentCode") + " " + resultSet.getString("courseNumber") + " " + resultSet.getString("courseName");
+                            session.setAttribute("courseTitleString", courseTitleString);
+                        }
                     }
                     connection.close();
                     }catch(Exception e){
