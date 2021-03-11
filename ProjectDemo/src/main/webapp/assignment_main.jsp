@@ -27,8 +27,13 @@
     <%  }
     %>
 </ul>
+<jsp:include page="/display-assignment-page" />
+<%
+    String assignmentID = request.getParameter( "assignmentID" );
+%>
+<h1>${theAssignment.assignmentName}</h1>
 
-<h1>Assignments</h1>
+<p>${theAssignment}</p>
 
 
 

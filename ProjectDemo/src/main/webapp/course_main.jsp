@@ -56,14 +56,14 @@
         %>
     </ul>
 
-<jsp:include page="/display-instructors-course" />
+<jsp:include page="/display-assignments" />
         <div class="mainContainer">
             <h1>${courseTitleString}</h1>
             <h2>Assignments</h2>
 
             <table id="myTable2">
                 <tr class="header">
-                    <th style="width:20%;">Assignment Name</th>
+                    <th>Assignment Name</th>
                     <th style="width:10%;">Points</th>
                     <th style="width:10%;">Due Date</th>
                     <th style="width:10%;">Submission Type</th>
@@ -71,15 +71,17 @@
                 </tr>
 
                 <tr> <c:forEach items = "${assignmentList}" var = "assignment" >
-                    <td><a href = "/assignment_main.jsp">${assignment.assignmentName}</a></td>
+                    <td><a href = "assignment_main.jsp?assignmentID=${assignment.assignmentID}&courseID=${courseID}">${assignment.assignmentName}</a></td>
                     <td>${assignment.points}</td>
                     <td>${assignment.dueDate}</td>
                     <td>${assignment.submissionType}</td>
                     <td>${assignment.assignmentDescription}</td>
+                </tr>
                 </c:forEach>
             </table>
 
-            <p>The course ID is ${courseID}</p>
+            <p>The courseID is ${courseID}</p>
+
         </div>
 <!-- Some helpful information when pulling assigments
 varible courseID = the courseID column of the assignments table in the database
