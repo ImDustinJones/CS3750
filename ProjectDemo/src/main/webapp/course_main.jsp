@@ -9,7 +9,7 @@
     <link href='navigationbar.css' rel='stylesheet'/>
     <link href='course_main.css' rel='stylesheet'/>
     <%
-        String courseID = request.getParameter( "courseID" );
+        String courseIDCourse_main = request.getParameter( "courseID" );
     %>
     <title>Your Course</title>
 </head>
@@ -24,7 +24,7 @@
 
                     Statement statement = connection.createStatement();
                     String query = "SELECT registrations.courseID, courseList.courseNumber, courseList.courseName, courseList.departmentCode, courseList.instructorLastName "+
-                            "FROM registrations INNER JOIN courseList ON registrations.courseID = courseList.courseID WHERE registrations.studentEmail = '"+email+"' AND registrations.courseID = '" + courseID + "'";
+                            "FROM registrations INNER JOIN courseList ON registrations.courseID = courseList.courseID WHERE registrations.studentEmail = '"+email+"' AND registrations.courseID = '" + courseIDCourse_main + "'";
                     ResultSet resultSet = statement.executeQuery(query);
                     System.out.println(resultSet);
                     while(resultSet.next()){
@@ -79,10 +79,10 @@
                 </c:forEach>
             </table>
 
-            <p>The course ID is ${courseID}</p>
+            <p>The course ID is <%=request.getParameter( "courseID" )%></p>
         </div>
 <!-- Some helpful information when pulling assigments
-varible courseID = the courseID column of the assignments table in the database
+pull courseID using request.getParameter( "courseID" )
 session varible email is the user's email
 -->
 
