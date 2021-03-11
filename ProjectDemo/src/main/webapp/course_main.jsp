@@ -3,11 +3,14 @@
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <link href='navigationbar.css' rel='stylesheet'/>
     <link href='course_main.css' rel='stylesheet'/>
-    <%String courseID = request.getParameter( "courseID" );%>
+    <%
+        String courseID = request.getParameter( "courseID" );
+    %>
     <title>Your Course</title>
 </head>
 <body> <%
@@ -53,13 +56,38 @@
         %>
     </ul>
 
+<jsp:include page="/display-instructors-course" />
         <div class="mainContainer">
             <h1>${courseTitleString}</h1>
             <h2>Assignments</h2>
+
+            <table id="myTable2">
+                <tr class="header">
+                    <th style="width:20%;">Assignment Name</th>
+                    <th style="width:10%;">Points</th>
+                    <th style="width:10%;">Due Date</th>
+                    <th style="width:10%;">Submission Type</th>
+                    <th style="width:40%;">Description</th>
+                </tr>
+
+                <tr> <c:forEach items = "${assignmentList}" var = "assignment" >
+                    <td><a href = "/assignment_main.jsp">${assignment.assignmentName}</a></td>
+                    <td>${assignment.points}</td>
+                    <td>${assignment.dueDate}</td>
+                    <td>${assignment.submissionType}</td>
+                    <td>${assignment.assignmentDescription}</td>
+                </c:forEach>
+            </table>
+
+            <p>The course ID is ${courseID}</p>
         </div>
 <!-- Some helpful information when pulling assigments
 varible courseID = the courseID column of the assignments table in the database
 session varible email is the user's email
 -->
+
+
+
+
 </body>
 </html>

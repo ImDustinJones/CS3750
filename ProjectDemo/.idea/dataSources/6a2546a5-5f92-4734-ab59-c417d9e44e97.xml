@@ -1122,6 +1122,7 @@
     </table>
     <table id="271" parent="252" name="courseList">
       <ObjectId>114099447</ObjectId>
+      <Outdated>1</Outdated>
       <CreatedTimestamp>2021-03-03.07:36:52.540</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-03.07:37:26.553</ModifiedTimestamp>
     </table>

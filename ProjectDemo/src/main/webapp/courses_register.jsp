@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
+
 <html>
 <head>
     <link href='navigationbar.css' rel='stylesheet'/>
@@ -56,41 +57,41 @@
             </tr>
 
             <tr> <c:forEach items = "${courses}" var = "course" >
-                    <td>${course.courseName}</td>
-                    <td>${course.departmentCode}</td>
-                    <td>${course.courseNumber}</td>
-                    <td>${course.courseDescription}</td>
-                    <td>${course.creditHours}</td>
-                    <c:if test ="${course.monday == 1}">
-                        <td>X</td>
-                    </c:if>
-                    <c:if test ="${course.monday == 0}">
-                        <td>-</td>
-                    </c:if>
-                    <c:if test ="${course.tuesday == 1}">
-                        <td>X</td>
-                    </c:if>
-                    <c:if test ="${course.tuesday == 0}">
-                        <td>-</td>
-                    </c:if>
-                    <c:if test ="${course.wednesday == 1}">
-                        <td>X</td>
-                    </c:if>
-                    <c:if test ="${course.wednesday == 0}">
-                        <td>-</td>
-                    </c:if>
-                    <c:if test ="${course.thursday == 1}">
-                        <td>X</td>
-                    </c:if>
-                    <c:if test ="${course.thursday == 0}">
-                        <td>-</td>
-                    </c:if>
-                    <c:if test ="${course.friday == 1}">
-                        <td>X</td>
-                    </c:if>
-                    <c:if test ="${course.friday == 0}">
-                        <td>-</td>
-                    </c:if>
+                <td><a href="course_main.jsp?courseID=${course.courseID}">${course.courseName}</a></td>
+                <td>${course.departmentCode}</td>
+                <td>${course.courseNumber}</td>
+                <td>${course.courseDescription}</td>
+                <td>${course.creditHours}</td>
+                <c:if test ="${course.monday == 1}">
+                    <td>X</td>
+                </c:if>
+                <c:if test ="${course.monday == 0}">
+                    <td>-</td>
+                </c:if>
+                <c:if test ="${course.tuesday == 1}">
+                    <td>X</td>
+                </c:if>
+                <c:if test ="${course.tuesday == 0}">
+                    <td>-</td>
+                </c:if>
+                <c:if test ="${course.wednesday == 1}">
+                    <td>X</td>
+                </c:if>
+                <c:if test ="${course.wednesday == 0}">
+                    <td>-</td>
+                </c:if>
+                <c:if test ="${course.thursday == 1}">
+                    <td>X</td>
+                </c:if>
+                <c:if test ="${course.thursday == 0}">
+                    <td>-</td>
+                </c:if>
+                <c:if test ="${course.friday == 1}">
+                    <td>X</td>
+                </c:if>
+                <c:if test ="${course.friday == 0}">
+                    <td>-</td>
+                </c:if>
                 <td>${course.startTime}</td>
                 <td>${course.endTime}</td>
                 <td>${course.studentCapacity}</td>

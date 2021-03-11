@@ -78,9 +78,11 @@ public class AssignmentDAO {
         return assignmentList;
     }
 
+    public List<Assignments> getStudentAssignmentsList(int courseID) throws SQLException, ClassNotFoundException {
+        List<Assignments> assignmentList = new ArrayList<Assignments>();
 
-
-
+        return assignmentList;
+    }
 
 
 
