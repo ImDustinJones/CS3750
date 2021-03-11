@@ -82,7 +82,6 @@
 
             <p>The course ID is <%=request.getParameter( "courseID" )%></p>
 
-            <p>The courseID is ${courseID}</p>
 
         </div>
 <!-- Some helpful information when pulling assigments
