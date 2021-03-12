@@ -32,8 +32,8 @@
                 session.setAttribute("calendarQuery", query);
                 }
                 if(userTypeVar.equals("instructor")) {
-                String query = "SELECT registrations.courseID, assignments.assignmentName, assignments.dueDate " +
-                        "FROM registrations INNER JOIN assignments on registrations.courseID = assignments.courseID WHERE registrations.studentEmail = '"+email+"'";
+                String query = "SELECT courseID, assignmentName, dueDate " +
+                        "FROM assignments WHERE instructorEmail = '"+email+"'";
                 session.setAttribute("calendarQuery", query);
                 }
                 ResultSet resultSet = statement.executeQuery((String) session.getAttribute("calendarQuery"));
