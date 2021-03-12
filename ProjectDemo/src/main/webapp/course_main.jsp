@@ -10,6 +10,7 @@
     <link href='course_main.css' rel='stylesheet'/>
     <%
         String courseIDCourse_main = request.getParameter( "courseID" );
+        session.setAttribute("courseID", request.getParameter( "courseID" ));
     %>
     <title>Your Course</title>
 </head>
