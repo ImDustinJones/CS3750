@@ -15,37 +15,46 @@
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
-                events: [
+                events: [<%
+                try{
+                String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
+                String dbUser = "LMS_RunTime";
+                String dbPassword = "password1!";
+                String email = (String) session.getAttribute("email");
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+
+                Statement statement = connection.createStatement();
+                String userTypeVar = (String) session.getAttribute("userType");
+                if(userTypeVar.equals("student")) {
+                String query = "SELECT registrations.courseID, assignments.assignmentName, assignments.dueDate " +
+                        "FROM registrations INNER JOIN assignments on registrations.courseID = assignments.courseID WHERE registrations.studentEmail = '"+email+"'";
+                session.setAttribute("calendarQuery", query);
+                }
+                if(userTypeVar.equals("instructor")) {
+                String query = "SELECT courseID, assignmentName, dueDate " +
+                        "FROM assignments WHERE instructorEmail = '"+email+"'";
+                session.setAttribute("calendarQuery", query);
+                }
+                ResultSet resultSet = statement.executeQuery((String) session.getAttribute("calendarQuery"));
+                while(resultSet.next()){
+                    String assignmentName = resultSet.getString("assignmentName");
+                    String date = resultSet.getString("dueDate").substring(0,resultSet.getString("dueDate").length()-11);
+                    session.setAttribute("calendarDueDate", date);
+                    session.setAttribute("calendarAssignmentName", assignmentName);
+                    System.out.println(date);
+
+                %>
                     {
-                        title : 'Place Holder Assignment 1',
-                        start : '2021-02-09',
-                        end : '2021-02-09',
+                        title : '${calendarAssignmentName}',
+                        start : '${calendarDueDate}',
+                        end : '${calendarDueDate}',
                         color : 'blue'
-                    },
-                    {
-                        title : 'Place Holder Assignment 2',
-                        start : '2021-02-13',
-                        end : '2021-02-13',
-                        color : 'red'
-                    },
-                    {
-                        title : 'Place Holder Assignment 3',
-                        start : '2021-02-18',
-                        end : '2021-02-18',
-                        color : 'blue'
-                    },
-                    {
-                        title : 'Place Holder Assignment 4',
-                        start : '2021-02-27',
-                        end : '2021-02-27',
-                        color : 'purple'
-                    },
-                    {
-                        title : 'Place Holder Assignment 5',
-                        start : '2021-02-04',
-                        end : '2021-02-04',
-                        color : 'purple'
-                    }
+                    },<%}
+                    connection.close();
+            }catch(Exception e){
+                    e.printStackTrace();
+            }%>
                 ],
                 initialView: 'dayGridMonth',
                 height: 500,
