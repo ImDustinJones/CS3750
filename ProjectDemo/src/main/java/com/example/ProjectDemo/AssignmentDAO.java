@@ -106,7 +106,7 @@ public class AssignmentDAO {
         Statement stmt = connection.createStatement();
 
 
-        String sqlQuery = "SELECT * FROM assignments WHERE courseID LIKE '"+courseID+"' AND '"+assignmentID+"';";
+        String sqlQuery = "SELECT * FROM assignments WHERE courseID LIKE '"+courseID+"' AND assignmentID LIKE '"+assignmentID+"';";
         ResultSet rs = stmt.executeQuery(sqlQuery);
 
 

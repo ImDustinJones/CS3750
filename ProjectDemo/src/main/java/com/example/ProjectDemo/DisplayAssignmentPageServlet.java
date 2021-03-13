@@ -29,14 +29,11 @@ public class DisplayAssignmentPageServlet extends HttpServlet {
         int pageCourseID = Integer.parseInt((String)session.getAttribute("courseID"));
 
         try {
-
             assignment = assignmentDao.getAssignment(pageCourseID, pageAssignmentID);
             session.setAttribute("theAssignment", assignment);
 
-        } catch (SQLException throwables) {
+        } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
 
 

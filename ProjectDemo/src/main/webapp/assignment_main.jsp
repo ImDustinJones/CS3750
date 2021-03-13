@@ -6,9 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>AssignmentName</title>
+    <link href='navigationbar.css' rel='stylesheet'/>
+    <link href='assignment_main.css' rel='stylesheet'/>
 </head>
 <body>
 <ul class="navUl">
@@ -27,14 +30,38 @@
     <%  }
     %>
 </ul>
-<jsp:include page="/display-assignment-page" />
 <%
     String assignmentID = request.getParameter( "assignmentID" );
+    session.setAttribute("courseID", request.getParameter( "courseID" ));
+    session.setAttribute("assignmentID", request.getParameter("assignmentID"));
 %>
-<h1>${theAssignment.assignmentName}</h1>
+<jsp:include page="/display-assignment-page" />
+<div class = mainContainer>
+    <h1>${theAssignment.assignmentName}</h1>
 
-<p>${theAssignment}</p>
+    <p>Due Date: ${theAssignment.dueDate}</p>
+    <p>${theAssignment.assignmentDescription}</p>
+    <p>Points: ${theAssignment.points}</p>
 
+    <p>Submission Type: ${theAssignment.submissionType}</p>
+    <c:if test ="${theAssignment.submissionType == 'file'}">
+        <form method="post">
+            <label for ="fileSubmission">Add A File: </label>
+            <input type = "file" name = "fileSubmission" id = "fileSubmission"><br>
+            <input type="submit" value="Submit File"> <br>
+        </form>
+    </c:if>
+    <c:if test ="${theAssignment.submissionType == 'text'}">
+        <form method="post">
+            <label for ="textSubmission">Enter Text: </label><br>
+            <textarea id = "textSubmission" name = "textSubmission" rows = "30" cols="100"></textarea><br>
+            <input type="submit" value="Submit File"> <br>
+        </form>
+    </c:if>
+
+
+
+</div>
 
 
 </body>
