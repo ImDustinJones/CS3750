@@ -127,6 +127,7 @@ img {
     float: right;
     margin-top: 140px;
     margin-right: 10px;
+    overflow: scroll;
 }
 
 .todoUL h2 {

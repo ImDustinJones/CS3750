@@ -106,13 +106,50 @@
     %>
 </ul>
 
-<ul class="todoUL">
-    <h2>My To Do List</h2>
-    <li><a href="#DummyT1">CS1234 Dummy<br>Dummy Assignment1<br> 2/10/21 11:59PM</a><span class="itemX" onclick="deleteItem(this)"> X </span></li>
-    <li><a href="#DummyT2">CS1234 Dummy<br>Dummy Assignment2<br> 2/15/21 11:59PM</a><span class="itemX" onclick="deleteItem(this)"> X </span></li>
-    <li><a href="#DummyT3">CS1234 Dummy<br>Dummy Assignment3<br> 2/17/21 11:59PM</a><span class="itemX" onclick="deleteItem(this)"> X </span></li>
-    <li><a href="#DummyT4">CS1234 Dummy<br>Dummy Assignment4<br> 2/21/21 11:59PM</a><span class="itemX" onclick="deleteItem(this)"> X </span></li>
-    <li><a href="#DummyT5">CS1234 Dummy<br>Dummy Assignment5<br> 3/1/21 11:59PM</a><span class="itemX" onclick="deleteItem(this)"> X </span></li>
+    <% if(session.getAttribute("userType").equals("student")){ %>
+    <h2>To Do:</h2>
+    <ul class="todoUL">
+    <%
+            try{
+            String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
+            String dbUser = "LMS_RunTime";
+            String dbPassword = "password1!";
+            String email = (String) session.getAttribute("email");
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+
+            Statement statement = connection.createStatement();
+            String query = "SELECT * FROM registrations INNER JOIN courseList ON courseList.courseID = " +
+                            "registrations.courseID INNER JOIN assignments ON assignments.courseID = " +
+                            "registrations.courseID  WHERE studentEmail LIKE '" + session.getAttribute("email") +
+                            "' ORDER BY dueDate DESC";
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while(resultSet.next()){
+                    session.setAttribute("courseID", resultSet.getInt("courseID"));
+                    session.setAttribute("courseName", resultSet.getString("courseName"));
+                    session.setAttribute("assignmentID", resultSet.getString("assignmentID"));
+                    session.setAttribute("assignmentName", resultSet.getString("assignmentName"));
+                    session.setAttribute("dueDate", resultSet.getDate("dueDate").toString());
+    %>
+
+    <li><a href="assignment_main.jsp?assignmentID=${assignmentID}&courseID=${courseID}">${courseName}<br>${assignmentName}<br>Due: ${dueDate}</a><span class="itemX" onclick="deleteItem(this)"> X </span></li>
+
+    <%
+            }
+            session.removeAttribute("courseID");
+            session.removeAttribute("courseName");
+            session.removeAttribute("assignmentID");
+            session.removeAttribute("assignmentName");
+            session.removeAttribute("dueDate");
+            connection.close();
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+    %>
+
 </ul>
 
 <div class="mainContainer">
