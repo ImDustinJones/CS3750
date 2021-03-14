@@ -9,15 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07f3fd19-a74c-4317-b095-3ddf5c20a21e" name="Default Changelist" comment="finished assignment_main stuff">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/SortServletAssignments.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/course_main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/AssignmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/AssignmentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/displayAssignmentsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/displayAssignmentsServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/course_main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/course_main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/course_main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/course_main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT.war" afterDir="false" />
+    <list default="true" id="07f3fd19-a74c-4317-b095-3ddf5c20a21e" name="Default Changelist" comment="finished adding sorting function to assignment list">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/SortServletAssignments.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +194,7 @@
       <workItem from="1614631356417" duration="805000" />
       <workItem from="1614645105637" duration="832000" />
       <workItem from="1615343590575" duration="10639000" />
-      <workItem from="1615495788558" duration="13545000" />
+      <workItem from="1615495788558" duration="14528000" />
     </task>
     <task id="LOCAL-00001" summary="Added Calendar still need to test and modify though">
       <created>1612832173384</created>
@@ -371,7 +364,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615594176210</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="finished adding sorting function to assignment list">
+      <created>1615753908176</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1615753908176</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -402,17 +402,7 @@
     <MESSAGE value="Fixed the course list heading to make it only display for students" />
     <MESSAGE value="Added assignmentsDAO, bean and page, also added course page" />
     <MESSAGE value="finished assignment_main stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished assignment_main stuff" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/main/webapp/course_main.js</url>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="finished adding sorting function to assignment list" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished adding sorting function to assignment list" />
   </component>
 </project>
