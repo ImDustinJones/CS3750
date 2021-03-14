@@ -77,6 +77,8 @@ public class AssignmentDAO {
 
         return assignmentList;
     }
+
+
     //This is just here if we need it
     public List<Assignments> getStudentAssignmentsList(int courseID) throws SQLException, ClassNotFoundException {
         List<Assignments> assignmentList = new ArrayList<Assignments>();
@@ -129,5 +131,48 @@ public class AssignmentDAO {
         rs.close();
 
         return assignment;
+    }
+
+    public List<Assignments> DateSortListAssignment(int courseID, String sortType) throws SQLException, ClassNotFoundException {
+        Connection connection = connectDatabase();
+        Statement stmt = connection.createStatement();
+        String sqlQuery = null;
+
+
+        if(sortType.equals("dueDate")){
+            sqlQuery = "SELECT * FROM assignments WHERE courseID LIKE '"+courseID+"' ORDER BY dueDate;";
+        }
+        else{
+            sqlQuery = "SELECT * FROM assignments WHERE courseID LIKE '"+courseID+"' ORDER BY assignmentName;";
+        }
+
+        ResultSet rs = stmt.executeQuery(sqlQuery);
+
+
+
+        List<Assignments>assignmentList = new ArrayList<Assignments>();
+
+        while(rs.next()){
+            //Retrieve by column name
+            Assignments assignment = new Assignments();
+            assignment.setAssignmentID(rs.getInt("assignmentID"));
+            assignment.setAssignmentName(rs.getString("assignmentName"));
+            assignment.setCourseID(rs.getInt("courseID"));
+            assignment.setInstructorEmail(rs.getString("instructorEmail"));
+            assignment.setInstructorLastName(rs.getString("instructorLastName"));
+            assignment.setAssignmentDescription(rs.getString("assignmentDescription"));
+            assignment.setPoints(rs.getInt("points"));
+            assignment.setDueDate(rs.getString("dueDate"));
+            assignment.setSubmissionType(rs.getString("submissionType"));
+
+
+
+            assert false;
+            assignmentList.add(assignment);
+
+        }
+        rs.close();
+
+        return assignmentList;
     }
 }

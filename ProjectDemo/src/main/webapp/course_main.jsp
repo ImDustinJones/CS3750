@@ -78,15 +78,15 @@
 
             <table id="myTable2">
                 <tr class="header">
-                    <th>Assignment Name</th>
-                    <th style="width:10%;">Points</th>
-                    <th style="width:10%;">Due Date</th>
-                    <th style="width:10%;">Submission Type</th>
-                    <th style="width:40%;">Description</th>
+                    <th onclick="sortTable(0)">Assignment Name</th>
+                    <th style="width:10%;" onclick="sortTableNumbers(1)">Points</th>
+                    <th style="width:20%;" onclick="sortTable(2)">Due Date</th>
+                    <th style="width:10%;" onclick="sortTable(3)">Submission Type</th>
+                    <th style="width:40%;" onclick="sortTable(4)">Description</th>
                 </tr>
 
                 <tr> <c:forEach items = "${assignmentList}" var = "assignment" >
-                    <td><a href = "assignment_main.jsp?assignmentID=${assignment.assignmentID}&courseID=${courseID}">${assignment.assignmentName}</a></td>
+                    <a href = "assignment_main.jsp?assignmentID=${assignment.assignmentID}&courseID=${courseID}"><td>${assignment.assignmentName}</td></a>
                     <td>${assignment.points}</td>
                     <td>${assignment.dueDate}</td>
                     <td>${assignment.submissionType}</td>
@@ -94,8 +94,6 @@
                 </tr>
                 </c:forEach>
             </table>
-
-            <p>The course ID is <%=request.getParameter( "courseID" )%></p>
 
 
         </div>
@@ -106,6 +104,6 @@ session varible email is the user's email
 
 
 
-
+<script src="course_main.js"></script>
 </body>
 </html>
