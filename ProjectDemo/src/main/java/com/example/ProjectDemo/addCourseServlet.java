@@ -40,7 +40,7 @@ public class addCourseServlet extends HttpServlet {
         int thursdayBit = 0;
         int fridayBit = 0;
 
-        System.out.println(startTime);
+        //System.out.println(startTime);
 
         if(monday != null){
             mondayBit = Integer.parseInt(monday);
@@ -62,8 +62,8 @@ public class addCourseServlet extends HttpServlet {
         CoursesDAO courseDao = new CoursesDAO();
 
         try {
-                courseDao.addCoursesDB(courseNumber, courseName, department, email, lastName, courseDescription, creditHoursInt, startTime, endTime, capacityInt, mondayBit, tuesdayBit, wednesdayBit, thursdayBit, fridayBit);
-                String destPage = "courses_register.jsp";
+            courseDao.addCoursesDB(courseNumber, courseName, department, email, lastName, courseDescription, creditHoursInt, startTime, endTime, capacityInt, mondayBit, tuesdayBit, wednesdayBit, thursdayBit, fridayBit);
+            String destPage = "courses_register.jsp";
 
             //RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
             //dispatcher.forward(request, response);

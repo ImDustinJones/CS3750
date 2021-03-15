@@ -122,7 +122,7 @@
             String query = "SELECT * FROM registrations INNER JOIN courseList ON courseList.courseID = " +
                             "registrations.courseID INNER JOIN assignments ON assignments.courseID = " +
                             "registrations.courseID  WHERE studentEmail LIKE '" + session.getAttribute("email") +
-                            "' ORDER BY dueDate DESC";
+                            "' ORDER BY dueDate ASC";
             ResultSet resultSet = statement.executeQuery(query);
 
             while(resultSet.next()){
