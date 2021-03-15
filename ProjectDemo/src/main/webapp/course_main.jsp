@@ -87,7 +87,10 @@
                     <th style="width:10%;">Due Date</th>
                     <th style="width:10%;">Submission Type</th>
                     <th style="width:40%;">Description</th>
+<<<<<<< HEAD
                     <th style="width:40%;"></th>
+=======
+>>>>>>> parent of 05f9b69 (finished adding sorting function to assignment list)
                 </tr>
 
                 <tr> <c:forEach items = "${assignmentList}" var = "assignment" >
@@ -138,7 +141,13 @@
                 </c:forEach>
             </table>
 
+<<<<<<< HEAD
             <p style="display: none">The course ID is <%=request.getParameter( "courseID" )%></p>
+=======
+            <p>The course ID is <%=request.getParameter( "courseID" )%></p>
+
+
+>>>>>>> parent of 05f9b69 (finished adding sorting function to assignment list)
         </div>
 
 
@@ -210,5 +219,9 @@ session varible email is the user's email
 
 </script>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 05f9b69 (finished adding sorting function to assignment list)
 </body>
 </html>
