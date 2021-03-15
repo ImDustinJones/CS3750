@@ -48,26 +48,6 @@ public class displayAssignmentsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        //System.out.println("Display Instructor Courses is Running");
-//        AssignmentDAO assignmentDao = new AssignmentDAO();
-//        HttpSession session = request.getSession();
-//        List<Assignments> assignmentsList = null;
-//
-//        String email = (String) session.getAttribute("email");
-//        String userTypeVariable = (String) session.getAttribute("userType");
-//        String filterType = request.getParameter("filter");
-//        int pageCourseID = Integer.parseInt((String)session.getAttribute("courseID"));
-//
-//        try {
-//
-//            assignmentsList = assignmentDao.DateSortListAssignment(pageCourseID, filterType);
-//            session.setAttribute("assignmentList", assignmentsList);
-//            String destPage = "course_main.jsp";
-//
-//            response.sendRedirect(destPage);
-//
-//        } catch (SQLException | ClassNotFoundException throwables) {
-//            throwables.printStackTrace();
-//        }
+
     }
 }

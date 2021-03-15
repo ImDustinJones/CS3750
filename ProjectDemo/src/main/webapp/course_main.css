@@ -63,9 +63,80 @@ h2{
 
 .profileContainer{
     background-color: #F6AE2D;
-    color: black;
+    color: white;
     border-style: solid;
     border-width: 3px;
     border-color: #757780;
     padding: 10px;
 }
+
+.addAssignBtn {
+    padding: 16px 20px;
+    margin:30px auto;
+    display:block;
+    width: 120px;
+}
+
+.addAssignmentForm {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 9;
+    max-width: 60%;
+}
+
+.addAssignFormContainer {
+    padding: 10px;
+    background-color: #001011;
+    color: white;
+}
+
+.addAssignFormContainer input[type=text], .addAssignFormContainer input[type=datetime-local], .addAssignFormContainer textarea {
+    width: 100%;
+    border: none;
+    background: #F6AE2D;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+}
+
+.radioAssignGroup{
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 35px 0;
+    border: none;
+    background: #F6AE2D;
+}
+
+.radioAssignGroup label {
+    padding-bottom: 5px;
+
+}
+
+.addAssignFormContainer input[type=text]:focus{
+    outline: none;
+    background-color: #ddd;
+}
+
+.addAssignFormContainer .createAssignBtn {
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 10px auto;
+    cursor: pointer;
+    display: block;
+    width: 40%;
+    opacity: 0.7;
+}
+
+.addAssignFormContainer .createAssignBtn:hover, .addAssignBtn:hover {
+    opacity: .9;
+}
+
+.addAssignFormContainer .close {
+    background-color: darkred;
+}
+
