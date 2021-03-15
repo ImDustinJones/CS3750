@@ -36,6 +36,7 @@ public class SignUpServlet extends HttpServlet {
                     request.setAttribute("emailAgeFail", "true");
                 }
                 else{
+
                     Users user = userDao.addUserDB(email, firstName, lastName, password, birthDate);
                     HttpSession session = request.getSession();
                     session.setAttribute("user", user);

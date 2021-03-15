@@ -65,6 +65,7 @@ public class addCourseServlet extends HttpServlet {
                 courseDao.addCoursesDB(courseNumber, courseName, department, email, lastName, courseDescription, creditHoursInt, startTime, endTime, capacityInt, mondayBit, tuesdayBit, wednesdayBit, thursdayBit, fridayBit);
                 String destPage = "courses_register.jsp";
 
+
             //RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
             //dispatcher.forward(request, response);
             response.sendRedirect(destPage);
