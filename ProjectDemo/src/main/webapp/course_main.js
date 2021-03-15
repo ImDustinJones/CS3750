@@ -21,6 +21,7 @@ function sortTable(n) {
                     break;
                 }
             }
+
         }
         if (shouldSwitch) {
             rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);

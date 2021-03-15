@@ -99,6 +99,7 @@
                     <td> <button class = "my_button" value = "${assignment.assignmentID}" onclick= "showDiv(this.value)">Edit Assignment</button> </td>
                 </tr>
 
+
                 <div style="display: none" id = "${assignment.assignmentID}" class = "editAssignForm">
                     <div class="editAssignFormContainer">
                         <form method="post" action="${pageContext.request.contextPath}/EditAssignmentServlet">

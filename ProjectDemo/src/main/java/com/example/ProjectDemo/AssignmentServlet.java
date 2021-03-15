@@ -42,7 +42,6 @@ public class AssignmentServlet extends HttpServlet {
         String email = (String) session.getAttribute("email");
         int courseID = Integer.parseInt(request.getParameter( "courseIDMain2" ));
 
-
         AssignmentDAO assignDAO = new AssignmentDAO();
 
         try {

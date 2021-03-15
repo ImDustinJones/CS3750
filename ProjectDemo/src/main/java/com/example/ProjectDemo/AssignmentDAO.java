@@ -132,8 +132,6 @@ public class AssignmentDAO {
             assignment.setDueDate(rs.getString("dueDate"));
             assignment.setSubmissionType(rs.getString("submissionType"));
 
-
-
             assert false;
             assignmentList.add(assignment);
 
