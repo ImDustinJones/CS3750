@@ -24,10 +24,6 @@
                     Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
                     String userTypeVar = (String) session.getAttribute("userType");
 
-
-                    String courseID = (String) session.getAttribute("courseID");
-                    String lastName = (String) session.getAttribute("lastName");
-
                     if(userTypeVar.equals("student")) {
                         Statement statement = connection.createStatement();
                         String query = "SELECT registrations.courseID, courseList.courseNumber, courseList.courseName, courseList.departmentCode, courseList.instructorLastName " +
@@ -82,12 +78,11 @@
 
             <table id="myTable2">
                 <tr class="header">
-                    <th>Assignment Name</th>
-                    <th style="width:10%;">Points</th>
-                    <th style="width:10%;">Due Date</th>
-                    <th style="width:10%;">Submission Type</th>
-                    <th style="width:40%;">Description</th>
-                    <th style="width:40%;"></th>
+                    <th onclick="sortTable(0)">Assignment Name</th>
+                    <th style="width:10%;" onclick="sortTableNumbers(1)">Points</th>
+                    <th style="width:20%;" onclick="sortTable(2)">Due Date</th>
+                    <th style="width:10%;" onclick="sortTable(3)">Submission Type</th>
+                    <th style="width:40%;" onclick="sortTable(4)">Description</th>
                 </tr>
 
                 <tr> <c:forEach items = "${assignmentList}" var = "assignment" >
@@ -138,49 +133,49 @@
                 </c:forEach>
             </table>
 
-            <p style="display: none">The course ID is <%=request.getParameter( "courseID" )%></p>
+            <p>The course ID is <%=request.getParameter( "courseID" )%></p>
+
+
         </div>
-
-
 <!-- Some helpful information when pulling assigments
 pull courseID using request.getParameter( "courseID" )!
 session varible email is the user's email
 -->
 
 
-        <button class="addAssignBtn" onclick="openAddForm()">Add New Assignment</button>
+<button class="addAssignBtn" onclick="openAddForm()">Add New Assignment</button>
 
-        <div class="addAssignmentForm" id="addAssignmentForm">
-            <form method="post" action="${pageContext.request.contextPath}/AssignmentServlet" class="addAssignFormContainer">
-                <h1>Create A New Assignment</h1>
+<div class="addAssignmentForm" id="addAssignmentForm">
+    <form method="post" action="${pageContext.request.contextPath}/AssignmentServlet" class="addAssignFormContainer">
+        <h1>Create A New Assignment</h1>
 
-                <label for="assignName"><b>Assignment Name</b></label>
-                <input type="text" placeholder="Enter assignment name" name="assignName" id="assignName" required>
+        <label for="assignName"><b>Assignment Name</b></label>
+        <input type="text" placeholder="Enter assignment name" name="assignName" id="assignName" required>
 
-                <label for="assignScore"><b>Possible Points</b></label>
-                <input type="text" placeholder="Enter the max possible points" name="assignScore" id="assignScore" required>
+        <label for="assignScore"><b>Possible Points</b></label>
+        <input type="text" placeholder="Enter the max possible points" name="assignScore" id="assignScore" required>
 
-                <label for="assignDate"><b>Due Date</b></label>
-                <input type="datetime-local" placeholder="Enter the assignment due date" name="assignDate" id="assignDate" required>
+        <label for="assignDate"><b>Due Date</b></label>
+        <input type="datetime-local" placeholder="Enter the assignment due date" name="assignDate" id="assignDate" required>
 
-                <label><b>Assignment Submission Type</b></label>
-                <div class="radioAssignGroup">
-                    <input type="radio" id="textRadio" name="assignGroup" value="text" required>
-                    <label for="textRadio">Text</label>
-                    <input type="radio" id="fileRadio" name="assignGroup" value="file">
-                    <label for="fileRadio">File</label>
-                </div>
-
-
-                <label for="assignDescription"><b>Description</b></label>
-                <textarea placeholder="Enter the assignment description" name="assignDescription" id="assignDescription" required rows="8" cols="50"></textarea>
-                <input type="text" style="display: none" id="courseIDMain2" name="courseIDMain2" value=<%=request.getParameter( "courseID" )%>>
-
-
-                <button type="submit" class="createAssignBtn">Create Assignment</button>
-                <button type="button" class="createAssignBtn close" onclick="closeAddForm()">Close Form</button>
-            </form>
+        <label><b>Assignment Submission Type</b></label>
+        <div class="radioAssignGroup">
+            <input type="radio" id="textRadio" name="assignGroup" value="text" required>
+            <label for="textRadio">Text</label>
+            <input type="radio" id="fileRadio" name="assignGroup" value="file">
+            <label for="fileRadio">File</label>
         </div>
+
+
+        <label for="assignDescription"><b>Description</b></label>
+        <textarea placeholder="Enter the assignment description" name="assignDescription" id="assignDescription" required rows="8" cols="50"></textarea>
+        <input type="text" style="display: none" id="courseIDMain2" name="courseIDMain2" value=<%=request.getParameter( "courseID" )%>>
+
+
+        <button type="submit" class="createAssignBtn">Create Assignment</button>
+        <button type="button" class="createAssignBtn close" onclick="closeAddForm()">Close Form</button>
+    </form>
+</div>
 
 <script>
     function openAddForm() {
