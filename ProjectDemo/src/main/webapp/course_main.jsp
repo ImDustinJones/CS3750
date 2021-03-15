@@ -91,7 +91,7 @@
                 </tr>
 
                 <tr> <c:forEach items = "${assignmentList}" var = "assignment" >
-                    <td> <a href = "assignment_main.jsp?assignmentID=${assignment.assignmentID}&courseID=${courseID}" > ${assignment.assignmentName} </a> </td>
+                    <a href = "assignment_main.jsp?assignmentID=${assignment.assignmentID}&courseID=${courseID}" ><td>${assignment.assignmentName} </td> </a>
                     <td>${assignment.points}</td>
                     <td>${assignment.dueDate}</td>
                     <td>${assignment.submissionType}</td>
