@@ -107,8 +107,9 @@
 </ul>
 
     <% if(session.getAttribute("userType").equals("student")){ %>
-    <h2>To Do:</h2>
     <ul class="todoUL">
+        <h2>To Do:</h2>
+        <div class="toDoItemContainer">
     <%
             try{
             String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
@@ -149,6 +150,7 @@
             }
         }
     %>
+        </div>
 
 </ul>
 

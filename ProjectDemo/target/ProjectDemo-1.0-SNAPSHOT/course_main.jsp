@@ -91,13 +91,14 @@
                 </tr>
 
                 <tr> <c:forEach items = "${assignmentList}" var = "assignment" >
-                    <td> <a href = "assignment_main.jsp?assignmentID=${assignment.assignmentID}&courseID=${courseID}" > ${assignment.assignmentName} </a> </td>
+                    <a href = "assignment_main.jsp?assignmentID=${assignment.assignmentID}&courseID=${courseID}" ><td>${assignment.assignmentName} </td> </a>
                     <td>${assignment.points}</td>
                     <td>${assignment.dueDate}</td>
                     <td>${assignment.submissionType}</td>
                     <td>${assignment.assignmentDescription}</td>
                     <td> <button class = "my_button" value = "${assignment.assignmentID}" onclick= "showDiv(this.value)">Edit Assignment</button> </td>
                 </tr>
+
 
                 <div style="display: none" id = "${assignment.assignmentID}" class = "editAssignForm">
                     <div class="editAssignFormContainer">

@@ -107,8 +107,9 @@
 </ul>
 
     <% if(session.getAttribute("userType").equals("student")){ %>
-    <h2>To Do:</h2>
     <ul class="todoUL">
+        <h2>To Do:</h2>
+        <div class="toDoItemContainer">
     <%
             try{
             String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
@@ -122,7 +123,7 @@
             String query = "SELECT * FROM registrations INNER JOIN courseList ON courseList.courseID = " +
                             "registrations.courseID INNER JOIN assignments ON assignments.courseID = " +
                             "registrations.courseID  WHERE studentEmail LIKE '" + session.getAttribute("email") +
-                            "' ORDER BY dueDate DESC";
+                            "' ORDER BY dueDate ASC";
             ResultSet resultSet = statement.executeQuery(query);
 
             while(resultSet.next()){
@@ -149,6 +150,7 @@
             }
         }
     %>
+        </div>
 
 </ul>
 
