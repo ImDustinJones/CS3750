@@ -1,0 +1,195 @@
+body{
+    background-color: #001011;
+    font-family: "Verdana";
+    margin: 0;
+}
+
+h1{
+    font-size: 250%;
+    text-decoration: underline;
+    color: white;
+    text-align: center;
+}
+h2{
+    margin-left: 5%;
+    margin-top: 8%;
+    color: white;
+}
+
+.mainContainer{
+    margin: auto;
+    width: 60%;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #757780;
+    background: #F6AE2D;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #f6ae2d;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: fixed;
+    display: inline-block;
+    right: 10%;
+    top: 12%;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+
+
+
+#myInput {
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+#myTable2 {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+}
+
+#myTable2 th, #myTable2 td {
+    text-align: center;
+    padding: 12px;
+}
+
+#myTable2 tr {
+    border-bottom: 1px solid #ddd;
+}
+
+#myTable2 tr.header, #myTable2 tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+.profileContainer{
+    background-color: #F6AE2D;
+    color: white;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #757780;
+    padding: 10px;
+}
+
+.addAssignBtn {
+    padding: 16px 20px;
+    margin:30px auto;
+    display:block;
+    width: 120px;
+}
+
+.addAssignmentForm, .editAssignForm {
+    display: none;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 9;
+    max-width: 60%;
+}
+
+.addAssignFormContainer, .editAssignFormContainer {
+    padding: 10px;
+    background-color: #001011;
+    color: white;
+}
+
+.addAssignFormContainer input[type=text], .addAssignFormContainer input[type=datetime-local], .addAssignFormContainer textarea {
+    width: 100%;
+    border: none;
+    background: #F6AE2D;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+}
+
+.editAssignFormContainer input[type=text], .editAssignFormContainer input[type=datetime-local], .editAssignFormContainer textarea {
+    width: 100%;
+    border: none;
+    background: #F6AE2D;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+}
+
+.radioAssignGroup, .editRadioAssignGroup{
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 35px 0;
+    border: none;
+    background: #F6AE2D;
+}
+
+.radioAssignGroup label, .editRadioAssignGroup label {
+    padding-bottom: 5px;
+}
+
+.addAssignFormContainer input[type=text]:focus{
+    outline: none;
+    background-color: #ddd;
+}
+
+.addAssignFormContainer .createAssignBtn {
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 10px auto;
+    cursor: pointer;
+    display: block;
+    width: 40%;
+    opacity: 0.7;
+
+}
+
+.addAssignFormContainer .createAssignBtn:hover, .addAssignBtn:hover {
+    opacity: .9;
+}
+
+.addAssignFormContainer .close {
+    background-color: darkred;
+}
+
