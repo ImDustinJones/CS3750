@@ -82,27 +82,27 @@
 
             <table id="myTable2">
                 <tr class="header">
-                    <th>Assignment Name</th>
-                    <th style="width:10%;">Points</th>
-                    <th style="width:10%;">Due Date</th>
-                    <th style="width:10%;">Submission Type</th>
-                    <th style="width:40%;">Description</th>
+                    <th onclick="sortTable(0)">Assignment Name</th>
+                    <th style="width:10%;" onclick="sortTableNumbers(1)">Points</th>
+                    <th style="width:20%;" onclick="sortTable(2)">Due Date</th>
+                    <th style="width:10%;" onclick="sortTable(3)">Submission Type</th>
+                    <th style="width:40%;" onclick="sortTable(4)">Description</th>
                     <th style="width:40%;"></th>
                 </tr>
 
                 <tr> <c:forEach items = "${assignmentList}" var = "assignment" >
-                    <td><a href = "assignment_main.jsp?assignmentID=${assignment.assignmentID}&courseID=${courseID}">${assignment.assignmentName}</a></td>
+                    <td> <a href = "assignment_main.jsp?assignmentID=${assignment.assignmentID}&courseID=${courseID}" > ${assignment.assignmentName} </a> </td>
                     <td>${assignment.points}</td>
                     <td>${assignment.dueDate}</td>
                     <td>${assignment.submissionType}</td>
                     <td>${assignment.assignmentDescription}</td>
-                    <td><button class = "my_button" value = "${assignment.assignmentID}" onclick= "showDiv(this.value)">Edit Assignment</button><br></td>
+                    <td> <button class = "my_button" value = "${assignment.assignmentID}" onclick= "showDiv(this.value)">Edit Assignment</button> </td>
                 </tr>
 
-                <tr id = "${assignment.assignmentID}" style="display: none">
-                    <td colspan="30">
+                <div style="display: none" id = "${assignment.assignmentID}" class = "editAssignForm">
+                    <div class="editAssignFormContainer">
                         <form method="post" action="${pageContext.request.contextPath}/EditAssignmentServlet">
-                            <h1>Edit Assignment</h1>
+                            <h1>Edit Assignment ${assignment.assignmentName}</h1>
                             <div class="editFormWrap" style="text-align: left">
                                 <label for="editAssignName"><b>Assignment Name</b></label>
                                 <input type="text" placeholder="${assignment.assignmentName}" name="editAssignName" id="editAssignName" required><br>
@@ -132,10 +132,13 @@
                                 <button type="button" class="btn cancel" onclick= "showDiv(${assignment.assignmentID})">Close</button>
                             </div>
                         </form>
-                    </td>
-                </tr>
+                    </div>
+                </div>
 
-                </c:forEach>
+
+
+
+            </c:forEach>
             </table>
 
             <p style="display: none">The course ID is <%=request.getParameter( "courseID" )%></p>
@@ -209,6 +212,8 @@ session varible email is the user's email
 
 
 </script>
+
+<script src="course_main.js"></script>
 
 </body>
 </html>
