@@ -10,8 +10,11 @@
   </component>
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="07f3fd19-a74c-4317-b095-3ddf5c20a21e" name="Default Changelist" comment="deleted sorted servlet that wasnt being used" />
 =======
+=======
+>>>>>>> parent of e08b008 (deleted sorted servlet that wasnt being used)
     <list default="true" id="07f3fd19-a74c-4317-b095-3ddf5c20a21e" name="Default Changelist" comment="finished assignment_main stuff">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/SortServletAssignments.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/webapp/course_main.js" afterDir="false" />
