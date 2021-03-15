@@ -42,7 +42,6 @@ public class SignUpServlet extends HttpServlet {
                     session.setAttribute("firstName", firstName);
                     session.setAttribute("lastName", lastName);
                     session.setAttribute("email", email);
-                    session.setAttribute("userType", "student");
                     destPage = "home.jsp";
                 }
             }
@@ -58,7 +57,6 @@ public class SignUpServlet extends HttpServlet {
                     session.setAttribute("firstName", firstName);
                     session.setAttribute("lastName", lastName);
                     session.setAttribute("email", email);
-                    session.setAttribute("userType", "instructor");
                     destPage = "home.jsp";
                 }
             }
