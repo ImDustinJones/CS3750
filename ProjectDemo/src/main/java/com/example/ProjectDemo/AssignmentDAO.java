@@ -11,6 +11,7 @@ public class AssignmentDAO {
                                 String assignmentDescription, int points, String dueDate, String submissionType)
             throws SQLException, ClassNotFoundException, ParseException {
 
+
         Connection connection = connectDatabase();
 
         String sqlInsert = "INSERT INTO assignments(assignmentName, courseID, instructorEmail, instructorLastName, assignmentDescription, points, dueDate, submissionType) VALUES('"+assignmentName+"','"+courseID+"','"+instructorEmail+"','"+instructorLastName+"','"+assignmentDescription+"','"+points+"','"+dueDate+"','"+submissionType+"');";

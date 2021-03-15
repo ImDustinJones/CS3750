@@ -27,6 +27,7 @@ public class AssignmentServlet extends HttpServlet {
         sb.deleteCharAt(sb.lastIndexOf("T"));
         sb.insert(10, ' ');
 
+
         assignDueDate = sb.toString();
 
         if(request.getParameter("textRadio") != "text") {

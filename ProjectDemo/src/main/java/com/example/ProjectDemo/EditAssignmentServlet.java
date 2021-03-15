@@ -22,6 +22,7 @@ public class EditAssignmentServlet extends HttpServlet {
         String assignmentName = request.getParameter("editAssignName");
         int possiblePoints = Integer.parseInt(request.getParameter("editAssignScore"));
 
+
         String assignDueDate = (String) request.getParameter("editAssignDate");
         StringBuilder sb = new StringBuilder();
         sb.append(assignDueDate);
