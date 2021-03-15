@@ -129,7 +129,6 @@
 
 
                                 <button type="submit" class="btn">Update</button>
-
                                 <button type="button" class="btn cancel" onclick= "showDiv(${assignment.assignmentID})">Close</button>
                             </div>
                         </form>

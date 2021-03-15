@@ -7,14 +7,15 @@ import java.util.List;
 
 public class AssignmentDAO {
 
-    public void addAssignmentDB(String assignmentName, int courseID, String instructorEmail, String instructorLastName,
+    public void addAssignmentDB(String assignmentName, String instructorEmail, String instructorLastName,
                                 String assignmentDescription, int points, String dueDate, String submissionType)
             throws SQLException, ClassNotFoundException, ParseException {
 
 
         Connection connection = connectDatabase();
 
-        String sqlInsert = "INSERT INTO assignments(assignmentName, courseID, instructorEmail, instructorLastName, assignmentDescription, points, dueDate, submissionType) VALUES('"+assignmentName+"','"+courseID+"','"+instructorEmail+"','"+instructorLastName+"','"+assignmentDescription+"','"+points+"','"+dueDate+"','"+submissionType+"');";
+
+        String sqlInsert = "INSERT INTO assignments(assignmentName, instructorEmail, instructorLastName, assignmentDescription, points, dueDate, submissionType) VALUES('"+assignmentName+"','"+instructorEmail+"','"+instructorLastName+"','"+assignmentDescription+"','"+points+"','"+submissionType+"');";
         PreparedStatement statement = connection.prepareStatement(sqlInsert);
         int result = statement.executeUpdate();
 
@@ -29,7 +30,6 @@ public class AssignmentDAO {
             assignment.setPoints(points);
             assignment.setDueDate(dueDate);
             assignment.setSubmissionType(submissionType);
-            assignment.setCourseID(courseID);
         }
 
         connection.close();
@@ -93,9 +93,11 @@ public class AssignmentDAO {
 
         Connection connection = connectDatabase();
 
+
         String sqlInsert  = "UPDATE assignments SET assignmentName = '"+assignmentName+"', assignmentDescription = '"+assignmentDescription+"', points = '"+points+"', dueDate = '"+dueDate+"', submissionType = '"+submissionType+"' WHERE courseID = '"+courseID+"' AND instructorEmail = '"+instructorEmail+"' AND assignmentID = '"+assignmentID+"';";
         PreparedStatement statement = connection.prepareStatement(sqlInsert);
         statement.executeUpdate();
+
 
         connection.close();
     }
