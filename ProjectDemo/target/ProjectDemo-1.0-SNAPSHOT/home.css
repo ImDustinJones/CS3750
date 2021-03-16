@@ -127,6 +127,10 @@ img {
     float: right;
     margin-top: 140px;
     margin-right: 10px;
+}
+
+.toDoItemContainer{
+    height: 25%;
     overflow: scroll;
 }
 
