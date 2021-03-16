@@ -124,6 +124,7 @@
                             "registrations.courseID INNER JOIN assignments ON assignments.courseID = " +
                             "registrations.courseID  WHERE studentEmail LIKE '" + session.getAttribute("email") +
                             "' AND dueDate >= getDate() ORDER BY dueDate ASC";
+
             ResultSet resultSet = statement.executeQuery(query);
 
             while(resultSet.next()){
