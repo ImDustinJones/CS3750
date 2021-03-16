@@ -150,10 +150,10 @@
 pull courseID using request.getParameter( "courseID" )!
 session varible email is the user's email
 -->
+        <%if((userTypeVar.equals("instructor"))){%>
 
-
-        <button class="addAssignBtn" onclick="openAddForm()">Add New Assignment</button>
-
+        <button class="addAssignBtn" onclick = "openAddForm()" > Add New Assignment</button >
+           <% }%>
         <div class="addAssignmentForm" id="addAssignmentForm">
             <form method="post" action="${pageContext.request.contextPath}/AssignmentServlet" class="addAssignFormContainer">
                 <h1>Create A New Assignment</h1>
