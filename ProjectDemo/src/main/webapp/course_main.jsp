@@ -91,7 +91,7 @@
                 </tr>
 
                 <tr> <c:forEach items = "${assignmentList}" var = "assignment" >
-                    <a href = "assignment_main.jsp?assignmentID=${assignment.assignmentID}&courseID=${courseID}" ><td>${assignment.assignmentName} </td> </a>
+                    <a href = "assignment_main.jsp?assignmentID=${assignment.assignmentID}&courseID=${courseID}"><td>${assignment.assignmentName} </td> </a>
                     <td>${assignment.points}</td>
                     <td>${assignment.dueDate}</td>
                     <td>${assignment.submissionType}</td>
@@ -150,10 +150,10 @@
 pull courseID using request.getParameter( "courseID" )!
 session varible email is the user's email
 -->
+        <%if((userTypeVar.equals("instructor"))){%>
 
-
-        <button class="addAssignBtn" onclick="openAddForm()">Add New Assignment</button>
-
+        <button class="addAssignBtn" onclick = "openAddForm()" > Add New Assignment</button >
+           <% }%>
         <div class="addAssignmentForm" id="addAssignmentForm">
             <form method="post" action="${pageContext.request.contextPath}/AssignmentServlet" class="addAssignFormContainer">
                 <h1>Create A New Assignment</h1>

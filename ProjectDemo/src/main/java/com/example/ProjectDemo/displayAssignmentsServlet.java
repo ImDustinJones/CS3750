@@ -29,7 +29,7 @@ public class displayAssignmentsServlet extends HttpServlet {
         try {
 
             if(userTypeVariable.equals("student")){
-                assignmentsList = assignmentDao.getStudentAssignmentsList(pageCourseID);
+                assignmentsList = assignmentDao.getAssignmentsList(pageCourseID);
             }
             else {
                 assignmentsList = assignmentDao.getAssignmentsList(pageCourseID);
