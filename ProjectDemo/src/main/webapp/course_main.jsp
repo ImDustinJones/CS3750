@@ -68,6 +68,7 @@
         %>
         <li class="navLi"><a href="courseRegisterCheckServlet">Course Catalog</a></li>
         <li class="navLi"><a href="courses_register.jsp">My Courses</a></li>
+        <li class="navLi"><a class="active" href="account_balance.jsp">Account Balance</a></li>
         <%}
         else { %>
         <li class="navLi"><a href="courseRegisterCheckServlet"> My Courses</a></li>
@@ -87,16 +88,19 @@
                     <th style="width:20%;" onclick="sortTable(2)">Due Date</th>
                     <th style="width:10%;" onclick="sortTable(3)">Submission Type</th>
                     <th style="width:40%;" onclick="sortTable(4)">Description</th>
-                    <th style="width:40%;"></th>
+                    <th style="width:30%;"></th>
+                    <th style="width:30%;"></th>
+
                 </tr>
 
-                <tr> <c:forEach items = "${assignmentList}" var = "assignment" >
-                    <a href = "assignment_main.jsp?assignmentID=${assignment.assignmentID}&courseID=${courseID}"><td>${assignment.assignmentName} </td> </a>
+               <tr> <c:forEach items = "${assignmentList}" var = "assignment" >
+                    <td>${assignment.assignmentName}</td>
                     <td>${assignment.points}</td>
                     <td>${assignment.dueDate}</td>
                     <td>${assignment.submissionType}</td>
                     <td>${assignment.assignmentDescription}</td>
                     <td> <button class = "my_button" value = "${assignment.assignmentID}" onclick= "showDiv(this.value)">Edit Assignment</button> </td>
+                    <td> <button  onclick= document.location="assignment_main.jsp?assignmentID=${assignment.assignmentID}&courseID=${courseID}">View Assignment</button> </td>
                 </tr>
 
 
