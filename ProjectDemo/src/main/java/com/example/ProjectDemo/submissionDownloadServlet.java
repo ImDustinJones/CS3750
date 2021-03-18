@@ -45,6 +45,7 @@ public class submissionDownloadServlet extends HttpServlet {
         out.close();
 
 
+
         response.sendRedirect("assignment_main.jsp?courseID=" + request.getParameter("courseID")
                 +"&assignmentID=" + request.getParameter("assignmentID"));
     }

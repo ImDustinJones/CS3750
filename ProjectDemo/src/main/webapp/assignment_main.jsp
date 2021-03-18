@@ -109,6 +109,7 @@
                 <td>${sLastName}</td>
                 <td>${turnInTime}</td>
 
+
                         <%
                     if(resultSet.getString("submissionType").equals("F")){
                         String temp = resultSet.getString("fileSubmissionPointer");
