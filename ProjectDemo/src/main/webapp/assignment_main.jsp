@@ -44,9 +44,11 @@
     <p>${theAssignment.assignmentDescription}</p>
     <p>Points: ${theAssignment.points}</p>
 
+
+
     <p>Submission Type: ${theAssignment.submissionType}</p>
     <c:if test ="${theAssignment.submissionType == 'file'}">
-        <form method="post">
+        <form method="post" action="fileSubmissionUploadServlet" enctype="multipart/form-data">
             <label for ="fileSubmission">Add A File: </label>
             <input type = "file" name = "fileSubmission" id = "fileSubmission"><br>
             <input type="submit" value="Submit File"> <br>

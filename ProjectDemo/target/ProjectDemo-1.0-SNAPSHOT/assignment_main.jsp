@@ -24,6 +24,7 @@
     %>
     <li class="navLi"><a href="courseRegisterCheckServlet">Course Catalog</a></li>
     <li class="navLi"><a class="active" href="courses_register.jsp">My Courses</a></li>
+    <li class="navLi"><a class="active" href="account_balance.jsp">Account Balance</a></li>
     <%}
     else { %>
     <li class="navLi"><a class="active" href="courseRegisterCheckServlet"> My Courses</a></li>
@@ -45,7 +46,7 @@
 
     <p>Submission Type: ${theAssignment.submissionType}</p>
     <c:if test ="${theAssignment.submissionType == 'file'}">
-        <form method="post">
+        <form method="post" action="fileSubmissionUploadServlet" enctype="multipart/form-data">
             <label for ="fileSubmission">Add A File: </label>
             <input type = "file" name = "fileSubmission" id = "fileSubmission"><br>
             <input type="submit" value="Submit File"> <br>
