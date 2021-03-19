@@ -100,7 +100,7 @@
                     <td>${assignment.submissionType}</td>
                     <td>${assignment.assignmentDescription}</td>
                     <td> <button class = "my_button" value = "${assignment.assignmentID}" onclick= "showDiv(this.value)">Edit Assignment</button> </td>
-                    <td> <button  onclick= document.location="assignment_main.jsp?assignmentID=${assignment.assignmentID}&courseID=${courseID}">Edit Assignment</button> </td>
+                    <td> <button  onclick= document.location="assignment_main.jsp?assignmentID=${assignment.assignmentID}&courseID=${courseID}">View Assignment</button> </td>
                 </tr>
 
 

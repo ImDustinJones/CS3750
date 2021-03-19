@@ -38,14 +38,15 @@ public class fileSubmissionUploadServlet extends HttpServlet{
 
         //get the InputStream to store the file somewhere
         fileInputStream = filePart.getInputStream();
-        URL url = getClass().getResource("/main/webapp/FileSubmissions/");
-        File fileToSave = new File(this.getServletContext().getRealPath("/FileSubmissions/") + filePart.getSubmittedFileName());
+        //URL url = getClass().getResource("/main/webapp/FileSubmissions/");
+        String url = "C:\\FileSubmissions\\";
+       // File fileToSave = new File(this.getServletContext().getRealPath("/FileSubmissions/") + filePart.getSubmittedFileName());
+        File fileToSave = new File(url + filePart.getSubmittedFileName());
         Files.copy(fileInputStream, fileToSave.toPath(), StandardCopyOption.REPLACE_EXISTING);;
         //get the URL of the uploaded file
-        String fileUrl = this.getServletContext().getRealPath("/FileSubmissions/") + filePart.getSubmittedFileName();
-        System.out.println(fileUrl);
-        fileUrl = "FileSubmissions\\" + filePart.getSubmittedFileName();
-        session.setAttribute("fileURL", fileUrl);
+        System.out.println(url);
+        url = "FileSubmissions\\" + filePart.getSubmittedFileName();
+        session.setAttribute("fileURL", url);
 
         //Now need to update the entry in the database with this information
         Connection conn = null; // connection to the database
@@ -87,14 +88,14 @@ public class fileSubmissionUploadServlet extends HttpServlet{
                     System.out.println("File Submission Path was saved to database");
                 }
             }
-            System.out.println(fileUrl);
+            System.out.println(url);
             connection.close();
         } catch (SQLException | ClassNotFoundException ex) {
             //JOptionPane.showMessageDialog(null, "The error was: "+ex);
             ex.printStackTrace();
         } finally {
             // forwards to the profile page may need to update it to the correct jsp file
-            response.sendRedirect("course_main.jsp?courseID="+courseID);
+            response.sendRedirect("assignment_main.jsp?courseID="+courseID + "&assignmentID="+assignmentID);
         }
     }
     public Connection connectDatabase() throws SQLException, ClassNotFoundException {
