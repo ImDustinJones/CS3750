@@ -95,7 +95,7 @@ public class fileSubmissionUploadServlet extends HttpServlet{
             ex.printStackTrace();
         } finally {
             // forwards to the profile page may need to update it to the correct jsp file
-            response.sendRedirect("course_main.jsp?courseID="+courseID);
+            response.sendRedirect("assignment_main.jsp?courseID="+courseID + "&assignmentID="+assignmentID);
         }
     }
     public Connection connectDatabase() throws SQLException, ClassNotFoundException {
