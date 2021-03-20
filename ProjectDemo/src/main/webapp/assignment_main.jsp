@@ -62,11 +62,20 @@
         </form>
     </c:if>
     <c:if test ="${theAssignment.submissionType == 'text'}">
-        <form method="post">
+        <form method="post" action="text-assignment-submission">
             <label for ="textSubmission">Enter Text: </label><br>
             <textarea id = "textSubmission" name = "textSubmission" rows = "30" cols="100"></textarea><br>
+            <input type="text" style="display: none" id="studentIDMain" name="studentIDMain" value="${studentID}">
             <input type="submit" value="Submit File"> <br>
         </form>
+        <% //Getting the setAttribute from servlet and creating an error message
+            String submissionMessage = "";
+            if(request.getAttribute("submitResult") == "true")
+            {
+                submissionMessage = "Your assignment is Submitted!";
+            }
+        %>
+        <p style ="color:#0073ff"><%= submissionMessage %> </p>
     </c:if>
 
     <%

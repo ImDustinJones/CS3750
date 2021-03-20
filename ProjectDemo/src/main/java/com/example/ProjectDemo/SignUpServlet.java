@@ -43,6 +43,7 @@ public class SignUpServlet extends HttpServlet {
                     session.setAttribute("firstName", firstName);
                     session.setAttribute("lastName", lastName);
                     session.setAttribute("email", email);
+                    session.setAttribute("studentID", user.getUserId());
                     destPage = "home.jsp";
                 }
             }

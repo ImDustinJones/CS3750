@@ -38,6 +38,7 @@ public class LoginServlet extends HttpServlet {
             if (user != null) { // here it will set the attributes for profile and home page
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
+                session.setAttribute("studentID", user.getUserId());
                 session.setAttribute("email", user.getEmail());
                 session.setAttribute("firstName", user.getFirstname());
                 session.setAttribute("lastName", user.getLastname());

@@ -4,6 +4,7 @@ import java.sql.*;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.annotation.MultipartConfig;
 
 public class AssignmentDAO {
 
@@ -171,5 +172,15 @@ public class AssignmentDAO {
         rs.close();
 
         return assignment;
+    }
+
+    public void submitTextAssignment(int assignmentID, int studentID, String submissionType, String textSubmission) throws SQLException, ClassNotFoundException {
+        Connection connection = connectDatabase();
+
+        String sqlInsert = "INSERT INTO studentSubmission(studentID, assignmentID, submissionType, textSubmission, turnInTime) VALUES('"+studentID+"','"+assignmentID+"','"+submissionType+"','"+textSubmission+"', GETDATE());";
+        PreparedStatement statement = connection.prepareStatement(sqlInsert);
+        statement.executeUpdate();
+
+        System.out.println("added student submission");
     }
 }
