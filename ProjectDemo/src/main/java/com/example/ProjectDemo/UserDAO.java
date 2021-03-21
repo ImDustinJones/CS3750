@@ -185,4 +185,24 @@ public class UserDAO {
 
         return user;
     }
+
+    public int getCredits(String studentEmail) throws SQLException, ClassNotFoundException, ParseException {
+        Connection connection = connectDatabase();
+        Statement stmt = connection.createStatement();
+
+
+        String sqlQuery = "SELECT creditHours FROM courseList FULL OUTER JOIN registrations ON courseList.courseID = registrations.courseID WHERE studentEmail = '"+studentEmail+"';";
+        ResultSet rs = stmt.executeQuery(sqlQuery);
+
+        int totalCredits = 0;
+
+        while(rs.next()){
+            totalCredits += rs.getInt("creditHours");
+
+        }
+        rs.close();
+
+        return totalCredits;
+
+    }
 }
