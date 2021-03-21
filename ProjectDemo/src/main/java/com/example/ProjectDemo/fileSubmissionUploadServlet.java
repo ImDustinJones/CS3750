@@ -41,11 +41,16 @@ public class fileSubmissionUploadServlet extends HttpServlet{
         //URL url = getClass().getResource("/main/webapp/FileSubmissions/");
         String url = "C:\\FileSubmissions\\";
        // File fileToSave = new File(this.getServletContext().getRealPath("/FileSubmissions/") + filePart.getSubmittedFileName());
-        File fileToSave = new File(url + filePart.getSubmittedFileName());
-        Files.copy(fileInputStream, fileToSave.toPath(), StandardCopyOption.REPLACE_EXISTING);;
+        String[] splitEmail = email.split("@");
+        String emailSpliceOne = splitEmail[0]; // this is the part of the email before the @
+        System.out.println(emailSpliceOne);
+
+        File fileToSave = new File(url + emailSpliceOne + "##" + filePart.getSubmittedFileName());
+        Files.copy(fileInputStream, fileToSave.toPath(), StandardCopyOption.REPLACE_EXISTING);
         //get the URL of the uploaded file
-        System.out.println(url);
-        url = "FileSubmissions\\" + filePart.getSubmittedFileName();
+        System.out.println("FiletoSave: " + url + emailSpliceOne + "##" + filePart.getSubmittedFileName());
+        url = "FileSubmissions\\" + emailSpliceOne + "##" + filePart.getSubmittedFileName();
+        System.out.println("URl with file sub.getsubFileName: " + url);
         session.setAttribute("fileURL", url);
 
         //Now need to update the entry in the database with this information
