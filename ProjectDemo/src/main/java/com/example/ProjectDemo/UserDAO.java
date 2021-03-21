@@ -29,6 +29,7 @@ public class UserDAO {
 
         if (result.next()) { // sets the ${} variables and can set them before we go to profile
             user = new Users();
+            user.setUserId(result.getInt("studentID"));
             user.setFirstname(result.getString("firstName"));
             user.setLastname(result.getString("lastName"));
 

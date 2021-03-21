@@ -1,4 +1,7 @@
-<%--
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: johnn
   Date: 3/3/2021
@@ -44,7 +47,11 @@
     <p>${theAssignment.assignmentDescription}</p>
     <p>Points: ${theAssignment.points}</p>
 
+    <%
 
+        if(session.getAttribute("userType").equals("student")){
+
+    %>
 
     <p>Submission Type: ${theAssignment.submissionType}</p>
     <c:if test ="${theAssignment.submissionType == 'file'}">
@@ -55,12 +62,102 @@
         </form>
     </c:if>
     <c:if test ="${theAssignment.submissionType == 'text'}">
-        <form method="post">
+        <form method="post" action="text-assignment-submission">
             <label for ="textSubmission">Enter Text: </label><br>
             <textarea id = "textSubmission" name = "textSubmission" rows = "30" cols="100"></textarea><br>
+            <input type="text" style="display: none" id="studentIDMain" name="studentIDMain" value="${studentID}">
             <input type="submit" value="Submit File"> <br>
         </form>
+        <% //Getting the setAttribute from servlet and creating an error message
+            String submissionMessage = "";
+            if(request.getAttribute("submitResult") == "true")
+            {
+                submissionMessage = "Your assignment is Submitted!";
+            }
+        %>
+        <p style ="color:#0073ff"><%= submissionMessage %> </p>
     </c:if>
+
+    <%
+
+        }
+        else{
+    %>
+
+    <h2>Submissions</h2>
+    <table id="myTable">
+        <tr class="header">
+            <th style="width:15%;">Student ID</th>
+            <th style="width:15%;">First Name</th>
+            <th style="width:15%;">Last Name</th>
+            <th style="width:20%;">Turn in Time</th>
+            <th style="width:60%">Submission</th>
+        </tr>
+        <%
+            try{
+                String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
+                String dbUser = "LMS_RunTime";
+                String dbPassword = "password1!";
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+                Statement statement = connection.createStatement();
+                String query = "SELECT * FROM studentSubmission INNER JOIN students ON " +
+                        "students.studentID = studentSubmission.studentID WHERE assignmentID = " +
+                        Integer.parseInt(assignmentID);
+                ResultSet resultSet = statement.executeQuery(query);
+                while(resultSet.next()) {
+                    session.setAttribute("studentID", String.valueOf(resultSet.getInt("studentID")));
+                    session.setAttribute("turnInTime", resultSet.getTime("turnInTime").toString());
+                    session.setAttribute("sFirstName", resultSet.getString("firstName"));
+                    session.setAttribute("sLastName", resultSet.getString("lastName"));
+                    %>
+
+            <tr>
+                <td>${studentID}</td>
+                <td>${sFirstName}</td>
+                <td>${sLastName}</td>
+                <td>${turnInTime}</td>
+
+
+                        <%
+                    if(resultSet.getString("submissionType").equals("F")){
+                        String temp = resultSet.getString("fileSubmissionPointer");
+                        session.setAttribute("submission", temp.substring(temp.lastIndexOf("\\") + 1));
+                        %>
+
+                        <td><a href="submissionDownload?submission=${submission}&courseID=
+                        ${courseID}&assignmentID=${assignmentID}">${submission}</a></td>
+                        </tr>
+
+                        <%
+                    }
+                    else{
+                        session.setAttribute("submission", resultSet.getString("textSubmission"));
+                        %>
+
+                        <td>${submission}</td>
+                        </tr>
+
+                        <%
+                    }
+
+        }
+            connection.close();
+                session.removeAttribute("studentID");
+                session.removeAttribute("turnInTime");
+                session.removeAttribute("sFirstName");
+                session.removeAttribute("sLastName");
+                session.removeAttribute("submission");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+                        %>
+
+    </table>
+
+    <%
+        }
+    %>
 
 
 
