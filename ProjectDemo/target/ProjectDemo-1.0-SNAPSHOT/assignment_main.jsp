@@ -122,6 +122,8 @@
                         <%
                     if(resultSet.getString("submissionType").equals("F")){
                         String temp = resultSet.getString("fileSubmissionPointer");
+                        //System.out.println("THis is the temp:" + temp);
+                        //System.out.println("Temp substring:" + temp.substring(temp.lastIndexOf("\\") + 1));
                         session.setAttribute("submission", temp.substring(temp.lastIndexOf("\\") + 1));
                         %>
 

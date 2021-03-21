@@ -45,11 +45,11 @@ public class fileSubmissionUploadServlet extends HttpServlet{
         String emailSpliceOne = splitEmail[0]; // this is the part of the email before the @
         System.out.println(emailSpliceOne);
 
-        File fileToSave = new File(url + emailSpliceOne + "##" + filePart.getSubmittedFileName());
+        File fileToSave = new File(url + emailSpliceOne + "ZZ" + filePart.getSubmittedFileName());
         Files.copy(fileInputStream, fileToSave.toPath(), StandardCopyOption.REPLACE_EXISTING);
         //get the URL of the uploaded file
-        System.out.println("FiletoSave: " + url + emailSpliceOne + "##" + filePart.getSubmittedFileName());
-        url = "FileSubmissions\\" + emailSpliceOne + "##" + filePart.getSubmittedFileName();
+        System.out.println("FiletoSave: " + url + emailSpliceOne + "ZZ" + filePart.getSubmittedFileName());
+        url = "FileSubmissions\\" + emailSpliceOne + "ZZ" + filePart.getSubmittedFileName();
         System.out.println("URl with file sub.getsubFileName: " + url);
         session.setAttribute("fileURL", url);
 

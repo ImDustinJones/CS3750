@@ -18,8 +18,9 @@ import java.text.ParseException;
 public class submissionDownloadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        //System.out.println("HEre is request get submission: " + request.getParameter("submission"));
         String path = "C:\\FileSubmissions\\" + request.getParameter("submission");
+        //System.out.println("Path: " + path);
         File download  = new File(path);
         FileInputStream in = new FileInputStream(download);
         ServletContext context = getServletContext();
