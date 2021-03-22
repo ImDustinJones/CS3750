@@ -182,7 +182,7 @@
                 <td>
                     <form class="gradeForm" action="${pageContext.request.contextPath}/SubmitGradeServlet" method="post">
                         <input type="number" id="gradePointsBox" name="gradePointsBox" step="5" oninput="emptyGrade()" placeholder="${studentGrade}">
-                        <input type="submit" id="gradeSubBtn" disabled="true">
+                        <input type="submit" id="gradeSubBtn" disabled="true" value="Submit Grade">
                     </form>
                 </td>
             </tr>
