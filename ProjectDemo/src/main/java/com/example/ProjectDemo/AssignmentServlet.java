@@ -19,7 +19,6 @@ public class AssignmentServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String assignmentName = request.getParameter("assignName");
         int possiblePoints = Integer.parseInt(request.getParameter("assignScore"));
-        String assignFile;
 
         String assignDueDate = (String) request.getParameter("assignDate");
         StringBuilder sb = new StringBuilder();
@@ -29,13 +28,7 @@ public class AssignmentServlet extends HttpServlet {
 
 
         assignDueDate = sb.toString();
-
-        if(request.getParameter("textRadio") != "text") {
-            assignFile = "text";
-        }
-        else {
-            assignFile = "file";
-        }
+        String assignFile = request.getParameter("submissionType");
         String description = request.getParameter("assignDescription");
 
         String lastName = (String) session.getAttribute("lastName");

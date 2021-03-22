@@ -174,13 +174,11 @@ session varible email is the user's email
                 <label for="assignDate"><b>Due Date</b></label>
                 <input type="datetime-local" placeholder="Enter the assignment due date" name="assignDate" id="assignDate" required>
 
-                <label><b>Assignment Submission Type</b></label>
-                <div class="radioAssignGroup">
-                    <input type="radio" id="textRadio" name="assignGroup" value="text" required>
-                    <label for="textRadio">Text</label>
-                    <input type="radio" id="fileRadio" name="assignGroup" value="file">
-                    <label for="fileRadio">File</label>
-                </div>
+                <label for="submissionType">Submission Type: </label>
+                <select name = "submissionType" id = "submissionType">
+                    <option value = "text">Text</option>
+                    <option value = "file">File</option>
+                </select><br>
 
 
                 <label for="assignDescription"><b>Description</b></label>
