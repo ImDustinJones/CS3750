@@ -27,7 +27,7 @@
     %>
     <li class="navLi"><a href="courseRegisterCheckServlet">Course Catalog</a></li>
     <li class="navLi"><a class="active" href="courses_register.jsp">My Courses</a></li>
-    <li class="navLi"><a class="active" href="account_balance.jsp">Account Balance</a></li>
+    <li class="navLi"><a href="account_balance.jsp">Account Balance</a></li>
     <%}
     else { %>
     <li class="navLi"><a class="active" href="courseRegisterCheckServlet"> My Courses</a></li>
@@ -48,12 +48,38 @@
     <p>Points: ${theAssignment.points}</p>
 
     <%
-
         if(session.getAttribute("userType").equals("student")){
+            // gets the grade to display on the students assignment, if none then its just a "-"
+            try{
+                String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
+                String dbUser = "LMS_RunTime";
+                String dbPassword = "password1!";
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+                Statement statement = connection.createStatement();
+                String query = "SELECT * FROM studentSubmission INNER JOIN students ON " +
+                        "students.studentID = studentSubmission.studentID WHERE assignmentID = " +
+                        Integer.parseInt(assignmentID);
+                ResultSet resultSet = statement.executeQuery(query);
+                while(resultSet.next()) {
+//                    need to clear this
+                    if(resultSet.getString("grade") == null) {
+                        session.setAttribute("studentGradeForDisplay", "-");
+                    }
+                    else {
+                        session.setAttribute("studentGradeForDisplay", String.valueOf(resultSet.getInt("grade")));
+                    }
+                }
+                connection.close();
+                //session.removeAttribute("studentGradeForDisplay");
+            }catch(Exception e){
+                e.printStackTrace();
+            }
 
     %>
 
     <p>Submission Type: ${theAssignment.submissionType}</p>
+    <p>Assignment Scored: ${studentGradeForDisplay}</p>
     <c:if test ="${theAssignment.submissionType == 'file'}">
         <form method="post" action="fileSubmissionUploadServlet" enctype="multipart/form-data">
             <label for ="fileSubmission">Add A File: </label>
@@ -92,6 +118,8 @@
             <th style="width:15%;">Last Name</th>
             <th style="width:20%;">Turn in Time</th>
             <th style="width:60%">Submission</th>
+            <th style="width:100%">Points/${theAssignment.points}</th>
+
         </tr>
         <%
             try{
@@ -110,6 +138,15 @@
                     session.setAttribute("turnInTime", resultSet.getTime("turnInTime").toString());
                     session.setAttribute("sFirstName", resultSet.getString("firstName"));
                     session.setAttribute("sLastName", resultSet.getString("lastName"));
+
+                    if(resultSet.getString("grade") == null) {
+                        session.setAttribute("studentGrade", "-");
+                    }
+                    else {
+                        session.setAttribute("studentGrade", String.valueOf(resultSet.getInt("grade")));
+                    }
+                    System.out.println("student grade: " + session.getAttribute("studentGrade"));
+                    session.setAttribute("SubID", String.valueOf(resultSet.getInt("submissionID")));
                     %>
 
             <tr>
@@ -129,7 +166,6 @@
 
                         <td><a href="submissionDownload?submission=${submission}&courseID=
                         ${courseID}&assignmentID=${assignmentID}">${submission}</a></td>
-                        </tr>
 
                         <%
                     }
@@ -138,10 +174,19 @@
                         %>
 
                         <td>${submission}</td>
-                        </tr>
 
                         <%
                     }
+
+                    %>
+                <td>
+                    <form class="gradeForm" action="${pageContext.request.contextPath}/SubmitGradeServlet" method="post">
+                        <input type="number" id="gradePointsBox" name="gradePointsBox" step="5" oninput="emptyGrade()" placeholder="${studentGrade}">
+                        <input type="submit" id="gradeSubBtn" disabled="true">
+                    </form>
+                </td>
+            </tr>
+            <%
 
         }
             connection.close();
@@ -164,7 +209,15 @@
 
 
 </div>
-
+<script type="text/javascript">
+    function emptyGrade() {
+        if(document.getElementById("gradePointsBox").value==="") {
+            document.getElementById('gradeSubBtn').disabled = true;
+        } else {
+            document.getElementById('gradeSubBtn').disabled = false;
+        }
+    }
+</script>
 
 </body>
 </html>

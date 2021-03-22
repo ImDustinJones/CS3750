@@ -26,7 +26,7 @@
     %>
     <li class="navLi"><a class="active" href="courseRegisterCheckServlet">Course Catalog</a></li>
     <li class="navLi"><a href="courses_register.jsp">My Courses</a></li>
-    <li class="navLi"><a class="active" href="account_balance.jsp">Account Balance</a></li>
+    <li class="navLi"><a href="account_balance.jsp">Account Balance</a></li>
     <%}
     else { %>
     <li class="navLi"><a href="courseRegisterCheckServlet"> My Courses</a></li>

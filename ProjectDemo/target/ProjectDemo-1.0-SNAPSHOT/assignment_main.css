@@ -69,3 +69,12 @@ h2{
 #myTable tr.header, #myTable tr:hover {
     background-color: #f1f1f1;
 }
+
+.gradeForm {
+    text-align: center;
+}
+
+.gradeForm input[type=number]{
+    width: 70%;
+    margin: 5px;
+}
