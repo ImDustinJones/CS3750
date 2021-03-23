@@ -145,7 +145,7 @@
                     else {
                         session.setAttribute("studentGrade", String.valueOf(resultSet.getInt("grade")));
                     }
-                    System.out.println("student grade: " + session.getAttribute("studentGrade"));
+                    //System.out.println("student grade: " + session.getAttribute("studentGrade"));
                     session.setAttribute("SubID", String.valueOf(resultSet.getInt("submissionID")));
                     %>
 
@@ -162,10 +162,12 @@
                         //System.out.println("THis is the temp:" + temp);
                         //System.out.println("Temp substring:" + temp.substring(temp.lastIndexOf("\\") + 1));
                         session.setAttribute("submission", temp.substring(temp.lastIndexOf("\\") + 1));
+                        String[] spliceOnSubmission = session.getAttribute("submission").toString().split("ZZ");
+                        session.setAttribute("submissionDisplaySplice", spliceOnSubmission[1]);
                         %>
 
                         <td><a href="submissionDownload?submission=${submission}&courseID=
-                        ${courseID}&assignmentID=${assignmentID}">${submission}</a></td>
+                        ${courseID}&assignmentID=${assignmentID}">${submissionDisplaySplice}</a></td>
 
                         <%
                     }
