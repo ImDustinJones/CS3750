@@ -35,7 +35,7 @@
         <h1>Account Balance</h1>
         <p>Total Credits: ${studentsCredits}</p>
         <p>Total Payable Account Balance: $${studentTotal}.00</p>
-        <form>
+        <form action="${pageContext.request.contextPath}/PaymentProcessServlet" method="post">
             <label for="CardholderName">Name: </label>
             <input type="text" name="CardholderName" id="CardholderName"><br>
 
