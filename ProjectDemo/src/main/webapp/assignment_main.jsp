@@ -38,6 +38,7 @@
     String assignmentID = request.getParameter( "assignmentID" );
     session.setAttribute("courseID", request.getParameter( "courseID" ));
     session.setAttribute("assignmentID", request.getParameter("assignmentID"));
+    session.setAttribute("usersID", session.getAttribute("studentID"));
 %>
 <jsp:include page="/display-assignment-page" />
 <div class = mainContainer>
@@ -59,7 +60,7 @@
                 Statement statement = connection.createStatement();
                 String query = "SELECT * FROM studentSubmission INNER JOIN students ON " +
                         "students.studentID = studentSubmission.studentID WHERE assignmentID = " +
-                        Integer.parseInt(assignmentID);
+                        Integer.parseInt(assignmentID) + " AND studentSubmission.studentID = " + Integer.parseInt(session.getAttribute("usersID").toString());
                 ResultSet resultSet = statement.executeQuery(query);
                 while(resultSet.next()) {
 //                    need to clear this
@@ -68,6 +69,37 @@
                     }
                     else {
                         session.setAttribute("studentGradeForDisplay", String.valueOf(resultSet.getInt("grade")));
+                    }
+
+                    if(resultSet.getString("submissionType").equals("F")){
+                        String temp = resultSet.getString("fileSubmissionPointer");
+                        //System.out.println("THis is the temp:" + temp);
+                        //System.out.println("Temp substring:" + temp.substring(temp.lastIndexOf("\\") + 1));
+                        session.setAttribute("Submit", temp.substring(temp.lastIndexOf("\\") + 1));
+                        String[] spliceOnSubmission = session.getAttribute("Submit").toString().split("ZZ");
+                        session.setAttribute("submissionDisplaySpliced", spliceOnSubmission[1]);
+     %>
+
+    <p>Submission: <a href="submissionDownload?submission=${Submit}&courseID=
+                        ${courseID}&assignmentID=${assignmentID}">${submissionDisplaySpliced}</a></p>
+
+    <%
+                    }
+                    else if(resultSet.getString("submissionType").equals("T")){
+                        session.setAttribute("Submit", resultSet.getString("textSubmission"));
+    %>
+
+    <p>Submission: ${Submit}</p>
+
+    <%
+                    }
+                    else{
+                        System.out.println("No submissions");
+    %>
+
+    <p>Submission: -</p>
+
+    <%
                     }
                 }
                 connection.close();
