@@ -222,7 +222,7 @@ console.log(occurences);
 
     %>
 
-    <p>Submission Type: ${theAssignment.submissionType}</p>
+    <p>Submission Type : ${theAssignment.submissionType}</p>
     <p>Assignment Scored: ${studentGradeForDisplay}</p>
     <c:if test ="${theAssignment.submissionType == 'file'}">
         <form method="post" action="fileSubmissionUploadServlet" enctype="multipart/form-data">
