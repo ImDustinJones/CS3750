@@ -16,9 +16,6 @@
     <link href='navigationbar.css' rel='stylesheet'/>
     <link href='assignment_main.css' rel='stylesheet'/>
 </head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js" integrity="sha512-zO8oeHCxetPn1Hd9PdDleg5Tw1bAaP0YmNvPY8CwcRyUk7d7/+nyElmFrB6f7vg4f7Fv4sui1mcep8RIEShczg==" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css" integrity="sha512-C7hOmCgGzihKXzyPU/z4nv97W0d9bv4ALuuEbSf6hm93myico9qa0hv4dODThvCsqQUmKmLcJmlpRmCaApr83g==" crossorigin="anonymous" />
 <body>
 <ul class="navUl">
     <li class="navLi"><a href="home.jsp">Home</a></li>
@@ -36,162 +33,22 @@
     <li class="navLi"><a class="active" href="courseRegisterCheckServlet"> My Courses</a></li>
     <%  }
     %>
-
 </ul>
-
 <%
     String assignmentID = request.getParameter( "assignmentID" );
     session.setAttribute("courseID", request.getParameter( "courseID" ));
-    session.setAttribute("assignmentID", request.getParameter("assignmentID"));%>
-
-
+    session.setAttribute("assignmentID", request.getParameter("assignmentID"));
+    session.setAttribute("usersID", session.getAttribute("studentID"));
+%>
 <jsp:include page="/display-assignment-page" />
-
 <div class = mainContainer>
     <h1>${theAssignment.assignmentName}</h1>
 
     <p>Due Date: ${theAssignment.dueDate}</p>
     <p>${theAssignment.assignmentDescription}</p>
     <p>Points: ${theAssignment.points}</p>
-    <%
-        if(session.getAttribute("userType").equals("instructor")){%>
-
-    <canvas id="myChart" width="800" height="400"></canvas>
-    <script>
-        var studentIDs = [];
-        var grades = [];
-        var occurences = [];
-        for(i = 0; i<10; i++){
-            occurences[i] = 0;
-        }
-        <%
-                try{
-                    String jdbcURL2 = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
-                    String dbUser2 = "LMS_RunTime";
-                    String dbPassword2 = "password1!";
-                    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                    Connection connection2 = DriverManager.getConnection(jdbcURL2, dbUser2, dbPassword2);
-                    Statement statement2 = connection2.createStatement();
-                    String query2 = "SELECT * FROM studentSubmission INNER JOIN students ON " +
-                        "students.studentID = studentSubmission.studentID WHERE assignmentID = " +
-                        Integer.parseInt(assignmentID)+ " AND studentSubmission.grade IS NOT NULL";
-                    ResultSet resultSet2 = statement2.executeQuery(query2);
-                     while(resultSet2.next()) {
-
-                     %>
-                grades.push(<%=resultSet2.getString("grade")%>);
-                studentIDs.push(<%=resultSet2.getString("studentID")%>);
-
-        <%
-            }
-        connection2.close();
-    }catch(Exception e){
-        e.printStackTrace();
-    }
-%>
-console.log(grades);
-console.log(occurences);
-
-
-        for(i=0; i<grades.length; i++){
-            if(grades[i]<10 ){
-                occurences[0] = occurences[0] + 1;
-            }
-            if(grades[i]<20 && grades[i]>=10){
-                occurences[1] = occurences[1] + 1;
-            }
-            if(grades[i]<30 && grades[i]>=20){
-                occurences[2] = occurences[2] + 1;
-            }
-            if(grades[i]<40 && grades[i]>=30){
-                occurences[3] = occurences[3] + 1;
-            }
-            if(grades[i]<50 && grades[i]>=40){
-                occurences[4] = occurences[4] + 1;
-            }
-            if(grades[i]<60 && grades[i]>=50){
-                occurences[5] = occurences[5] + 1;
-            }
-            if(grades[i]<70 && grades[i]>=60){
-                occurences[6] = occurences[6] + 1;
-            }
-            if(grades[i]<80 && grades[i]>=70){
-                occurences[7] = occurences[7] + 1;
-            }
-            if(grades[i]<90 && grades[i]>=80){
-                occurences[8] = occurences[8] + 1;
-            }
-            if(grades[i]<=100 && grades[i]>=90){
-                occurences[9] = occurences[9] + 1;
-            }
-        }
-        console.log(occurences);
-
-        var ctx = document.getElementById("myChart");
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ["0-10", "10-20", "20-30", "30-40", "40-50", "50-60", "60-70", "70-80", "80-90", "90-100"],
-                datasets: [{
-                    label: 'Assignment Scores within Range',
-                    data: occurences,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: false,
-                scales: {
-                    xAxes: [{
-                        ticks: {
-                            maxRotation: 90,
-                            minRotation: 80
-                        },
-                        gridLines: {
-                            offsetGridLines: true
-                        }
-                    }
-                        ],
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-
-    </script>
 
     <%
-        }
         if(session.getAttribute("userType").equals("student")){
             // gets the grade to display on the students assignment, if none then its just a "-"
             try{
@@ -203,7 +60,7 @@ console.log(occurences);
                 Statement statement = connection.createStatement();
                 String query = "SELECT * FROM studentSubmission INNER JOIN students ON " +
                         "students.studentID = studentSubmission.studentID WHERE assignmentID = " +
-                        Integer.parseInt(assignmentID);
+                        Integer.parseInt(assignmentID) + " AND studentSubmission.studentID = " + Integer.parseInt(session.getAttribute("usersID").toString());
                 ResultSet resultSet = statement.executeQuery(query);
                 while(resultSet.next()) {
 //                    need to clear this
@@ -212,6 +69,37 @@ console.log(occurences);
                     }
                     else {
                         session.setAttribute("studentGradeForDisplay", String.valueOf(resultSet.getInt("grade")));
+                    }
+
+                    if(resultSet.getString("submissionType").equals("F")){
+                        String temp = resultSet.getString("fileSubmissionPointer");
+                        //System.out.println("THis is the temp:" + temp);
+                        //System.out.println("Temp substring:" + temp.substring(temp.lastIndexOf("\\") + 1));
+                        session.setAttribute("Submit", temp.substring(temp.lastIndexOf("\\") + 1));
+                        String[] spliceOnSubmission = session.getAttribute("Submit").toString().split("ZZ");
+                        session.setAttribute("submissionDisplaySpliced", spliceOnSubmission[1]);
+     %>
+
+    <p>Submission: <a href="submissionDownload?submission=${Submit}&courseID=
+                        ${courseID}&assignmentID=${assignmentID}">${submissionDisplaySpliced}</a></p>
+
+    <%
+                    }
+                    else if(resultSet.getString("submissionType").equals("T")){
+                        session.setAttribute("Submit", resultSet.getString("textSubmission"));
+    %>
+
+    <p>Submission: ${Submit}</p>
+
+    <%
+                    }
+                    else{
+                        System.out.println("No submissions");
+    %>
+
+    <p>Submission: -</p>
+
+    <%
                     }
                 }
                 connection.close();
