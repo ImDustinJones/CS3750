@@ -36,23 +36,21 @@
     <li class="navLi"><a class="active" href="courseRegisterCheckServlet"> My Courses</a></li>
     <%  }
     %>
-
 </ul>
-
 <%
     String assignmentID = request.getParameter( "assignmentID" );
     session.setAttribute("courseID", request.getParameter( "courseID" ));
-    session.setAttribute("assignmentID", request.getParameter("assignmentID"));%>
-
-
+    session.setAttribute("assignmentID", request.getParameter("assignmentID"));
+    session.setAttribute("usersID", session.getAttribute("studentID"));
+%>
 <jsp:include page="/display-assignment-page" />
-
 <div class = mainContainer>
     <h1>${theAssignment.assignmentName}</h1>
 
     <p>Due Date: ${theAssignment.dueDate}</p>
     <p>${theAssignment.assignmentDescription}</p>
     <p>Points: ${theAssignment.points}</p>
+
     <%
         if(session.getAttribute("userType").equals("instructor")){%>
 
@@ -79,8 +77,8 @@
                      while(resultSet2.next()) {
 
                      %>
-                grades.push(<%=resultSet2.getString("grade")%>);
-                studentIDs.push(<%=resultSet2.getString("studentID")%>);
+        grades.push(<%=resultSet2.getString("grade")%>);
+        studentIDs.push(<%=resultSet2.getString("studentID")%>);
 
         <%
             }
@@ -89,8 +87,8 @@
         e.printStackTrace();
     }
 %>
-console.log(grades);
-console.log(occurences);
+        console.log(grades);
+        console.log(occurences);
 
 
         for(i=0; i<grades.length; i++){
@@ -136,32 +134,32 @@ console.log(occurences);
                     label: 'Assignment Scores within Range',
                     data: occurences,
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)'
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)'
                     ],
                     borderColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 99, 132, 0.2)'
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)',
+                        'rgba(0, 0, 0, 0.2)'
                     ],
                     borderWidth: 1
                 }]
@@ -178,7 +176,7 @@ console.log(occurences);
                             offsetGridLines: true
                         }
                     }
-                        ],
+                    ],
                     yAxes: [{
                         ticks: {
                             beginAtZero: true
@@ -190,8 +188,7 @@ console.log(occurences);
 
     </script>
 
-    <%
-        }
+    <%}
         if(session.getAttribute("userType").equals("student")){
             // gets the grade to display on the students assignment, if none then its just a "-"
             try{
@@ -203,7 +200,7 @@ console.log(occurences);
                 Statement statement = connection.createStatement();
                 String query = "SELECT * FROM studentSubmission INNER JOIN students ON " +
                         "students.studentID = studentSubmission.studentID WHERE assignmentID = " +
-                        Integer.parseInt(assignmentID);
+                        Integer.parseInt(assignmentID) + " AND studentSubmission.studentID = " + Integer.parseInt(session.getAttribute("usersID").toString());
                 ResultSet resultSet = statement.executeQuery(query);
                 while(resultSet.next()) {
 //                    need to clear this
@@ -212,6 +209,37 @@ console.log(occurences);
                     }
                     else {
                         session.setAttribute("studentGradeForDisplay", String.valueOf(resultSet.getInt("grade")));
+                    }
+
+                    if(resultSet.getString("submissionType").equals("F")){
+                        String temp = resultSet.getString("fileSubmissionPointer");
+                        //System.out.println("THis is the temp:" + temp);
+                        //System.out.println("Temp substring:" + temp.substring(temp.lastIndexOf("\\") + 1));
+                        session.setAttribute("Submit", temp.substring(temp.lastIndexOf("\\") + 1));
+                        String[] spliceOnSubmission = session.getAttribute("Submit").toString().split("ZZ");
+                        session.setAttribute("submissionDisplaySpliced", spliceOnSubmission[1]);
+     %>
+
+    <p>Submission: <a href="submissionDownload?submission=${Submit}&courseID=
+                        ${courseID}&assignmentID=${assignmentID}">${submissionDisplaySpliced}</a></p>
+
+    <%
+                    }
+                    else if(resultSet.getString("submissionType").equals("T")){
+                        session.setAttribute("Submit", resultSet.getString("textSubmission"));
+    %>
+
+    <p>Submission: ${Submit}</p>
+
+    <%
+                    }
+                    else{
+                        System.out.println("No submissions");
+    %>
+
+    <p>Submission: -</p>
+
+    <%
                     }
                 }
                 connection.close();
@@ -222,7 +250,7 @@ console.log(occurences);
 
     %>
 
-    <p>Submission Type: ${theAssignment.submissionType}</p>
+    <p>Submission Type : ${theAssignment.submissionType}</p>
     <p>Assignment Scored: ${studentGradeForDisplay}</p>
     <c:if test ="${theAssignment.submissionType == 'file'}">
         <form method="post" action="fileSubmissionUploadServlet" enctype="multipart/form-data">
