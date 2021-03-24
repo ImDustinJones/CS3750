@@ -24,11 +24,17 @@ public class PaymentProcessServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+
+        UserDAO usersdao = new UserDAO();
+        int userID = Integer.parseInt(session.getAttribute("studentID").toString());
         String cardHolderName = request.getParameter("CardholderName");
-        String payAmount = request.getParameter("AmountToPay");
+        String originalPayAmount = request.getParameter("AmountToPay");
+        String payAmount = request.getParameter("AmountToPay") + "00";
+
 
         //required key, remember to change to your key when testing
-        String apiKey = "sk_test_51IXwV3G5AP18m2vGQiiYSXuKFdifjuKMvTS3kbhTMt6kZ8vi6OEwpznXZnjc3WrgvkueIVFeBlWsydg2ooXH3Rdn006l5Qk5m7";
+        String apiKey = "sk_test_51IYJVSLmddznJdQDzx99FGYHRbS6QCF2PKyRAkJ7GBsvCfvWSNaj1gRvvfyik5B6MAn78qWgbzIo5KQqShCEQ03u00LcI8pos5";
 
         //Url the REST request will be sent to
         URL url = new URL("https://api.stripe.com/v1/tokens?key=" + apiKey + "&card[number]=" +
@@ -52,6 +58,26 @@ public class PaymentProcessServlet extends HttpServlet {
             String contentString = content.toString();
             String tokenId = contentString.substring(contentString.indexOf("\"id\": \"") + 7);
             tokenId = tokenId.substring(0, tokenId.indexOf("\","));//get the token's id for use in charge
+
+            URL chargeUrl = new URL("https://api.stripe.com/v1/charges?key=" + apiKey + "&amount=" +
+                    payAmount + "&currency=usd"
+                    +"&source=" + tokenId);
+            HttpsURLConnection conn = (HttpsURLConnection) chargeUrl.openConnection();//connect
+            conn.setRequestMethod("POST");//set method
+            conn.setRequestProperty("content-length", "0");
+
+            System.out.println(conn.getResponseCode());
+            System.out.println(payAmount.getClass());
+            System.out.println(chargeUrl);
+
+            if(conn.getResponseCode() == 200) {
+                System.out.println("payment was successful");
+                try {
+                    usersdao.updatePayTuition(Integer.parseInt(originalPayAmount), userID);
+                } catch (SQLException | ClassNotFoundException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
         }
         response.sendRedirect("account_balance.jsp");//redirect back to the account balance page
 

@@ -25,6 +25,7 @@ public class RegisterToStudentServlet extends HttpServlet {
         try {
 
             regDAO.registerStudent(email, courseID);
+            regDAO.updateTuition(email);;
 
             String destPage = "courses_register_student.jsp";
             response.sendRedirect(destPage);

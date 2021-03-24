@@ -202,7 +202,78 @@ public class UserDAO {
         }
         rs.close();
 
+
         return totalCredits;
 
     }
+
+
+    public int getRemainingTuition(int studentID) throws SQLException, ClassNotFoundException {
+        Connection connection = connectDatabase();
+        Statement stmt = connection.createStatement();
+
+        String sqlQuery = "SELECT * FROM students WHERE studentID = '"+studentID+"';";
+        ResultSet rs = stmt.executeQuery(sqlQuery);
+
+        int remainingAmount = 0;
+
+        while(rs.next()) {
+            remainingAmount = rs.getInt("remainingTuition");
+        }
+
+        rs.close();
+
+        return remainingAmount;
+    }
+
+    public void updatePayTuition(int amount, int studentid) throws SQLException, ClassNotFoundException {
+        Connection connection = connectDatabase();
+        Statement stmt = connection.createStatement();
+
+        System.out.println("student id is: " + studentid);
+        System.out.println("amount is : " + amount);
+
+        String sqlQuery = "SELECT * FROM students WHERE studentID = '"+studentid+"';";
+        ResultSet rs = stmt.executeQuery(sqlQuery);
+
+        int updatedTuition = 0;
+
+        while(rs.next()) {
+            System.out.println(rs.getString("remainingTuition"));
+            updatedTuition = rs.getInt("remainingTuition");
+        }
+
+        System.out.println(updatedTuition);
+
+        rs.close();
+        int newRemainingPayment = updatedTuition - amount;
+
+        System.out.println(newRemainingPayment);
+
+        String sqlInsert = "UPDATE students SET remainingTuition = '"+newRemainingPayment+"', payments = '"+amount+"' WHERE studentID = '"+studentid+"';";
+        PreparedStatement statement = connection.prepareStatement(sqlInsert);
+        statement.executeUpdate();
+
+
+    }
+
+    public String getLatestPayment(int studentID) throws SQLException, ClassNotFoundException {
+        Connection connection = connectDatabase();
+        Statement stmt = connection.createStatement();
+
+        String sqlQuery = "SELECT * FROM students WHERE studentID = '"+studentID+"';";
+        ResultSet rs = stmt.executeQuery(sqlQuery);
+
+        String payment = "";
+
+        while(rs.next()) {
+            payment = rs.getString("payments");
+        }
+
+        rs.close();
+
+        return payment;
+    }
+
+
 }

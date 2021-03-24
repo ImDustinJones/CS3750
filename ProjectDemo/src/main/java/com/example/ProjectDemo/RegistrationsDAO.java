@@ -42,4 +42,28 @@ public class RegistrationsDAO {
 
         return DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
     }
+
+    public void updateTuition(String studentEmail) throws SQLException, ClassNotFoundException {
+        Connection connection = connectDatabase();
+        Statement stmt = connection.createStatement();
+
+
+        String sqlQuery = "SELECT creditHours FROM courseList FULL OUTER JOIN registrations ON courseList.courseID = registrations.courseID WHERE studentEmail = '"+studentEmail+"';";
+        ResultSet rs = stmt.executeQuery(sqlQuery);
+
+        int totalCredits = 0;
+
+        while(rs.next()){
+            totalCredits += rs.getInt("creditHours");
+
+        }
+        rs.close();
+
+        int totalAmount = totalCredits*100;
+
+        String sqlInsert = "UPDATE students SET totalTuition = '"+totalAmount+"', remainingTuition = '"+totalAmount+"' WHERE email = '"+studentEmail+"';";
+        PreparedStatement statement = connection.prepareStatement(sqlInsert);
+        statement.executeUpdate();
+
+    }
 }
