@@ -10,17 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07f3fd19-a74c-4317-b095-3ddf5c20a21e" name="Default Changelist" comment="fixed adding assignment submission type bug">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97/storage_v2/_src_/database/LMS_RunTime.i5dXDA/schema/dbo.sYMBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97/storage_v2/_src_/database/LMS_RunTime.i5dXDA/schema/dbo.sYMBAA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_2_49_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_2_49_PM__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/AccountBalanceServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/AccountBalanceServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/PaymentProcessServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/PaymentProcessServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/RegisterToStudentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/RegisterToStudentServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/RegistrationsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/RegistrationsDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/account_balance.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account_balance.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assignment_main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assignment_main.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +194,6 @@
       <workItem from="1616346278239" duration="2694000" />
       <workItem from="1616348987062" duration="33000" />
       <workItem from="1616432685344" duration="1576000" />
-      <workItem from="1616612718323" duration="9579000" />
     </task>
     <task id="LOCAL-00001" summary="Added Calendar still need to test and modify though">
       <created>1612832173384</created>
