@@ -1,4 +1,7 @@
-<%--
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Statement" %><%--
   Created by IntelliJ IDEA.
   User: johnn
   Date: 3/17/2021
@@ -80,6 +83,37 @@
         </form>
 
         <p>Latest Payment: $${latestPayment}</p>
-    </div>
+        <p>Payment History</p>
+
+
+        <%
+            try {
+                String jdbcURL2 = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
+                String dbUser2 = "LMS_RunTime";
+                String dbPassword2 = "password1!";
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                Connection connection2 = DriverManager.getConnection(jdbcURL2, dbUser2, dbPassword2);
+                Statement statement2 = connection2.createStatement();
+                String sqlQuery = "SELECT * FROM students WHERE email LIKE '" + session.getAttribute("email")+"'";
+                ResultSet rs = statement2.executeQuery(sqlQuery);
+                if(rs.next()){
+                String paymentString = rs.getString("payments");
+
+                String[] arrSplit = paymentString.split("\\?");
+                for(int i=0;i<arrSplit.length;i++){
+                                                    %>
+                    <p>- $<%=arrSplit[i].replace('.','-').replace('|', ' ')%> </p>
+
+                            <%
+                }
+                                    }
+                connection2.close();
+            }
+            catch(Exception e){
+            e.printStackTrace();
+            }
+
+        %>
+</div>
 </body>
 </html>

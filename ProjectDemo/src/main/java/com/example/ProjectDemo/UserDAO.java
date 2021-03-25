@@ -237,20 +237,26 @@ public class UserDAO {
         ResultSet rs = stmt.executeQuery(sqlQuery);
 
         int updatedTuition = 0;
-
+        String paymentString = "";
         while(rs.next()) {
             System.out.println(rs.getString("remainingTuition"));
             updatedTuition = rs.getInt("remainingTuition");
+            paymentString = rs.getString("payments");
         }
 
         System.out.println(updatedTuition);
-
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd").format(new Date());
         rs.close();
         int newRemainingPayment = updatedTuition - amount;
-
+        if(paymentString == null){
+            paymentString = String.valueOf(amount)+"|"+timeStamp;
+        }
+        else{
+            paymentString = paymentString+"?"+String.valueOf(amount)+"|"+timeStamp;
+        }
         System.out.println(newRemainingPayment);
 
-        String sqlInsert = "UPDATE students SET remainingTuition = '"+newRemainingPayment+"', payments = '"+amount+"' WHERE studentID = '"+studentid+"';";
+        String sqlInsert = "UPDATE students SET remainingTuition = '"+newRemainingPayment+"', payments = '"+paymentString+"' WHERE studentID = '"+studentid+"';";
         PreparedStatement statement = connection.prepareStatement(sqlInsert);
         statement.executeUpdate();
 
