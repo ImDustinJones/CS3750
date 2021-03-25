@@ -34,7 +34,7 @@
     <div class = mainContainer>
         <h1>Account Balance</h1>
         <p>Total Credits: ${studentsCredits}</p>
-        <p>Total Payable Account Balance: $${studentTotal}.00</p>
+        <p>Total Payable Account Balance: $${remainingAmount}.00</p>
         <form action="${pageContext.request.contextPath}/PaymentProcessServlet" method="post">
             <label for="CardholderName">Name: </label>
             <input type="text" name="CardholderName" id="CardholderName"><br>
@@ -74,10 +74,12 @@
             <input type="text" name="CVC" id="CVC"><br>
 
             <label for="AmountToPay">Amount You Would Like To Pay: </label>
-            <input type="text" name="AmountToPay" id="AmountToPay"><br>
+            <input type="number" name = "AmountToPay" id ="AmountToPay" min="0" max="${studentTotal}" placeholder="ex: 500" />
 
             <button type="submit" class="btn">Pay</button>
         </form>
+
+        <p>Latest Payment: $${latestPayment}</p>
     </div>
 </body>
 </html>

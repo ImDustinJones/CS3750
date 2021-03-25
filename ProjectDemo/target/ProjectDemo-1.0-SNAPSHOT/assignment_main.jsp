@@ -226,10 +226,10 @@
     <%
                     }
                     else if(resultSet.getString("submissionType").equals("T")){
-                        session.setAttribute("Submit", resultSet.getString("textSubmission"));
+                        session.setAttribute("submission", resultSet.getString("textSubmission"));
     %>
 
-    <p>Submission: ${Submit}</p>
+    <p><a href="text_submission_view.jsp?firstName=${sFirstName}&lastName=${sLastName}&assignmentName=${theAssignment.assignmentName}&submission=${submission}">View Submission</a></p>
 
     <%
                     }
@@ -347,7 +347,7 @@
                         session.setAttribute("submission", resultSet.getString("textSubmission"));
                         %>
 
-                        <td>${submission}</td>
+                        <td><a href="text_submission_view.jsp?firstName=${sFirstName}&lastName=${sLastName}&assignmentName=${theAssignment.assignmentName}&submission=${submission}">View Submission</a></td>
 
                         <%
                     }
@@ -380,18 +380,7 @@
         }
     %>
 
-
-
 </div>
-<script type="text/javascript">
-    function emptyGrade() {
-        if(document.getElementById("gradePointsBox").value==="") {
-            document.getElementById('gradeSubBtn').disabled = true;
-        } else {
-            document.getElementById('gradeSubBtn').disabled = false;
-        }
-    }
-</script>
-
+<script src="assignment_main.js"></script>
 </body>
 </html>
