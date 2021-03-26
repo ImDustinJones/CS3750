@@ -131,7 +131,7 @@
             data: {
                 labels: ["0-10", "10-20", "20-30", "30-40", "40-50", "50-60", "60-70", "70-80", "80-90", "90-100"],
                 datasets: [{
-                    label: 'Assignment Scores within Range',
+                    label: 'Number of Student Assignment Scores Within the Following Score Interval',
                     data: occurences,
                     backgroundColor: [
                         '#001011',
@@ -178,6 +178,9 @@
                     }
                     ],
                     yAxes: [{
+                        scaleLabel: {
+                            labelString: 'Number of Student Scores within each Score Interval',
+                        },
                         ticks: {
                             beginAtZero: true
                         }
