@@ -19,6 +19,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js" integrity="sha512-zO8oeHCxetPn1Hd9PdDleg5Tw1bAaP0YmNvPY8CwcRyUk7d7/+nyElmFrB6f7vg4f7Fv4sui1mcep8RIEShczg==" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css" integrity="sha512-C7hOmCgGzihKXzyPU/z4nv97W0d9bv4ALuuEbSf6hm93myico9qa0hv4dODThvCsqQUmKmLcJmlpRmCaApr83g==" crossorigin="anonymous" />
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script src="assignment_main.js"> </script>
 <body>
 <ul class="navUl">
     <li class="navLi"><a href="home.jsp">Home</a></li>
@@ -222,7 +224,6 @@
                         String[] spliceOnSubmission = session.getAttribute("Submit").toString().split("ZZ");
                         session.setAttribute("submissionDisplaySpliced", spliceOnSubmission[1]);
      %>
-
     <p>Submission: <a href="submissionDownload?submission=${Submit}&courseID=
                         ${courseID}&assignmentID=${assignmentID}">${submissionDisplaySpliced}</a></p>
 
@@ -232,6 +233,7 @@
                         session.setAttribute("submission", resultSet.getString("textSubmission"));
     %>
 
+    <div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
     <p><a href="text_submission_view.jsp?firstName=${sFirstName}&lastName=${sLastName}&assignmentName=${theAssignment.assignmentName}&submission=${submission}">View Submission</a></p>
 
     <%
@@ -255,6 +257,58 @@
 
     <p>Submission Type : ${theAssignment.submissionType}</p>
     <p>Assignment Scored: ${studentGradeForDisplay}</p>
+
+
+    <div id='displayBoxPlot'><!-- Plotly chart will be drawn inside this DIV --></div>
+    <script>
+        var grades = [];
+
+        <%
+            try{
+                String jdbcURL2 = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
+                String dbUser2 = "LMS_RunTime";
+                String dbPassword2 = "password1!";
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                Connection connection2 = DriverManager.getConnection(jdbcURL2, dbUser2, dbPassword2);
+                Statement statement2 = connection2.createStatement();
+                String query2 = "SELECT * FROM studentSubmission INNER JOIN students ON " +
+                    "students.studentID = studentSubmission.studentID WHERE assignmentID = " +
+                    Integer.parseInt(assignmentID)+ " AND studentSubmission.grade IS NOT NULL";
+                ResultSet resultSet2 = statement2.executeQuery(query2);
+                while(resultSet2.next()) {
+
+                 %>
+        grades.push(<%=resultSet2.getString("grade")%>);
+        <%
+                }
+                connection2.close();
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+%>
+        var trace1 = {
+            x: grades,
+            type: 'box',
+            name: '',
+            marker:{
+                color: '#F6AE2D'
+            }
+        };
+
+        var data = [trace1];
+
+        var layout = {
+            title: 'Assignment Graded Summary',
+            xaxis:{ gridcolor: '#606060'},
+            plot_bgcolor: '#001011',
+            paper_bgcolor: 'rgba(0, 0, 0, 0)'
+        };
+
+        Plotly.newPlot('displayBoxPlot', data, layout);
+    </script>
+
+
     <c:if test ="${theAssignment.submissionType == 'file'}">
         <form method="post" action="fileSubmissionUploadServlet" enctype="multipart/form-data">
             <label for ="fileSubmission">Add A File: </label>
@@ -358,8 +412,8 @@
                     %>
                 <td>
                     <form class="gradeForm" action="${pageContext.request.contextPath}/SubmitGradeServlet" method="post">
-                        <input type="number" id="gradePointsBox" name="gradePointsBox" step="5" oninput="emptyGrade()" placeholder="${studentGrade}">
-                        <input type="submit" id="gradeSubBtn" disabled="true" value="Submit Grade">
+                        <input type="number" id="gradePointsBox" name="gradePointsBox" step="5"  placeholder="${studentGrade}">
+                        <input type="submit" id="gradeSubBtn" value="Submit Grade">
                     </form>
                 </td>
             </tr>
@@ -384,6 +438,14 @@
     %>
 
 </div>
-<script src="assignment_main.js"></script>
+<script>
+    function emptyGrade() {
+        if(document.getElementById("gradePointsBox").value==="") {
+            document.getElementById('gradeSubBtn').disabled = true;
+        } else {
+            document.getElementById('gradeSubBtn').disabled = false;
+        }
+    }
+</script>
 </body>
 </html>

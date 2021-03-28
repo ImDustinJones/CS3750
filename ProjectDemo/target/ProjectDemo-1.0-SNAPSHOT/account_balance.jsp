@@ -81,8 +81,6 @@
 
             <button type="submit" class="btn">Pay</button>
         </form>
-
-        <p>Latest Payment: $${latestPayment}</p>
         <p>Payment History</p>
 
 
