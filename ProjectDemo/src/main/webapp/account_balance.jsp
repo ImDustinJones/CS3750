@@ -1,4 +1,7 @@
-<%--
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Statement" %><%--
   Created by IntelliJ IDEA.
   User: johnn
   Date: 3/17/2021
@@ -34,8 +37,8 @@
     <div class = mainContainer>
         <h1>Account Balance</h1>
         <p>Total Credits: ${studentsCredits}</p>
-        <p>Total Payable Account Balance: $${studentTotal}.00</p>
-        <form>
+        <p>Total Payable Account Balance: $${remainingAmount}.00</p>
+        <form action="${pageContext.request.contextPath}/PaymentProcessServlet" method="post">
             <label for="CardholderName">Name: </label>
             <input type="text" name="CardholderName" id="CardholderName"><br>
 
@@ -74,10 +77,41 @@
             <input type="text" name="CVC" id="CVC"><br>
 
             <label for="AmountToPay">Amount You Would Like To Pay: </label>
-            <input type="text" name="AmountToPay" id="AmountToPay"><br>
+            <input type="number" name = "AmountToPay" id ="AmountToPay" min="0" max="${studentTotal}" placeholder="ex: 500" />
 
             <button type="submit" class="btn">Pay</button>
         </form>
-    </div>
+        <p>Payment History</p>
+
+
+        <%
+            try {
+                String jdbcURL2 = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
+                String dbUser2 = "LMS_RunTime";
+                String dbPassword2 = "password1!";
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                Connection connection2 = DriverManager.getConnection(jdbcURL2, dbUser2, dbPassword2);
+                Statement statement2 = connection2.createStatement();
+                String sqlQuery = "SELECT * FROM students WHERE email LIKE '" + session.getAttribute("email")+"'";
+                ResultSet rs = statement2.executeQuery(sqlQuery);
+                if(rs.next()){
+                String paymentString = rs.getString("payments");
+
+                String[] arrSplit = paymentString.split("\\?");
+                for(int i=0;i<arrSplit.length;i++){
+                                                    %>
+                    <p>- $<%=arrSplit[i].replace('.','-').replace('|', ' ')%> </p>
+
+                            <%
+                }
+                                    }
+                connection2.close();
+            }
+            catch(Exception e){
+            e.printStackTrace();
+            }
+
+        %>
+</div>
 </body>
 </html>

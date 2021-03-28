@@ -16,22 +16,29 @@ public class AccountBalanceServlet extends HttpServlet {
         public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
                 HttpSession session = request.getSession();
                 String studentEmail = (String)session.getAttribute("email");
+                int userID = Integer.parseInt(session.getAttribute("studentID").toString());
 
                 UserDAO userdao = new UserDAO();
                 int totalCredits = 0;
-                int totalAmount = 0;
+                int remainingAmount = 0;
+                String latestPay = "";
 
                 try {
                         totalCredits = userdao.getCredits(studentEmail);
                         session.setAttribute("studentsCredits", totalCredits);
-                        totalAmount = totalCredits*100;
-                        session.setAttribute("studentTotal", totalAmount);
-                } catch (SQLException throwables) {
+
+
+
+                        remainingAmount = userdao.getRemainingTuition(userID);
+                        session.setAttribute("remainingAmount", remainingAmount);
+
+                        System.out.println("remaining amount is: "+ remainingAmount);
+
+                        latestPay = userdao.getLatestPayment(userID);
+                        session.setAttribute("latestPayment", latestPay);
+
+                } catch (SQLException | ClassNotFoundException | ParseException throwables) {
                         throwables.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
-                } catch (ParseException e) {
-                        e.printStackTrace();
                 }
 
         }
