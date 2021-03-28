@@ -30,10 +30,12 @@ public class SubmitGradeServlet extends HttpServlet{
         HttpSession session = request.getSession();
 
         // get the sub id of the submission currently
-        String submissionID = (String) session.getAttribute("SubID");
+        //String submissionID = (String) session.getAttribute("SubID");
+        int submissionID = Integer.parseInt(request.getParameter("studentSubID"));
         String courseID = (String) session.getAttribute("courseID");
         String assignmentID = (String) session.getAttribute("assignmentID");
-        String gradedScore = request.getParameter("gradePointsBox");
+        //System.out.println("supposed to be graded score: " + request.getParameter("gradePointsBox" + submissionID));
+        String gradedScore = request.getParameter("gradePointsBox" + submissionID);
 
 //        System.out.println("gs: " + gradedScore);
 //        System.out.println("sID: " + submissionID);
@@ -45,7 +47,7 @@ public class SubmitGradeServlet extends HttpServlet{
             Connection connection = connectDatabase();
 
             String sqlInsert;
-            sqlInsert = "UPDATE  studentSubmission SET grade = "+ Integer.parseInt(gradedScore) + " WHERE submissionID = " + Integer.parseInt(submissionID) + "";
+            sqlInsert = "UPDATE studentSubmission SET grade = "+ Integer.parseInt(gradedScore) + " WHERE submissionID = " + submissionID + "";
             PreparedStatement statement = connection.prepareStatement(sqlInsert);
             statement.execute();
 

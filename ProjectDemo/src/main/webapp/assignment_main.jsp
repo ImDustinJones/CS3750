@@ -378,55 +378,55 @@
                     session.setAttribute("SubID", String.valueOf(resultSet.getInt("submissionID")));
                     %>
 
-            <tr>
-                <td>${studentID}</td>
-                <td>${sFirstName}</td>
-                <td>${sLastName}</td>
-                <td>${turnInTime}</td>
+                    <tr>
+                        <td>${studentID}</td>
+                        <td>${sFirstName}</td>
+                        <td>${sLastName}</td>
+                        <td>${turnInTime}</td>
 
 
                         <%
-                    if(resultSet.getString("submissionType").equals("F")){
-                        String temp = resultSet.getString("fileSubmissionPointer");
-                        //System.out.println("THis is the temp:" + temp);
-                        //System.out.println("Temp substring:" + temp.substring(temp.lastIndexOf("\\") + 1));
-                        session.setAttribute("submission", temp.substring(temp.lastIndexOf("\\") + 1));
-                        String[] spliceOnSubmission = session.getAttribute("submission").toString().split("ZZ");
-                        session.setAttribute("submissionDisplaySplice", spliceOnSubmission[1]);
-                        %>
+                        if(resultSet.getString("submissionType").equals("F")){
+                            String temp = resultSet.getString("fileSubmissionPointer");
+                            //System.out.println("THis is the temp:" + temp);
+                            //System.out.println("Temp substring:" + temp.substring(temp.lastIndexOf("\\") + 1));
+                            session.setAttribute("submission", temp.substring(temp.lastIndexOf("\\") + 1));
+                            String[] spliceOnSubmission = session.getAttribute("submission").toString().split("ZZ");
+                            session.setAttribute("submissionDisplaySplice", spliceOnSubmission[1]);
+                            %>
 
-                        <td><a href="submissionDownload?submission=${submission}&courseID=
-                        ${courseID}&assignmentID=${assignmentID}">${submissionDisplaySplice}</a></td>
+                            <td><a href="submissionDownload?submission=${submission}&courseID=
+                            ${courseID}&assignmentID=${assignmentID}">${submissionDisplaySplice}</a></td>
 
-                        <%
-                    }
-                    else{
-                        session.setAttribute("submission", resultSet.getString("textSubmission"));
-                        %>
+                            <%
+                        }
+                        else{
+                            session.setAttribute("submission", resultSet.getString("textSubmission"));
+                            %>
 
-                        <td><a href="text_submission_view.jsp?firstName=${sFirstName}&lastName=${sLastName}&assignmentName=${theAssignment.assignmentName}&submission=${submission}">View Submission</a></td>
+                            <td><a href="text_submission_view.jsp?firstName=${sFirstName}&lastName=${sLastName}&assignmentName=${theAssignment.assignmentName}&submission=${submission}">View Submission</a></td>
 
-                        <%
-                    }
+                            <%
+                        }
+                            %>
+                        <td>
+                            <form class="gradeForm" action="${pageContext.request.contextPath}/SubmitGradeServlet" method="post">
+                                <input type="number" id="gradePointsBox${SubID}" name="gradePointsBox${SubID}" oninput="emptyGrade(${SubID})" step="any" placeholder="${studentGrade}">
+                                <input type="text" id = "studentSubID" name = "studentSubID" style="display: none" value = "${SubID}" >
+                                <input type="submit" id="gradeSubBtn${SubID}" disabled="true" value="Submit Grade">
+                            </form>
+                        </td>
+                    </tr>
+                    <%
 
-                    %>
-                <td>
-                    <form class="gradeForm" action="${pageContext.request.contextPath}/SubmitGradeServlet" method="post">
-                        <input type="number" id="gradePointsBox" name="gradePointsBox" step="5"  placeholder="${studentGrade}">
-                        <input type="submit" id="gradeSubBtn" value="Submit Grade">
-                    </form>
-                </td>
-            </tr>
-            <%
-
-        }
-            connection.close();
-                session.removeAttribute("studentID");
-                session.removeAttribute("turnInTime");
-                session.removeAttribute("sFirstName");
-                session.removeAttribute("sLastName");
-                session.removeAttribute("submission");
-        }catch(Exception e){
+                }
+                connection.close();
+                    session.removeAttribute("studentID");
+                    session.removeAttribute("turnInTime");
+                    session.removeAttribute("sFirstName");
+                    session.removeAttribute("sLastName");
+                    session.removeAttribute("submission");
+            }catch(Exception e){
             e.printStackTrace();
         }
                         %>
@@ -438,14 +438,5 @@
     %>
 
 </div>
-<script>
-    function emptyGrade() {
-        if(document.getElementById("gradePointsBox").value==="") {
-            document.getElementById('gradeSubBtn').disabled = true;
-        } else {
-            document.getElementById('gradeSubBtn').disabled = false;
-        }
-    }
-</script>
 </body>
 </html>
