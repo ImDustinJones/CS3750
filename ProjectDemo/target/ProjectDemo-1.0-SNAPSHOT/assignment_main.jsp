@@ -58,7 +58,6 @@
 
     <canvas id="myChart" width="800" height="400"></canvas>
     <script>
-        var studentIDs = [];
         var grades = [];
         var occurences = [];
         for(i = 0; i<10; i++){
@@ -72,15 +71,14 @@
                     Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                     Connection connection2 = DriverManager.getConnection(jdbcURL2, dbUser2, dbPassword2);
                     Statement statement2 = connection2.createStatement();
-                    String query2 = "SELECT * FROM studentSubmission INNER JOIN students ON " +
-                        "students.studentID = studentSubmission.studentID WHERE assignmentID = " +
+                    String query2 = "SELECT * FROM studentSubmission INNER JOIN assignments ON " +
+                        "assignments.assignmentID = studentSubmission.assignmentID WHERE studentSubmission.assignmentID = " +
                         Integer.parseInt(assignmentID)+ " AND studentSubmission.grade IS NOT NULL";
                     ResultSet resultSet2 = statement2.executeQuery(query2);
                      while(resultSet2.next()) {
 
                      %>
-        grades.push(<%=resultSet2.getString("grade")%>);
-        studentIDs.push(<%=resultSet2.getString("studentID")%>);
+        grades.push(<%=((Double.parseDouble(resultSet2.getString("grade"))/Double.parseDouble(resultSet2.getString("points")))*100)%>);
 
         <%
             }
@@ -94,6 +92,7 @@
 
 
         for(i=0; i<grades.length; i++){
+            console.log(grades[i]);
             if(grades[i]<10 ){
                 occurences[0] = occurences[0] + 1;
             }
@@ -133,35 +132,35 @@
             data: {
                 labels: ["0-10", "10-20", "20-30", "30-40", "40-50", "50-60", "60-70", "70-80", "80-90", "90-100"],
                 datasets: [{
-                    label: 'Number of Student Assignment Scores Within the Following Score Interval',
+                    label: 'Number of Student Assignment Scores Within the Following Percent Score Interval',
                     data: occurences,
                     backgroundColor: [
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011'
+                        '#ff0800',
+                        '#ff140d',
+                        '#ff2d26',
+                        '#ff3c36',
+                        '#ff5c57',
+                        '#ff7975',
+                        '#a3ff8f',
+                        '#88ff6e',
+                        '#73ff54',
+                        '#48ed24',
+                        '#1fa103',
+                        '#1fa103'
                     ],
                     borderColor: [
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011',
-                        '#001011'
+                        '#ff0800',
+                        '#ff140d',
+                        '#ff2d26',
+                        '#ff3c36',
+                        '#ff5c57',
+                        '#ff7975',
+                        '#a3ff8f',
+                        '#88ff6e',
+                        '#73ff54',
+                        '#48ed24',
+                        '#1fa103',
+                        '#1fa103'
                     ],
                     borderWidth: 1
                 }]
