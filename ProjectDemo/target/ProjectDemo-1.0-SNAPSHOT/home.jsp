@@ -66,26 +66,65 @@
 </head>
 <body>
 
-<div class="notificationBell" onclick="toggleBox();">
-    <img src="img/Bell.png" alt="notification bell" width="80" height="80"/>
-</div>
-<div class="notificationBox" id="box">
+    <% if(session.getAttribute("userType").equals("student")) {%>
 
-    <div class="notificationItem">
-        Dummy Text 1 <span class="itemX" onclick="deleteItem(this)"> X </span>
-    </div>
-    <div class="notificationItem">
-        Dummy Text 2 <span class="itemX" onclick="deleteItem(this)"> X </span>
-    </div>
-    <div class="notificationItem">
-        Dummy Text 3 <span class="itemX" onclick="deleteItem(this)"> X </span>
-    </div>
-    <div class="notificationItem">
-        Dummy Text 4 <span class="itemX" onclick="deleteItem(this)"> X </span>
-    </div>
-    <div class="notificationItem">
-        Dummy Text 5 <span class="itemX" onclick="deleteItem(this)"> X </span>
-    </div>
+        <div class="notificationBell" onclick="toggleBox();">
+            <img src="img/Bell.png" alt="notification bell" width="80" height="80"/>
+        </div>
+        <div class="notificationBox" id="box">
+
+        <%
+
+            try{
+                String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
+                String dbUser = "LMS_RunTime";
+                String dbPassword = "password1!";
+                String email = (String) session.getAttribute("email");
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+
+                Statement statement = connection.createStatement();
+                String query = "SELECT * FROM notifications INNER JOIN students ON notifications.studentID = " +
+                        "students.studentID INNER JOIN assignments ON notifications.assignmentID = " +
+                        "assignments.assignmentID INNER JOIN courseList ON notifications.courseID = courseList.courseID " +
+                        "WHERE email LIKE '" + session.getAttribute("email") + "'";
+                ResultSet resultSet = statement.executeQuery(query);
+
+                while(resultSet.next()){
+                    session.setAttribute("courseID", resultSet.getInt("courseID"));
+                    session.setAttribute("courseName", resultSet.getString("courseName"));
+                    session.setAttribute("assignmentID", resultSet.getInt("assignmentID"));
+                    session.setAttribute("assignmentName", resultSet.getString("assignmentName"));
+
+                    if(resultSet.getString("notificationType").equals("newAssignment")){
+
+        %>
+
+            <div class="notificationItem">
+                New Assignment: ${assignmentName} in ${courseName} <span class="itemX" onclick="deleteItem(this)"> X </span>
+            </div>
+
+        <%
+                        }
+                    else{
+        %>
+            <div class="notificationItem">
+                ${assignmentName} has been graded <span class="itemX" onclick="deleteItem(this)"> X </span>
+            </div>
+        <%
+                        }
+
+                    }
+
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+
+            }
+
+        %>
+
 </div>
 
 

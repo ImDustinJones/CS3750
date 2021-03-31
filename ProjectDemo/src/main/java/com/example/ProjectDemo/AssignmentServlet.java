@@ -36,10 +36,11 @@ public class AssignmentServlet extends HttpServlet {
         int courseID = Integer.parseInt(request.getParameter( "courseIDMain2" ));
 
         AssignmentDAO assignDAO = new AssignmentDAO();
+        NotificationDAO notificationDAO = new NotificationDAO();
 
         try {
             assignDAO.addAssignmentDB(assignmentName, courseID, email, lastName, description, possiblePoints, assignDueDate, assignFile);
-
+            notificationDAO.addNewAssignmentNotification(courseID, assignmentName);
             String destPage = "course_main.jsp?courseID=" + courseID;
             response.sendRedirect(destPage);
 

@@ -51,6 +51,10 @@ public class SubmitGradeServlet extends HttpServlet{
             PreparedStatement statement = connection.prepareStatement(sqlInsert);
             statement.execute();
 
+            //create graded notification
+            NotificationDAO notificationDAO = new NotificationDAO();
+            notificationDAO.addGradedNotification(submissionID, courseID, assignmentID);
+
             connection.close();
 
             // ?assignmentID=13&courseID=1011

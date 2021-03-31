@@ -54,6 +54,10 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("link3", user.getLink3());
                 session.setAttribute("userType", "student");
 
+                NotificationDAO notificationDAO = new NotificationDAO();
+                notificationDAO.deleteNotifications(user.getUserId());
+                notificationDAO.updateFlags(user.getUserId());
+
                 destPage = "home.jsp";
             } 
             else if (instructor != null) {

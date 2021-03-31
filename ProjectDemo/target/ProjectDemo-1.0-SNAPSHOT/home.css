@@ -99,6 +99,7 @@ img {
     border-width: 3px;
     border-color: #757780;
     background: #F6AE2D;
+    z-index: 10;
 }
 
 .notificationItem{
