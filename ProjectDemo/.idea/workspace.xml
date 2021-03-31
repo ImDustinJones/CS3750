@@ -10,17 +10,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07f3fd19-a74c-4317-b095-3ddf5c20a21e" name="Default Changelist" comment="Updated the instructor assigment chart">
-      <change afterPath="$PROJECT_DIR$/tests/java/com/example/ProjectDemo/CoursesDAOTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit_junit_4_13_2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97/storage_v2/_src_/database/LMS_RunTime.i5dXDA/schema/dbo.sYMBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6a2546a5-5f92-4734-ab59-c417d9e44e97/storage_v2/_src_/database/LMS_RunTime.i5dXDA/schema/dbo.sYMBAA.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_23.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_23.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_2_49_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_2_49_PM__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectDemo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectDemo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/InstructorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/InstructorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/displayAssignmentsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ProjectDemo/displayAssignmentsServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/course_main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/course_main.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/SubmitGradeServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/SubmitGradeServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/SubmitGradeServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/SubmitGradeServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/InstructorDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/InstructorDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/LoginServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/UserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/displayAssignmentsServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/WEB-INF/classes/com/example/ProjectDemo/displayAssignmentsServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/course_main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProjectDemo-1.0-SNAPSHOT/course_main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/InstructorDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/InstructorDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/LoginServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/SortServletAssignments.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/UserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/displayAssignmentsServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ProjectDemo/displayAssignmentsServlet.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +86,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../mssql-jdbc-8.2.2.jre11.jar" />
+    <property name="last_opened_file_path" value="$MAVEN_REPOSITORY$/mysql/mysql-connector-java/8.0.23" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -81,7 +94,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2678161" />
   </component>
@@ -93,14 +106,16 @@
       <recent name="com.example.ProjectDemo" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CoursesDAOTest">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.41">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -245,6 +260,7 @@
       <workItem from="1616772597069" duration="503000" />
       <workItem from="1617061196849" duration="1102000" />
       <workItem from="1617125252303" duration="4601000" />
+      <workItem from="1617208044683" duration="8111000" />
     </task>
     <task id="LOCAL-00001" summary="Added Calendar still need to test and modify though">
       <created>1612832173384</created>

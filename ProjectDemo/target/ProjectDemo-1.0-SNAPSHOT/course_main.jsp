@@ -14,7 +14,8 @@
     %>
     <title>Your Course</title>
 </head>
-<body> <%
+<body>
+<%
                 try {
                     String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
                     String dbUser = "LMS_RunTime";
@@ -79,6 +80,13 @@
 <jsp:include page="/display-assignments" />
         <div class="mainContainer">
             <h1>${courseTitleString}</h1>
+
+            <% if(userTypeVar.equals("student")) { %>
+                <p>Current Course Grade: ${courseGrade}% = ${letterGrade}</p>
+            <% } %>
+
+
+
             <h2>Assignments</h2>
 
             <table id="myTable2">

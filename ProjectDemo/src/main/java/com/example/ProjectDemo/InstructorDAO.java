@@ -32,7 +32,7 @@ public class InstructorDAO {
             instructor = new Instructors();
             instructor.setFirstname(result.getString("firstName"));
             instructor.setLastname(result.getString("lastName"));
-
+            instructor.setUserId(result.getInt("instructorID"));
             instructor.setBio(result.getString("bio"));
             instructor.setAddress(result.getString("address"));
             instructor.setCity(result.getString("city"));

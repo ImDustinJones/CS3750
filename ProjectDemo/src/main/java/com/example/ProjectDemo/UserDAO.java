@@ -281,5 +281,38 @@ public class UserDAO {
         return payment;
     }
 
+    public double getCourseGrade(int studentID, int courseID) throws SQLException, ClassNotFoundException {
+        Connection connection = connectDatabase();
+        Statement stmt = connection.createStatement();
+
+        String sqlQuery = "SELECT assignments.points, studentSubmission.grade FROM assignments INNER JOIN studentSubmission ON assignments.assignmentID = studentSubmission.assignmentID WHERE studentID = '"+studentID+"' AND courseID = '"+courseID+"';";
+        ResultSet rs = stmt.executeQuery(sqlQuery);
+
+        int studentTotalPoints=0;
+        int courseTotalPoints=0;
+
+        while(rs.next()){
+            studentTotalPoints += rs.getInt("grade");
+            System.out.println("Grade =" + rs.getInt("grade"));
+            if(rs.getInt("grade") != 0){
+                courseTotalPoints += rs.getInt("points");
+            }
+            else{
+                courseTotalPoints += 0;
+            }
+            System.out.println("totalPoints  =" +rs.getInt("points"));
+        }
+
+        System.out.println("studentTotalPoints = " + studentTotalPoints);
+        System.out.println("courseTotalPoints = " + courseTotalPoints);
+
+
+        double grade = ((double)studentTotalPoints/courseTotalPoints) * 100;
+
+        System.out.println("Returns: "+ grade);
+
+        return grade;
+    }
+
 
 }

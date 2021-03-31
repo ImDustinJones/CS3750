@@ -19,23 +19,44 @@ public class displayAssignmentsServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //System.out.println("Display Instructor Courses is Running");
         AssignmentDAO assignmentDao = new AssignmentDAO();
+        UserDAO userdao = new UserDAO();
         HttpSession session = request.getSession();
         List<Assignments> assignmentsList = null;
 
         String email = (String) session.getAttribute("email");
         String userTypeVariable = (String) session.getAttribute("userType");
         int pageCourseID = Integer.parseInt((String)session.getAttribute("courseID"));
+        int userID = Integer.parseInt(session.getAttribute("studentID").toString());
+
+
+        double courseGrade = 0;
+        String courseLetterGrade = "";
+
 
         try {
 
-            if(userTypeVariable.equals("student")){
-                assignmentsList = assignmentDao.getAssignmentsList(pageCourseID);
-            }
-            else {
-                assignmentsList = assignmentDao.getAssignmentsList(pageCourseID);
+            assignmentsList = assignmentDao.getAssignmentsList(pageCourseID);
+            session.setAttribute("assignmentList", assignmentsList);
+            if(userTypeVariable.equals("student")) {
+                courseGrade = userdao.getCourseGrade(userID, pageCourseID);
+                session.setAttribute("courseGrade", courseGrade);
+
+                if (courseGrade <= 50) {
+                    courseLetterGrade = "F";
+                } else if (courseGrade >= 60 && courseGrade < 70) {
+                    courseLetterGrade = "D";
+                } else if (courseGrade >= 70 && courseGrade < 80) {
+                    courseLetterGrade = "C";
+                } else if (courseGrade >= 80 && courseGrade < 90) {
+                    courseLetterGrade = "B";
+                } else {
+                    courseLetterGrade = "A";
+                }
+
+                session.setAttribute("letterGrade", courseLetterGrade);
             }
 
-            session.setAttribute("assignmentList", assignmentsList);
+
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
