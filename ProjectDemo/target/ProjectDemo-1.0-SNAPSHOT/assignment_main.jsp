@@ -295,13 +295,25 @@
             }
         };
 
-        var data = [trace1];
+        var trace2 = {
+            x: [${studentGradeForDisplay}],
+            type: 'box',
+            name: '',
+            hoverinfo: 'none',
+            marker: {
+                color: '#1fa103'
+            },
+            boxpoints: 'all'
+        };
+
+        var data = [trace1, trace2];
 
         var layout = {
             title: 'Assignment Graded Summary',
             xaxis:{ gridcolor: '#606060'},
             plot_bgcolor: '#001011',
-            paper_bgcolor: 'rgba(0, 0, 0, 0)'
+            paper_bgcolor: 'rgba(0, 0, 0, 0)',
+            showlegend: false
         };
 
         Plotly.newPlot('displayBoxPlot', data, layout);

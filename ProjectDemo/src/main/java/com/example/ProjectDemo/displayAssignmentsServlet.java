@@ -41,7 +41,7 @@ public class displayAssignmentsServlet extends HttpServlet {
                 courseGrade = userdao.getCourseGrade(userID, pageCourseID);
                 session.setAttribute("courseGrade", courseGrade);
 
-                if (courseGrade <= 50) {
+                if (courseGrade <= 59) {
                     courseLetterGrade = "F";
                 } else if (courseGrade >= 60 && courseGrade < 70) {
                     courseLetterGrade = "D";

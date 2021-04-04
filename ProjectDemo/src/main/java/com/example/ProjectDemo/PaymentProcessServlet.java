@@ -34,7 +34,7 @@ public class PaymentProcessServlet extends HttpServlet {
 
 
         //required key, remember to change to your key when testing
-        String apiKey = "sk_test_51IYJVSLmddznJdQDzx99FGYHRbS6QCF2PKyRAkJ7GBsvCfvWSNaj1gRvvfyik5B6MAn78qWgbzIo5KQqShCEQ03u00LcI8pos5";
+        String apiKey = "sk_test_51Ia8FFJEpQc5RhfB3gK0egTytCxcpEKBi1n0jFfR7KZvGA6363hfDMiyToyNP392qMpqVLtSths3nrQooXr5O4oY00IrNKK8Ip";
 
         //Url the REST request will be sent to
         URL url = new URL("https://api.stripe.com/v1/tokens?key=" + apiKey + "&card[number]=" +

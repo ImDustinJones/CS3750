@@ -8,6 +8,8 @@
 <head>
     <link href='navigationbar.css' rel='stylesheet'/>
     <link href='course_main.css' rel='stylesheet'/>
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+
     <%
         String courseIDCourse_main = request.getParameter( "courseID" );
         session.setAttribute("courseID", request.getParameter( "courseID" ));
@@ -81,11 +83,129 @@
         <div class="mainContainer">
             <h1>${courseTitleString}</h1>
 
-            <% if(userTypeVar.equals("student")) { %>
-                <p>Current Course Grade: ${courseGrade}% = ${letterGrade}</p>
+            <% if(userTypeVar.equals("student")) {
+
+                double courseGradeDisplay = 0;
+                String courseLetterGradeDisplay = "";
+
+                try{
+                    String jdbcURL3 = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
+                    String dbUser3 = "LMS_RunTime";
+                    String dbPassword3 = "password1!";
+                    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                    Connection connection3 = DriverManager.getConnection(jdbcURL3, dbUser3, dbPassword3);
+                    Statement statement3 = connection3.createStatement();
+                    String query3 = "SELECT DISTINCT(S.studentID), AVG(1.0 * S.grade / A.points) AS averageGradeForStudent FROM LMS_RunTime.dbo.assignments AS A INNER JOIN LMS_RunTime.dbo.studentSubmission AS S ON S.assignmentID = A.assignmentID  WHERE S.grade IS NOT NULL AND A.courseID = '" + courseIDCourse_main + "'" + " AND S.studentID = '" + session.getAttribute("studentID") + "'" + "GROUP BY S.studentID";
+
+                    ResultSet resultSet3 = statement3.executeQuery(query3);
+
+                    while(resultSet3.next()) {
+                        session.setAttribute("courseGradeDisplay", Double.valueOf(resultSet3.getString("averageGradeForStudent")) * 100);
+                        courseGradeDisplay = (Double) session.getAttribute("courseGradeDisplay");
+                    }
+
+                    connection3.close();
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                }
+
+
+                if (courseGradeDisplay <= 59.0) {
+                    courseLetterGradeDisplay = "F";
+                } else if (courseGradeDisplay >= 60.0 && courseGradeDisplay < 70.0) {
+                    courseLetterGradeDisplay = "D";
+                } else if (courseGradeDisplay >= 70.0 && courseGradeDisplay < 80.0) {
+                    courseLetterGradeDisplay = "C";
+                } else if (courseGradeDisplay >= 80.0 && courseGradeDisplay < 90.0) {
+                    courseLetterGradeDisplay = "B";
+                } else {
+                    courseLetterGradeDisplay = "A";
+                }
+
+                System.out.println();
+                System.out.println();
+                System.out.println("CoureLetDis: " + courseLetterGradeDisplay);
+                System.out.println("GradeDisp: " + courseGradeDisplay);
+                System.out.println();
+
+                session.setAttribute("letterGradeDisplay", courseLetterGradeDisplay);
+
+            %>
+                <p>Current Course Grade: ${courseGradeDisplay}% = ${letterGradeDisplay}</p>
             <% } %>
 
 
+
+            <div id='displayBoxPlot2'><!-- Plotly chart will be drawn inside this DIV --></div>
+            <script>
+                var grades = [];
+
+                <%
+                    try{
+                        String jdbcURL2 = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
+                        String dbUser2 = "LMS_RunTime";
+                        String dbPassword2 = "password1!";
+                        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                        Connection connection2 = DriverManager.getConnection(jdbcURL2, dbUser2, dbPassword2);
+                        Statement statement2 = connection2.createStatement();
+                        String query2 = "SELECT DISTINCT(S.studentID), AVG(1.0 * S.grade / A.points) AS averageGradeForStudent FROM LMS_RunTime.dbo.assignments AS A INNER JOIN LMS_RunTime.dbo.studentSubmission AS S ON S.assignmentID = A.assignmentID  WHERE S.grade IS NOT NULL AND A.courseID = '" + courseIDCourse_main + "'" + "GROUP BY S.studentID";
+                        ResultSet resultSet2 = statement2.executeQuery(query2);
+                        while(resultSet2.next()) {
+                %>
+                            grades.push(<%= Double.valueOf(resultSet2.getString("averageGradeForStudent")) * 100 %>);
+                <%
+                        }
+
+                                connection2.close();
+                            }
+                            catch(Exception e){
+                                e.printStackTrace();
+                            }
+                %>
+
+                var trace1 = {
+                    x: grades,
+                    type: 'box',
+                    name: '',
+                    marker:{
+                        color: '#F6AE2D'
+                    }
+                };
+
+                <%
+                if(session.getAttribute("userType").equals("student"))
+                {
+                %>
+                    var trace2 = {
+                        x: [${courseGradeDisplay}],
+                        type: 'box',
+                        name: '',
+                        hoverinfo: 'none',
+                        marker: {
+                            color: '#1fa103'
+                        },
+                        boxpoints: 'all'
+                    };
+                    var data = [trace1, trace2];
+                <% }
+                else
+                {
+                %>
+                    var data = [trace1]; // for if its only instructor
+                <% } %>
+
+                var layout = {
+                    title: 'Student Grade Average %',
+                    xaxis:{ gridcolor: '#606060'},
+                    plot_bgcolor: '#001011',
+                    paper_bgcolor: 'rgba(0, 0, 0, 0)',
+                    showlegend: false
+                };
+
+                Plotly.newPlot('displayBoxPlot2', data, layout);
+
+            </script>
 
             <h2>Assignments</h2>
 
