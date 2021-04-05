@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InstructorDAOTest {
-
+    //LoginCheck
     @Test
     void checkLoginInstructor() throws SQLException, ClassNotFoundException {
         String email = "dj@test.com";
