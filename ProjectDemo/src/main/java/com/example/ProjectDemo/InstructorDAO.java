@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.regex.Pattern;
 
 public class InstructorDAO {
-    public Instructors checkLoginInstructor(String email, String password) throws SQLException, ClassNotFoundException {
+    public static Instructors checkLoginInstructor(String email, String password) throws SQLException, ClassNotFoundException {
         Connection connection = connectDatabase();
 
         String sql = "SELECT * FROM instructors WHERE email = ? and password = ?";
@@ -94,7 +94,7 @@ public class InstructorDAO {
         }
     }
 
-    public Connection connectDatabase() throws SQLException, ClassNotFoundException {
+    public static Connection connectDatabase() throws SQLException, ClassNotFoundException {
         String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
         String dbUser = "LMS_RunTime";
         String dbPassword = "password1!";
