@@ -9,12 +9,12 @@ import java.util.List;
 
 public class CoursesDAO {
 
-    public void addCoursesDB(String courseNumber, String courseName, String departmentCode, String instructorEmail,
-                                String instructorLastName, String courseDescription, int creditHours, String startTime,
-                                String endTime, int studentCapacity, int monday, int tuesday, int wednesday,
-                                int thursday, int friday) throws SQLException, ClassNotFoundException, ParseException {
+    public static void addCoursesDB(String courseNumber, String courseName, String departmentCode, String instructorEmail,
+                                    String instructorLastName, String courseDescription, int creditHours, String startTime,
+                                    String endTime, int studentCapacity, int monday, int tuesday, int wednesday,
+                                    int thursday, int friday) throws SQLException, ClassNotFoundException, ParseException {
 
-        Connection connection = connectDatabase();
+       /* Connection connection = connectDatabase();
 
 
         String sqlInsert = "INSERT INTO courseList(courseNumber, courseName, departmentCode, instructorEmail, instructorLastName, courseDescription, creditHours, startTime, endTime, studentCapacity, monday, tuesday, wednesday, thursday, friday) VALUES('"+courseNumber+"','"+courseName+"','"+departmentCode+"','"+instructorEmail+"','"+instructorLastName+"','"+courseDescription+"','"+creditHours+"','"+startTime+"','"+endTime+"','"+studentCapacity+"','"+monday+"','"+tuesday+"','"+wednesday+"','"+thursday+"','"+friday+"');";
@@ -35,9 +35,9 @@ public class CoursesDAO {
             course.setEndTime(endTime);
         }
 
-        connection.close();
+        connection.close();*/
     }
-    public Connection connectDatabase() throws SQLException, ClassNotFoundException {
+    public static Connection connectDatabase() throws SQLException, ClassNotFoundException {
         String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
         String dbUser = "LMS_RunTime";
         String dbPassword = "password1!";

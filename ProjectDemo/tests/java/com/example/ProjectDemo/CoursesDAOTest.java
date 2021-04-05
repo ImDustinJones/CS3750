@@ -3,13 +3,14 @@ package com.example.ProjectDemo;
 import org.junit.jupiter.api.Test;
 
 import java.sql.*;
+import java.text.ParseException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CoursesDAOTest {
 
     @Test
-    void addCoursesDB() throws ClassNotFoundException, SQLException {
+    void addCoursesDB() throws ClassNotFoundException, SQLException, ParseException {
         //Setup Database Connection
         String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
         String dbUser = "LMS_RunTime";
@@ -36,19 +37,17 @@ class CoursesDAOTest {
         String instructorEmail = "dj@test.com";
         String instructorLastName = "Jones";
         String courseDescription = "testing course";
-        String creditHours = "4";
+        int creditHours = 4;
         String startTime = "11:59:00";
         String endTime = "12:59:00";
-        String studentCapacity = "10";
-        String monday = "1";
-        String tuesday = "0";
-        String wednesday = "1";
-        String thursday = "0";
-        String friday = "0";
+        int studentCapacity = 10;
+        int monday = 1;
+        int tuesday = 0;
+        int wednesday = 1;
+        int thursday = 0;
+        int friday = 0;
+        CoursesDAO.addCoursesDB(courseNumber, courseName, departmentCode, instructorLastName, instructorEmail, courseDescription, creditHours,startTime, endTime, studentCapacity, monday,tuesday, wednesday, thursday, friday);
         String sqlInsert = "INSERT INTO courseList(courseNumber, courseName, departmentCode, instructorEmail, instructorLastName, courseDescription, creditHours, startTime, endTime, studentCapacity, monday, tuesday, wednesday, thursday, friday) VALUES('"+courseNumber+"','"+courseName+"','"+departmentCode+"','"+instructorEmail+"','"+instructorLastName+"','"+courseDescription+"','"+creditHours+"','"+startTime+"','"+endTime+"','"+studentCapacity+"','"+monday+"','"+tuesday+"','"+wednesday+"','"+thursday+"','"+friday+"');";
-        PreparedStatement statementInsert = connection2.prepareStatement(sqlInsert);
-        int result = statementInsert.executeUpdate();
-        connection2.close();
         Connection connection3 = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
 
         //Count the current courses in the system again
