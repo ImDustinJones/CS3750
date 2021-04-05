@@ -3,13 +3,14 @@ package com.example.ProjectDemo;
 import org.junit.jupiter.api.Test;
 
 import java.sql.*;
+import java.text.ParseException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class AssignmentDAOTest {
 
     @Test
-    void addAssignmentDB() throws ClassNotFoundException, SQLException {
+    void addAssignmentDB() throws ClassNotFoundException, SQLException, ParseException {
         //Setup Database Connection
         String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
         String dbUser = "LMS_RunTime";
@@ -38,11 +39,7 @@ class AssignmentDAOTest {
         int points = 10;
         String dueDate = "2021-03-30 20:58:00.000";
         String submissionType = "text";
-
-        String sqlInsert = "INSERT INTO assignments(assignmentName, courseID, instructorEmail, instructorLastName, assignmentDescription, points, dueDate, submissionType) VALUES('"+assignmentName+"','"+courseID+"','"+instructorEmail+"','"+instructorLastName+"','"+assignmentDescription+"','"+points+"','"+dueDate+"','"+submissionType+"');";
-        PreparedStatement statementInsert = connection2.prepareStatement(sqlInsert);
-        int result = statementInsert.executeUpdate();
-        connection2.close();
+        AssignmentDAO.addAssignmentDB(assignmentName, courseID, instructorEmail, instructorLastName, assignmentDescription, points, dueDate, submissionType);
         Connection connection3 = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
 
         //Count the current courses in the system again

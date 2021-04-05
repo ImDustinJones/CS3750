@@ -8,8 +8,8 @@ import javax.servlet.annotation.MultipartConfig;
 
 public class AssignmentDAO {
 
-    public void addAssignmentDB(String assignmentName, int courseID, String instructorEmail, String instructorLastName,
-                                String assignmentDescription, int points, String dueDate, String submissionType)
+    public static void addAssignmentDB(String assignmentName, int courseID, String instructorEmail, String instructorLastName,
+                                       String assignmentDescription, int points, String dueDate, String submissionType)
             throws SQLException, ClassNotFoundException, ParseException {
 
         Connection connection = connectDatabase();
@@ -34,7 +34,7 @@ public class AssignmentDAO {
 
         connection.close();
     }
-    public Connection connectDatabase() throws SQLException, ClassNotFoundException {
+    public static Connection connectDatabase() throws SQLException, ClassNotFoundException {
         String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
         String dbUser = "LMS_RunTime";
         String dbPassword = "password1!";
