@@ -2,11 +2,9 @@
   <library name="Maven: mysql:mysql-connector-java:8.0.23">
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/8.0.23/mysql-connector-java-8.0.23.jar!/" />
-      <root url="jar://$USER_HOME$/Documents/Spring 2021/CS 3750/sqljdbc_8.2/enu/mssql-jdbc-8.2.2.jre11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ProjectDemo/lib/mssql-jdbc-8.2.2.jre11.jar!/" />
     </CLASSES>
-    <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/8.0.23/mysql-connector-java-8.0.23-javadoc.jar!/" />
-    </JAVADOC>
+    <JAVADOC />
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/8.0.23/mysql-connector-java-8.0.23-sources.jar!/" />
     </SOURCES>
