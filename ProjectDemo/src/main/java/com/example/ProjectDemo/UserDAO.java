@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.regex.Pattern;
 
 public class UserDAO {
-    public Users checkLogin(String email, String password) throws SQLException, ClassNotFoundException {
+    public static Users checkLogin(String email, String password) throws SQLException, ClassNotFoundException {
         Connection connection = connectDatabase();
 
         String sql = "SELECT * FROM students WHERE email = ? and password = ?";
@@ -100,7 +100,7 @@ public class UserDAO {
         }
     }
 
-    public Connection connectDatabase() throws SQLException, ClassNotFoundException {
+    public static Connection connectDatabase() throws SQLException, ClassNotFoundException {
         String jdbcURL = "jdbc:sqlserver://titan.cs.weber.edu:10433;database=LMS_RunTime";
         String dbUser = "LMS_RunTime";
         String dbPassword = "password1!";
