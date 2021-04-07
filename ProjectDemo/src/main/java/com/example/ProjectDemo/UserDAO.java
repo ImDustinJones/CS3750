@@ -51,7 +51,7 @@ public class UserDAO {
         return user;
     }
 
-    public Users addUserDB(String email, String firstname, String lastname, String password, String birthdate) throws SQLException, ClassNotFoundException, ParseException {
+    public static Users addUserDB(String email, String firstname, String lastname, String password, String birthdate) throws SQLException, ClassNotFoundException, ParseException {
         //DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String encryptedPassword = encrypt(password);
 //        Date birthDate = null;
