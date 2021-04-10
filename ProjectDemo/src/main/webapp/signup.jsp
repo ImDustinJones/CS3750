@@ -38,7 +38,7 @@
     <label for="student">Student</label><br>
     <input type="radio" id="instructor" name="userType" value="instructor">
     <label for="instructor">Instructor</label><br>
-    <input type="submit" value="Sign Up">
+    <div class ="signupbtn"><input type="submit" value="Sign Up"></div>
 
     <%
         String errorMessage = "";

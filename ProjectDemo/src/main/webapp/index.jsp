@@ -24,7 +24,7 @@
         }
     %>
     <p style ="color:#ff0000"><%= errorMessage%> </p>
-    <a href="signup.jsp">Sign Up</a>
+    <div class="signupwrap"><a href="signup.jsp">Sign Up</a></div>
 </div>
 </div>
 </body>

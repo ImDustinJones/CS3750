@@ -93,3 +93,16 @@ h2{
     padding: 10px;
     font-family: inherit;
 }
+
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: white;
+}

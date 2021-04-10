@@ -24,6 +24,31 @@ h2{
     margin-right:15%;
 }
 
+#coursesContainer td {
+    padding: 15px;
+    font-size: .7em;
+    border-bottom: 1px solid grey;
+    text-align: center;
+    color: black;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: white;
+}
+
+#coursesContainer th {
+    padding: 10px;
+    border-bottom: 3px solid grey;
+}
+
 #myTable1 {
     box-sizing: border-box;
     border-collapse: collapse;
@@ -109,8 +134,13 @@ h2{
     padding: 15px;
 }
 
-.popup-button{
+.popup-button {
     margin: 30px;
     padding: 10px;
     font-family: inherit;
+    background-color: #F6AE2D;
+}
+
+.my_button hover {
+    background-color: white;
 }
