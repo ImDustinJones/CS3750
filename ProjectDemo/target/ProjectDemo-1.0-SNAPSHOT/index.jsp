@@ -14,7 +14,7 @@
         <input type="text" id="email" name="email"><br>
         <label for="password">Password: </label><br>
         <input type="text" id="password" name="password"><br>
-        <input type="submit" value="Submit">
+        <div class ="signupbtn"><input type="submit" value="Submit"></div>
     </form>
     <% //Getting the setAttribute from servlet and creating an error message
         String errorMessage = "";
@@ -24,7 +24,7 @@
         }
     %>
     <p style ="color:#ff0000"><%= errorMessage%> </p>
-    <a href="signup.jsp">Sign Up</a>
+    <div class="signupwrap"><a href="signup.jsp">Sign Up</a></div>
 </div>
 </div>
 </body>

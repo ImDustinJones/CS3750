@@ -25,6 +25,32 @@ h1{
     font-size: 150%;
 }
 
+.Inputs input[type=text] {
+    width: 95%;
+}
+
 input[type=submit] {
-    margin-top: 10px;
+    margin-top: 15px;
+    width: 100px;
+    height: 35px;
+}
+
+.signupwrap {
+    text-align: end;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: white;
+}
+
+.signupbtn {
+    text-align: center;
 }
