@@ -15,20 +15,21 @@ public class NotificationDAO {
 
         String sqlQuery = "SELECT * FROM assignments WHERE assignmentName LIKE '" + assignmentName +"'";
         ResultSet rs = stmt.executeQuery(sqlQuery);
-        rs.next();
-        int assignmentID = rs.getInt("assignmentID");//get the assignment's id
-        //get all the students in the class
-        sqlQuery = "SELECT * FROM registrations INNER JOIN students ON students.email = registrations.studentEmail" +
-                " WHERE courseID LIKE '"+courseID+"';";
-        rs = stmt.executeQuery(sqlQuery);
+        if(rs.next()) {
+            int assignmentID = rs.getInt("assignmentID");//get the assignment's id
+            //get all the students in the class
+            sqlQuery = "SELECT * FROM registrations INNER JOIN students ON students.email = registrations.studentEmail" +
+                    " WHERE courseID LIKE '"+courseID+"';";
+            rs = stmt.executeQuery(sqlQuery);
 
-        while(rs.next()){//create a notification for each student
+            while(rs.next()){//create a notification for each student
 
-            String sqlInsert = "INSERT INTO notifications(notificationType, studentID, courseID, assignmentID) VALUES('newAssignment', " +
-                   rs.getInt("studentID") + ", " + courseID + ", " + assignmentID + ")";
-            PreparedStatement statement = connection.prepareStatement(sqlInsert);
-            statement.executeUpdate();
+                String sqlInsert = "INSERT INTO notifications(notificationType, studentID, courseID, assignmentID) VALUES('newAssignment', " +
+                        rs.getInt("studentID") + ", " + courseID + ", " + assignmentID + ")";
+                PreparedStatement statement = connection.prepareStatement(sqlInsert);
+                statement.executeUpdate();
 
+            }
         }
 
         connection.close();
