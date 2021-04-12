@@ -48,8 +48,6 @@ class UserDAOJUTest {
             }
             else
             {
-                DeleteStudentFromDB(jdbcURL, dbUser, dbPassword, email);
-
                 // Get the amount of Users in the database
                 String query = "SELECT COUNT(studentID) AS studentCount FROM students";
                 PreparedStatement PStatement = DBConnection.prepareStatement(query);
@@ -80,7 +78,14 @@ class UserDAOJUTest {
                 }
                 ConnectionAfterNewStudent.close();
 
-                DeleteStudentFromDB(jdbcURL, dbUser, dbPassword, email);
+                Connection DBConnectionDEL = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
+
+                // Delete the student who was just added
+                String queryDelete = "DELETE FROM students WHERE email = '" + email + "'";
+                PreparedStatement SmtDelete = DBConnectionDEL.prepareStatement(queryDelete);
+                SmtDelete.executeUpdate();
+                DBConnectionDEL.close();
+
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();
@@ -89,15 +94,5 @@ class UserDAOJUTest {
             ex.printStackTrace();
             fail("Error: " + ex);
         }
-    }
-
-    private void DeleteStudentFromDB(String jdbcURL, String dbUser, String dbPassword, String email) throws SQLException {
-        Connection DBConnection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
-
-        // Delete the student who was just added
-        String queryDelete = "DELETE FROM students WHERE email = ' " + email + "';";
-        PreparedStatement SmtDelete = DBConnection.prepareStatement(queryDelete);
-        SmtDelete.executeUpdate();
-        DBConnection.close();
     }
 }

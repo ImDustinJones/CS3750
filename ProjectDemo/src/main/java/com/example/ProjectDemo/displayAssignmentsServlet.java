@@ -26,7 +26,8 @@ public class displayAssignmentsServlet extends HttpServlet {
         String email = (String) session.getAttribute("email");
         String userTypeVariable = (String) session.getAttribute("userType");
         int pageCourseID = Integer.parseInt((String)session.getAttribute("courseID"));
-        int userID = Integer.parseInt(session.getAttribute("studentID").toString());
+        System.out.println("I am printing the course ID: " + pageCourseID);
+        System.out.println("I am in dispAssingServ: ");
 
 
         double courseGrade = 0;
@@ -38,10 +39,12 @@ public class displayAssignmentsServlet extends HttpServlet {
             assignmentsList = assignmentDao.getAssignmentsList(pageCourseID);
             session.setAttribute("assignmentList", assignmentsList);
             if(userTypeVariable.equals("student")) {
+                int userID = Integer.parseInt(session.getAttribute("studentID").toString());
                 courseGrade = userdao.getCourseGrade(userID, pageCourseID);
+
                 session.setAttribute("courseGrade", courseGrade);
 
-                if (courseGrade <= 59) {
+                if (courseGrade <= 59 && courseGrade > 0.0) {
                     courseLetterGrade = "F";
                 } else if (courseGrade >= 60 && courseGrade < 70) {
                     courseLetterGrade = "D";
