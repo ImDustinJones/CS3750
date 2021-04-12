@@ -135,9 +135,10 @@ h2{
 }
 
 .addAssignFormContainer, .editAssignFormContainer {
-    padding: 10px;
+    padding: 15px;
     background-color: #001011;
     color: white;
+    border: 4px solid #757780;
 }
 
 .addAssignFormContainer input[type=text], .addAssignFormContainer input[type=datetime-local], .addAssignFormContainer textarea {

@@ -85,7 +85,7 @@
 
             <% if(userTypeVar.equals("student")) {
 
-                double courseGradeDisplay = 0;
+                double courseGradeDisp = 0;
                 String courseLetterGradeDisplay = "";
 
                 try{
@@ -100,8 +100,11 @@
                     ResultSet resultSet3 = statement3.executeQuery(query3);
 
                     while(resultSet3.next()) {
-                        session.setAttribute("courseGradeDisplay", Double.valueOf(resultSet3.getString("averageGradeForStudent")) * 100);
-                        courseGradeDisplay = (Double) session.getAttribute("courseGradeDisplay");
+                        session.setAttribute("courseGradeDisp", Double.valueOf(resultSet3.getString("averageGradeForStudent")) * 100);
+                        System.out.println("I am printing resset3size: " + resultSet3.getFetchSize());
+                        if(resultSet3.getFetchSize() > 0) {
+                            courseGradeDisp = (Double) session.getAttribute("courseGradeDisp");
+                        }
                     }
 
                     connection3.close();
@@ -111,13 +114,16 @@
                 }
 
 
-                if (courseGradeDisplay <= 59.0) {
+                if (courseGradeDisp <= 0.0) {
+                    courseLetterGradeDisplay = "-";
+                }
+                else if (courseGradeDisp <= 59.0 && courseGradeDisp > 0.0) {
                     courseLetterGradeDisplay = "F";
-                } else if (courseGradeDisplay >= 60.0 && courseGradeDisplay < 70.0) {
+                } else if (courseGradeDisp >= 60.0 && courseGradeDisp < 70.0) {
                     courseLetterGradeDisplay = "D";
-                } else if (courseGradeDisplay >= 70.0 && courseGradeDisplay < 80.0) {
+                } else if (courseGradeDisp >= 70.0 && courseGradeDisp < 80.0) {
                     courseLetterGradeDisplay = "C";
-                } else if (courseGradeDisplay >= 80.0 && courseGradeDisplay < 90.0) {
+                } else if (courseGradeDisp >= 80.0 && courseGradeDisp < 90.0) {
                     courseLetterGradeDisplay = "B";
                 } else {
                     courseLetterGradeDisplay = "A";
@@ -126,14 +132,15 @@
                 System.out.println();
                 System.out.println();
                 System.out.println("CoureLetDis: " + courseLetterGradeDisplay);
-                System.out.println("GradeDisp: " + courseGradeDisplay);
+                System.out.println("GradeDisp: " + courseGradeDisp);
                 System.out.println();
 
                 session.setAttribute("letterGradeDisplay", courseLetterGradeDisplay);
 
+                if(courseLetterGradeDisplay != "-") {
             %>
-                <p>Current Course Grade: ${courseGradeDisplay}% = ${letterGradeDisplay}</p>
-            <% } %>
+                <p>Current Course Grade: ${courseGradeDisp}% = ${letterGradeDisplay}</p>
+            <% }} %>
 
 
 
@@ -178,7 +185,7 @@
                 {
                 %>
                     var trace2 = {
-                        x: [${courseGradeDisplay}],
+                        x: [${courseGradeDisp}],
                         type: 'box',
                         name: '',
                         hoverinfo: 'none',
