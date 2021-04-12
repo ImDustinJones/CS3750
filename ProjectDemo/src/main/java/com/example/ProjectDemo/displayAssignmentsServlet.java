@@ -28,7 +28,6 @@ public class displayAssignmentsServlet extends HttpServlet {
         int pageCourseID = Integer.parseInt((String)session.getAttribute("courseID"));
         System.out.println("I am printing the course ID: " + pageCourseID);
         System.out.println("I am in dispAssingServ: ");
-        int userID = Integer.parseInt(session.getAttribute("studentID").toString());
 
 
         double courseGrade = 0;
@@ -40,6 +39,7 @@ public class displayAssignmentsServlet extends HttpServlet {
             assignmentsList = assignmentDao.getAssignmentsList(pageCourseID);
             session.setAttribute("assignmentList", assignmentsList);
             if(userTypeVariable.equals("student")) {
+                int userID = Integer.parseInt(session.getAttribute("studentID").toString());
                 courseGrade = userdao.getCourseGrade(userID, pageCourseID);
 
                 session.setAttribute("courseGrade", courseGrade);
