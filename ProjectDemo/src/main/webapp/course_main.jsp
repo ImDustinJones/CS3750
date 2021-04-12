@@ -99,11 +99,19 @@
 
                     ResultSet resultSet3 = statement3.executeQuery(query3);
 
+                    System.out.println("I am printing courseGradeDisp: " + session.getAttribute("courseGradeDisp"));
+                    System.out.println("I am printing resset3size: " + resultSet3.getFetchSize());
+
                     while(resultSet3.next()) {
+                        System.out.println("I am printing double: " + Double.valueOf(resultSet3.getString("averageGradeForStudent")) * 100);
                         session.setAttribute("courseGradeDisp", Double.valueOf(resultSet3.getString("averageGradeForStudent")) * 100);
-                        System.out.println("I am printing resset3size: " + resultSet3.getFetchSize());
-                        if(resultSet3.getFetchSize() > 0) {
+
+
+                        if((Double.valueOf(resultSet3.getString("averageGradeForStudent")) * 100) > 0.0) {
                             courseGradeDisp = (Double) session.getAttribute("courseGradeDisp");
+                        }
+                        else {
+                            courseGradeDisp = -10.0;
                         }
                     }
 
@@ -355,6 +363,8 @@ session varible email is the user's email
 </script>
 
 <script src="course_main.js"></script>
-
+<%
+    session.removeAttribute("courseGradeDisp");
+%>
 </body>
 </html>
