@@ -60,17 +60,26 @@ public class InstructorDAO {
         PreparedStatement statement = connection.prepareStatement(sqlInsert);
         int result = statement.executeUpdate();
 
+        connection.close();
+
+        Connection connection2 = connectDatabase();
+
+        String sql = "SELECT * FROM instructors WHERE email = '"+email+"' and firstName = '"+firstname+"'";
+        PreparedStatement statement2 = connection2.prepareStatement(sql);
+
+        ResultSet result2 = statement2.executeQuery();
+
         Instructors instructor = null;
 
-        if(result > 0){
+        if (result2.next()) { // sets the ${} variables and can set them before we go to profile
             instructor = new Instructors();
-            instructor.setFirstname(firstname);
-            instructor.setLastname(lastname);
+            instructor.setUserId(result2.getInt("instructorID"));
+            instructor.setFirstname(result2.getString("firstName"));
+            instructor.setLastname(result2.getString("lastName"));
             instructor.setEmail(email);
-            instructor.setBirthdate(birthdate);
         }
 
-        connection.close();
+        connection2.close();
 
         return instructor;
     }

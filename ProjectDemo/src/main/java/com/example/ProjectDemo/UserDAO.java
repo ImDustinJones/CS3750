@@ -64,19 +64,28 @@ public class UserDAO {
 
         String sqlInsert = "INSERT INTO students(email, password, firstName, lastName, birthDate) VALUES('"+email+"','"+encryptedPassword+"','"+firstname+"','"+lastname+"','"+birthdate+"');";
         PreparedStatement statement = connection.prepareStatement(sqlInsert);
-        int result = statement.executeUpdate();
+        statement.executeUpdate();
+
+        connection.close();
+
+        Connection connection2 = connectDatabase();
+
+        String sql = "SELECT * FROM students WHERE email = '"+email+"' and firstName = '"+firstname+"'";
+        PreparedStatement statement2 = connection2.prepareStatement(sql);
+
+        ResultSet result2 = statement2.executeQuery();
 
         Users user = null;
 
-        if(result > 0){
+        if (result2.next()) { // sets the ${} variables and can set them before we go to profile
             user = new Users();
-            user.setFirstname(firstname);
-            user.setLastname(lastname);
+            user.setUserId(result2.getInt("studentID"));
+            user.setFirstname(result2.getString("firstName"));
+            user.setLastname(result2.getString("lastName"));
             user.setEmail(email);
-            user.setBirthdate(birthdate);
         }
 
-        connection.close();
+        connection2.close();
 
         return user;
     }
